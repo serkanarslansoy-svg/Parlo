@@ -3,6 +3,7 @@ import { patterns, PATTERN_CATS, cardsOfPattern } from '../content/index.js';
 import { mastery } from '../lib/srs.js';
 import { norm } from '../lib/answer.js';
 import { topbar, speakBtn, dots, masteryLabel } from '../ui.js';
+import { confirmButton } from '../ui.js';
 
 let cat = 'all';
 let search = '';
@@ -47,12 +48,11 @@ function personalSection(ctx) {
       h('div', { class: 'row' },
         h('div', { class: 'grow' }, h('p', { class: 'it', lang: 'it' }, `«${p.it}»`), p.note ? h('p', { class: 'tr' }, p.note) : null),
         speakBtn(p.it),
-        h('button', { class: 'icon-btn plain', 'aria-label': `Sil: ${p.it}`, onclick: () => {
-          if (!confirm('Bu cümle silinsin mi?')) return;
+        confirmButton({ class: 'icon-btn plain del', 'aria-label': `Sil: ${p.it}` }, icon('trash'), 'Sil?', () => {
           ctx.state.personal = items.filter((x) => x.id !== p.id);
           ctx.persist();
           draw();
-        } }, icon('trash')))))
+        }))))
       : [h('p', { class: 'empty small' }, 'Gün içinde duyduğun ya da ihtiyaç duyduğun cümleleri buraya ekle.')]));
   };
   const add = () => {

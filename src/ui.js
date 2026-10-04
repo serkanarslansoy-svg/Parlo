@@ -7,11 +7,20 @@ export function brandMark() {
   return img;
 }
 
+let defaultRight = null;
+/** Tüm ekranların üst çubuğunda sağda gösterilecek öğe (aktif oyuncu rozeti). */
+export function setTopbarRight(fn) { defaultRight = fn; }
+
 export function topbar({ subtitle, right } = {}) {
   return h('header', { class: 'topbar' },
     h('div', { class: 'brand' }, brandMark(),
       h('div', {}, h('span', {}, 'PARLO', h('span', { class: 'bang' }, '!')), subtitle && h('small', {}, subtitle))),
-    right || null);
+    right || defaultRight?.() || null);
+}
+
+/** Oyuncu avatarı: renkli daire içinde hayvan emojisi. */
+export function avatar(profile, size = 44) {
+  return h('span', { class: 'pavatar', style: `--c:${profile.color};width:${size}px;height:${size}px;font-size:${Math.round(size * 0.55)}px`, 'aria-hidden': 'true' }, profile.avatar);
 }
 
 /** İtalyanca metni seslendiren buton. Tarayıcı desteklemiyorsa hiç gösterilmez. */
@@ -45,4 +54,19 @@ export function greeting(date = new Date()) {
 
 export function levelChip(level) {
   return h('span', { class: 'chip sun' }, level);
+}
+
+/** Tarayıcı onay penceresi yerine iki dokunuşlu onay: ilk dokunuş uyarır, ikincisi işlemi yapar. */
+export function confirmButton(attrs, content, armedLabel, action) {
+  let armed = false;
+  let timer = null;
+  const btn = h('button', { ...attrs, onclick: (e) => {
+    e.stopPropagation();
+    if (armed) { clearTimeout(timer); action(); return; }
+    armed = true;
+    btn.classList.add('armed');
+    btn.replaceChildren(armedLabel);
+    timer = setTimeout(() => { armed = false; btn.classList.remove('armed'); btn.replaceChildren(...[].concat(content)); }, 4000);
+  } }, ...[].concat(content));
+  return btn;
 }

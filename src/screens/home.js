@@ -2,7 +2,9 @@ import { h, icon } from '../lib/dom.js';
 import { dailyScene, tips, scenes, cards, allCardIds, patternById, CATEGORIES } from '../content/index.js';
 import { today, streak } from '../lib/store.js';
 import { isDue } from '../lib/srs.js';
-import { topbar, speakBtn, greeting } from '../ui.js';
+import { award, POINTS, leaderboard, gapToNext, weekPoints, dayPoints } from '../lib/points.js';
+import { stateOf } from '../lib/profiles.js';
+import { topbar, speakBtn, greeting, avatar } from '../ui.js';
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const DAYS = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
@@ -17,25 +19,40 @@ export function dailyStatus(state, t = today()) {
   return { scene, reviewDone: Boolean(day.dailyReview), chatDone: day.scenes.includes(scene.id) };
 }
 
+/** Günün dersi (tekrar + sohbet) bugün ilk kez tamamlandıysa bonus puanı verir. */
+export function claimDailyBonus(state, t = today()) {
+  const { reviewDone, chatDone } = dailyStatus(state, t);
+  const day = state.days[t];
+  if (!reviewDone || !chatDone || day.dailyBonus) return 0;
+  day.dailyBonus = true;
+  return award(state, POINTS.dailyDone, t);
+}
+
 const dayNumber = (t) => {
   const [y, m, d] = t.split('-').map(Number);
   return Math.floor(Date.UTC(y, m - 1, d) / 86400000);
 };
 
-function nameCard(ctx) {
-  const input = h('input', { class: 'input', placeholder: 'Adın (örn. Serkan)', maxlength: 30, autocomplete: 'given-name', 'aria-label': 'Adın' });
-  const saveName = () => {
-    const v = input.value.trim();
-    if (!v) return input.focus();
-    ctx.state.name = v;
-    ctx.persist();
-    ctx.refresh();
-  };
-  input.addEventListener('keydown', (e) => e.key === 'Enter' && saveName());
-  return h('section', { class: 'card sun stack' },
-    h('h3', {}, 'Benvenuto! Sana nasıl hitap edelim?'),
-    h('p', { class: 'small muted' }, 'Adın sadece bu cihazda saklanır.'),
-    h('div', { class: 'row' }, input, h('button', { class: 'btn small', onclick: saveName }, 'Kaydet')));
+function leagueCard(ctx) {
+  const t = today();
+  const rows = leaderboard(ctx.db.profiles, (id) => stateOf(ctx.db, id), t, 'week');
+  const me = rows.find((r) => r.profile.id === ctx.db.active);
+  const gap = gapToNext(rows, ctx.db.active);
+  const others = rows.length - 1;
+  let line;
+  if (!others) line = 'Bir oyuncu daha ekle, haftalık yarış başlasın.';
+  else if (gap) line = `${gap.name} seni ${gap.points - 1} puan önde. Bir senaryo bitir, yakala!`;
+  else line = rows.length > 1 && rows[1].points === me.points ? 'Zirveyi paylaşıyorsun. Bir adım öne geç!' : 'Ligin lideri sensin. Yerini koru!';
+  return h('button', { class: 'league-card', onclick: () => ctx.go(others ? 'league' : 'profiles') },
+    h('div', { class: 'row' },
+      avatar(ctx.profile, 52),
+      h('div', { class: 'grow' },
+        h('p', { class: 'eyebrow' }, 'Bu hafta'),
+        h('p', { class: 'lc-points' }, h('strong', {}, weekPoints(ctx.state, t)), ' puan', dayPoints(ctx.state, t) ? h('span', { class: 'today' }, `+${dayPoints(ctx.state, t)} bugün`) : null)),
+      h('div', { class: 'lc-rank' }, h('strong', {}, others ? `${me.rank}.` : '–'), h('span', {}, others ? `/ ${rows.length}` : 'tek oyuncu'))),
+    h('div', { class: 'lc-row' },
+      rows.slice(0, 5).map((r) => h('span', { class: `mini ${r.profile.id === ctx.db.active ? 'me' : ''}` }, avatar(r.profile, 28), h('b', {}, r.points)))),
+    h('p', { class: 'lc-line' }, line, icon('chevron')));
 }
 
 function missionCard(ctx) {
@@ -148,13 +165,12 @@ export function renderHome(ctx) {
   const now = new Date();
   return h('div', { class: 'screen' },
     topbar({ subtitle: 'Bugün' }),
-    state.name ? null : nameCard(ctx),
     h('section', { class: 'greet' },
       h('div', { class: 'row between' },
         h('span', { class: 'eyebrow terra row' }, h('i', { class: 'dot' }), `${now.getDate()} ${MONTHS[now.getMonth()]}, ${DAYS[now.getDay()]}`),
         s ? h('span', { class: 'chip terra' }, icon('flame'), `${s} gün kesintisiz pratik`) : null),
-      h('h1', {}, `${greeting(now)}${state.name ? `, ${state.name}` : ''}!\u00a0${now.getHours() < 14 ? '☀️' : '🌙'}`),
-      h('p', { class: 'muted' }, 'Bugün İtalya sokaklarında kendini evinde hissetmeye hazır mısın?')),
+      h('h1', {}, `${greeting(now)}, ${ctx.profile.name}!\u00a0${now.getHours() < 14 ? '☀️' : '🌙'}`)),
+    leagueCard(ctx),
     missionCard(ctx),
     recallCard(ctx),
     scenesStrip(ctx),

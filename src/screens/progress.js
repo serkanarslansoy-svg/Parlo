@@ -1,8 +1,8 @@
 import { h, icon } from '../lib/dom.js';
 import { scenes, cards } from '../content/index.js';
-import { streak, reset, today, isActiveDay } from '../lib/store.js';
+import { streak, today, isActiveDay, freshState } from '../lib/store.js';
 import { addDays } from '../lib/srs.js';
-import { topbar } from '../ui.js';
+import { topbar, confirmButton } from '../ui.js';
 
 const BUCKETS = [
   { label: 'Yeni', test: (b) => b === 0 },
@@ -65,11 +65,10 @@ export function renderProgress(ctx) {
     candoSection,
     memory,
     h('section', { class: 'card cream stack' },
-      h('p', { class: 'small muted' }, 'Verilerin sadece bu cihazda, bu tarayıcıda saklanır.'),
-      h('button', { class: 'btn secondary block', onclick: () => {
-        if (!confirm('Tüm ilerleme ve notların silinsin mi? Bu geri alınamaz.')) return;
-        reset();
-        location.hash = '#/home';
-        location.reload();
-      } }, 'Verilerimi sıfırla')));
+      h('p', { class: 'small muted' }, `Veriler sadece bu cihazda saklanır. Sıfırlama yalnızca ${ctx.profile.name} oyuncusunun ilerlemesini ve puanlarını siler.`),
+      confirmButton({ class: 'btn secondary block' }, 'İlerlememi sıfırla', 'Emin misin? Silmek için tekrar dokun', () => {
+        ctx.state = { ...freshState(), name: ctx.profile.name };
+        ctx.persist();
+        ctx.go('home');
+      })));
 }

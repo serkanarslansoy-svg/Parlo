@@ -33,5 +33,7 @@ export const ICONS = {
   city: svg('<path d="M3 21h18"/><path d="M5 21V8l5-3v16"/><path d="M10 21V10h9v11"/><path d="M13 13h3M13 16.5h3M7.5 10v.01M7.5 13v.01M7.5 16v.01"/>'),
   briefcase: svg('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M3 12.5h18"/>'),
   quote: svg('<path d="M10 11H6.5a.5.5 0 0 1-.5-.5V8a2 2 0 0 1 2-2h1"/><path d="M10 11v2.5A3.5 3.5 0 0 1 6.5 17"/><path d="M18 11h-3.5a.5.5 0 0 1-.5-.5V8a2 2 0 0 1 2-2h1"/><path d="M18 11v2.5a3.5 3.5 0 0 1-3.5 3.5"/>'),
+  trophy: svg('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4"/><path d="M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4"/><path d="M8.5 20h7l-.8-3h-5.4z"/>'),
+  users: svg('<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.6"/><path d="M15.5 14.2A4.6 4.6 0 0 1 21 18.5"/>'),
   wave: svg('<path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/>'),
 };

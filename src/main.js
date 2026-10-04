@@ -1,31 +1,57 @@
 import './styles.css';
 import { h, icon, $ } from './lib/dom.js';
-import { load, save } from './lib/store.js';
+import { freshState } from './lib/store.js';
+import { loadProfiles, saveProfiles, activeProfile } from './lib/profiles.js';
 import { renderHome } from './screens/home.js';
+import { setTopbarRight, avatar } from './ui.js';
+import { weekPoints } from './lib/points.js';
+import { today } from './lib/store.js';
 import { renderScenes } from './screens/scenes.js';
 import { renderChat } from './screens/chat.js';
 import { renderReview } from './screens/review.js';
 import { renderNotebook } from './screens/notebook.js';
 import { renderProgress } from './screens/progress.js';
 import { renderResult } from './screens/result.js';
+import { renderProfiles } from './screens/profiles.js';
+import { renderLeague } from './screens/league.js';
 
 const TABS = [
   { route: 'home', label: 'Bugün', icon: 'home' },
   { route: 'scenes', label: 'Senaryolar', icon: 'compass' },
+  { route: 'league', label: 'Lig', icon: 'trophy' },
   { route: 'notebook', label: 'Cümlelerim', icon: 'book' },
   { route: 'progress', label: 'Gelişim', icon: 'chart' },
 ];
 
 // Tam ekran akışlar: alt menü gizlenir, böylece yazı kutusu ve butonlar menünün altında kalmaz.
-const FULLSCREEN = new Set(['chat', 'review', 'result']);
+const FULLSCREEN = new Set(['chat', 'review', 'result', 'profiles']);
+
+const db = loadProfiles();
 
 const ctx = {
-  state: load(),
+  db,
+  state: db.active ? db.data[db.active] : freshState(),
+  get profile() { return activeProfile(db); },
   lastResult: null,
-  persist() { save(ctx.state); },
+  persist() {
+    if (db.active) db.data[db.active] = ctx.state;
+    saveProfiles(db);
+  },
+  /** Aktif oyuncuyu değiştirir (null: profil seçim ekranı). */
+  switchProfile(id) {
+    db.active = id;
+    ctx.state = id ? db.data[id] : freshState();
+    ctx.lastResult = null;
+    saveProfiles(db);
+  },
   go(path) { location.hash = `#/${path}`; },
   refresh() { render(); },
 };
+
+setTopbarRight(() => (ctx.profile
+  ? h('button', { class: 'me-chip', 'aria-label': `${ctx.profile.name}: oyuncu değiştir`, onclick: () => ctx.go('profiles') },
+    h('span', { class: 'mp' }, `${weekPoints(ctx.state, today())}`, h('small', {}, 'puan')), avatar(ctx.profile, 34))
+  : null));
 
 function parseHash() {
   const raw = location.hash.replace(/^#\/?/, '');
@@ -41,8 +67,11 @@ const main = h('main', { id: 'app' });
 $('#root').append(h('div', { class: 'shell' }, main, nav));
 
 function render() {
-  const { route, param, query } = parseHash();
+  let { route, param, query } = parseHash();
+  if (!ctx.profile && route !== 'profiles') route = 'profiles';
   const screens = {
+    profiles: () => renderProfiles(ctx),
+    league: () => renderLeague(ctx),
     home: () => renderHome(ctx),
     scenes: () => renderScenes(ctx),
     chat: () => renderChat(ctx, param, query),

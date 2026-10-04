@@ -26,9 +26,20 @@
 - Yardım sayımı tutarsızdı → ipucu, önerilen cevap ve cevabı görme "yardım" sayılıyor; Türkçe çeviri okuma desteği olarak serbest.
 - Klavye erişilebilirliği → tüm etkileşimler gerçek `<button>` / `<a>`.
 
+## v0.4: oyuncular ve lig
+| Konu | Karar |
+|---|---|
+| Çok oyunculu | Aynı cihazda birden fazla profil ("Kim çalışıyor?"); her profilin ilerlemesi ayrı (`parlo_profiles_v1`). Eski tek kullanıcılı veri ilk profile taşınır |
+| Puan | Tekrarda doğru +10 (ipucuyla +5), sohbette yardımsız adım +15 (yardımla +5), senaryo +20, günün dersi +30 |
+| Lig | Pazartesi başlayan haftalık sıralama + tüm zamanlar; kürsü, "geçmek için X puan" mesajı |
+| Görünüm | "Piazza" paleti (serin açık zemin, İtalyan yeşili, domates kırmızısı, altın puan), Bricolage Grotesque + DM Sans |
+| Onay pencereleri | `confirm()` yerine iki dokunuşlu onay butonu |
+| Sınır | Profiller cihaza özel. Farklı telefonlardan yarışmak için sunucu gerekir (yol haritası 2) |
+
 ## Yol haritası
 1. **İçerik:** doktor/eczane, Comune/Questura, öğretmenle görüşme, telefon, kira. Senaryo başına 8–10 kart.
-2. **AI koç (sunucu gerekir):** serbest sohbet ve kullanıcının yazdığı özel durumlardan senaryo üretme ("Kendi durumunu yaz" listesi şimdiden toplanıyor). API anahtarı istemcide tutulmamalı.
+2. **Çevrim içi lig (sunucu gerekir):** farklı telefonlardaki oyuncuların aynı ligde yarışması için giriş + ortak veritabanı (ör. Supabase).
+3. **AI koç (sunucu gerekir):** serbest sohbet ve kullanıcının yazdığı özel durumlardan senaryo üretme ("Kendi durumunu yaz" listesi şimdiden toplanıyor). API anahtarı istemcide tutulmamalı.
 3. **Telaffuz geri bildirimi:** konuşma tanıma sonucunu hedef cümleyle kıyaslayıp kelime bazında işaretleme.
 4. **Bildirim:** akşam hatırlatması (PWA push).
 5. **Senkronizasyon:** isteğe bağlı hesap ile cihazlar arası ilerleme.

@@ -5,6 +5,8 @@ import { speak, canListen, listen } from '../lib/speech.js';
 import { newCard, addDays } from '../lib/srs.js';
 import { today, touchDay } from '../lib/store.js';
 import { speakBtn, brandMark } from '../ui.js';
+import { award, POINTS } from '../lib/points.js';
+import { claimDailyBonus } from './home.js';
 
 /** Alt sayfa (bottom sheet). Kapatma fonksiyonu döner. */
 export function openSheet(...children) {
@@ -60,6 +62,7 @@ function meMessage(text, { voice }) {
   const mark = (ico, text) => note.replaceChildren(h('span', { class: 'row' }, icon(ico), text), ...(voice ? [h('span', { class: 'pill' }, icon('mic'), 'Sesle')] : []));
   el.markOk = () => mark('check', 'Anlaşıldı');
   el.markRetry = () => mark('repeat', 'Tekrar deneyelim');
+  el.addPoints = (n) => note.append(h('span', { class: 'pill gold' }, `+${n}`));
   return el;
 }
 
@@ -114,8 +117,10 @@ export function renderChat(ctx, sceneId, query) {
     const t = today();
     for (const id of scene.cards) if (!st.cards[id]) st.cards[id] = { ...newCard(t), due: addDays(t, 1) };
     touchDay(st, { scene: scene.id });
+    const sceneBonus = award(st, POINTS.sceneDone, t);
+    const bonus = claimDailyBonus(st, t);
     ctx.persist();
-    ctx.lastResult = { type: 'scene', sceneId: scene.id, steps: run.steps, daily };
+    ctx.lastResult = { type: 'scene', sceneId: scene.id, steps: run.steps, daily, bonus, sceneBonus, points: run.steps.reduce((s, x) => s + x.pts, 0) + sceneBonus + bonus };
     log.append(h('div', { class: 'system' }, 'Görev tamamlandı 🎉'));
     helpers.replaceChildren();
     dock.replaceChildren(h('button', { class: 'btn block', onclick: () => ctx.go('result') }, 'Sonucu gör', icon('arrow')));
@@ -124,7 +129,10 @@ export function renderChat(ctx, sceneId, query) {
 
   function accept(intent, text, bubble) {
     bubble.markOk();
-    run.steps.push({ said: text, model: intent.model, cando: intent.cando || null, solo: !run.helpUsed && run.tries === 0 });
+    const solo = !run.helpUsed && run.tries === 0;
+    const pts = award(ctx.state, solo ? POINTS.stepSolo : POINTS.stepHelp, today());
+    run.steps.push({ said: text, model: intent.model, cando: intent.cando || null, solo, pts });
+    bubble.addPoints?.(pts);
     run.helpUsed = false;
     run.tries = 0;
     for (const tip of tipsFor(text, intent)) addTip(tip);

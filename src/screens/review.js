@@ -5,6 +5,8 @@ import { buildQueue, grade, newCard, isDue, addDays } from '../lib/srs.js';
 import { speak } from '../lib/speech.js';
 import { today, touchDay } from '../lib/store.js';
 import { speakBtn } from '../ui.js';
+import { award, POINTS } from '../lib/points.js';
+import { claimDailyBonus } from './home.js';
 
 function makeQueue(state, mode) {
   const t = today();
@@ -88,13 +90,14 @@ export function renderReview(ctx, query) {
       const prev = ctx.state.cards[id] || newCard(t);
       // İpucuyla doğru: kutu yükselmez, yarın tekrar sorulur.
       ctx.state.cards[id] = ok && hinted ? { ...prev, due: addDays(t, 1), right: prev.right + 1 } : grade(prev, ok, t);
-      results.push({ id, ok, hinted });
+      const pts = award(ctx.state, ok ? (hinted ? POINTS.reviewHint : POINTS.reviewOk) : 0, t);
+      results.push({ id, ok, hinted, pts });
       ctx.persist();
       speak(card.it, { slow: Boolean(ctx.state.settings?.slow) });
       if (mode === 'type') typed.disabled = true;
       else drawTiles();
       feedback.replaceChildren(h('div', { class: `feedback ${ok ? 'good' : 'bad'} stack` },
-        h('p', { class: 'title' }, ok ? (hinted ? 'Doğru! (ipucuyla)' : 'Bravissimo! ✓') : 'Neredeyse! Doğru hâli:'),
+        h('div', { class: 'row between' }, h('p', { class: 'title' }, ok ? (hinted ? 'Doğru! (ipucuyla)' : 'Bravissimo! ✓') : 'Neredeyse! Doğru hâli:'), pts ? h('span', { class: 'chip gold' }, `+${pts} puan`) : null),
         h('div', { class: 'row' }, h('div', { class: 'grow' }, h('p', { class: 'it', lang: 'it' }, card.it), h('p', { class: 'tr' }, card.tr)), speakBtn(card.it), speakBtn(card.it, { slow: true, label: 'Yavaş dinle' })),
         ok && accentNote ? h('p', { class: 'small' }, 'Küçük not: aksan ve kesme işaretlerine dikkat — yazılışı yukarıdaki gibi.') : null,
         !ok ? h('p', { class: 'small' }, 'Bu cümle yakında tekrar karşına çıkacak.') : null));
@@ -121,8 +124,9 @@ export function renderReview(ctx, query) {
     pos += 1;
     if (pos < queue.length) { question(); window.scrollTo(0, 0); return; }
     touchDay(ctx.state, { review: results.length, dailyReview: daily });
+    const bonus = claimDailyBonus(ctx.state);
     ctx.persist();
-    ctx.lastResult = { type: 'review', results, daily };
+    ctx.lastResult = { type: 'review', results, daily, bonus, points: results.reduce((s, r) => s + r.pts, 0) + bonus };
     ctx.go('result');
   }
 
