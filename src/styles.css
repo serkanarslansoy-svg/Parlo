@@ -311,6 +311,7 @@ button.card.compact { display: flex; text-align: left; align-items: center; gap:
 .helpers .chip[aria-pressed='true'] { background: var(--green-tint); color: var(--green-deep); }
 .suggest { width: 100%; text-align: left; display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--sand); border-radius: var(--r-md); }
 .suggest + .suggest { margin-top: 8px; }
+.suggest .tr { font-weight: 600; color: var(--ink); }
 .suggest .grow { min-width: 0; }
 .suggest .one-line { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .suggest .it { font-weight: 650; }

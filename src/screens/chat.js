@@ -218,18 +218,9 @@ export function renderChat(ctx, sceneId, query) {
     if (n.end) { helpers.replaceChildren(); return; }
     const patternId = n.intents.map((i) => scene.cards.map((id) => cards[id]).find((c) => c.it === i.model)?.pattern).find(Boolean);
     const hintLabel = patternId ? `İpucu: ${patternById(patternId).head}` : 'İpucu';
-    let showTr = true;
-    const list = h('div');
-    const drawList = () => list.replaceChildren(...n.intents.map((it) =>
-      h('button', { class: 'suggest', onclick: () => { run.helpUsed = true; setInput(it.model); focusInput(); } },
-        h('span', { class: 'grow' }, h('span', { class: 'it one-line', lang: 'it' }, `«${it.model}»`), showTr ? h('span', { class: 'tr one-line' }, it.tr) : null),
-        icon('arrow', 'diag'))));
-    drawList();
-    const trChip = h('button', { class: 'chip', 'aria-pressed': 'true', onclick: () => {
-      showTr = !showTr;
-      trChip.setAttribute('aria-pressed', String(showTr));
-      drawList();
-    } }, icon('translate'), 'Cevap çevirileri');
+    // Sadece Türkçesi: ne söyleyeceğini bilirsin, İtalyancasını kendin kurarsın.
+    const list = h('div', {}, n.intents.map((it) =>
+      h('div', { class: 'suggest' }, icon('bulb', 'terra-ico'), h('span', { class: 'grow tr' }, it.tr))));
     const slowChip = h('button', { class: 'chip', 'aria-pressed': String(slow()), onclick: () => {
       ctx.state.settings = { ...ctx.state.settings, slow: !slow() };
       ctx.persist();
@@ -238,10 +229,9 @@ export function renderChat(ctx, sceneId, query) {
     helpers.replaceChildren(
       h('div', { class: 'helpers' },
         h('button', { class: 'chip', onclick: () => { run.helpUsed = true; addTip(`İpucu: ${n.hint}`); } }, icon('bulb', 'terra-ico'), hintLabel),
-        trChip,
         h('button', { class: 'chip', onclick: () => teacher(null, null) }, icon('teacher'), 'Öğretmen'),
         slowChip),
-      h('p', { class: 'small muted' }, 'Önerilen doğal yanıtlar:'),
+      h('p', { class: 'small muted' }, 'Ne diyebilirsin? İtalyancasını sen kur:'),
       list);
   }
 
