@@ -68,7 +68,11 @@ const ctx = {
     ctx.lastResult = null;
     saveProfiles(db);
   },
-  go(path) { location.hash = `#/${path}`; },
+  go(path) {
+    // Aynı adrese gidilirse hashchange tetiklenmez (ör. #/home'da açılan giriş ekranı); o zaman elle çiz.
+    if (location.hash === `#/${path}`) render();
+    else location.hash = `#/${path}`;
+  },
   refresh() { render(); },
 };
 
