@@ -13,7 +13,7 @@ Az gramer, çok pratik: kalıbı öğren → hızlı tekrarla pekiştir → ger�
 - **Günün dersi:** önce 5 cümlelik hızlı tekrar, sonra günün senaryosunda sohbet.
 - **7 senaryo:** Kafe, Restoran, Okul, İş yeri, Şarküteri, Şehir, Eczane. Diyaloglar cevabına göre dallanır.
 - **Öğretmen paneli:** cevabın tutmazsa hangi parçanın eksik olduğunu gösterir (örn. "eksik: istek fiili"). İstersen ipucu ya da doğal bir cevap önerir.
-- **Ses:** her İtalyanca cümlede 🔊 dinle ve 🐢 yavaş dinle. Sohbette 🎤 ile sesli cevap (tarayıcının kendi ses motoru, internet gerekmez).
+- **Ses (şimdilik kapalı):** dinleme ve mikrofon telefonlarda güvenilir çalışmadığı için kapatıldı; her şey yazıyla ilerliyor. Tekrar açmak için `src/lib/speech.js` içinde `AUDIO_ENABLED = true`.
 - **Aralıklı tekrar (Leitner):** doğru bildiğin cümle 1 → 3 → 7 → 14 → 30 gün sonra tekrar gelir, yanlışta başa döner.
 - **Kalıp defteri:** 14 temel kalıp, ustalık göstergesi ve kendi cümlelerin.
 - **Gelişim:** "Artık bunları yapabiliyorsun" listesi, cümle hafızası, haftalık takvim.

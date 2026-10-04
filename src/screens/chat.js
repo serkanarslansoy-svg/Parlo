@@ -1,7 +1,7 @@
 import { h, icon } from '../lib/dom.js';
 import { sceneById, cards, patternById } from '../content/index.js';
 import { matchIntent, tipsFor } from '../lib/answer.js';
-import { speak, canListen, listen } from '../lib/speech.js';
+import { speak, canSpeak, canListen, listen } from '../lib/speech.js';
 import { newCard, addDays } from '../lib/srs.js';
 import { today, touchDay } from '../lib/store.js';
 import { speakBtn, brandMark } from '../ui.js';
@@ -50,7 +50,7 @@ function aiMessage(scene, text, tr, { slow }) {
     h('div', { class: 'bubble' },
       h('div', { class: 'row top' },
         h('p', { class: 'it grow', lang: 'it' }, `«${text}»`),
-        h('button', { class: 'icon-btn soft', type: 'button', 'aria-label': `Dinle: ${text}`, onclick: () => speak(text, { slow: slow() }) }, icon('speaker'))),
+        canSpeak() ? h('button', { class: 'icon-btn soft', type: 'button', 'aria-label': `Dinle: ${text}`, onclick: () => speak(text, { slow: slow() }) }, icon('speaker')) : null),
       trEl,
       toggle));
 }
@@ -230,7 +230,7 @@ export function renderChat(ctx, sceneId, query) {
       h('div', { class: 'helpers' },
         h('button', { class: 'chip', onclick: () => { run.helpUsed = true; addTip(`İpucu: ${n.hint}`); } }, icon('bulb', 'terra-ico'), hintLabel),
         h('button', { class: 'chip', onclick: () => teacher(null, null) }, icon('teacher'), 'Öğretmen'),
-        slowChip),
+        canSpeak() ? slowChip : null),
       h('p', { class: 'small muted' }, 'Ne diyebilirsin? İtalyancasını sen kur:'),
       list);
   }
@@ -248,7 +248,7 @@ export function renderChat(ctx, sceneId, query) {
 
   // Mikrofon
   let stopListening = null;
-  const mic = h('button', { class: 'square mic', type: 'button', 'aria-label': 'Sesli cevap ver', disabled: !canListen(), title: canListen() ? null : 'Bu tarayıcı sesli cevabı desteklemiyor', onclick: () => {
+  const mic = !canListen() ? null : h('button', { class: 'square mic', type: 'button', 'aria-label': 'Sesli cevap ver', onclick: () => {
     if (stopListening) { stopListening(); return; }
     mic.classList.add('live');
     mic.setAttribute('aria-label', 'Dinlemeyi durdur');

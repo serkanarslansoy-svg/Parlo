@@ -161,7 +161,7 @@ function recallCard(ctx) {
   return h('section', { class: 'card cream stack' },
     h('div', { class: 'row' },
       h('span', { class: 'badge-round' }, icon('repeat')),
-      h('div', { class: 'grow' }, h('h3', {}, title), h('p', { class: 'small muted' }, due ? '2 dakikalık tazeleme' : 'Dinle, sesli tekrar et')),
+      h('div', { class: 'grow' }, h('h3', {}, title), h('p', { class: 'small muted' }, due ? '2 dakikalık tazeleme' : 'Oku, yazarak hatırla')),
       due ? h('span', { class: 'chip' }, `${due} bekleyen`) : null),
     h('div', { class: 'card row', style: 'padding:14px' },
       h('div', { class: 'grow' }, h('p', { class: 'key-it', lang: 'it' }, `«${pick.it}»`), h('p', { class: 'tr' }, pick.tr)),

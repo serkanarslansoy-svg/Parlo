@@ -1,5 +1,9 @@
 // Tarayıcının kendi ses motoru: İtalyanca seslendirme (TTS) ve konuşma tanıma (STT).
 
+// Şimdilik kapalı: telefonlarda güvenilir çalışmadı, uygulama sadece yazıyla ilerliyor.
+// true yapılınca dinle/yavaş dinle düğmeleri ve mikrofon geri gelir.
+export const AUDIO_ENABLED = false;
+
 let voice = null;
 
 function pickVoice() {
@@ -16,7 +20,7 @@ if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
   speechSynthesis.addEventListener?.('voiceschanged', () => { voice = pickVoice(); });
 }
 
-export const canSpeak = () => typeof window !== 'undefined' && 'speechSynthesis' in window;
+export const canSpeak = () => AUDIO_ENABLED && typeof window !== 'undefined' && 'speechSynthesis' in window;
 
 export function speak(text, { slow = false } = {}) {
   if (!canSpeak()) return;
@@ -30,7 +34,7 @@ export function speak(text, { slow = false } = {}) {
 
 const Recognition = typeof window !== 'undefined' && (window.SpeechRecognition || window.webkitSpeechRecognition);
 
-export const canListen = () => Boolean(Recognition);
+export const canListen = () => AUDIO_ENABLED && Boolean(Recognition);
 
 /**
  * Bir kez dinler. onText(metin) tanıma bitince, onEnd() her durumda çağrılır.

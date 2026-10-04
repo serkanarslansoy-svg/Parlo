@@ -6,7 +6,7 @@ import { dayPlan, completeStep, addMistake } from '../lib/program.js';
 import { today } from '../lib/store.js';
 import { speakBtn } from '../ui.js';
 
-/** 3. adım (sahnesiz günler): kısa soru-cevap. Soruyu dinle, kendi cevabını söyle, örnek cevaplarla karşılaştır. */
+/** 3. adım (sahnesiz günler): kısa soru-cevap. Soruyu oku, kendi cevabını yaz, örnek cevaplarla karşılaştır. */
 export function renderDrill(ctx, param) {
   const n = Number(param);
   const plan = dayPlan(n);
@@ -39,7 +39,7 @@ export function renderDrill(ctx, param) {
 
     const trLine = h('p', { class: 'muted', hidden: true }, q.tr);
     const said = h('p', { class: 'small', 'aria-live': 'polite' });
-    const input = h('input', { class: 'input', type: 'text', lang: 'it', autocomplete: 'off', autocapitalize: 'sentences', placeholder: 'Cevabını yaz ya da söyle…', 'aria-label': 'Cevabın' });
+    const input = h('input', { class: 'input', type: 'text', lang: 'it', autocomplete: 'off', autocapitalize: 'sentences', placeholder: 'Cevabını İtalyanca yaz…', 'aria-label': 'Cevabın' });
     const answerBox = h('div', { class: 'stack', hidden: true });
 
     const grade = (ok) => {
@@ -61,12 +61,12 @@ export function renderDrill(ctx, param) {
         hit ? h('div', { class: 'card flash' }, icon('check'), h('p', {}, 'Örnek cevapla birebir aynı. Bravo!')) : null,
         h('p', { class: 'eyebrow' }, 'Böyle de cevap verebilirsin'),
         ...q.models.map((m) => h('div', { class: 'card row', style: 'padding:12px 14px' }, h('p', { class: 'grow', lang: 'it' }, m), speakBtn(m))),
-        h('p', { class: 'small muted' }, text ? 'Kendi cevabın da doğru olabilir. Nasıl geçti?' : 'Örneklerden birini sesli söyle. Bu soru hata defterine girer.'),
+        h('p', { class: 'small muted' }, text ? 'Kendi cevabın da doğru olabilir. Nasıl geçti?' : 'Örneklerden birini aklına yaz. Bu soru hata defterine girer.'),
         text
           ? h('div', { class: 'row' },
             h('button', { class: 'btn secondary grow', onclick: () => grade(false) }, `Zorlandım · +${POINTS.drillHard}`),
             h('button', { class: 'btn grow', onclick: () => grade(true) }, `Rahat söyledim · +${POINTS.drillOk}`))
-          : h('button', { class: 'btn block', onclick: () => grade(false) }, `Sesli söyledim, devam · +${POINTS.drillHard}`));
+          : h('button', { class: 'btn block', onclick: () => grade(false) }, `Anladım, devam · +${POINTS.drillHard}`));
       controls.hidden = true;
     };
 
@@ -110,6 +110,6 @@ export function renderDrill(ctx, param) {
         h('div', {}, h('p', { class: 'small muted' }, `Gün ${n} · 3. adım`), h('h3', {}, 'Konuşma'))),
       counter),
     segments,
-    h('p', { class: 'small muted' }, 'Soruyu dinle ve kendi hayatına göre cevap ver. Mükemmel olmak zorunda değil; önemli olan ağzından çıkması.'),
+    h('p', { class: 'small muted' }, 'Soruyu oku ve kendi hayatına göre İtalyanca cevap yaz. Mükemmel olmak zorunda değil; önemli olan kendi cümleni kurman.'),
     body);
 }

@@ -10,7 +10,7 @@ export const POINTS = {
   dailyDone: 30, // günün dersini tamamlamak
   drillOk: 10, // soru-cevap pratiğinde rahat cevap
   drillHard: 5, // zorlanarak verilen cevap
-  learnCard: 2, // yeni cümleyi sesli tekrar etmek
+  learnCard: 2, // yeni cümleyi yazarak tekrar etmek
 };
 
 export function award(state, n, day) {

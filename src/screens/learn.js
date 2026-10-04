@@ -7,7 +7,7 @@ import { dayPlan, completeStep, enrollCards } from '../lib/program.js';
 import { today } from '../lib/store.js';
 import { speakBtn } from '../ui.js';
 
-/** 2. adım: günün yeni cümleleri. Her cümle dinlenir ve 3 kez sesli söylenir. */
+/** 2. adım: günün yeni cümleleri. Her cümle okunur ve yazarak tekrar edilir. */
 export function renderLearn(ctx, param) {
   const n = Number(param);
   const plan = dayPlan(n);

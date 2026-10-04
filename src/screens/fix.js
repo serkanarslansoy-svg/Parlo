@@ -9,7 +9,7 @@ import { sayPanel } from './say.js';
 const FIX_MAX = 3;
 const cardByIt = (it) => Object.values(cards).find((c) => c.it === it) || null;
 
-/** 4. adım: günün en önemli 3 hatası. Doğrusunu dinle, 3 kez söyle; kart değilse Cümlelerim'e eklenir. */
+/** 4. adım: günün en önemli 3 hatası. Doğrusunu yazarak tekrar et; kart değilse Cümlelerim'e eklenir. */
 export function renderFix(ctx, param) {
   const n = Number(param);
   const plan = dayPlan(n);
@@ -66,7 +66,7 @@ export function renderFix(ctx, param) {
     sayPanel(cardByIt(m.it) || { it: m.it }, () => { ready += 1; done.disabled = ready < list.length; })));
   setTimeout(() => speak(list[0].it, { slow: true }), 250);
   return h('div', { class: 'screen full' }, header,
-    h('p', { class: 'small muted' }, 'Bugün zorlandığın cümleler. Doğrusunu yavaşça dinle, sonra kendi sesinle 3 kez söyle.'),
+    h('p', { class: 'small muted' }, 'Bugün zorlandığın cümleler. Doğrusunu oku, sonra kendin yaz.'),
     ...items,
     done);
 }

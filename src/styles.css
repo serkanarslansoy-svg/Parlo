@@ -554,3 +554,4 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 .say-dots i { width: 14px; height: 14px; border-radius: 50%; background: var(--sand); }
 .say-dots i.on { background: var(--green); }
 .btn.live { animation: pulse 1.2s ease-in-out infinite; }
+.say-ok { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--green); color: #fff; }

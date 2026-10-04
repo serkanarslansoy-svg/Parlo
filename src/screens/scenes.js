@@ -43,7 +43,7 @@ function featuredCard(ctx, scene) {
           h('p', { class: 'tr' }, scene.desc)),
         speakBtn(key.it)),
       h('div', { class: 'row between' },
-        h('span', { class: 'row small' }, icon('wave'), h('span', {}, 'Sesli simülasyon', h('br'), h('span', { class: 'muted' }, `${scene.minutes} dk · ${scene.register === 'Lei' ? 'resmî' : 'samimi'} hitap`))),
+        h('span', { class: 'row small' }, icon('wave'), h('span', {}, 'Canlı simülasyon', h('br'), h('span', { class: 'muted' }, `${scene.minutes} dk · ${scene.register === 'Lei' ? 'resmî' : 'samimi'} hitap`))),
         h('button', { class: 'btn dark', onclick: () => ctx.go(`chat/${scene.id}`) }, runs ? 'Tekrar et' : 'Başla', icon('arrow')))));
 }
 
