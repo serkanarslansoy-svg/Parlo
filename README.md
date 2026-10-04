@@ -14,6 +14,12 @@ Az gramer, çok pratik: kalıbı öğren → hızlı tekrarla pekiştir → ger�
 - **Gelişim:** "Artık bunları yapabiliyorsun" listesi, cümle hafızası, haftalık takvim.
 - **PWA:** telefona kurulabilir, çevrimdışı açılır. Veriler sadece cihazda (localStorage) tutulur.
 
+## Canlı sürüm
+
+`main` dalına her push'ta testler çalışır ve uygulama GitHub Pages'e yayınlanır:
+https://serkanarslansoy-svg.github.io/Parlo/
+(İlk kurulumda repo ayarlarında Settings → Pages → Source: **GitHub Actions** seçilmelidir.)
+
 ## Geliştirme
 
 ```bash
