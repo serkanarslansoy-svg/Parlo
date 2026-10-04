@@ -3,9 +3,10 @@
 İtalya'da yaşayan Türkler için gerçek hayat senaryolarıyla İtalyanca **konuşma** pratiği.
 Az gramer, çok pratik: kalıbı öğren → hızlı tekrarla pekiştir → gerçek bir durumda kullan.
 
-## Neler var (v0.4)
+## Neler var (v0.5)
 
 - **Oyuncular ve lig:** aynı cihazda birden fazla profil, puanlar ve haftalık lig (kürsü, sıralama).
+- **Çevrim içi lig:** farklı telefonlardan lig koduyla ya da davet linkiyle (`#/join/KOD`) aynı ligde yarışma. Kurulum: [supabase/README.md](supabase/README.md).
 
 - **Günün dersi:** önce 5 cümlelik hızlı tekrar, sonra günün senaryosunda sohbet.
 - **6 senaryo:** Kafe, Restoran, Okul, İş yeri, Şarküteri, Şehir. Diyaloglar cevabına göre dallanır.

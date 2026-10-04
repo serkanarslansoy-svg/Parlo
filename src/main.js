@@ -14,6 +14,7 @@ import { renderProgress } from './screens/progress.js';
 import { renderResult } from './screens/result.js';
 import { renderProfiles } from './screens/profiles.js';
 import { renderLeague } from './screens/league.js';
+import { createClient, scoreRow, normalizeCode, isValidCode } from './lib/online.js';
 
 const TABS = [
   { route: 'home', label: 'Bugün', icon: 'home' },
@@ -28,14 +29,31 @@ const FULLSCREEN = new Set(['chat', 'review', 'result', 'profiles']);
 
 const db = loadProfiles();
 
+const online = createClient();
+let syncTimer = null;
+
 const ctx = {
   db,
+  online,
+  pendingJoin: null,
   state: db.active ? db.data[db.active] : freshState(),
   get profile() { return activeProfile(db); },
   lastResult: null,
   persist() {
     if (db.active) db.data[db.active] = ctx.state;
     saveProfiles(db);
+    // Çevrim içi ligdeysek puanı birkaç saniye içinde sunucuya da gönder.
+    if (online.enabled && ctx.profile?.online) {
+      clearTimeout(syncTimer);
+      syncTimer = setTimeout(() => ctx.syncNow().catch(() => {}), 1500);
+    }
+  },
+  /** Aktif oyuncunun puanını hemen sunucuya gönderir. */
+  async syncNow() {
+    const p = ctx.profile;
+    if (!online.enabled || !p?.online) return;
+    clearTimeout(syncTimer);
+    await online.submit(scoreRow(p, ctx.state, today()));
   },
   /** Aktif oyuncuyu değiştirir (null: profil seçim ekranı). */
   switchProfile(id) {
@@ -68,6 +86,13 @@ $('#root').append(h('div', { class: 'shell' }, main, nav));
 
 function render() {
   let { route, param, query } = parseHash();
+  if (route === 'join') {
+    // Davet linki: #/join/KOD → oyuncu seçildikten sonra çevrim içi lig sekmesinde açılır.
+    const code = normalizeCode(param);
+    if (isValidCode(code)) ctx.pendingJoin = code;
+    location.replace(`#/${ctx.profile ? 'league' : 'profiles'}`);
+    return;
+  }
   if (!ctx.profile && route !== 'profiles') route = 'profiles';
   const screens = {
     profiles: () => renderProfiles(ctx),

@@ -36,10 +36,18 @@
 | Onay pencereleri | `confirm()` yerine iki dokunuşlu onay butonu |
 | Sınır | Profiller cihaza özel. Farklı telefonlardan yarışmak için sunucu gerekir (yol haritası 2) |
 
+## v0.5: çevrim içi lig
+| Konu | Karar |
+|---|---|
+| Sunucu | Supabase (ücretsiz katman). Tabloya doğrudan erişim yok; sadece `submit_score`, `get_league`, `leave_league` fonksiyonları |
+| Giriş | E-posta/şifre yok. Her telefon kendi rastgele kimliğini ve gizli anahtarını üretir (bcrypt ile saklanır) |
+| Lig | 6 karakterlik kod (karışan harfler yok), davet linki `#/join/KOD`, Web Share ya da panoya kopyalama |
+| Senkron | Puan değişince 1,5 sn sonra otomatik gönderim; lig ekranında yenile |
+| Sınır | Puanlar istemcide hesaplanır, güvene dayalı (aile/arkadaş ligi) |
+
 ## Yol haritası
 1. **İçerik:** doktor/eczane, Comune/Questura, öğretmenle görüşme, telefon, kira. Senaryo başına 8–10 kart.
-2. **Çevrim içi lig (sunucu gerekir):** farklı telefonlardaki oyuncuların aynı ligde yarışması için giriş + ortak veritabanı (ör. Supabase).
-3. **AI koç (sunucu gerekir):** serbest sohbet ve kullanıcının yazdığı özel durumlardan senaryo üretme ("Kendi durumunu yaz" listesi şimdiden toplanıyor). API anahtarı istemcide tutulmamalı.
+2. **AI koç (sunucu gerekir):** serbest sohbet ve kullanıcının yazdığı özel durumlardan senaryo üretme ("Kendi durumunu yaz" listesi şimdiden toplanıyor). API anahtarı istemcide tutulmamalı.
 3. **Telaffuz geri bildirimi:** konuşma tanıma sonucunu hedef cümleyle kıyaslayıp kelime bazında işaretleme.
 4. **Bildirim:** akşam hatırlatması (PWA push).
 5. **Senkronizasyon:** isteğe bağlı hesap ile cihazlar arası ilerleme.

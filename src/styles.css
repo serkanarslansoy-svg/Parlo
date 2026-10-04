@@ -466,3 +466,10 @@ button.card.compact { display: flex; text-align: left; align-items: center; gap:
 .rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .rules li { display: flex; justify-content: space-between; gap: 10px; font-size: 0.92rem; }
 .rules strong { color: var(--gold-ink); }
+
+/* ---------- Çevrim içi lig (v0.5) ---------- */
+.seg.big button { padding: 11px; font-size: 1rem; }
+.code-card { display: flex; align-items: center; gap: 12px; background: var(--sun-tint); border-color: #f3dfaa; box-shadow: none; }
+.code-card .code { font: 800 1.9rem/1.1 var(--font-display); letter-spacing: 0.14em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.code-input { font: 700 1.2rem var(--font-display); letter-spacing: 0.18em; text-transform: uppercase; text-align: center; }
+.profiles-head .chip.gold { white-space: normal; text-align: center; }

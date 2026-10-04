@@ -26,7 +26,7 @@ function newPlayerForm(ctx, onCancel) {
     if (ctx.db.profiles.some((p) => p.name.toLocaleLowerCase('tr') === v.toLocaleLowerCase('tr'))) { error.textContent = 'Bu adla bir oyuncu zaten var.'; name.focus(); return; }
     const p = addProfile(ctx.db, { name: v, avatar: pick, color });
     ctx.switchProfile(p.id);
-    ctx.go('home');
+    ctx.go(ctx.pendingJoin ? 'league' : 'home');
   };
   name.addEventListener('keydown', (e) => e.key === 'Enter' && create());
   setTimeout(() => name.focus(), 50);
@@ -60,7 +60,7 @@ export function renderProfiles(ctx) {
         draw(false);
       } }, icon('trash'));
       return h('div', { class: 'player-tile' },
-        h('button', { class: `player ${p.id === ctx.db.active ? 'current' : ''}`, onclick: () => { ctx.switchProfile(p.id); ctx.go('home'); } },
+        h('button', { class: `player ${p.id === ctx.db.active ? 'current' : ''}`, onclick: () => { ctx.switchProfile(p.id); ctx.go(ctx.pendingJoin ? 'league' : 'home'); } },
           avatar(p, 76),
           h('span', { class: 'pname' }, p.name),
           h('span', { class: 'ppts' }, `${pts} puan · bu hafta`)),
@@ -76,6 +76,7 @@ export function renderProfiles(ctx) {
     h('div', { class: 'profiles-head' },
       brandMark(),
       h('h1', {}, ctx.db.profiles.length ? 'Kim çalışıyor?' : 'Benvenuto!'),
+      ctx.pendingJoin ? h('p', { class: 'chip gold' }, `${ctx.pendingJoin} ligine davet edildin. Önce oyuncunu seç.`) : null,
       h('p', { class: 'muted' }, ctx.db.profiles.length
         ? 'Profilini seç. Herkesin ilerlemesi ayrı tutulur, puanlar haftalık ligde yarışır.'
         : 'PARLO\'ya hoş geldin. Önce bir oyuncu oluştur; sonra ailenden ya da arkadaşlarından başkalarını da ekleyip yarışabilirsiniz.')),
