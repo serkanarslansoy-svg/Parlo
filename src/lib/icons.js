@@ -1,0 +1,32 @@
+// 24×24, 1.8 çizgi kalınlığında, currentColor kullanan basit ikon seti.
+const svg = (body) =>
+  `<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`;
+
+export const ICONS = {
+  home: svg('<path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/>'),
+  compass: svg('<circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/>'),
+  book: svg('<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/>'),
+  chart: svg('<path d="M4 20h16"/><path d="m5 15 4-4 3 3 6-7"/><path d="M15 7h3v3"/>'),
+  mic: svg('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5V21"/>'),
+  send: svg('<path d="M12 19V5"/><path d="m6 11 6-6 6 6"/>'),
+  speaker: svg('<path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/>'),
+  back: svg('<path d="m14.5 5-7 7 7 7"/>'),
+  close: svg('<path d="M6 6l12 12M18 6 6 18"/>'),
+  bulb: svg('<path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>'),
+  translate: svg('<path d="M4 6h9"/><path d="M8.5 4v2c0 4-2 7-4.5 8"/><path d="M6.5 10c1 2 3 3.5 5 4"/><path d="m13 20 3.5-8 3.5 8"/><path d="M14.2 17.5h4.6"/>'),
+  teacher: svg('<path d="M3 9.5 12 5l9 4.5-9 4.5z"/><path d="M7 11.5V16c1.5 1.5 3 2 5 2s3.5-.5 5-2v-4.5"/><path d="M21 9.5V15"/>'),
+  check: svg('<path d="m5 12.5 4.5 4.5L19 7.5"/>'),
+  x: svg('<path d="M7 7l10 10M17 7 7 17"/>'),
+  flame: svg('<path d="M12 21c-3.9 0-6.5-2.7-6.5-6.2 0-3.4 2.6-5.3 3.6-8.3.3-.9 1.5-1 2-.2 1 1.6 1.2 3.2 1 4.7 1-.6 1.7-1.6 2-2.7.2-.7 1.1-.9 1.5-.3 1.6 2 2.9 4.2 2.9 6.8 0 3.5-2.6 6.2-6.5 6.2z"/>'),
+  arrow: svg('<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>'),
+  chevron: svg('<path d="m9.5 6 6 6-6 6"/>'),
+  down: svg('<path d="m6 9.5 6 6 6-6"/>'),
+  star: svg('<path d="m12 4 2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.6-4.8 2.6.9-5.4L4.2 9.7l5.4-.8z"/>'),
+  plus: svg('<path d="M12 5v14M5 12h14"/>'),
+  trash: svg('<path d="M5 7h14"/><path d="M10 11v6M14 11v6"/><path d="M6.5 7l1 12.5a1 1 0 0 0 1 .9h7a1 1 0 0 0 1-.9l1-12.5"/><path d="M9.5 7V4.5h5V7"/>'),
+  repeat: svg('<path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5"/><path d="M20 4v4.5h-4.5"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 15.5"/><path d="M4 20v-4.5h4.5"/>'),
+  clock: svg('<circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/>'),
+  search: svg('<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/>'),
+  turtle: svg('<path d="M4 15h13a3 3 0 0 0 3-3v0a2 2 0 0 0-2-2h-.5"/><path d="M5.5 15a6 6 0 0 1 11.5-2.5"/><path d="M7 15v2.5M14 15v2.5"/>'),
+  sparkle: svg('<path d="M12 4c.5 3.5 2.5 5.5 6 6-3.5.5-5.5 2.5-6 6-.5-3.5-2.5-5.5-6-6 3.5-.5 5.5-2.5 6-6z"/><path d="M18.5 15.5c.2 1.3.9 2 2.2 2.2-1.3.2-2 .9-2.2 2.2-.2-1.3-.9-2-2.2-2.2 1.3-.2 2-.9 2.2-2.2z"/>'),
+};

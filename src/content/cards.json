@@ -1,0 +1,200 @@
+[
+  {
+    "id": "bar1",
+    "scene": "bar",
+    "pattern": "per_favore",
+    "it": "Un cappuccino, per favore.",
+    "tr": "Bir kapuçino lütfen."
+  },
+  {
+    "id": "bar2",
+    "scene": "bar",
+    "pattern": "quanto",
+    "it": "Quant'è?",
+    "tr": "Ne kadar tuttu?"
+  },
+  {
+    "id": "bar3",
+    "scene": "bar",
+    "pattern": "posso",
+    "it": "Posso pagare con la carta?",
+    "tr": "Kartla ödeyebilir miyim?"
+  },
+  {
+    "id": "bar4",
+    "scene": "bar",
+    "pattern": null,
+    "it": "No, grazie. Basta così.",
+    "tr": "Hayır, teşekkürler. Bu kadar yeter."
+  },
+  {
+    "id": "ris1",
+    "scene": "ristorante",
+    "pattern": "per_favore",
+    "it": "Un tavolo per due, per favore.",
+    "tr": "İki kişilik bir masa lütfen."
+  },
+  {
+    "id": "ris2",
+    "scene": "ristorante",
+    "pattern": "vorrei",
+    "it": "Vorrei una pizza margherita.",
+    "tr": "Bir margherita pizza istiyorum."
+  },
+  {
+    "id": "ris3",
+    "scene": "ristorante",
+    "pattern": "vorrei",
+    "it": "Vorrei un'acqua naturale.",
+    "tr": "Bir sade su istiyorum.",
+    "alt": [
+      "Vorrei un acqua naturale."
+    ]
+  },
+  {
+    "id": "ris4",
+    "scene": "ristorante",
+    "pattern": "per_favore",
+    "it": "Il conto, per favore.",
+    "tr": "Hesap lütfen."
+  },
+  {
+    "id": "ris5",
+    "scene": "ristorante",
+    "pattern": null,
+    "it": "Cosa mi consiglia?",
+    "tr": "Bana ne önerirsiniz?"
+  },
+  {
+    "id": "scu1",
+    "scene": "scuola",
+    "pattern": "sono",
+    "it": "Sono il papà di Matteo.",
+    "tr": "Matteo'nun babasıyım.",
+    "alt": [
+      "Sono la mamma di Matteo."
+    ]
+  },
+  {
+    "id": "scu2",
+    "scene": "scuola",
+    "pattern": "devo",
+    "it": "Devo prendere mio figlio.",
+    "tr": "Oğlumu almam lazım.",
+    "alt": [
+      "Devo prendere mia figlia."
+    ]
+  },
+  {
+    "id": "scu3",
+    "scene": "scuola",
+    "pattern": "posso",
+    "it": "Posso aspettare qui?",
+    "tr": "Burada bekleyebilir miyim?"
+  },
+  {
+    "id": "scu4",
+    "scene": "scuola",
+    "pattern": "puo",
+    "it": "Può ripetere, per favore?",
+    "tr": "Tekrar edebilir misiniz lütfen?"
+  },
+  {
+    "id": "scu5",
+    "scene": "scuola",
+    "pattern": "sono",
+    "it": "È in terza B.",
+    "tr": "3-B sınıfında."
+  },
+  {
+    "id": "lav1",
+    "scene": "lavoro",
+    "pattern": "ce",
+    "it": "C'è un problema con la macchina.",
+    "tr": "Makinede bir sorun var."
+  },
+  {
+    "id": "lav2",
+    "scene": "lavoro",
+    "pattern": "mi_serve",
+    "it": "Mi serve aiuto.",
+    "tr": "Yardıma ihtiyacım var."
+  },
+  {
+    "id": "lav3",
+    "scene": "lavoro",
+    "pattern": "devo",
+    "it": "Devo parlare con il responsabile.",
+    "tr": "Sorumluyla konuşmam lazım."
+  },
+  {
+    "id": "lav4",
+    "scene": "lavoro",
+    "pattern": "puo",
+    "it": "Non ho capito. Puoi ripetere?",
+    "tr": "Anlamadım. Tekrar edebilir misin?"
+  },
+  {
+    "id": "sal1",
+    "scene": "salumeria",
+    "pattern": "mi_da",
+    "it": "Mi dà due etti di prosciutto cotto?",
+    "tr": "Bana 200 gram pişmiş jambon verir misiniz?"
+  },
+  {
+    "id": "sal2",
+    "scene": "salumeria",
+    "pattern": "quanto",
+    "it": "Quanto costa?",
+    "tr": "Ne kadar?"
+  },
+  {
+    "id": "sal3",
+    "scene": "salumeria",
+    "pattern": null,
+    "it": "Tocca a me!",
+    "tr": "Sıra bende!"
+  },
+  {
+    "id": "sal4",
+    "scene": "salumeria",
+    "pattern": "vorrei",
+    "it": "Vorrei un etto di parmigiano.",
+    "tr": "100 gram parmesan istiyorum."
+  },
+  {
+    "id": "cit1",
+    "scene": "citta",
+    "pattern": "cerco",
+    "it": "Cerco una farmacia.",
+    "tr": "Bir eczane arıyorum."
+  },
+  {
+    "id": "cit2",
+    "scene": "citta",
+    "pattern": "dove",
+    "it": "Dov'è la fermata del tram?",
+    "tr": "Tramvay durağı nerede?"
+  },
+  {
+    "id": "cit3",
+    "scene": "citta",
+    "pattern": "ce",
+    "it": "C'è una farmacia qui vicino?",
+    "tr": "Yakında bir eczane var mı?"
+  },
+  {
+    "id": "cit4",
+    "scene": "citta",
+    "pattern": "mi_serve",
+    "it": "Mi serve un biglietto.",
+    "tr": "Bir bilete ihtiyacım var."
+  },
+  {
+    "id": "cit5",
+    "scene": "citta",
+    "pattern": "dove",
+    "it": "Dov'è il bagno?",
+    "tr": "Tuvalet nerede?"
+  }
+]

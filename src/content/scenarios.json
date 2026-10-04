@@ -1,0 +1,663 @@
+[
+  {
+    "id": "bar",
+    "it": "Al bar",
+    "tr": "Kafede",
+    "cat": "yeme",
+    "emoji": "☕",
+    "level": "A1",
+    "minutes": 5,
+    "desc": "Tezgâhta kahve iste, ne kadar olduğunu sor, kartla öde.",
+    "persona": { "name": "Giorgia", "role": "Barista", "avatar": "👩🏻" },
+    "register": "Lei",
+    "culture": "İtalyan barında kahve çoğunlukla tezgâhta, ayakta içilir: «al banco». Masaya oturursan («al tavolo») fiyat biraz daha yüksek olabilir.",
+    "cards": ["bar1", "bar2", "bar3", "bar4"],
+    "start": "n1",
+    "nodes": {
+      "n1": {
+        "ai": "Buongiorno! Cosa prende?",
+        "tr": "Günaydın! Ne alırsınız?",
+        "hint": "[İçecek], per favore. — ya da — Vorrei un…",
+        "intents": [
+          {
+            "model": "Un cappuccino, per favore.",
+            "tr": "Bir kapuçino lütfen.",
+            "req": [{ "label": "içecek", "show": "un caffè / un cappuccino", "any": ["caffe", "cappuccino", "espresso", "macchiato", "te", "spremuta", "acqua", "cioccolata", "cornetto", "brioche"] }],
+            "next": "n2",
+            "cando": "Barda kahve siparişi verdin"
+          }
+        ]
+      },
+      "n2": {
+        "ai": "Ecco a Lei. Altro?",
+        "tr": "Buyurun. Başka bir şey?",
+        "hint": "No, grazie. Quant'è? — ya da — Anche un cornetto.",
+        "intents": [
+          {
+            "model": "Anche un cornetto, per favore.",
+            "tr": "Bir de kruvasan lütfen.",
+            "req": [{ "label": "ek ürün", "show": "anche un cornetto", "any": ["cornetto", "brioche", "dolce", "panino", "pasta", "acqua", "anche"] }],
+            "next": "n2b"
+          },
+          {
+            "model": "No, grazie. Quant'è?",
+            "tr": "Hayır, teşekkürler. Ne kadar?",
+            "req": [{ "label": "cevap", "show": "No, grazie / Quant'è?", "any": ["no", "niente", "basta", "e tutto", "quant e", "quanto", "conto", "pagare"] }],
+            "neg": true,
+            "next": "n3"
+          }
+        ]
+      },
+      "n2b": {
+        "ai": "Certo, ecco il cornetto. Altro?",
+        "tr": "Tabii, buyurun kruvasanınız. Başka?",
+        "hint": "No, grazie. Quant'è?",
+        "intents": [
+          {
+            "model": "No, grazie. Quant'è?",
+            "tr": "Hayır, teşekkürler. Ne kadar?",
+            "req": [{ "label": "cevap", "show": "No, grazie / Quant'è?", "any": ["no", "niente", "basta", "e tutto", "quant e", "quanto", "conto", "pagare"] }],
+            "neg": true,
+            "next": "n3"
+          }
+        ]
+      },
+      "n3": {
+        "ai": "Sono tre euro e cinquanta.",
+        "tr": "3,50 euro.",
+        "hint": "Posso pagare con la carta? — ya da — Ecco, grazie.",
+        "intents": [
+          {
+            "model": "Posso pagare con la carta?",
+            "tr": "Kartla ödeyebilir miyim?",
+            "req": [
+              { "label": "izin kalıbı", "show": "Posso…", "any": ["posso", "si puo", "potrei"] },
+              { "label": "ödeme", "show": "pagare con la carta", "any": ["carta", "pagare", "bancomat", "pos"] }
+            ],
+            "next": "end_card",
+            "cando": "Kartla ödemek için izin istedin"
+          },
+          {
+            "model": "Ecco, grazie.",
+            "tr": "Buyurun, teşekkürler.",
+            "req": [{ "label": "teslim", "show": "Ecco", "any": ["ecco", "tenga", "contanti"] }],
+            "next": "end_cash",
+            "cando": "Ödemeyi hallettin"
+          }
+        ]
+      },
+      "end_card": { "ai": "Certo, avvicini pure la carta. Grazie e buona giornata!", "tr": "Tabii, kartınızı yaklaştırın. Teşekkürler, iyi günler!", "end": true },
+      "end_cash": { "ai": "Grazie a Lei! Buona giornata!", "tr": "Asıl ben teşekkür ederim! İyi günler!", "end": true }
+    }
+  },
+  {
+    "id": "ristorante",
+    "it": "Al ristorante",
+    "tr": "Restoranda",
+    "cat": "yeme",
+    "emoji": "🍝",
+    "level": "A2",
+    "minutes": 8,
+    "desc": "Masa iste, yemek ve içecek sipariş et, hesabı iste.",
+    "persona": { "name": "Marco", "role": "Garson", "avatar": "👨🏻‍🍳" },
+    "register": "Lei",
+    "culture": "Restoranda garson sana «Lei» ile hitap eder: «Cosa desidera?». Hesap masaya kendiliğinden gelmez; «Il conto, per favore» demen beklenir.",
+    "cards": ["ris1", "ris2", "ris3", "ris4", "ris5"],
+    "start": "n1",
+    "nodes": {
+      "n1": {
+        "ai": "Buonasera! Quanti siete?",
+        "tr": "İyi akşamlar! Kaç kişisiniz?",
+        "hint": "Un tavolo per [sayı], per favore.",
+        "intents": [
+          {
+            "model": "Un tavolo per due, per favore.",
+            "tr": "İki kişilik bir masa lütfen.",
+            "req": [
+              { "label": "masa / biz", "show": "un tavolo / siamo", "any": ["tavolo", "siamo", "posto"] },
+              { "label": "kişi sayısı", "show": "per due", "any": ["uno", "una", "due", "tre", "quattro", "cinque", "sei", "1", "2", "3", "4", "5", "6", "solo"] }
+            ],
+            "next": "n2",
+            "cando": "Masa istedin"
+          }
+        ]
+      },
+      "n2": {
+        "ai": "Prego, da questa parte. Cosa desidera?",
+        "tr": "Buyurun, bu taraftan. Ne arzu edersiniz?",
+        "hint": "Vorrei + yemek — ya da — Cosa mi consiglia?",
+        "intents": [
+          {
+            "model": "Vorrei una pizza margherita.",
+            "tr": "Bir margherita pizza istiyorum.",
+            "req": [
+              { "label": "istek fiili", "show": "Vorrei / Prendo", "any": ["vorrei", "prendo", "per me", "voglio", "vorremmo", "prendiamo"] },
+              { "label": "yemek", "show": "una pizza / le lasagne", "any": ["pizza", "margherita", "pasta", "lasagna", "lasagne", "carbonara", "risotto", "spaghetti", "bistecca", "insalata", "piatto del giorno", "menu"] }
+            ],
+            "next": "n3",
+            "cando": "Yemek siparişi verdin"
+          },
+          {
+            "model": "Cosa mi consiglia?",
+            "tr": "Bana ne önerirsiniz?",
+            "req": [{ "label": "öneri", "show": "Cosa mi consiglia?", "any": ["consiglia", "consigli", "consiglio", "specialita"] }],
+            "next": "n2r",
+            "cando": "Garsondan öneri istedin"
+          }
+        ]
+      },
+      "n2r": {
+        "ai": "Oggi le consiglio le lasagne della casa. Va bene?",
+        "tr": "Bugün size evin lazanyasını öneririm. Olur mu?",
+        "hint": "Sì, va bene, grazie.",
+        "intents": [
+          {
+            "model": "Sì, va bene, grazie.",
+            "tr": "Evet, olur, teşekkürler.",
+            "req": [{ "label": "onay", "show": "Sì, va bene", "any": ["si", "va bene", "perfetto", "ok", "certo", "volentieri", "lasagne", "vorrei", "prendo"] }],
+            "next": "n3",
+            "cando": "Yemek siparişi verdin"
+          }
+        ]
+      },
+      "n3": {
+        "ai": "Ottimo. E da bere?",
+        "tr": "Harika. İçecek olarak?",
+        "hint": "Un'acqua naturale, per favore. — ya da — Niente, grazie.",
+        "intents": [
+          {
+            "model": "Un'acqua naturale, per favore.",
+            "tr": "Bir sade su lütfen.",
+            "req": [{ "label": "içecek", "show": "un'acqua / un bicchiere di vino", "any": ["acqua", "vino", "birra", "coca", "cola", "aranciata", "bicchiere", "bottiglia"] }],
+            "next": "n4",
+            "cando": "İçecek seçtin"
+          },
+          {
+            "model": "Niente, grazie.",
+            "tr": "Bir şey istemiyorum, teşekkürler.",
+            "req": [{ "label": "cevap", "show": "Niente, grazie", "any": ["niente", "no grazie", "nulla", "no"] }],
+            "neg": true,
+            "next": "n4"
+          }
+        ]
+      },
+      "n4": {
+        "ai": "Ecco a Lei. Buon appetito! … Tutto bene? Desidera altro?",
+        "tr": "Buyurun, afiyet olsun! … Her şey yolunda mı? Başka bir şey ister misiniz?",
+        "hint": "Il conto, per favore. — ya da — Vorrei un tiramisù.",
+        "intents": [
+          {
+            "model": "Il conto, per favore.",
+            "tr": "Hesap lütfen.",
+            "req": [{ "label": "hesap", "show": "il conto", "any": ["conto", "pagare", "pago"] }],
+            "next": "n5",
+            "cando": "Hesabı istedin"
+          },
+          {
+            "model": "Vorrei un tiramisù.",
+            "tr": "Bir tiramisu istiyorum.",
+            "req": [{ "label": "tatlı / kahve", "show": "un tiramisù / un caffè", "any": ["tiramisu", "dolce", "caffe", "gelato", "panna cotta"] }],
+            "next": "n4d"
+          }
+        ]
+      },
+      "n4d": {
+        "ai": "Ecco il tiramisù. Altro?",
+        "tr": "Buyurun tiramisunuz. Başka?",
+        "hint": "Il conto, per favore.",
+        "intents": [
+          {
+            "model": "Il conto, per favore.",
+            "tr": "Hesap lütfen.",
+            "req": [{ "label": "hesap", "show": "il conto", "any": ["conto", "pagare", "pago"] }],
+            "next": "n5",
+            "cando": "Hesabı istedin"
+          }
+        ]
+      },
+      "n5": {
+        "ai": "Subito. Paga con la carta o in contanti?",
+        "tr": "Hemen. Kartla mı, nakit mi ödersiniz?",
+        "hint": "Con la carta. — ya da — In contanti.",
+        "intents": [
+          {
+            "model": "Con la carta, grazie.",
+            "tr": "Kartla, teşekkürler.",
+            "req": [{ "label": "ödeme yöntemi", "show": "con la carta / in contanti", "any": ["carta", "bancomat", "pos", "contanti", "cash"] }],
+            "next": "end",
+            "cando": "Ödeme yöntemini söyledin"
+          }
+        ]
+      },
+      "end": { "ai": "Perfetto. Grazie e buona serata!", "tr": "Mükemmel. Teşekkürler, iyi akşamlar!", "end": true }
+    }
+  },
+  {
+    "id": "scuola",
+    "it": "A scuola",
+    "tr": "Okulda",
+    "cat": "gunluk",
+    "emoji": "🎒",
+    "level": "A2",
+    "minutes": 6,
+    "desc": "Kendini tanıt, çocuğunu almaya geldiğini söyle, beklemek için izin iste.",
+    "persona": { "name": "Giulia", "role": "Okul görevlisi", "avatar": "👩🏻‍🏫" },
+    "register": "Lei",
+    "culture": "Okul görevlisi veli ile «Lei» kullanır. Anlamadığında «Può ripetere, per favore?» demek tamamen normal; İtalyanlar memnuniyetle tekrar eder.",
+    "cards": ["scu1", "scu2", "scu3", "scu4", "scu5"],
+    "start": "n1",
+    "nodes": {
+      "n1": {
+        "ai": "Buongiorno! Come posso aiutarLa?",
+        "tr": "Günaydın! Size nasıl yardımcı olabilirim?",
+        "hint": "Sono il papà / la mamma di… — ya da — Devo prendere mio figlio.",
+        "intents": [
+          {
+            "model": "Devo prendere mio figlio.",
+            "tr": "Oğlumu almam lazım.",
+            "req": [
+              { "label": "zorunluluk", "show": "Devo…", "any": ["devo", "vorrei", "sono qui per", "vengo a"] },
+              { "label": "almak / çocuk", "show": "prendere mio figlio", "any": ["prendere", "figlio", "figlia", "bambino", "bambina"] }
+            ],
+            "next": "n2",
+            "cando": "Neden geldiğini söyledin"
+          },
+          {
+            "model": "Sono il papà di Matteo.",
+            "tr": "Matteo'nun babasıyım.",
+            "req": [{ "label": "kim olduğun", "show": "Sono il papà / la mamma di…", "any": ["papa", "mamma", "padre", "madre", "genitore"] }],
+            "next": "n2",
+            "cando": "Kendini tanıttın"
+          }
+        ]
+      },
+      "n2": {
+        "ai": "Certo. In che classe è?",
+        "tr": "Tabii. Hangi sınıfta?",
+        "hint": "È in terza B. — ya da — In prima A.",
+        "intents": [
+          {
+            "model": "È in terza B.",
+            "tr": "3-B sınıfında.",
+            "req": [{ "label": "sınıf", "show": "in terza B / in prima A", "any": ["prima", "seconda", "terza", "quarta", "quinta", "classe", "1", "2", "3", "4", "5"] }],
+            "next": "n3",
+            "cando": "Çocuğunun sınıfını söyledin"
+          }
+        ]
+      },
+      "n3": {
+        "ai": "La lezione finisce tra dieci minuti.",
+        "tr": "Ders on dakika sonra bitiyor.",
+        "hint": "Posso aspettare qui?",
+        "intents": [
+          {
+            "model": "Posso aspettare qui?",
+            "tr": "Burada bekleyebilir miyim?",
+            "req": [
+              { "label": "izin kalıbı", "show": "Posso…", "any": ["posso", "si puo", "potrei"] },
+              { "label": "beklemek", "show": "aspettare qui", "any": ["aspettare", "aspetto"] }
+            ],
+            "next": "n4",
+            "cando": "Beklemek için izin istedin"
+          },
+          {
+            "model": "Va bene, grazie.",
+            "tr": "Tamam, teşekkürler.",
+            "req": [{ "label": "cevap", "show": "Va bene, grazie", "any": ["va bene", "grazie", "ok", "d accordo", "aspetto"] }],
+            "next": "n4"
+          }
+        ]
+      },
+      "n4": {
+        "ai": "Sì, certo. Si accomodi pure. Ha bisogno di altro?",
+        "tr": "Evet, tabii. Buyurun, oturun. Başka bir şeye ihtiyacınız var mı?",
+        "hint": "No, grazie. — ya da — Può ripetere, per favore?",
+        "intents": [
+          {
+            "model": "Può ripetere, per favore?",
+            "tr": "Tekrar edebilir misiniz lütfen?",
+            "req": [{ "label": "tekrar isteği", "show": "Può ripetere?", "any": ["ripetere", "ripeta", "non ho capito", "piu piano", "lentamente"] }],
+            "neg": true,
+            "next": "n4r",
+            "cando": "Anlamadığında tekrar istedin"
+          },
+          {
+            "model": "No, grazie.",
+            "tr": "Hayır, teşekkürler.",
+            "req": [{ "label": "cevap", "show": "No, grazie", "any": ["no", "niente", "grazie", "a posto", "va bene"] }],
+            "neg": true,
+            "next": "end"
+          }
+        ]
+      },
+      "n4r": {
+        "ai": "Certo: può sedersi qui. Le serve altro?",
+        "tr": "Tabii: buraya oturabilirsiniz. Başka bir şey lazım mı?",
+        "hint": "No, grazie.",
+        "intents": [
+          {
+            "model": "No, grazie.",
+            "tr": "Hayır, teşekkürler.",
+            "req": [{ "label": "cevap", "show": "No, grazie", "any": ["no", "niente", "grazie", "a posto", "va bene"] }],
+            "neg": true,
+            "next": "end"
+          }
+        ]
+      },
+      "end": { "ai": "Prego! Arrivederci.", "tr": "Rica ederim! Hoşça kalın.", "end": true }
+    }
+  },
+  {
+    "id": "lavoro",
+    "it": "Al lavoro",
+    "tr": "İş yerinde",
+    "cat": "is",
+    "emoji": "🏭",
+    "level": "B1",
+    "minutes": 7,
+    "desc": "Makinedeki sorunu bildir, yardım iste, sorumluyla konuşmak istediğini söyle.",
+    "persona": { "name": "Luca", "role": "İş arkadaşı", "avatar": "👷🏻" },
+    "register": "tu",
+    "culture": "İş arkadaşları birbirine «tu» der: «Puoi ripetere?». Sorumluya ya da müdüre ilk başta «Lei» kullanmak daha güvenli: «Può ripetere?».",
+    "cards": ["lav1", "lav2", "lav3", "lav4"],
+    "start": "n1",
+    "nodes": {
+      "n1": {
+        "ai": "Ciao! Tutto bene?",
+        "tr": "Selam! Her şey yolunda mı?",
+        "hint": "No, c'è un problema con la macchina. — ya da — Mi serve aiuto.",
+        "intents": [
+          {
+            "model": "No, c'è un problema con la macchina.",
+            "tr": "Hayır, makinede bir sorun var.",
+            "req": [{ "label": "sorun bildirme", "show": "C'è un problema", "any": ["c e un problema", "problema", "non funziona", "non va", "rotto", "rotta"] }],
+            "neg": true,
+            "next": "n2",
+            "cando": "Sorunu bildirdin"
+          },
+          {
+            "model": "Mi serve aiuto.",
+            "tr": "Yardıma ihtiyacım var.",
+            "req": [{ "label": "yardım isteği", "show": "Mi serve aiuto", "any": ["aiuto", "aiutami", "mi aiuti", "mi serve"] }],
+            "next": "n2",
+            "cando": "Yardım istedin"
+          }
+        ]
+      },
+      "n2": {
+        "ai": "Ah, capisco. Che succede?",
+        "tr": "Ah, anlıyorum. Ne oldu?",
+        "hint": "La macchina non funziona.",
+        "intents": [
+          {
+            "model": "La macchina non funziona.",
+            "tr": "Makine çalışmıyor.",
+            "req": [{ "label": "arıza", "show": "non funziona / si è fermata", "any": ["non funziona", "non va", "rotto", "rotta", "si e fermata", "ferma", "errore", "bloccata", "bloccato", "problema"] }],
+            "neg": true,
+            "next": "n3",
+            "cando": "Arızayı anlattın"
+          }
+        ]
+      },
+      "n3": {
+        "ai": "Mmh, non posso aiutarti io. Vuoi parlare con il responsabile?",
+        "tr": "Hmm, ben yardım edemem. Sorumluyla konuşmak ister misin?",
+        "hint": "Sì, devo parlare con il responsabile.",
+        "intents": [
+          {
+            "model": "Sì, devo parlare con il responsabile.",
+            "tr": "Evet, sorumluyla konuşmam lazım.",
+            "req": [{ "label": "cevap", "show": "Sì, devo parlare con…", "any": ["si", "devo", "vorrei", "certo", "ok", "va bene", "responsabile"] }],
+            "next": "n4",
+            "cando": "Sorumluyla konuşmak istediğini söyledin"
+          }
+        ]
+      },
+      "n4": {
+        "ai": "Va bene, lo chiamo io. Arriva tra cinque minuti.",
+        "tr": "Tamam, ben ararım. Beş dakikaya gelir.",
+        "hint": "Grazie! — ya da — Non ho capito. Puoi ripetere?",
+        "intents": [
+          {
+            "model": "Non ho capito. Puoi ripetere?",
+            "tr": "Anlamadım. Tekrar edebilir misin?",
+            "req": [{ "label": "tekrar isteği", "show": "Puoi ripetere?", "any": ["ripetere", "ripeti", "non ho capito", "piu piano"] }],
+            "neg": true,
+            "next": "n4r",
+            "cando": "Anlamadığında tekrar istedin"
+          },
+          {
+            "model": "Grazie mille!",
+            "tr": "Çok teşekkürler!",
+            "req": [{ "label": "teşekkür", "show": "Grazie!", "any": ["grazie", "ok", "perfetto", "va bene"] }],
+            "next": "end"
+          }
+        ]
+      },
+      "n4r": {
+        "ai": "Certo: il responsabile arriva tra cinque minuti. Cinque!",
+        "tr": "Tabii: sorumlu beş dakikaya geliyor. Beş!",
+        "hint": "Ah, ho capito. Grazie!",
+        "intents": [
+          {
+            "model": "Ah, ho capito. Grazie!",
+            "tr": "Ha, anladım. Teşekkürler!",
+            "req": [{ "label": "teşekkür", "show": "Grazie!", "any": ["grazie", "ok", "perfetto", "va bene", "ho capito"] }],
+            "next": "end"
+          }
+        ]
+      },
+      "end": { "ai": "Di niente! A dopo.", "tr": "Bir şey değil! Sonra görüşürüz.", "end": true }
+    }
+  },
+  {
+    "id": "salumeria",
+    "it": "Al banco salumi",
+    "tr": "Şarküteride",
+    "cat": "yeme",
+    "emoji": "🧀",
+    "level": "A2",
+    "minutes": 6,
+    "desc": "Sıranı al, gramajla jambon iste, kesimi söyle, fiyatı sor.",
+    "persona": { "name": "Paolo", "role": "Şarküteri", "avatar": "👨🏻‍🦳" },
+    "register": "Lei",
+    "culture": "Şarküteride gram yerine «etto» kullanılır: 1 etto = 100 gram. «Due etti» = 200 gr, «un etto e mezzo» = 150 gr. Satıcı biraz fazla keserse «Va bene lo stesso?» diye sorar.",
+    "cards": ["sal1", "sal2", "sal3", "sal4"],
+    "start": "n1",
+    "nodes": {
+      "n1": {
+        "ai": "Buongiorno! A chi tocca?",
+        "tr": "Günaydın! Sıra kimde?",
+        "hint": "Tocca a me!",
+        "intents": [
+          {
+            "model": "Tocca a me!",
+            "tr": "Sıra bende!",
+            "req": [{ "label": "sıra", "show": "Tocca a me", "any": ["tocca a me", "a me", "io", "sono io"] }],
+            "next": "n2",
+            "cando": "Sıranı aldın"
+          }
+        ]
+      },
+      "n2": {
+        "ai": "Prego, mi dica.",
+        "tr": "Buyurun, söyleyin.",
+        "hint": "Mi dà due etti di prosciutto cotto?",
+        "intents": [
+          {
+            "model": "Mi dà due etti di prosciutto cotto?",
+            "tr": "Bana 200 gram pişmiş jambon verir misiniz?",
+            "req": [
+              { "label": "istek kalıbı", "show": "Mi dà… / Vorrei…", "any": ["mi da", "vorrei", "mi puo dare", "prendo", "mi fa"] },
+              { "label": "ürün", "show": "prosciutto / formaggio", "any": ["prosciutto", "cotto", "crudo", "mortadella", "salame", "formaggio", "parmigiano", "mozzarella", "grana"] }
+            ],
+            "tips": [{ "ifNot": ["etto", "etti", "grammi", "gr"], "say": "Miktarı da eklemeyi dene: «due etti» = 200 gr, «un etto» = 100 gr." }],
+            "next": "n3",
+            "cando": "Gramajla ürün istedin"
+          }
+        ]
+      },
+      "n3": {
+        "ai": "Certo. Lo taglio sottile?",
+        "tr": "Tabii. İnce mi keseyim?",
+        "hint": "Sì, sottile, grazie. — ya da — Normale, grazie.",
+        "intents": [
+          {
+            "model": "Sì, sottile, grazie.",
+            "tr": "Evet, ince olsun, teşekkürler.",
+            "req": [{ "label": "kesim", "show": "sottile / normale", "any": ["sottile", "fine", "normale", "spesso", "si", "va bene"] }],
+            "next": "n4",
+            "cando": "Kesim tercihini söyledin"
+          }
+        ]
+      },
+      "n4": {
+        "ai": "Ecco qua: sono due etti e mezzo. Va bene lo stesso?",
+        "tr": "Buyurun: 250 gram oldu. Yine de olur mu?",
+        "hint": "Sì, va bene.",
+        "intents": [
+          {
+            "model": "Sì, va bene.",
+            "tr": "Evet, olur.",
+            "req": [{ "label": "onay", "show": "Sì, va bene", "any": ["si", "va bene", "ok", "certo", "perfetto", "nessun problema"] }],
+            "next": "n5"
+          }
+        ]
+      },
+      "n5": {
+        "ai": "Altro?",
+        "tr": "Başka?",
+        "hint": "Basta così, grazie. Quanto costa?",
+        "intents": [
+          {
+            "model": "Basta così, grazie. Quanto costa?",
+            "tr": "Bu kadar yeter, teşekkürler. Ne kadar?",
+            "req": [{ "label": "bitirme / fiyat", "show": "Basta così / Quanto costa?", "any": ["basta", "e tutto", "niente", "no", "quanto", "quant e"] }],
+            "neg": true,
+            "next": "end",
+            "cando": "Fiyatı sordun"
+          },
+          {
+            "model": "Vorrei anche un etto di parmigiano.",
+            "tr": "100 gram da parmesan istiyorum.",
+            "req": [{ "label": "ürün", "show": "un etto di parmigiano", "any": ["parmigiano", "formaggio", "mortadella", "salame", "crudo", "mozzarella", "grana"] }],
+            "next": "n5b"
+          }
+        ]
+      },
+      "n5b": {
+        "ai": "Ecco il parmigiano. Altro?",
+        "tr": "Buyurun parmesanınız. Başka?",
+        "hint": "Basta così, grazie. Quanto costa?",
+        "intents": [
+          {
+            "model": "Basta così, grazie. Quanto costa?",
+            "tr": "Bu kadar yeter, teşekkürler. Ne kadar?",
+            "req": [{ "label": "bitirme / fiyat", "show": "Basta così / Quanto costa?", "any": ["basta", "e tutto", "niente", "no", "quanto", "quant e"] }],
+            "neg": true,
+            "next": "end",
+            "cando": "Fiyatı sordun"
+          }
+        ]
+      },
+      "end": { "ai": "Sono quattro euro e venti. Paga alla cassa. Grazie!", "tr": "4,20 euro. Kasada ödersiniz. Teşekkürler!", "end": true }
+    }
+  },
+  {
+    "id": "citta",
+    "it": "In città",
+    "tr": "Şehirde",
+    "cat": "gunluk",
+    "emoji": "🚋",
+    "level": "A1",
+    "minutes": 5,
+    "desc": "Aradığın yeri söyle, yol tarifini anla, gerekirse tekrar iste.",
+    "persona": { "name": "Sofia", "role": "Yoldan geçen biri", "avatar": "👩🏽" },
+    "register": "Lei",
+    "culture": "Sokakta birine yaklaşırken «Mi scusi…» (Affedersiniz…) ile başla. «A destra» sağ, «a sinistra» sol, «sempre dritto» dümdüz demek.",
+    "cards": ["cit1", "cit2", "cit3", "cit4", "cit5"],
+    "start": "n1",
+    "nodes": {
+      "n1": {
+        "ai": "Mi scusi, ha bisogno di aiuto?",
+        "tr": "Pardon, yardıma ihtiyacınız var mı?",
+        "hint": "Sì, cerco una farmacia. — ya da — Dov'è la fermata del tram?",
+        "intents": [
+          {
+            "model": "Sì, cerco una farmacia.",
+            "tr": "Evet, bir eczane arıyorum.",
+            "req": [
+              { "label": "arama / soru", "show": "Cerco… / Dov'è…?", "any": ["cerco", "dov e", "dove", "c e"] },
+              { "label": "yer", "show": "una farmacia / la fermata", "any": ["farmacia", "fermata", "tram", "stazione", "metro", "bagno", "ospedale", "supermercato", "banca", "posta"] }
+            ],
+            "next": "n2",
+            "cando": "Aradığın yeri sordun"
+          }
+        ]
+      },
+      "n2": {
+        "ai": "È in fondo alla strada, a destra.",
+        "tr": "Caddenin sonunda, sağda.",
+        "hint": "Può ripetere, per favore? — ya da — È lontano?",
+        "intents": [
+          {
+            "model": "Può ripetere, per favore?",
+            "tr": "Tekrar edebilir misiniz lütfen?",
+            "req": [{ "label": "tekrar isteği", "show": "Può ripetere?", "any": ["ripetere", "ripeta", "non ho capito", "piu piano"] }],
+            "neg": true,
+            "next": "n2r",
+            "cando": "Anlamadığında tekrar istedin"
+          },
+          {
+            "model": "È lontano?",
+            "tr": "Uzak mı?",
+            "req": [{ "label": "mesafe", "show": "È lontano?", "any": ["lontano", "vicino", "minuti", "quanto"] }],
+            "next": "n3",
+            "cando": "Mesafeyi sordun"
+          },
+          {
+            "model": "Grazie mille!",
+            "tr": "Çok teşekkürler!",
+            "req": [{ "label": "teşekkür", "show": "Grazie!", "any": ["grazie"] }],
+            "next": "end"
+          }
+        ]
+      },
+      "n2r": {
+        "ai": "Certo: sempre dritto, poi a destra.",
+        "tr": "Tabii: dümdüz gidin, sonra sağa.",
+        "hint": "È lontano? — ya da — Grazie mille!",
+        "intents": [
+          {
+            "model": "È lontano?",
+            "tr": "Uzak mı?",
+            "req": [{ "label": "mesafe", "show": "È lontano?", "any": ["lontano", "vicino", "minuti", "quanto"] }],
+            "next": "n3",
+            "cando": "Mesafeyi sordun"
+          },
+          {
+            "model": "Grazie mille!",
+            "tr": "Çok teşekkürler!",
+            "req": [{ "label": "teşekkür", "show": "Grazie!", "any": ["grazie", "ho capito"] }],
+            "next": "end"
+          }
+        ]
+      },
+      "n3": {
+        "ai": "No, sono cinque minuti a piedi.",
+        "tr": "Hayır, yürüyerek beş dakika.",
+        "hint": "Grazie mille!",
+        "intents": [
+          {
+            "model": "Grazie mille!",
+            "tr": "Çok teşekkürler!",
+            "req": [{ "label": "teşekkür", "show": "Grazie!", "any": ["grazie", "perfetto", "ho capito"] }],
+            "next": "end",
+            "cando": "Yol tarifini anlayıp teşekkür ettin"
+          }
+        ]
+      },
+      "end": { "ai": "Prego, buona giornata!", "tr": "Rica ederim, iyi günler!", "end": true }
+    }
+  }
+]
