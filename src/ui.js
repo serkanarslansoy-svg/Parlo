@@ -3,7 +3,7 @@ import { h, icon } from './lib/dom.js';
 import { speak, canSpeak } from './lib/speech.js';
 
 export function brandMark() {
-  const img = h('img', { src: './logo-mark.svg', alt: '', class: 'brand-mark', width: 30, height: 30 });
+  const img = h('img', { src: './logo-mark.png', alt: '', class: 'brand-mark', width: 32, height: 32 });
   return img;
 }
 
