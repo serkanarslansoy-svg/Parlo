@@ -12,6 +12,7 @@ describe.each(scenes.map((s) => [s.id, s]))('senaryo %s', (_, scene) => {
       if (n.end) continue;
       expect(n.intents?.length, `${id} niyet içermeli`).toBeGreaterThan(0);
       expect(n.hint, `${id} ipucu içermeli`).toBeTruthy();
+      expect(n.goal, `${id} görev içermeli`).toBeTruthy();
       for (const it of n.intents) expect(nodes[it.next], `${id} → ${it.next}`).toBeTruthy();
     }
   });
@@ -64,5 +65,12 @@ describe('cümle kartları', () => {
 describe('dailyScene', () => {
   it('ardışık günlerde farklı senaryo verir', () => {
     expect(dailyScene('2026-10-04').id).not.toBe(dailyScene('2026-10-05').id);
+  });
+});
+
+describe('mainPathLength', async () => {
+  const { mainPathLength } = await import('../src/screens/chat.js').catch(() => ({}));
+  it.skipIf(!mainPathLength)('ana yol en az 3 adım', () => {
+    for (const s of scenes) expect(mainPathLength(s), s.id).toBeGreaterThanOrEqual(3);
   });
 });

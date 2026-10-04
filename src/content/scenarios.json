@@ -28,6 +28,7 @@
       "n1": {
         "ai": "Buongiorno! Cosa prende?",
         "tr": "Günaydın! Ne alırsınız?",
+        "goal": "Kahve siparişi ver",
         "hint": "[İçecek], per favore. — ya da — Vorrei un…",
         "intents": [
           {
@@ -59,6 +60,7 @@
       "n2": {
         "ai": "Ecco a Lei. Altro?",
         "tr": "Buyurun. Başka bir şey?",
+        "goal": "Başka bir şey isteyecek misin?",
         "hint": "No, grazie. Quant'è? — ya da — Anche un cornetto.",
         "intents": [
           {
@@ -108,6 +110,7 @@
       "n2b": {
         "ai": "Certo, ecco il cornetto. Altro?",
         "tr": "Tabii, buyurun kruvasanınız. Başka?",
+        "goal": "Siparişi bitir, fiyatı sor",
         "hint": "No, grazie. Quant'è?",
         "intents": [
           {
@@ -137,6 +140,7 @@
       "n3": {
         "ai": "Sono tre euro e cinquanta.",
         "tr": "3,50 euro.",
+        "goal": "Ödemeyi yap",
         "hint": "Posso pagare con la carta? — ya da — Ecco, grazie.",
         "intents": [
           {
@@ -227,6 +231,7 @@
       "n1": {
         "ai": "Buonasera! Quanti siete?",
         "tr": "İyi akşamlar! Kaç kişisiniz?",
+        "goal": "Masa iste",
         "hint": "Un tavolo per [sayı], per favore.",
         "intents": [
           {
@@ -271,6 +276,7 @@
       "n2": {
         "ai": "Prego, da questa parte. Cosa desidera?",
         "tr": "Buyurun, bu taraftan. Ne arzu edersiniz?",
+        "goal": "Yemek siparişi ver",
         "hint": "Vorrei + yemek — ya da — Cosa mi consiglia?",
         "intents": [
           {
@@ -334,6 +340,7 @@
       "n2r": {
         "ai": "Oggi le consiglio le lasagne della casa. Va bene?",
         "tr": "Bugün size evin lazanyasını öneririm. Olur mu?",
+        "goal": "Öneriyi kabul et",
         "hint": "Sì, va bene, grazie.",
         "intents": [
           {
@@ -364,6 +371,7 @@
       "n3": {
         "ai": "Ottimo. E da bere?",
         "tr": "Harika. İçecek olarak?",
+        "goal": "İçecek seç",
         "hint": "Un'acqua naturale, per favore. — ya da — Niente, grazie.",
         "intents": [
           {
@@ -411,6 +419,7 @@
       "n4": {
         "ai": "Ecco a Lei. Buon appetito! … Tutto bene? Desidera altro?",
         "tr": "Buyurun, afiyet olsun! … Her şey yolunda mı? Başka bir şey ister misiniz?",
+        "goal": "Hesabı iste",
         "hint": "Il conto, per favore. — ya da — Vorrei un tiramisù.",
         "intents": [
           {
@@ -453,6 +462,7 @@
       "n4d": {
         "ai": "Ecco il tiramisù. Altro?",
         "tr": "Buyurun tiramisunuz. Başka?",
+        "goal": "Hesabı iste",
         "hint": "Il conto, per favore.",
         "intents": [
           {
@@ -477,6 +487,7 @@
       "n5": {
         "ai": "Subito. Paga con la carta o in contanti?",
         "tr": "Hemen. Kartla mı, nakit mi ödersiniz?",
+        "goal": "Ödeme yöntemini söyle",
         "hint": "Con la carta. — ya da — In contanti.",
         "intents": [
           {
@@ -537,6 +548,7 @@
       "n1": {
         "ai": "Buongiorno! Come posso aiutarLa?",
         "tr": "Günaydın! Size nasıl yardımcı olabilirim?",
+        "goal": "Neden geldiğini söyle",
         "hint": "Sono il papà / la mamma di… — ya da — Devo prendere mio figlio.",
         "intents": [
           {
@@ -592,6 +604,7 @@
       "n2": {
         "ai": "Certo. In che classe è?",
         "tr": "Tabii. Hangi sınıfta?",
+        "goal": "Sınıfı söyle",
         "hint": "È in terza B. — ya da — In prima A.",
         "intents": [
           {
@@ -624,6 +637,7 @@
       "n3": {
         "ai": "La lezione finisce tra dieci minuti.",
         "tr": "Ders on dakika sonra bitiyor.",
+        "goal": "Beklemek için izin iste",
         "hint": "Posso aspettare qui?",
         "intents": [
           {
@@ -674,6 +688,7 @@
       "n4": {
         "ai": "Sì, certo. Si accomodi pure. Ha bisogno di altro?",
         "tr": "Evet, tabii. Buyurun, oturun. Başka bir şeye ihtiyacınız var mı?",
+        "goal": "Teşekkür et ya da tekrar iste",
         "hint": "No, grazie. — ya da — Può ripetere, per favore?",
         "intents": [
           {
@@ -720,6 +735,7 @@
       "n4r": {
         "ai": "Certo: può sedersi qui. Le serve altro?",
         "tr": "Tabii: buraya oturabilirsiniz. Başka bir şey lazım mı?",
+        "goal": "Konuşmayı bitir",
         "hint": "No, grazie.",
         "intents": [
           {
@@ -779,6 +795,7 @@
       "n1": {
         "ai": "Ciao! Tutto bene?",
         "tr": "Selam! Her şey yolunda mı?",
+        "goal": "Sorunu bildir",
         "hint": "No, c'è un problema con la macchina. — ya da — Mi serve aiuto.",
         "intents": [
           {
@@ -825,6 +842,7 @@
       "n2": {
         "ai": "Ah, capisco. Che succede?",
         "tr": "Ah, anlıyorum. Ne oldu?",
+        "goal": "Arızayı anlat",
         "hint": "La macchina non funziona.",
         "intents": [
           {
@@ -857,6 +875,7 @@
       "n3": {
         "ai": "Mmh, non posso aiutarti io. Vuoi parlare con il responsabile?",
         "tr": "Hmm, ben yardım edemem. Sorumluyla konuşmak ister misin?",
+        "goal": "Sorumluyu iste",
         "hint": "Sì, devo parlare con il responsabile.",
         "intents": [
           {
@@ -885,6 +904,7 @@
       "n4": {
         "ai": "Va bene, lo chiamo io. Arriva tra cinque minuti.",
         "tr": "Tamam, ben ararım. Beş dakikaya gelir.",
+        "goal": "Teşekkür et ya da tekrar iste",
         "hint": "Grazie! — ya da — Non ho capito. Puoi ripetere?",
         "intents": [
           {
@@ -928,6 +948,7 @@
       "n4r": {
         "ai": "Certo: il responsabile arriva tra cinque minuti. Cinque!",
         "tr": "Tabii: sorumlu beş dakikaya geliyor. Beş!",
+        "goal": "Anladığını söyle",
         "hint": "Ah, ho capito. Grazie!",
         "intents": [
           {
@@ -986,6 +1007,7 @@
       "n1": {
         "ai": "Buongiorno! A chi tocca?",
         "tr": "Günaydın! Sıra kimde?",
+        "goal": "Sıranı al",
         "hint": "Tocca a me!",
         "intents": [
           {
@@ -1011,6 +1033,7 @@
       "n2": {
         "ai": "Prego, mi dica.",
         "tr": "Buyurun, söyleyin.",
+        "goal": "Gramajla ürün iste",
         "hint": "Mi dà due etti di prosciutto cotto?",
         "intents": [
           {
@@ -1063,6 +1086,7 @@
       "n3": {
         "ai": "Certo. Lo taglio sottile?",
         "tr": "Tabii. İnce mi keseyim?",
+        "goal": "Kesimi söyle",
         "hint": "Sì, sottile, grazie. — ya da — Normale, grazie.",
         "intents": [
           {
@@ -1090,6 +1114,7 @@
       "n4": {
         "ai": "Ecco qua: sono due etti e mezzo. Va bene lo stesso?",
         "tr": "Buyurun: 250 gram oldu. Yine de olur mu?",
+        "goal": "Miktarı onayla",
         "hint": "Sì, va bene.",
         "intents": [
           {
@@ -1116,6 +1141,7 @@
       "n5": {
         "ai": "Altro?",
         "tr": "Başka?",
+        "goal": "Bitir ve fiyatı sor",
         "hint": "Basta così, grazie. Quanto costa?",
         "intents": [
           {
@@ -1164,6 +1190,7 @@
       "n5b": {
         "ai": "Ecco il parmigiano. Altro?",
         "tr": "Buyurun parmesanınız. Başka?",
+        "goal": "Bitir ve fiyatı sor",
         "hint": "Basta così, grazie. Quanto costa?",
         "intents": [
           {
@@ -1226,6 +1253,7 @@
       "n1": {
         "ai": "Mi scusi, ha bisogno di aiuto?",
         "tr": "Pardon, yardıma ihtiyacınız var mı?",
+        "goal": "Aradığın yeri söyle",
         "hint": "Sì, cerco una farmacia. — ya da — Dov'è la fermata del tram?",
         "intents": [
           {
@@ -1267,6 +1295,7 @@
       "n2": {
         "ai": "È in fondo alla strada, a destra.",
         "tr": "Caddenin sonunda, sağda.",
+        "goal": "Yol tarifini anla",
         "hint": "Può ripetere, per favore? — ya da — È lontano?",
         "intents": [
           {
@@ -1325,6 +1354,7 @@
       "n2r": {
         "ai": "Certo: sempre dritto, poi a destra.",
         "tr": "Tabii: dümdüz gidin, sonra sağa.",
+        "goal": "Mesafeyi sor ya da teşekkür et",
         "hint": "È lontano? — ya da — Grazie mille!",
         "intents": [
           {
@@ -1365,6 +1395,7 @@
       "n3": {
         "ai": "No, sono cinque minuti a piedi.",
         "tr": "Hayır, yürüyerek beş dakika.",
+        "goal": "Teşekkür et",
         "hint": "Grazie mille!",
         "intents": [
           {
