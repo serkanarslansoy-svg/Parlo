@@ -39,6 +39,7 @@ function newPlayerForm(ctx, onCancel) {
     h('p', { class: 'small strong' }, 'Rengin'),
     colors,
     error,
+    ctx.online.enabled ? h('p', { class: 'small muted' }, 'Adın ve avatarın haftalık lig tablosunda diğer oyunculara görünür. Gerçek soyadını yazmana gerek yok.') : null,
     h('button', { class: 'btn block', onclick: create }, 'Oyuna katıl', icon('arrow')),
     ctx.db.profiles.length ? h('button', { class: 'btn ghost block', onclick: onCancel }, 'Vazgeç') : null);
 }
@@ -63,7 +64,7 @@ export function renderProfiles(ctx) {
         h('button', { class: `player ${p.id === ctx.db.active ? 'current' : ''}`, onclick: () => { ctx.switchProfile(p.id); ctx.go(ctx.pendingJoin ? 'league' : 'home'); } },
           avatar(p, 76),
           h('span', { class: 'pname' }, p.name),
-          h('span', { class: 'ppts' }, `${pts} puan · bu hafta`)),
+          h('span', { class: 'ppts' }, `${pts} XP · bu hafta`)),
         editing ? del : null);
     });
     body.replaceChildren(
@@ -78,7 +79,7 @@ export function renderProfiles(ctx) {
       h('h1', {}, ctx.db.profiles.length ? 'Kim çalışıyor?' : 'Benvenuto!'),
       ctx.pendingJoin ? h('p', { class: 'chip gold' }, `${ctx.pendingJoin} ligine davet edildin. Önce oyuncunu seç.`) : null,
       h('p', { class: 'muted' }, ctx.db.profiles.length
-        ? 'Profilini seç. Herkesin ilerlemesi ayrı tutulur, puanlar haftalık ligde yarışır.'
+        ? 'Profilini seç. Herkesin ilerlemesi ayrı tutulur, kazandığın XP ile ligde yarışırsın.'
         : 'PARLO\'ya hoş geldin. Önce bir oyuncu oluştur; sonra ailenden ya da arkadaşlarından başkalarını da ekleyip yarışabilirsiniz.')),
     body,
     h('p', { class: 'small muted center' }, 'Profiller bu cihazda saklanır. Aynı telefonu ya da tableti paylaşan herkes katılabilir.'));

@@ -1,6 +1,9 @@
 # Çevrim içi lig kurulumu (Supabase, ücretsiz)
 
-Farklı telefonlardaki oyuncuların aynı ligde yarışması için puanlar Supabase'de tutulur.
+Farklı telefonlardaki oyuncuların yarışması için XP Supabase'de tutulur. İki tür lig var:
+
+- **Kademeli haftalık lig (Duolingo gibi):** haftanın ilk XP'sini kazanan oyuncu kendi kademesindeki (Bronz → Gümüş → Altın → Safir → Yakut → Zümrüt → Ametist → İnci → Obsidyen → Elmas) en fazla 30 kişilik bir gruba otomatik yerleşir. Hafta sonunda ilk 7 bir üst kademeye çıkar, son 5 bir alt kademeye düşer (10 kişiden küçük gruplarda düşme yok).
+- **Arkadaş ligi:** 6 karakterlik kod ya da davet linkiyle sadece tanıdıklar.
 Kurulum bir kez yapılır, yaklaşık 5 dakika sürer.
 
 1. https://supabase.com adresinde ücretsiz hesap aç → **New project**.
@@ -18,7 +21,7 @@ Kurulum bir kez yapılır, yaklaşık 5 dakika sürer.
 
 ## Nasıl çalışır
 - Her telefon, ligi kurarken ya da katılırken rastgele bir oyuncu kimliği ve gizli anahtar üretir (sadece o telefonda saklanır).
-- Puanlar `submit_score` fonksiyonuyla gönderilir; gizli anahtarı bilmeyen kimse başkasının puanını değiştiremez.
-- Tabloya doğrudan erişim kapalıdır; lig listesi `get_league` ile, yalnızca lig kodunu bilenlere döner.
+- XP `submit_score` fonksiyonuyla gönderilir; aynı fonksiyon oyuncuyu haftalık gruba yerleştirir ve geçen haftanın sonucuna göre kademesini belirler; gizli anahtarı bilmeyen kimse başkasının puanını değiştiremez.
+- Tabloya doğrudan erişim kapalıdır; grup `get_division`, arkadaş ligi `get_league` ile döner. Oyuncunun adı ve avatarı grup arkadaşlarına görünür.
 - Puanlar telefonda hesaplanır ve güvene dayalıdır (aile ve arkadaş ligi için tasarlandı).
 - `tests/schema.test.js` bu SQL'i gerçek bir Postgres'te (PGlite) çalıştırarak test eder.

@@ -14,7 +14,7 @@ import { renderProgress } from './screens/progress.js';
 import { renderResult } from './screens/result.js';
 import { renderProfiles } from './screens/profiles.js';
 import { renderLeague } from './screens/league.js';
-import { createClient, scoreRow, normalizeCode, isValidCode } from './lib/online.js';
+import { createClient, scoreRow, normalizeCode, isValidCode, newIdentity } from './lib/online.js';
 
 const TABS = [
   { route: 'home', label: 'Bugün', icon: 'home' },
@@ -42,8 +42,8 @@ const ctx = {
   persist() {
     if (db.active) db.data[db.active] = ctx.state;
     saveProfiles(db);
-    // Çevrim içi ligdeysek puanı birkaç saniye içinde sunucuya da gönder.
-    if (online.enabled && ctx.profile?.online) {
+    // XP'yi birkaç saniye içinde sunucuya da gönder (haftalık lig ve arkadaş ligi için).
+    if (online.enabled && ctx.profile) {
       clearTimeout(syncTimer);
       syncTimer = setTimeout(() => ctx.syncNow().catch(() => {}), 1500);
     }
@@ -51,8 +51,9 @@ const ctx = {
   /** Aktif oyuncunun puanını hemen sunucuya gönderir. */
   async syncNow() {
     const p = ctx.profile;
-    if (!online.enabled || !p?.online) return;
+    if (!online.enabled || !p) return;
     clearTimeout(syncTimer);
+    if (!p.online) { p.online = newIdentity(); saveProfiles(db); }
     await online.submit(scoreRow(p, ctx.state, today()));
   },
   /** Aktif oyuncuyu değiştirir (null: profil seçim ekranı). */
@@ -68,7 +69,7 @@ const ctx = {
 
 setTopbarRight(() => (ctx.profile
   ? h('button', { class: 'me-chip', 'aria-label': `${ctx.profile.name}: oyuncu değiştir`, onclick: () => ctx.go('profiles') },
-    h('span', { class: 'mp' }, `${weekPoints(ctx.state, today())}`, h('small', {}, 'puan')), avatar(ctx.profile, 34))
+    h('span', { class: 'mp' }, `${weekPoints(ctx.state, today())}`, h('small', {}, 'XP')), avatar(ctx.profile, 34))
   : null));
 
 function parseHash() {

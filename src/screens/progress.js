@@ -65,7 +65,7 @@ export function renderProgress(ctx) {
     candoSection,
     memory,
     h('section', { class: 'card cream stack' },
-      h('p', { class: 'small muted' }, `Veriler sadece bu cihazda saklanır. Sıfırlama yalnızca ${ctx.profile.name} oyuncusunun ilerlemesini ve puanlarını siler.`),
+      h('p', { class: 'small muted' }, `Veriler sadece bu cihazda saklanır. Sıfırlama yalnızca ${ctx.profile.name} oyuncusunun ilerlemesini ve XP'sini siler.`),
       confirmButton({ class: 'btn secondary block' }, 'İlerlememi sıfırla', 'Emin misin? Silmek için tekrar dokun', () => {
         ctx.state = { ...freshState(), name: ctx.profile.name };
         ctx.persist();

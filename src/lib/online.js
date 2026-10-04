@@ -29,6 +29,8 @@ export function createClient({ url = SUPABASE_URL, key = SUPABASE_ANON_KEY, fetc
     enabled,
     submit: (row) => rpc('submit_score', row),
     league: (code) => rpc('get_league', { p_league: code }),
+    division: (id, weekStart) => rpc('get_division', { p_id: id, p_week_start: weekStart }),
+    tier: (id) => rpc('get_tier', { p_id: id }),
     leave: (id, secret) => rpc('leave_league', { p_id: id, p_secret: secret }),
   };
 }
@@ -54,7 +56,7 @@ export function scoreRow(profile, state, day) {
   return {
     p_id: profile.online.playerId,
     p_secret: profile.online.secret,
-    p_league: profile.online.league,
+    p_league: profile.online.league || null,
     p_name: profile.name,
     p_avatar: profile.avatar,
     p_color: profile.color,
@@ -76,6 +78,43 @@ export function onlineRows(rows, day, mode = 'week', selfId = null) {
   let prev = null;
   list.forEach((r, i) => { if (r.points !== prev) rank = i + 1; r.rank = rank; prev = r.points; });
   return list;
+}
+
+/** Duolingo tarzı kademeler (sunucudaki tier 0–9). */
+export const TIERS = [
+  { name: 'Bronz', it: 'Bronzo', color: '#B8733A', icon: '🥉' },
+  { name: 'Gümüş', it: 'Argento', color: '#8C9AA3', icon: '🥈' },
+  { name: 'Altın', it: 'Oro', color: '#E2A400', icon: '🥇' },
+  { name: 'Safir', it: 'Zaffiro', color: '#2F5FD0', icon: '🔷' },
+  { name: 'Yakut', it: 'Rubino', color: '#C8243F', icon: '🔴' },
+  { name: 'Zümrüt', it: 'Smeraldo', color: '#13955B', icon: '🟢' },
+  { name: 'Ametist', it: 'Ametista', color: '#8A43C9', icon: '🟣' },
+  { name: 'İnci', it: 'Perla', color: '#C9A98F', icon: '⚪' },
+  { name: 'Obsidyen', it: 'Ossidiana', color: '#2B2D35', icon: '⚫' },
+  { name: 'Elmas', it: 'Diamante', color: '#3AB3D8', icon: '💎' },
+];
+export const RULES = { promote: 7, demote: 5, minForDemote: 10, groupSize: 30 };
+export const tierOf = (n) => TIERS[Math.max(0, Math.min(TIERS.length - 1, Number(n) || 0))];
+
+/**
+ * Grup satırlarını sıralar ve bölgeleri işaretler: 'up' (yükselme), 'down' (düşme) ya da null.
+ * Sunucudaki kuralla aynı: ilk 7 (XP > 0) yükselir; 10+ kişilik grupta son 5 düşer; en üst/alt kademe sınırları.
+ */
+export function divisionRows(rows, selfId) {
+  const list = (rows || []).map((r) => ({
+    profile: { id: r.id, name: r.name, avatar: r.avatar, color: r.color },
+    points: r.week_points,
+    self: r.id === selfId,
+  }));
+  const tier = Number(rows?.[0]?.tier ?? 0);
+  const size = list.length;
+  list.forEach((r, i) => {
+    r.rank = i + 1;
+    if (i < RULES.promote && r.points > 0 && size > 1 && tier < TIERS.length - 1) r.zone = 'up';
+    else if (size >= RULES.minForDemote && i >= size - RULES.demote && tier > 0) r.zone = 'down';
+    else r.zone = null;
+  });
+  return { tier, rows: list };
 }
 
 export function errorMessage(err) {

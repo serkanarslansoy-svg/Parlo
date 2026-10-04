@@ -97,7 +97,7 @@ export function renderReview(ctx, query) {
       if (mode === 'type') typed.disabled = true;
       else drawTiles();
       feedback.replaceChildren(h('div', { class: `feedback ${ok ? 'good' : 'bad'} stack` },
-        h('div', { class: 'row between' }, h('p', { class: 'title' }, ok ? (hinted ? 'Doğru! (ipucuyla)' : 'Bravissimo! ✓') : 'Neredeyse! Doğru hâli:'), pts ? h('span', { class: 'chip gold' }, `+${pts} puan`) : null),
+        h('div', { class: 'row between' }, h('p', { class: 'title' }, ok ? (hinted ? 'Doğru! (ipucuyla)' : 'Bravissimo! ✓') : 'Neredeyse! Doğru hâli:'), pts ? h('span', { class: 'chip gold' }, `+${pts} XP`) : null),
         h('div', { class: 'row' }, h('div', { class: 'grow' }, h('p', { class: 'it', lang: 'it' }, card.it), h('p', { class: 'tr' }, card.tr)), speakBtn(card.it), speakBtn(card.it, { slow: true, label: 'Yavaş dinle' })),
         ok && accentNote ? h('p', { class: 'small' }, 'Küçük not: aksan ve kesme işaretlerine dikkat — yazılışı yukarıdaki gibi.') : null,
         !ok ? h('p', { class: 'small' }, 'Bu cümle yakında tekrar karşına çıkacak.') : null));

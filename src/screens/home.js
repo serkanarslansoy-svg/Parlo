@@ -4,6 +4,8 @@ import { today, streak } from '../lib/store.js';
 import { isDue } from '../lib/srs.js';
 import { award, POINTS, leaderboard, gapToNext, weekPoints, dayPoints } from '../lib/points.js';
 import { stateOf } from '../lib/profiles.js';
+import { tierOf, RULES } from '../lib/online.js';
+import { weekKeys } from '../lib/points.js';
 import { topbar, speakBtn, greeting, avatar } from '../ui.js';
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
@@ -39,16 +41,38 @@ function leagueCard(ctx) {
   const me = rows.find((r) => r.profile.id === ctx.db.active);
   const gap = gapToNext(rows, ctx.db.active);
   const others = rows.length - 1;
+  // Çevrim içi kademeli ligdeysek (son bilinen grup bu haftaya aitse) onu göster.
+  const div = ctx.online.enabled && ctx.profile.online?.lastDivision?.week === weekKeys(t)[0] ? ctx.profile.online.lastDivision : null;
+  if (div) {
+    const tier = tierOf(div.tier);
+    return h('button', { class: 'league-card', style: `--t:${tier.color}`, onclick: () => ctx.go('league') },
+      h('div', { class: 'row' },
+        avatar(ctx.profile, 52),
+        h('div', { class: 'grow' },
+          h('p', { class: 'eyebrow' }, `${tier.icon} ${tier.name} Ligi`),
+          h('p', { class: 'lc-points' }, h('strong', {}, weekPoints(ctx.state, t)), ' XP', dayPoints(ctx.state, t) ? h('span', { class: 'today' }, `+${dayPoints(ctx.state, t)} bugün`) : null)),
+        h('div', { class: 'lc-rank' }, h('strong', {}, `${div.rank}.`), h('span', {}, `/ ${div.size}`))),
+      h('p', { class: 'lc-line' }, div.rank <= RULES.promote ? `Yükselme bölgesindesin! Yerini koru.` : `İlk ${RULES.promote}'ye gir, ${tierOf(div.tier + 1).name} Ligi'ne yüksel.`, icon('chevron')));
+  }
+  if (ctx.online.enabled && !others) {
+    return h('button', { class: 'league-card', onclick: () => ctx.go('league') },
+      h('div', { class: 'row' },
+        avatar(ctx.profile, 52),
+        h('div', { class: 'grow' },
+          h('p', { class: 'eyebrow' }, 'Bu hafta'),
+          h('p', { class: 'lc-points' }, h('strong', {}, weekPoints(ctx.state, t)), ' XP'))),
+      h('p', { class: 'lc-line' }, weekPoints(ctx.state, t) ? 'Haftalık ligdeki yerini gör' : 'İlk dersini yap, haftalık lige katıl!', icon('chevron')));
+  }
   let line;
   if (!others) line = 'Bir oyuncu daha ekle, haftalık yarış başlasın.';
-  else if (gap) line = `${gap.name} seni ${gap.points - 1} puan önde. Bir senaryo bitir, yakala!`;
+  else if (gap) line = `${gap.name} seni ${gap.points - 1} XP önde. Bir senaryo bitir, yakala!`;
   else line = rows.length > 1 && rows[1].points === me.points ? 'Zirveyi paylaşıyorsun. Bir adım öne geç!' : 'Ligin lideri sensin. Yerini koru!';
   return h('button', { class: 'league-card', onclick: () => ctx.go(others ? 'league' : 'profiles') },
     h('div', { class: 'row' },
       avatar(ctx.profile, 52),
       h('div', { class: 'grow' },
         h('p', { class: 'eyebrow' }, 'Bu hafta'),
-        h('p', { class: 'lc-points' }, h('strong', {}, weekPoints(ctx.state, t)), ' puan', dayPoints(ctx.state, t) ? h('span', { class: 'today' }, `+${dayPoints(ctx.state, t)} bugün`) : null)),
+        h('p', { class: 'lc-points' }, h('strong', {}, weekPoints(ctx.state, t)), ' XP', dayPoints(ctx.state, t) ? h('span', { class: 'today' }, `+${dayPoints(ctx.state, t)} bugün`) : null)),
       h('div', { class: 'lc-rank' }, h('strong', {}, others ? `${me.rank}.` : '–'), h('span', {}, others ? `/ ${rows.length}` : 'tek oyuncu'))),
     h('div', { class: 'lc-row' },
       rows.slice(0, 5).map((r) => h('span', { class: `mini ${r.profile.id === ctx.db.active ? 'me' : ''}` }, avatar(r.profile, 28), h('b', {}, r.points)))),

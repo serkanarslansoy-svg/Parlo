@@ -45,6 +45,15 @@
 | Senkron | Puan değişince 1,5 sn sonra otomatik gönderim; lig ekranında yenile |
 | Sınır | Puanlar istemcide hesaplanır, güvene dayalı (aile/arkadaş ligi) |
 
+## v0.6: kademeli lig ve XP
+| Konu | Karar |
+|---|---|
+| Ad | "Puan" yerine "XP" |
+| Varsayılan lig | Duolingo tarzı: 10 kademe, haftanın ilk XP'siyle 30 kişilik gruba otomatik yerleşme, ilk 7 yükselir, son 5 düşer (10+ kişilik grupta) |
+| Hesaplama | Kademe değişimi sunucuda, yeni haftanın ilk gönderiminde geçen haftanın grubuna bakılarak yapılır (zamanlanmış iş gerekmez) |
+| Arkadaş ligi | Kodlu lig ayrı sekmede kaldı; ikisi aynı anda kullanılabilir |
+| Test | `tests/schema.test.js` gruplama, 30 kişi sınırı, yükselme/düşme ve sınır kademelerini gerçek Postgres'te (PGlite) doğrular |
+
 ## Yol haritası
 1. **İçerik:** doktor/eczane, Comune/Questura, öğretmenle görüşme, telefon, kira. Senaryo başına 8–10 kart.
 2. **AI koç (sunucu gerekir):** serbest sohbet ve kullanıcının yazdığı özel durumlardan senaryo üretme ("Kendi durumunu yaz" listesi şimdiden toplanıyor). API anahtarı istemcide tutulmamalı.

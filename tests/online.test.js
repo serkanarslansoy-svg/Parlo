@@ -59,3 +59,26 @@ describe('createClient', () => {
     expect(errorMessage(new Error('network'))).toMatch(/İnternet/);
   });
 });
+
+import { divisionRows, tierOf, TIERS } from '../src/lib/online.js';
+
+describe('kademeli lig', () => {
+  const mk = (n, tier = 2) => Array.from({ length: n }, (_, i) => ({ tier, id: `p${i}`, name: `O${i}`, avatar: '🦊', color: '#12804A', week_points: 100 - i }));
+  it('ilk 7 yükselme, son 5 düşme bölgesinde', () => {
+    const { tier, rows } = divisionRows(mk(15), 'p3');
+    expect(tier).toBe(2);
+    expect(rows.filter((r) => r.zone === 'up')).toHaveLength(7);
+    expect(rows.slice(10).every((r) => r.zone === 'down')).toBe(true);
+    expect(rows[3].self).toBe(true);
+  });
+  it('küçük grupta düşme yok, en üst kademede yükselme yok, en altta düşme yok', () => {
+    expect(divisionRows(mk(8)).rows.some((r) => r.zone === 'down')).toBe(false);
+    expect(divisionRows(mk(15, 9)).rows.some((r) => r.zone === 'up')).toBe(false);
+    expect(divisionRows(mk(15, 0)).rows.some((r) => r.zone === 'down')).toBe(false);
+  });
+  it('kademe adları', () => {
+    expect(TIERS).toHaveLength(10);
+    expect(tierOf(0).name).toBe('Bronz');
+    expect(tierOf(99).name).toBe('Elmas');
+  });
+});
