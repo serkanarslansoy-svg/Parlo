@@ -14,6 +14,10 @@ import { renderProgress } from './screens/progress.js';
 import { renderResult } from './screens/result.js';
 import { renderProfiles } from './screens/profiles.js';
 import { renderLeague } from './screens/league.js';
+import { renderDay, renderProgram } from './screens/day.js';
+import { renderLearn } from './screens/learn.js';
+import { renderDrill } from './screens/drill.js';
+import { renderFix } from './screens/fix.js';
 import { createClient, scoreRow, normalizeCode, isValidCode, newIdentity } from './lib/online.js';
 
 const TABS = [
@@ -25,7 +29,7 @@ const TABS = [
 ];
 
 // Tam ekran akışlar: alt menü gizlenir, böylece yazı kutusu ve butonlar menünün altında kalmaz.
-const FULLSCREEN = new Set(['chat', 'review', 'result', 'profiles']);
+const FULLSCREEN = new Set(['chat', 'review', 'result', 'profiles', 'learn', 'drill', 'fix']);
 
 const db = loadProfiles();
 
@@ -39,6 +43,7 @@ const ctx = {
   state: db.active ? db.data[db.active] : freshState(),
   get profile() { return activeProfile(db); },
   lastResult: null,
+  flash: null, // bir sonraki ekranda bir kez gösterilen kısa mesaj
   persist() {
     if (db.active) db.data[db.active] = ctx.state;
     saveProfiles(db);
@@ -105,6 +110,11 @@ function render() {
     notebook: () => renderNotebook(ctx),
     progress: () => renderProgress(ctx),
     result: () => renderResult(ctx),
+    day: () => renderDay(ctx, param),
+    program: () => renderProgram(ctx),
+    learn: () => renderLearn(ctx, param),
+    drill: () => renderDrill(ctx, param),
+    fix: () => renderFix(ctx, param),
   };
   const view = (screens[route] || screens.home)();
   main.replaceChildren(view);

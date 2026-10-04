@@ -7,6 +7,8 @@ import { stateOf } from '../lib/profiles.js';
 import { tierOf, RULES } from '../lib/online.js';
 import { weekKeys } from '../lib/points.js';
 import { topbar, speakBtn, greeting, avatar } from '../ui.js';
+import { STEPS, TOTAL_DAYS, currentDay, dayPlan, weekOf, nextStep, isStepDone, waitsForTomorrow } from '../lib/program.js';
+import { stepRoute } from './day.js';
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 const DAYS = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
@@ -77,6 +79,34 @@ function leagueCard(ctx) {
     h('div', { class: 'lc-row' },
       rows.slice(0, 5).map((r) => h('span', { class: `mini ${r.profile.id === ctx.db.active ? 'me' : ''}` }, avatar(r.profile, 28), h('b', {}, r.points)))),
     h('p', { class: 'lc-line' }, line, icon('chevron')));
+}
+
+function programCard(ctx) {
+  const n = currentDay(ctx.state);
+  if (!n) {
+    return h('button', { class: 'card program-card done', onclick: () => ctx.go('program') },
+      h('p', { class: 'eyebrow' }, '30 günlük program'), h('h2', {}, 'Tamamlandı 🏆'),
+      h('p', { class: 'small' }, 'Artık serbest konuşma ve senaryolarla devam et.'));
+  }
+  const plan = dayPlan(n);
+  const nxt = nextStep(ctx.state, n);
+  const started = STEPS.some((s) => isStepDone(ctx.state, n, s.id));
+  const wait = waitsForTomorrow(ctx.state, n, today());
+  return h('article', { class: 'card program-card' },
+    h('div', { class: 'row between' },
+      h('p', { class: 'eyebrow' }, `30 günlük program · ${weekOf(n).week}. hafta`),
+      h('button', { class: 'link small', onclick: () => ctx.go('program') }, 'Tüm program')),
+    h('h2', {}, h('span', { class: 'day-n' }, `Gün ${n}`), h('span', { class: 'day-of' }, ` / ${TOTAL_DAYS}`), ` · ${plan.title}`),
+    h('p', { class: 'small' }, plan.focus),
+    h('ol', { class: 'pc-steps' }, STEPS.map((s) => h('li', { class: isStepDone(ctx.state, n, s.id) ? 'on' : nxt?.id === s.id ? 'now' : '' },
+      icon(isStepDone(ctx.state, n, s.id) ? 'check' : s.icon), h('span', {}, s.label), h('small', {}, `${s.min} dk`)))),
+    wait ? h('p', { class: 'small pc-note' }, 'Bugünkü günü bitirdin. Yeni gün yarın daha verimli olur.') : null,
+    h('button', { class: 'btn mission-cta', onclick: () => ctx.go(wait ? `day/${n}` : stepRoute(n, nxt.id)) },
+      icon(wait ? 'clock' : nxt.icon),
+      h('span', { class: 'grow cta-text' },
+        h('span', {}, wait ? 'Yine de devam et' : started ? `${nxt.label} adımına geç` : `Gün ${n}'e başla`),
+        h('span', { class: 'sub' }, `${STEPS.reduce((a, s) => a + s.min, 0)} dakikalık 4 adım`)),
+      icon('arrow')));
 }
 
 function missionCard(ctx) {
@@ -195,7 +225,8 @@ export function renderHome(ctx) {
         s ? h('span', { class: 'chip terra' }, icon('flame'), `${s} gün kesintisiz pratik`) : null),
       h('h1', {}, `${greeting(now)}, ${ctx.profile.name}!\u00a0${now.getHours() < 14 ? '☀️' : '🌙'}`)),
     leagueCard(ctx),
-    missionCard(ctx),
+    programCard(ctx),
+    currentDay(state) ? null : missionCard(ctx),
     recallCard(ctx),
     scenesStrip(ctx),
     cultureCard(ctx),

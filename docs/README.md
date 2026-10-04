@@ -54,8 +54,18 @@
 | Arkadaş ligi | Kodlu lig ayrı sekmede kaldı; ikisi aynı anda kullanılabilir |
 | Test | `tests/schema.test.js` gruplama, 30 kişi sınırı, yükselme/düşme ve sınır kademelerini gerçek Postgres'te (PGlite) doğrular |
 
+## v0.7: 30 günlük program
+| Konu | Karar |
+|---|---|
+| Yapı | Ana sayfada "Gün N / 30" kartı; her gün 4 adım (3+4+6+2 dk). Önceki gün bitmeden sonraki açılmaz |
+| Tekrar | Yeni kalıp adımında öğrenilen cümleler ertesi gün kutuya girer (Leitner 1 → 3 → 7 gün) |
+| Konuşma | Sahne günlerinde mevcut sohbet; diğer günlerde soru-cevap pratiği (kendi cevabını söyle, örnekle kıyasla) |
+| Hata defteri | Tekrarda yanlış ve sohbette yardımla geçilen cümleler günün hatalarına yazılır; 4. adımda en önemli 3'ü (önce konuşma hataları) 3 kez söylenir, kart olmayanlar Cümlelerim'e eklenir |
+| XP | Yeni cümle +2, rahat cevap +10, zorlanarak +5, gün bitince +30 (günde bir kez) |
+| Ritim | Bir gün biter bitmez sonraki açık ama "yarın daha verimli" uyarısı gösterilir |
+
 ## Yol haritası
-1. **İçerik:** doktor/eczane, Comune/Questura, öğretmenle görüşme, telefon, kira. Senaryo başına 8–10 kart.
+1. **İçerik:** doktor, Comune/Questura, öğretmenle görüşme, telefon, kira. Senaryo başına 8–10 kart.
 2. **AI koç (sunucu gerekir):** serbest sohbet ve kullanıcının yazdığı özel durumlardan senaryo üretme ("Kendi durumunu yaz" listesi şimdiden toplanıyor). API anahtarı istemcide tutulmamalı.
 3. **Telaffuz geri bildirimi:** konuşma tanıma sonucunu hedef cümleyle kıyaslayıp kelime bazında işaretleme.
 4. **Bildirim:** akşam hatırlatması (PWA push).

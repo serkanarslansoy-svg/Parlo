@@ -7,9 +7,16 @@ import { today, touchDay } from '../lib/store.js';
 import { speakBtn } from '../ui.js';
 import { award, POINTS } from '../lib/points.js';
 import { claimDailyBonus } from './home.js';
+import { completeStep, addMistake, learnedBefore } from '../lib/program.js';
 
-function makeQueue(state, mode) {
+function makeQueue(state, mode, progN) {
   const t = today();
+  if (progN) {
+    // Program: vadesi gelenler (1-3-7 kuralı); yoksa önceki günlerin en zayıf cümleleri.
+    const due = Object.entries(state.cards).filter(([id, c]) => cards[id] && isDue(c, t)).sort((a, b) => a[1].due.localeCompare(b[1].due) || a[1].box - b[1].box).map(([id]) => id);
+    if (due.length) return due.slice(0, 10);
+    return learnedBefore(progN).filter((id) => state.cards[id]).sort((a, b) => state.cards[a].box - state.cards[b].box).slice(0, 5);
+  }
   if (mode === 'due') {
     return Object.entries(state.cards)
       .filter(([id, c]) => cards[id] && isDue(c, t))
@@ -22,8 +29,23 @@ function makeQueue(state, mode) {
 
 export function renderReview(ctx, query) {
   const daily = query.get('daily') === '1';
-  const queue = makeQueue(ctx.state, query.get('mode'));
-  const back = () => ctx.go('home');
+  const progN = Number(query.get('program')) || null;
+  const queue = makeQueue(ctx.state, query.get('mode'), progN);
+  const back = () => ctx.go(progN ? `day/${progN}` : 'home');
+
+  if (!queue.length && progN) {
+    const skip = () => {
+      completeStep(ctx.state, progN, 'review', today());
+      ctx.persist();
+      ctx.flash = 'Tekrar adımı tamam. Bugün tekrar edilecek cümle yoktu.';
+      ctx.go(`day/${progN}`);
+    };
+    return h('div', { class: 'screen full' },
+      h('header', { class: 'topbar' }, h('button', { class: 'icon-btn plain', 'aria-label': 'Geri', onclick: back }, icon('back')), h('h3', { class: 'grow' }, `Gün ${progN} · Tekrar`)),
+      h('div', { class: 'card empty stack' }, h('p', { style: 'font-size:40px' }, '🌱'), h('h2', {}, 'Henüz tekrar edilecek cümle yok'),
+        h('p', {}, 'Bugün öğrendiğin cümleler yarın, 3 gün ve 7 gün sonra burada tekrar karşına çıkacak.'),
+        h('button', { class: 'btn block', onclick: skip }, 'Sonraki adım', icon('arrow'))));
+  }
 
   if (!queue.length) {
     return h('div', { class: 'screen full' },
@@ -124,6 +146,15 @@ export function renderReview(ctx, query) {
     pos += 1;
     if (pos < queue.length) { question(); window.scrollTo(0, 0); return; }
     touchDay(ctx.state, { review: results.length, dailyReview: daily });
+    if (progN) {
+      for (const r of results) if (!r.ok) addMistake(ctx.state, progN, cards[r.id].it, cards[r.id].tr);
+      const { bonus } = completeStep(ctx.state, progN, 'review', today());
+      ctx.persist();
+      const xp = results.reduce((s, r) => s + r.pts, 0) + bonus;
+      ctx.flash = `Tekrar tamam: ${results.filter((r) => r.ok).length}/${results.length} doğru · +${xp} XP`;
+      ctx.go(`day/${progN}`);
+      return;
+    }
     const bonus = claimDailyBonus(ctx.state);
     ctx.persist();
     ctx.lastResult = { type: 'review', results, daily, bonus, points: results.reduce((s, r) => s + r.pts, 0) + bonus };
@@ -135,7 +166,7 @@ export function renderReview(ctx, query) {
     h('header', { class: 'topbar' },
       h('div', { class: 'row grow' },
         h('button', { class: 'icon-btn plain', 'aria-label': 'Geri', onclick: back }, icon('back')),
-        h('div', {}, h('p', { class: 'small muted' }, daily ? 'Günün dersi · 1/2' : 'Tekrar kutusu'), h('h3', {}, 'Hızlı tekrar'))),
+        h('div', {}, h('p', { class: 'small muted' }, progN ? `Gün ${progN} · 1. adım` : daily ? 'Günün dersi · 1/2' : 'Tekrar kutusu'), h('h3', {}, 'Hızlı tekrar'))),
       counter),
     segments,
     h('h1', {}, 'Hadi hatırlayalım!'),

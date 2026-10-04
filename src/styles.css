@@ -501,3 +501,55 @@ button.card.compact { display: flex; text-align: left; align-items: center; gap:
 .tier-news.up { background: var(--green-tint); border-color: #b9dcc7; }
 .tier-news.down { background: var(--terracotta-tint); border-color: #f3c4b9; }
 .league-card[style*='--t'] { background: radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--t) 55%, #0b3d2a) 0%, var(--green-deep) 60%, #072a1d 100%); }
+
+/* ---------- 30 günlük program ---------- */
+.flash { display: flex; gap: 10px; align-items: flex-start; background: var(--green-tint); border-color: transparent; box-shadow: none; color: var(--green-deep); font-weight: 600; }
+.flash .ico { flex: none; margin-top: 2px; }
+.day-hero { background: var(--green-deep); color: #fff; border-radius: var(--r-lg); padding: 20px; display: grid; gap: 6px; }
+.day-hero .eyebrow { color: #b9dccb; }
+.day-hero h1 { color: #fff; line-height: 1; }
+.day-hero h2 { color: #fff; font-size: 1.3rem; }
+.day-hero p { color: #d7ebe0; margin: 0; }
+.day-n { font-family: var(--font-display); font-weight: 800; }
+.day-of { opacity: 0.6; font-weight: 600; font-size: 0.7em; }
+.day-track { display: grid; grid-template-columns: repeat(30, 1fr); gap: 3px; margin-top: 10px; }
+.day-track i { height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.18); }
+.day-track i.on { background: var(--gold); }
+.day-track i.now { background: #fff; }
+.day-step { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px; text-align: left; font: inherit; color: inherit; background: var(--surface); border: 1.5px solid var(--sand); border-radius: var(--r-md); box-shadow: var(--shadow); cursor: pointer; }
+.day-step:disabled { opacity: 0.55; cursor: default; }
+.day-step.current { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-tint); }
+.day-step.done { background: var(--cream); box-shadow: none; }
+.day-step .chev { color: var(--muted); }
+.ds-num { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--cream); font-weight: 800; color: var(--green-deep); }
+.day-step.current .ds-num { background: var(--green); color: #fff; }
+.day-step.done .ds-num { background: var(--green); color: #fff; }
+.ds-title { display: flex; gap: 8px; align-items: baseline; font-weight: 700; }
+.ds-min { font-size: 0.75rem; font-weight: 600; color: var(--muted); }
+.ds-sub { display: block; font-size: 0.85rem; color: var(--muted); line-height: 1.35; margin-top: 2px; }
+.done-card { text-align: center; background: var(--sun-tint); border-color: #f1e3b8; }
+.gate { border-left: 4px solid var(--gold); }
+.day-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+.day-chip { position: relative; display: grid; gap: 2px; padding: 10px; min-height: 76px; text-align: left; font: inherit; color: inherit; background: var(--surface); border: 1.5px solid var(--sand); border-radius: var(--r-md); cursor: pointer; }
+.day-chip:disabled { opacity: 0.45; cursor: default; }
+.day-chip.done { background: var(--green-tint); border-color: transparent; }
+.day-chip.now { border-color: var(--green); box-shadow: 0 0 0 3px var(--green-tint); }
+.dc-n { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--green-deep); }
+.dc-t { font-size: 0.75rem; line-height: 1.25; color: var(--muted); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.dc-gate { position: absolute; top: 8px; right: 8px; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; color: var(--gold-ink); }
+.program-card { display: grid; gap: 10px; background: linear-gradient(160deg, #fff 0%, var(--green-tint) 100%); }
+button.program-card { text-align: left; font: inherit; cursor: pointer; }
+.program-card h2 { font-size: 1.35rem; }
+.program-card .day-n { color: var(--green); }
+.pc-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.pc-steps li { display: grid; justify-items: center; gap: 2px; padding: 8px 4px; border-radius: var(--r-sm); background: rgba(255, 255, 255, 0.7); font-size: 0.72rem; font-weight: 600; text-align: center; line-height: 1.2; color: var(--muted); }
+.pc-steps li small { font-weight: 500; }
+.pc-steps li.on { background: var(--green); color: #fff; }
+.pc-steps li.now { background: #fff; color: var(--green-deep); box-shadow: inset 0 0 0 1.5px var(--green); }
+.pc-note { color: var(--green-deep); }
+.learn-card { gap: 10px; }
+.learn-it { font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; line-height: 1.25; margin: 0; color: var(--green-deep); }
+.say-dots { display: flex; gap: 6px; }
+.say-dots i { width: 14px; height: 14px; border-radius: 50%; background: var(--sand); }
+.say-dots i.on { background: var(--green); }
+.btn.live { animation: pulse 1.2s ease-in-out infinite; }

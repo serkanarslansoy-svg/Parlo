@@ -7,6 +7,7 @@ import { today, touchDay } from '../lib/store.js';
 import { speakBtn, brandMark } from '../ui.js';
 import { award, POINTS } from '../lib/points.js';
 import { claimDailyBonus } from './home.js';
+import { completeStep, addMistake } from '../lib/program.js';
 
 /** Alt sayfa (bottom sheet). Kapatma fonksiyonu döner. */
 export function openSheet(...children) {
@@ -70,6 +71,7 @@ export function renderChat(ctx, sceneId, query) {
   const scene = sceneById(sceneId);
   if (!scene) { ctx.go('scenes'); return h('div'); }
   const daily = query.get('daily') === '1';
+  const progN = Number(query.get('program')) || null;
 
   const run = { node: scene.start, steps: [], helpUsed: false, tries: 0, finished: false };
   const slow = () => Boolean(ctx.state.settings?.slow);
@@ -121,9 +123,18 @@ export function renderChat(ctx, sceneId, query) {
     const bonus = claimDailyBonus(st, t);
     ctx.persist();
     ctx.lastResult = { type: 'scene', sceneId: scene.id, steps: run.steps, daily, bonus, sceneBonus, points: run.steps.reduce((s, x) => s + x.pts, 0) + sceneBonus + bonus };
+    if (progN) {
+      for (const step of run.steps) if (!step.solo) addMistake(st, progN, step.model, step.tr);
+      const done = completeStep(st, progN, 'talk', t);
+      ctx.persist();
+      const xp = ctx.lastResult.points + done.bonus;
+      ctx.flash = `Konuşma tamam: ${run.steps.filter((x) => x.solo).length}/${run.steps.length} adım yardımsız · +${xp} XP`;
+    }
     log.append(h('div', { class: 'system' }, 'Görev tamamlandı 🎉'));
     helpers.replaceChildren();
-    dock.replaceChildren(h('button', { class: 'btn block', onclick: () => ctx.go('result') }, 'Sonucu gör', icon('arrow')));
+    dock.replaceChildren(progN
+      ? h('button', { class: 'btn block', onclick: () => ctx.go(`day/${progN}`) }, 'Sonraki adım', icon('arrow'))
+      : h('button', { class: 'btn block', onclick: () => ctx.go('result') }, 'Sonucu gör', icon('arrow')));
     scrollDown();
   }
 
@@ -131,7 +142,7 @@ export function renderChat(ctx, sceneId, query) {
     bubble.markOk();
     const solo = !run.helpUsed && run.tries === 0;
     const pts = award(ctx.state, solo ? POINTS.stepSolo : POINTS.stepHelp, today());
-    run.steps.push({ said: text, model: intent.model, cando: intent.cando || null, solo, pts });
+    run.steps.push({ said: text, model: intent.model, tr: intent.tr, cando: intent.cando || null, solo, pts });
     bubble.addPoints?.(pts);
     run.helpUsed = false;
     run.tries = 0;
@@ -269,7 +280,7 @@ export function renderChat(ctx, sceneId, query) {
     h('div', { class: 'field' }, input, clearBtn),
     h('button', { class: 'square send', 'aria-label': 'Gönder', onclick: submit }, icon('send')));
 
-  const back = () => (daily ? ctx.go('home') : ctx.go('scenes'));
+  const back = () => (progN ? ctx.go(`day/${progN}`) : daily ? ctx.go('home') : ctx.go('scenes'));
   const view = h('div', { class: 'chat' },
     h('header', { class: 'topbar' },
       h('div', { class: 'row grow' },

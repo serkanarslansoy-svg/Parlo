@@ -22,6 +22,9 @@ Vite + vanilla JS PWA. Framework yok; ekranlar `src/lib/dom.js` içindeki `h()` 
   - `model` her zaman doğru yazımlı İtalyanca olmalı; kullanıcıya gösterilir ve seslendirilir. Test, model cümlenin kendi niyetiyle eşleştiğini doğrular.
   - `cando`: sonuç ve gelişim ekranında "Gerçek hayat başarısı" olarak listelenir.
 - `patterns.json`: kalıp defteri; kartlar `pattern` alanıyla bağlanır.
+- `program.json`: 30 günlük program. `days[] = {day, week, title, focus, learn: [kart id], talk: {scene} | {title, drill: [{q, tr, models[]}]}, words?, change?, gate?}`. Her kart bir sahnede ya da bir günün `learn` listesinde kullanılmalı (test kontrol eder).
+  - İlerleme `state.program.days[N] = {steps: {review, learn, talk, fix}, mistakes: [{it, tr}], completedOn}`; mantık `src/lib/program.js`.
+  - Adım ekranları: tekrar `review?program=N`, yeni kalıp `learn/N`, konuşma `chat/sahne?program=N` ya da `drill/N`, hata `fix/N`. Bittiğinde `ctx.flash` mesajıyla `day/N`'e döner.
 
 ## Yapılmayanlar (bilinçli)
 - Serbest AI sohbeti ve telaffuz puanı yok; ikisi de sunucu tarafı gerektirir (bkz. `docs/README.md` yol haritası).
