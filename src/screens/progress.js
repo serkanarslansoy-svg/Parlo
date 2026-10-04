@@ -1,6 +1,7 @@
 import { h, icon } from '../lib/dom.js';
 import { scenes, cards } from '../content/index.js';
-import { streak, reset } from '../lib/store.js';
+import { streak, reset, today, isActiveDay } from '../lib/store.js';
+import { addDays } from '../lib/srs.js';
 import { topbar } from '../ui.js';
 
 const BUCKETS = [
@@ -9,6 +10,24 @@ const BUCKETS = [
   { label: 'Usta', test: (b) => b >= 3 && b <= 4 },
   { label: 'Kalıcı hafızada', test: (b) => b >= 5 },
 ];
+
+const WEEKDAYS = ['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'];
+
+function weekSection(state) {
+  const t = today();
+  const [y, m, d] = t.split('-').map(Number);
+  const offset = (new Date(y, m - 1, d).getDay() + 6) % 7; // Pazartesi = 0
+  const monday = addDays(t, -offset);
+  const days = WEEKDAYS.map((label, i) => {
+    const key = addDays(monday, i);
+    return { label, on: isActiveDay(state, key), isToday: key === t };
+  });
+  return h('section', { class: 'card stack' },
+    h('div', { class: 'row between' }, h('h3', {}, 'Bu hafta'), h('span', { class: 'small muted' }, `${days.filter((x) => x.on).length} / 7 gün`)),
+    h('div', { class: 'week' },
+      days.map((x) => h('div', {}, h('span', {}, x.label),
+        h('i', { class: `${x.on ? 'on' : ''} ${x.isToday ? 'today' : ''}`, 'aria-label': `${x.label}: ${x.on ? 'pratik yapıldı' : 'pratik yok'}` }, x.on ? icon('check') : '')))));
+}
 
 export function renderProgress(ctx) {
   const { state } = ctx;
@@ -42,6 +61,7 @@ export function renderProgress(ctx) {
     h('section', {}, h('p', { class: 'eyebrow' }, 'İlerlemem'), h('h1', {}, 'Gelişim'),
       h('p', { class: 'muted', style: 'margin-top:6px' }, 'Puan değil, gerçekten kurabildiğin cümleler önemli.')),
     h('div', { class: 'stats' }, stat(streak(state), 'gün seri'), stat(strong, 'cümle hafızada'), stat(runs, 'konuşma')),
+    weekSection(state),
     candoSection,
     memory,
     h('section', { class: 'card cream stack' },

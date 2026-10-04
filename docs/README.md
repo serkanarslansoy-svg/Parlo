@@ -9,8 +9,9 @@
 | Konu | Karar |
 |---|---|
 | Tasarım sistemi | Warm Mediterranean Editorial: fildişi zemin `#FAF9F6`, İtalyan yeşili `#238B68`, terakota `#D98765`, Epilogue + DM Sans |
+| Haftalık takvim | Ana sayfadan Gelişim sayfasına taşındı |
 | Menü | 4 sekme: Bugün · Senaryolar · Cümlelerim · Gelişim. Sohbet, tekrar ve sonuç tam ekran (alt menü yazı kutusunu kapatmasın) |
-| Ekranlar | Ana sayfa: sade versiyon (tek görev) · Senaryolar: "Gerçek Hayat Senaryoları" (kategori bölümleri, öne çıkan kart + kompakt liste, AI kartı) · Sohbet: restoran versiyonu · Öğretmen: düzeltme paneli · Tekrar: kelime dizme · Sonuç: "Missione completata" + gerçek hayat başarıları |
+| Ekranlar | Ana sayfa: "Günaydın" editoryal versiyon (misyon kartı, dünkü kalıplar, senaryo şeridi, kültür aynası) · Senaryolar: "Gerçek Hayat Senaryoları" (kategori bölümleri, öne çıkan kart + kompakt liste, AI kartı) · Sohbet: restoran versiyonu · Öğretmen: düzeltme paneli · Tekrar: kelime dizme · Sonuç: "Missione completata" + gerçek hayat başarıları |
 | Oyunlaştırma | XP kaldırıldı. Sadece hafif bir gün serisi ve "artık yapabiliyorsun" listesi var (DESIGN.md'deki "yetişkin ton" ilkesine uygun) |
 | Fotoğraflar | v0.3'te yok; senaryo kartlarında emoji + sıcak gradyan kullanılıyor (hafif, çevrimdışı çalışır) |
 | Hitap | Her senaryoda Lei/tu açıkça belirtiliyor; kültür notunda anlatılıyor |

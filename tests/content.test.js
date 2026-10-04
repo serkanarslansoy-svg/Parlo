@@ -44,6 +44,7 @@ describe.each(scenes.map((s) => [s.id, s]))('senaryo %s', (_, scene) => {
     expect(scene.cards, 'key, senaryonun kartlarından biri olmalı').toContain(scene.key);
     expect(CATEGORIES.map((c) => c.id)).toContain(scene.cat);
     expect(['Lei', 'tu']).toContain(scene.register);
+    expect(scene.mission, 'ana sayfa misyon başlığı').toBeTruthy();
   });
 });
 
