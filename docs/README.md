@@ -64,6 +64,15 @@
 | XP | Yeni cümle +2, rahat cevap +10, zorlanarak +5, gün bitince +30 (günde bir kez) |
 | Ritim | Bir gün biter bitmez sonraki açık ama "yarın daha verimli" uyarısı gösterilir |
 
+## v0.8: Cümlelerim = pratik alanı
+| Konu | Karar |
+|---|---|
+| Ne açılır | Bitirilen program günlerinin cümleleri (gün yarımken açılmaz) |
+| Türler | Yazmalı (TR → IT yaz, kelime kelime ipucu), seçmeli (4 seçenek, yön sırayla değişir), kaydırmalı (kartı çevir, sağa biliyorum / sola tekrar), eşleştirme (5'li tablolar), karışık |
+| Tekrar | 10'luk turlar, sınırsız "Bir tur daha". Zayıf ve az görülen cümle daha ağır basar; yanlış bilinen tur sonunda bir kez daha (yazmalı olarak) gelir |
+| XP | Doğru başına +1 (sınırsız tekrar ligi bozmasın diye düşük) |
+| Kalıp rehberi | Sayfanın altında, isteğe bağlı açılır |
+
 ## Yol haritası
 1. **İçerik:** doktor, Comune/Questura, öğretmenle görüşme, telefon, kira. Senaryo başına 8–10 kart.
 2. **AI koç (sunucu gerekir):** serbest sohbet ve kullanıcının yazdığı özel durumlardan senaryo üretme ("Kendi durumunu yaz" listesi şimdiden toplanıyor). API anahtarı istemcide tutulmamalı.

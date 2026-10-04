@@ -15,7 +15,7 @@ Az gramer, çok pratik: kalıbı öğren → hızlı tekrarla pekiştir → ger�
 - **Öğretmen paneli:** cevabın tutmazsa hangi parçanın eksik olduğunu gösterir (örn. "eksik: istek fiili"). İstersen ipucu ya da doğal bir cevap önerir.
 - **Ses (şimdilik kapalı):** dinleme ve mikrofon telefonlarda güvenilir çalışmadığı için kapatıldı; her şey yazıyla ilerliyor. Tekrar açmak için `src/lib/speech.js` içinde `AUDIO_ENABLED = true`.
 - **Aralıklı tekrar (Leitner):** doğru bildiğin cümle 1 → 3 → 7 → 14 → 30 gün sonra tekrar gelir, yanlışta başa döner.
-- **Kalıp defteri:** 14 temel kalıp, ustalık göstergesi ve kendi cümlelerin.
+- **Cümlelerim (pratik alanı):** bitirilen program günlerinin cümleleri açılır; yazmalı, seçmeli, kaydırmalı, eşleştirme ve karışık turlarla sınırsız tekrar. Zorlanılan cümleler daha sık gelir, yanlışlar tur sonunda bir kez daha sorulur. Altında kendi cümlelerin ve 14 kalıplık rehber.
 - **Gelişim:** "Artık bunları yapabiliyorsun" listesi, cümle hafızası, haftalık takvim.
 - **PWA:** telefona kurulabilir, çevrimdışı açılır. Veriler sadece cihazda (localStorage) tutulur.
 
@@ -40,7 +40,7 @@ Proje yapısı:
 src/
   content/        # Tüm içerik JSON: senaryolar, cümle kartları, kalıplar, kültür ipuçları
   lib/            # answer (cevap kontrolü), srs (aralıklı tekrar), store, speech, dom, icons
-  screens/        # home, day/program, learn, drill, fix, scenes, chat, review, notebook, progress, result, league
+  screens/        # home, day/program, learn, drill, fix, practice, scenes, chat, review, notebook, progress, result, league
   styles.css      # Warm Mediterranean tasarım token'ları
 tests/            # answer, srs ve içerik bütünlüğü testleri
 docs/             # konsept v2, tasarım sistemi (DESIGN.md), seçilen Stitch ekranları, kararlar

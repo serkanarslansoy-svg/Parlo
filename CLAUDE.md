@@ -24,6 +24,7 @@ Vite + vanilla JS PWA. Framework yok; ekranlar `src/lib/dom.js` içindeki `h()` 
 - `patterns.json`: kalıp defteri; kartlar `pattern` alanıyla bağlanır.
 - `program.json`: 30 günlük program. `days[] = {day, week, title, focus, learn: [kart id], talk: {scene} | {title, drill: [{q, tr, models[]}]}, words?, change?, gate?}`. Her kart bir sahnede ya da bir günün `learn` listesinde kullanılmalı (test kontrol eder).
   - İlerleme `state.program.days[N] = {steps: {review, learn, talk, fix}, mistakes: [{it, tr}], completedOn}`; mantık `src/lib/program.js`.
+  - Cümlelerim pratiği (`src/lib/practice.js`, `#/practice/<write|choose|swipe|match|mix>`): sadece bitirilen günlerin `learn` kartları; sonuçlar `state.practice[id] = {seen, ok}`, doğru başına +1 XP. SRS kutularını değiştirmez.
   - Adım ekranları: tekrar `review?program=N`, yeni kalıp `learn/N`, konuşma `chat/sahne?program=N` ya da `drill/N`, hata `fix/N`. Bittiğinde `ctx.flash` mesajıyla `day/N`'e döner.
 
 ## Yapılmayanlar (bilinçli)
