@@ -1423,5 +1423,236 @@
         "end": true
       }
     }
+  },
+  {
+    "id": "farmacia",
+    "it": "In farmacia",
+    "tr": "Eczanede",
+    "mission": "Derdini anlat, ilacını al",
+    "cat": "gunluk",
+    "emoji": "💊",
+    "level": "A2",
+    "minutes": 6,
+    "desc": "Şikâyetini anlat, ne zamandır sürdüğünü söyle, ilacın kullanımını ve reçeteyi sor.",
+    "persona": {
+      "name": "Elena",
+      "role": "Eczacı",
+      "avatar": "👩🏻‍⚕️"
+    },
+    "register": "Lei",
+    "culture": "İtalya'da eczaneler yeşil haç işaretiyle bilinir; gece ve tatilde açık olana «farmacia di turno» denir. Hafif rahatsızlıklarda önce eczacıya danışmak çok yaygındır.",
+    "cards": [
+      "far1",
+      "far2",
+      "far3",
+      "far4",
+      "far5"
+    ],
+    "key": "far1",
+    "start": "n1",
+    "nodes": {
+      "n1": {
+        "ai": "Buongiorno! Mi dica.",
+        "tr": "Günaydın! Buyurun, söyleyin.",
+        "goal": "Derdini anlat",
+        "hint": "Mi fa male la testa. — ya da — Mi serve qualcosa per la tosse.",
+        "intents": [
+          {
+            "model": "Mi serve qualcosa per la tosse.",
+            "tr": "Öksürük için bir şeye ihtiyacım var.",
+            "req": [
+              {
+                "label": "ihtiyaç",
+                "show": "Mi serve qualcosa per…",
+                "any": [
+                  "mi serve",
+                  "qualcosa per",
+                  "vorrei",
+                  "cerco"
+                ]
+              }
+            ],
+            "next": "n2",
+            "cando": "Ne istediğini söyledin"
+          },
+          {
+            "model": "Mi fa male la testa.",
+            "tr": "Başım ağrıyor.",
+            "req": [
+              {
+                "label": "şikâyet",
+                "show": "Mi fa male… / Ho la febbre",
+                "any": [
+                  "mi fa male",
+                  "fa male",
+                  "febbre",
+                  "tosse",
+                  "raffreddore",
+                  "dolore",
+                  "mal di"
+                ]
+              }
+            ],
+            "next": "n2",
+            "cando": "Şikâyetini anlattın"
+          }
+        ]
+      },
+      "n2": {
+        "ai": "Da quanto tempo?",
+        "tr": "Ne zamandan beri?",
+        "goal": "Ne zamandır sürdüğünü söyle",
+        "hint": "Da due giorni. — ya da — Da ieri.",
+        "intents": [
+          {
+            "model": "Da due giorni.",
+            "tr": "İki gündür.",
+            "req": [
+              {
+                "label": "süre",
+                "show": "da due giorni / da ieri",
+                "any": [
+                  "giorni",
+                  "giorno",
+                  "ieri",
+                  "oggi",
+                  "settimana",
+                  "stamattina",
+                  "stanotte"
+                ]
+              }
+            ],
+            "next": "n3",
+            "cando": "Ne zamandır sürdüğünü söyledin"
+          }
+        ]
+      },
+      "n3": {
+        "ai": "Ecco, prenda questo.",
+        "tr": "Buyurun, bunu alın.",
+        "goal": "Kullanımını sor",
+        "hint": "Quante volte al giorno?",
+        "intents": [
+          {
+            "model": "Quante volte al giorno?",
+            "tr": "Günde kaç kez?",
+            "req": [
+              {
+                "label": "kullanım sorusu",
+                "show": "Quante volte al giorno?",
+                "any": [
+                  "quante volte",
+                  "al giorno",
+                  "quando",
+                  "come",
+                  "ogni quanto"
+                ]
+              }
+            ],
+            "next": "n4",
+            "cando": "İlacın kullanımını sordun"
+          }
+        ]
+      },
+      "n4": {
+        "ai": "Due volte al giorno, dopo i pasti.",
+        "tr": "Günde iki kez, yemeklerden sonra.",
+        "goal": "Reçeteyi ya da fiyatı sor",
+        "hint": "Serve la ricetta? — ya da — Quanto costa?",
+        "intents": [
+          {
+            "model": "Serve la ricetta?",
+            "tr": "Reçete gerekiyor mu?",
+            "req": [
+              {
+                "label": "reçete",
+                "show": "Serve la ricetta?",
+                "any": [
+                  "ricetta"
+                ]
+              }
+            ],
+            "next": "n5",
+            "cando": "Reçete gerekip gerekmediğini sordun"
+          },
+          {
+            "model": "Quanto costa?",
+            "tr": "Ne kadar?",
+            "req": [
+              {
+                "label": "fiyat",
+                "show": "Quanto costa?",
+                "any": [
+                  "quanto",
+                  "costa",
+                  "quant e"
+                ]
+              }
+            ],
+            "next": "n6",
+            "cando": "Fiyatı sordun"
+          }
+        ]
+      },
+      "n5": {
+        "ai": "No, non serve. Sono sei euro e cinquanta.",
+        "tr": "Hayır, gerekmiyor. 6,50 euro.",
+        "goal": "Öde",
+        "hint": "Ecco, grazie. — ya da — Posso pagare con la carta?",
+        "intents": [
+          {
+            "model": "Ecco, grazie.",
+            "tr": "Buyurun, teşekkürler.",
+            "req": [
+              {
+                "label": "ödeme",
+                "show": "Ecco / Posso pagare con la carta?",
+                "any": [
+                  "ecco",
+                  "grazie",
+                  "carta",
+                  "pagare",
+                  "bancomat"
+                ]
+              }
+            ],
+            "next": "end",
+            "cando": "İlacını alıp ödedin"
+          }
+        ]
+      },
+      "n6": {
+        "ai": "Sono sei euro e cinquanta.",
+        "tr": "6,50 euro.",
+        "goal": "Öde",
+        "hint": "Ecco, grazie. — ya da — Posso pagare con la carta?",
+        "intents": [
+          {
+            "model": "Ecco, grazie.",
+            "tr": "Buyurun, teşekkürler.",
+            "req": [
+              {
+                "label": "ödeme",
+                "show": "Ecco / Posso pagare con la carta?",
+                "any": [
+                  "ecco",
+                  "grazie",
+                  "carta",
+                  "pagare",
+                  "bancomat"
+                ]
+              }
+            ],
+            "next": "end",
+            "cando": "İlacını alıp ödedin"
+          }
+        ]
+      },
+      "end": {
+        "ai": "Grazie a Lei. Guarisca presto!",
+        "tr": "Ben teşekkür ederim. Geçmiş olsun!",
+        "end": true
+      }
+    }
   }
 ]

@@ -196,5 +196,528 @@
     "pattern": "dove",
     "it": "Dov'è il bagno?",
     "tr": "Tuvalet nerede?"
+  },
+  {
+    "id": "g1a",
+    "scene": null,
+    "pattern": "voglio",
+    "it": "Voglio mangiare.",
+    "tr": "Yemek yemek istiyorum."
+  },
+  {
+    "id": "g1b",
+    "scene": null,
+    "pattern": "vorrei",
+    "it": "Vorrei un caffè, per favore.",
+    "tr": "Bir kahve rica ediyorum."
+  },
+  {
+    "id": "g1c",
+    "scene": null,
+    "pattern": "vorrei",
+    "it": "Vorrei pagare.",
+    "tr": "Ödemek istiyorum."
+  },
+  {
+    "id": "g1d",
+    "scene": null,
+    "pattern": "voglio",
+    "it": "Voglio imparare l'italiano.",
+    "tr": "İtalyanca öğrenmek istiyorum."
+  },
+  {
+    "id": "g2a",
+    "scene": null,
+    "pattern": "posso",
+    "it": "Posso sedermi qui?",
+    "tr": "Buraya oturabilir miyim?"
+  },
+  {
+    "id": "g2b",
+    "scene": null,
+    "pattern": "posso",
+    "it": "Posso avere il conto?",
+    "tr": "Hesabı alabilir miyim?"
+  },
+  {
+    "id": "g3a",
+    "scene": null,
+    "pattern": "devo",
+    "it": "Devo andare.",
+    "tr": "Gitmem lazım."
+  },
+  {
+    "id": "g3b",
+    "scene": null,
+    "pattern": "devo",
+    "it": "Domani devo lavorare.",
+    "tr": "Yarın çalışmam lazım."
+  },
+  {
+    "id": "g4a",
+    "scene": null,
+    "pattern": "ho",
+    "it": "Ho fame.",
+    "tr": "Acıktım."
+  },
+  {
+    "id": "g4b",
+    "scene": null,
+    "pattern": "ho",
+    "it": "Ho una domanda.",
+    "tr": "Bir sorum var."
+  },
+  {
+    "id": "g4c",
+    "scene": null,
+    "pattern": "ho",
+    "it": "Ho due figli.",
+    "tr": "İki çocuğum var."
+  },
+  {
+    "id": "g4d",
+    "scene": null,
+    "pattern": "ho",
+    "it": "Ho un problema.",
+    "tr": "Bir sorunum var."
+  },
+  {
+    "id": "g5a",
+    "scene": null,
+    "pattern": "sono",
+    "it": "Sono turco.",
+    "tr": "Türküm.",
+    "alt": [
+      "Sono turca."
+    ]
+  },
+  {
+    "id": "g5b",
+    "scene": null,
+    "pattern": "sono",
+    "it": "Sono stanco.",
+    "tr": "Yorgunum.",
+    "alt": [
+      "Sono stanca."
+    ]
+  },
+  {
+    "id": "g5c",
+    "scene": null,
+    "pattern": "sono",
+    "it": "Sono qui per lavoro.",
+    "tr": "Burada iş için bulunuyorum."
+  },
+  {
+    "id": "g6a",
+    "scene": null,
+    "pattern": "puo",
+    "it": "Può aiutarmi?",
+    "tr": "Bana yardım edebilir misiniz?",
+    "alt": [
+      "Mi può aiutare?"
+    ]
+  },
+  {
+    "id": "g7a",
+    "scene": null,
+    "pattern": "dove",
+    "it": "Dov'è la stazione?",
+    "tr": "İstasyon nerede?"
+  },
+  {
+    "id": "g8a",
+    "scene": null,
+    "pattern": "devo",
+    "it": "Oggi devo lavorare.",
+    "tr": "Bugün çalışmam lazım."
+  },
+  {
+    "id": "g8b",
+    "scene": null,
+    "pattern": "voglio",
+    "it": "Domani voglio andare al mare.",
+    "tr": "Yarın denize gitmek istiyorum."
+  },
+  {
+    "id": "g8c",
+    "scene": null,
+    "pattern": "posso",
+    "it": "Adesso non posso parlare.",
+    "tr": "Şimdi konuşamam."
+  },
+  {
+    "id": "g8d",
+    "scene": null,
+    "pattern": "devo",
+    "it": "Prima devo mangiare, poi posso venire.",
+    "tr": "Önce yemek yemem lazım, sonra gelebilirim."
+  },
+  {
+    "id": "g8e",
+    "scene": null,
+    "pattern": "vorrei",
+    "it": "Vorrei comprare il pane.",
+    "tr": "Ekmek almak istiyorum."
+  },
+  {
+    "id": "g9a",
+    "scene": null,
+    "pattern": "dove",
+    "it": "Dove sono le chiavi?",
+    "tr": "Anahtarlar nerede?"
+  },
+  {
+    "id": "g9b",
+    "scene": null,
+    "pattern": null,
+    "it": "Non trovo il telefono.",
+    "tr": "Telefonu bulamıyorum."
+  },
+  {
+    "id": "g9c",
+    "scene": null,
+    "pattern": "ho",
+    "it": "Ho il biglietto.",
+    "tr": "Biletim var."
+  },
+  {
+    "id": "g9d",
+    "scene": null,
+    "pattern": "mi_serve",
+    "it": "Mi serve il documento.",
+    "tr": "Kimliğe ihtiyacım var."
+  },
+  {
+    "id": "g10a",
+    "scene": null,
+    "pattern": "quanto",
+    "it": "Quanto costa il formaggio?",
+    "tr": "Peynir ne kadar?"
+  },
+  {
+    "id": "g10b",
+    "scene": null,
+    "pattern": "per_favore",
+    "it": "Un sacchetto, per favore.",
+    "tr": "Bir poşet lütfen."
+  },
+  {
+    "id": "g10c",
+    "scene": null,
+    "pattern": "dove",
+    "it": "Dov'è il latte?",
+    "tr": "Süt nerede?"
+  },
+  {
+    "id": "g10d",
+    "scene": null,
+    "pattern": "per_favore",
+    "it": "Lo scontrino, per favore.",
+    "tr": "Fiş lütfen."
+  },
+  {
+    "id": "g11a",
+    "scene": null,
+    "pattern": "ho",
+    "it": "Mio figlio ha otto anni.",
+    "tr": "Oğlum sekiz yaşında."
+  },
+  {
+    "id": "g11b",
+    "scene": null,
+    "pattern": null,
+    "it": "Mia moglie lavora qui.",
+    "tr": "Eşim burada çalışıyor."
+  },
+  {
+    "id": "g11c",
+    "scene": null,
+    "pattern": "sono",
+    "it": "È il mio collega.",
+    "tr": "O benim iş arkadaşım."
+  },
+  {
+    "id": "g11d",
+    "scene": null,
+    "pattern": "devo",
+    "it": "Devo parlare con l'insegnante.",
+    "tr": "Öğretmenle konuşmam lazım."
+  },
+  {
+    "id": "g12a",
+    "scene": null,
+    "pattern": "devo",
+    "it": "Domani devo andare in comune.",
+    "tr": "Yarın belediyeye gitmem lazım."
+  },
+  {
+    "id": "g12b",
+    "scene": null,
+    "pattern": null,
+    "it": "Lavoro in un ufficio.",
+    "tr": "Bir ofiste çalışıyorum."
+  },
+  {
+    "id": "g12c",
+    "scene": null,
+    "pattern": "dove",
+    "it": "Dov'è la fermata?",
+    "tr": "Durak nerede?"
+  },
+  {
+    "id": "g12d",
+    "scene": null,
+    "pattern": "sono",
+    "it": "La banca è chiusa.",
+    "tr": "Banka kapalı."
+  },
+  {
+    "id": "g13a",
+    "scene": null,
+    "pattern": "devo",
+    "it": "Non posso venire perché devo lavorare.",
+    "tr": "Gelemem çünkü çalışmam lazım."
+  },
+  {
+    "id": "g13b",
+    "scene": null,
+    "pattern": null,
+    "it": "Quando finisce la lezione?",
+    "tr": "Ders ne zaman bitiyor?"
+  },
+  {
+    "id": "g13c",
+    "scene": null,
+    "pattern": null,
+    "it": "A che ora apre la farmacia?",
+    "tr": "Eczane saat kaçta açılıyor?"
+  },
+  {
+    "id": "g13d",
+    "scene": null,
+    "pattern": null,
+    "it": "Come si dice in italiano?",
+    "tr": "İtalyancası nasıl söylenir?"
+  },
+  {
+    "id": "g14a",
+    "scene": null,
+    "pattern": "sono",
+    "it": "È troppo caro.",
+    "tr": "Çok pahalı."
+  },
+  {
+    "id": "g14b",
+    "scene": null,
+    "pattern": "sono",
+    "it": "Questo posto è libero?",
+    "tr": "Bu yer boş mu?"
+  },
+  {
+    "id": "g14c",
+    "scene": null,
+    "pattern": null,
+    "it": "Oggi fa freddo.",
+    "tr": "Bugün hava soğuk."
+  },
+  {
+    "id": "g14d",
+    "scene": null,
+    "pattern": "sono",
+    "it": "La casa è piccola ma bella.",
+    "tr": "Ev küçük ama güzel."
+  },
+  {
+    "id": "g22a",
+    "scene": null,
+    "pattern": null,
+    "it": "Non ho capito.",
+    "tr": "Anlamadım."
+  },
+  {
+    "id": "g22b",
+    "scene": null,
+    "pattern": "puo",
+    "it": "Può parlare più piano?",
+    "tr": "Daha yavaş konuşabilir misiniz?"
+  },
+  {
+    "id": "g22c",
+    "scene": null,
+    "pattern": null,
+    "it": "Cosa vuol dire?",
+    "tr": "Ne demek?"
+  },
+  {
+    "id": "g22d",
+    "scene": null,
+    "pattern": "per_favore",
+    "it": "Un momento, per favore.",
+    "tr": "Bir dakika lütfen."
+  },
+  {
+    "id": "g23a",
+    "scene": null,
+    "pattern": null,
+    "it": "Mi sveglio alle sette.",
+    "tr": "Saat yedide uyanırım."
+  },
+  {
+    "id": "g23b",
+    "scene": null,
+    "pattern": null,
+    "it": "Vado al lavoro in tram.",
+    "tr": "İşe tramvayla giderim."
+  },
+  {
+    "id": "g23c",
+    "scene": null,
+    "pattern": null,
+    "it": "Lavoro fino alle cinque.",
+    "tr": "Saat beşe kadar çalışırım."
+  },
+  {
+    "id": "g23d",
+    "scene": null,
+    "pattern": null,
+    "it": "La sera cucino.",
+    "tr": "Akşamları yemek yaparım."
+  },
+  {
+    "id": "g24a",
+    "scene": null,
+    "pattern": null,
+    "it": "Ieri ho lavorato.",
+    "tr": "Dün çalıştım."
+  },
+  {
+    "id": "g24b",
+    "scene": null,
+    "pattern": null,
+    "it": "Ho fatto la spesa.",
+    "tr": "Alışveriş yaptım."
+  },
+  {
+    "id": "g24c",
+    "scene": null,
+    "pattern": null,
+    "it": "Sono andato al supermercato.",
+    "tr": "Süpermarkete gittim.",
+    "alt": [
+      "Sono andata al supermercato."
+    ]
+  },
+  {
+    "id": "g24d",
+    "scene": null,
+    "pattern": null,
+    "it": "Ho dormito poco.",
+    "tr": "Az uyudum."
+  },
+  {
+    "id": "g25a",
+    "scene": null,
+    "pattern": null,
+    "it": "Domani vado dal medico.",
+    "tr": "Yarın doktora gidiyorum."
+  },
+  {
+    "id": "g25b",
+    "scene": null,
+    "pattern": "voglio",
+    "it": "Sabato voglio andare al mare.",
+    "tr": "Cumartesi denize gitmek istiyorum."
+  },
+  {
+    "id": "g25c",
+    "scene": null,
+    "pattern": "devo",
+    "it": "La settimana prossima devo lavorare.",
+    "tr": "Gelecek hafta çalışmam lazım."
+  },
+  {
+    "id": "g26a",
+    "scene": null,
+    "pattern": null,
+    "it": "Mi piace l'Italia.",
+    "tr": "İtalya'yı seviyorum."
+  },
+  {
+    "id": "g26b",
+    "scene": null,
+    "pattern": null,
+    "it": "Non mi piace il freddo.",
+    "tr": "Soğuğu sevmem."
+  },
+  {
+    "id": "g26c",
+    "scene": null,
+    "pattern": null,
+    "it": "Preferisco il tè.",
+    "tr": "Çayı tercih ederim."
+  },
+  {
+    "id": "g26d",
+    "scene": null,
+    "pattern": null,
+    "it": "Secondo me è caro.",
+    "tr": "Bence pahalı."
+  },
+  {
+    "id": "g27a",
+    "scene": null,
+    "pattern": null,
+    "it": "Ho perso il portafoglio.",
+    "tr": "Cüzdanımı kaybettim."
+  },
+  {
+    "id": "g27b",
+    "scene": null,
+    "pattern": "devo",
+    "it": "Cosa devo fare?",
+    "tr": "Ne yapmam lazım?"
+  },
+  {
+    "id": "g27c",
+    "scene": null,
+    "pattern": "dove",
+    "it": "Dov'è la polizia?",
+    "tr": "Polis nerede?"
+  },
+  {
+    "id": "far1",
+    "scene": "farmacia",
+    "pattern": null,
+    "it": "Mi fa male la testa.",
+    "tr": "Başım ağrıyor."
+  },
+  {
+    "id": "far2",
+    "scene": "farmacia",
+    "pattern": "ho",
+    "it": "Ho la febbre da due giorni.",
+    "tr": "İki gündür ateşim var."
+  },
+  {
+    "id": "far3",
+    "scene": "farmacia",
+    "pattern": "mi_serve",
+    "it": "Mi serve qualcosa per la tosse.",
+    "tr": "Öksürük için bir şeye ihtiyacım var."
+  },
+  {
+    "id": "far4",
+    "scene": "farmacia",
+    "pattern": null,
+    "it": "Quante volte al giorno?",
+    "tr": "Günde kaç kez?"
+  },
+  {
+    "id": "far5",
+    "scene": "farmacia",
+    "pattern": null,
+    "it": "Serve la ricetta?",
+    "tr": "Reçete gerekiyor mu?"
   }
 ]

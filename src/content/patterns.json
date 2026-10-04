@@ -1,14 +1,16 @@
 [
-  { "id": "per_favore", "head": "…, per favore", "slot": "", "tr": "… lütfen", "cat": "istek", "note": "Bir şey istemenin en kısa ve kibar yolu. Barda, fırında, gişede işe yarar." },
-  { "id": "vorrei", "head": "Vorrei", "slot": "+ [isim / fiil]", "tr": "… istiyorum (kibarca)", "cat": "istek", "note": "«Voglio» (istiyorum) doğru ama sert duyulur. Dükkânda ve restoranda «Vorrei» kullan." },
-  { "id": "mi_da", "head": "Mi dà", "slot": "+ [miktar + şey]?", "tr": "Bana … verir misiniz?", "cat": "istek", "note": "Şarküteride, pazarda, fırında. 1 etto = 100 gram: «due etti» = 200 gr." },
-  { "id": "posso", "head": "Posso", "slot": "+ [fiil]?", "tr": "… -ebilir miyim?", "cat": "izin", "note": "İzin istemenin anahtarı. Arkasından fiil mastar hâliyle gelir: pagare, aspettare, entrare." },
-  { "id": "puo", "head": "Può / Puoi", "slot": "+ [fiil]?", "tr": "… -ebilir misiniz / misin?", "cat": "izin", "note": "Tanımadığın birine «Può…?» (Lei), iş arkadaşına ve arkadaşa «Puoi…?» (tu)." },
-  { "id": "devo", "head": "Devo", "slot": "+ [fiil]", "tr": "… -mam lazım / -meliyim", "cat": "ihtiyac", "note": "Zorunluluk: «Devo andare» (gitmem lazım), «Devo parlare con…» (… ile konuşmam lazım)." },
-  { "id": "mi_serve", "head": "Mi serve", "slot": "+ [şey]", "tr": "Bana … lazım", "cat": "ihtiyac", "note": "Somut ihtiyaç. Çoğul şeyde «Mi servono»: «Mi servono due biglietti»." },
-  { "id": "cerco", "head": "Cerco", "slot": "+ [yer / şey]", "tr": "… arıyorum", "cat": "soru", "note": "Sokakta, markette, ofiste. «Mi scusi, cerco…» diye başlamak çok doğal." },
-  { "id": "dove", "head": "Dov'è", "slot": "+ [yer / şey]?", "tr": "… nerede?", "cat": "soru", "note": "Dove + è = Dov'è. Çoğulda «Dove sono i bagni?»." },
-  { "id": "ce", "head": "C'è", "slot": "+ [şey]?", "tr": "… var mı? / … var.", "cat": "soru", "note": "Ci + è = C'è. Hem soru hem cümle: «C'è un problema» (bir sorun var)." },
-  { "id": "quanto", "head": "Quanto costa? / Quant'è?", "slot": "", "tr": "Ne kadar?", "cat": "soru", "note": "Tek ürün için «Quanto costa?», toplam hesap için «Quant'è?»." },
-  { "id": "sono", "head": "Sono / È", "slot": "+ [kim / durum]", "tr": "…-im / …-dir", "cat": "kendini_anlat", "note": "Kendini tanıtmak için: «Sono il papà di Matteo». Başkası için «È…»: «È in terza B»." }
+  {"id": "per_favore", "head": "…, per favore", "slot": "", "tr": "… lütfen", "cat": "istek", "note": "Bir şey istemenin en kısa ve kibar yolu. Barda, fırında, gişede işe yarar."},
+  {"id": "voglio", "head": "Voglio", "slot": "+ [fiil]", "tr": "… istiyorum", "cat": "istek", "note": "Kendinden bahsederken doğal: «Voglio imparare l'italiano». Bir şey isterken «Vorrei» daha kibar."},
+  {"id": "vorrei", "head": "Vorrei", "slot": "+ [isim / fiil]", "tr": "… istiyorum (kibarca)", "cat": "istek", "note": "«Voglio» (istiyorum) doğru ama sert duyulur. Dükkânda ve restoranda «Vorrei» kullan."},
+  {"id": "mi_da", "head": "Mi dà", "slot": "+ [miktar + şey]?", "tr": "Bana … verir misiniz?", "cat": "istek", "note": "Şarküteride, pazarda, fırında. 1 etto = 100 gram: «due etti» = 200 gr."},
+  {"id": "posso", "head": "Posso", "slot": "+ [fiil]?", "tr": "… -ebilir miyim?", "cat": "izin", "note": "İzin istemenin anahtarı. Arkasından fiil mastar hâliyle gelir: pagare, aspettare, entrare."},
+  {"id": "puo", "head": "Può / Puoi", "slot": "+ [fiil]?", "tr": "… -ebilir misiniz / misin?", "cat": "izin", "note": "Tanımadığın birine «Può…?» (Lei), iş arkadaşına ve arkadaşa «Puoi…?» (tu)."},
+  {"id": "devo", "head": "Devo", "slot": "+ [fiil]", "tr": "… -mam lazım / -meliyim", "cat": "ihtiyac", "note": "Zorunluluk: «Devo andare» (gitmem lazım), «Devo parlare con…» (… ile konuşmam lazım)."},
+  {"id": "mi_serve", "head": "Mi serve", "slot": "+ [şey]", "tr": "Bana … lazım", "cat": "ihtiyac", "note": "Somut ihtiyaç. Çoğul şeyde «Mi servono»: «Mi servono due biglietti»."},
+  {"id": "cerco", "head": "Cerco", "slot": "+ [yer / şey]", "tr": "… arıyorum", "cat": "soru", "note": "Sokakta, markette, ofiste. «Mi scusi, cerco…» diye başlamak çok doğal."},
+  {"id": "dove", "head": "Dov'è", "slot": "+ [yer / şey]?", "tr": "… nerede?", "cat": "soru", "note": "Dove + è = Dov'è. Çoğulda «Dove sono i bagni?»."},
+  {"id": "ce", "head": "C'è", "slot": "+ [şey]?", "tr": "… var mı? / … var.", "cat": "soru", "note": "Ci + è = C'è. Hem soru hem cümle: «C'è un problema» (bir sorun var)."},
+  {"id": "quanto", "head": "Quanto costa? / Quant'è?", "slot": "", "tr": "Ne kadar?", "cat": "soru", "note": "Tek ürün için «Quanto costa?», toplam hesap için «Quant'è?»."},
+  {"id": "ho", "head": "Ho", "slot": "+ [isim]", "tr": "Benim … var / …-ım", "cat": "kendini_anlat", "note": "Sahiplik ve durum: «Ho due figli», «Ho fame» (acıktım), «Ho un problema». Yaşı da böyle söylersin: «Ho quarant'anni»."},
+  {"id": "sono", "head": "Sono / È", "slot": "+ [kim / durum]", "tr": "…-im / …-dir", "cat": "kendini_anlat", "note": "Kendini tanıtmak için: «Sono il papà di Matteo». Başkası için «È…»: «È in terza B»."}
 ]

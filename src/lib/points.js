@@ -7,7 +7,10 @@ export const POINTS = {
   stepSolo: 15, // sohbet adımını ilk denemede, yardımsız geçmek
   stepHelp: 5, // yardımla geçmek
   sceneDone: 20, // senaryoyu bitirmek
-  dailyDone: 30, // günün dersini (tekrar + sohbet) tamamlamak
+  dailyDone: 30, // günün dersini tamamlamak
+  drillOk: 10, // soru-cevap pratiğinde rahat cevap
+  drillHard: 5, // zorlanarak verilen cevap
+  learnCard: 2, // yeni cümleyi sesli tekrar etmek
 };
 
 export function award(state, n, day) {

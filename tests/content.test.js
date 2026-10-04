@@ -2,6 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import { scenes, cards, patterns, patternById, dailyScene, CATEGORIES } from '../src/content/index.js';
 import { matchIntent, checkSentence } from '../src/lib/answer.js';
+import { DAYS } from '../src/lib/program.js';
 
 describe.each(scenes.map((s) => [s.id, s]))('senaryo %s', (_, scene) => {
   const nodes = scene.nodes;
@@ -54,7 +55,7 @@ describe('cümle kartları', () => {
     for (const c of Object.values(cards)) {
       expect(checkSentence(c.it, c).ok, c.id).toBe(true);
       if (c.pattern) expect(patternById(c.pattern), `${c.id} → ${c.pattern}`).toBeTruthy();
-      expect(scenes.some((s) => s.cards.includes(c.id)), `${c.id} bir senaryoda kullanılmalı`).toBe(true);
+      expect(scenes.some((s) => s.cards.includes(c.id)) || DAYS.some((d) => d.learn.includes(c.id)), `${c.id} bir senaryoda ya da programda kullanılmalı`).toBe(true);
     }
   });
   it('her kalıbın en az bir örneği var', () => {

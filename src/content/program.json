@@ -1,0 +1,111 @@
+{
+  "weeks": [
+    { "week": 1, "title": "10 kalıp", "goal": "Dilin matematiği: 10 kalıpla düşünmeden 20 cümle kurmak" },
+    { "week": 2, "title": "100 kelime", "goal": "100 kelimeyi kalıplara takıp soru sormak ve basit cevabı anlamak" },
+    { "week": 3, "title": "7 senaryo", "goal": "7 gerçek hayat sahnesini ipucusuz konuşmak" },
+    { "week": 4, "title": "Serbest konuşma", "goal": "Ezberlemeden 5 dakika, Türkçeye geçmeden konuşmak" }
+  ],
+  "days": [
+    { "day": 1, "week": 1, "title": "Voglio / Vorrei", "focus": "istiyorum / rica ediyorum", "learn": ["g1a", "g1b", "g1c", "g1d"], "talk": { "scene": "bar" } },
+    { "day": 2, "week": 1, "title": "Posso…?", "focus": "yapabilir miyim?", "learn": ["bar3", "g2a", "g2b", "scu3"], "talk": { "scene": "bar" }, "change": "Bu kez tezgâh yerine masaya oturmak için izin iste." },
+    { "day": 3, "week": 1, "title": "Devo", "focus": "yapmam gerekiyor", "learn": ["g3a", "g3b", "scu2", "lav3"], "talk": { "title": "Komşuyla ayaküstü sohbet", "drill": [
+      { "q": "Ciao! Vieni a prendere un caffè?", "tr": "Selam! Bir kahve içmeye gelir misin?", "models": ["Grazie, ma devo andare.", "Mi dispiace, devo lavorare."] },
+      { "q": "Cosa fai domani?", "tr": "Yarın ne yapıyorsun?", "models": ["Domani devo lavorare."] },
+      { "q": "Devi andare adesso?", "tr": "Şimdi gitmen mi lazım?", "models": ["Sì, devo prendere mio figlio."] }
+    ] } },
+    { "day": 4, "week": 1, "title": "Ho", "focus": "benim var / durumum", "learn": ["g4a", "g4b", "g4c", "g4d"], "talk": { "scene": "ristorante" } },
+    { "day": 5, "week": 1, "title": "Sono / È", "focus": "ben …'im / o …'dir", "learn": ["g5a", "g5b", "g5c", "scu1"], "talk": { "scene": "scuola" } },
+    { "day": 6, "week": 1, "title": "Mi serve · Può…?", "focus": "bana lazım / yapabilir misiniz?", "learn": ["lav2", "cit4", "g6a", "scu4"], "talk": { "scene": "lavoro" } },
+    { "day": 7, "week": 1, "title": "C'è · Dov'è · Cerco", "focus": "var mı / nerede / arıyorum", "learn": ["cit3", "g7a", "cit1", "cit5"], "talk": { "scene": "citta" }, "gate": "10 kalıbın her biriyle 2 cümle: 2 dakikada 20 cümleyi sesli söyle. LEGO: mangiare, andare, pagare, parlare fiillerini Voglio / Posso / Devo ile birleştir." },
+
+    { "day": 8, "week": 2, "title": "10 fiil + 10 zaman", "focus": "fiiller mastar hâliyle kalıbın arkasına gelir", "words": "andare, venire, fare, prendere, mangiare, bere, parlare, capire, comprare, lavorare · oggi, domani, ieri, adesso, prima, dopo, sempre, mai, presto, tardi", "learn": ["g8a", "g8b", "g8c", "g8d", "g8e"], "talk": { "title": "Bugünkü planını anlat", "drill": [
+      { "q": "Cosa fai oggi?", "tr": "Bugün ne yapıyorsun?", "models": ["Oggi devo lavorare.", "Oggi voglio andare al mare."] },
+      { "q": "E domani?", "tr": "Ya yarın?", "models": ["Domani devo andare a scuola con mio figlio."] },
+      { "q": "Puoi venire adesso?", "tr": "Şimdi gelebilir misin?", "models": ["No, adesso non posso. Posso venire dopo."] }
+    ] } },
+    { "day": 9, "week": 2, "title": "Ev ve çanta", "focus": "10 günlük nesne", "words": "casa, macchina, telefono, chiavi, soldi, borsa, documento, biglietto, acqua, caffè", "learn": ["g9a", "g9b", "g9c", "g9d"], "talk": { "title": "Evden çıkarken", "drill": [
+      { "q": "Hai tutto?", "tr": "Her şey yanında mı?", "models": ["Sì, ho le chiavi e il telefono.", "No, non trovo il telefono."] },
+      { "q": "Dove sono le chiavi?", "tr": "Anahtarlar nerede?", "models": ["Non lo so. Sono in borsa?"] },
+      { "q": "Hai il biglietto del tram?", "tr": "Tramvay biletin var mı?", "models": ["Sì, ho il biglietto.", "No, devo comprare il biglietto."] }
+    ] } },
+    { "day": 10, "week": 2, "title": "Market", "focus": "10 günlük nesne ve fiyat sormak", "words": "pane, latte, frutta, verdura, carne, pesce, uova, formaggio, sacchetto, scontrino", "learn": ["g10a", "g10b", "g10c", "g10d"], "talk": { "title": "Markette fiyat sor", "drill": [
+      { "q": "Buongiorno, desidera?", "tr": "Günaydın, ne arzu edersiniz?", "models": ["Vorrei un etto di formaggio."] },
+      { "q": "Altro?", "tr": "Başka?", "models": ["No, grazie. Quanto costa?"] },
+      { "q": "Vuole un sacchetto?", "tr": "Poşet ister misiniz?", "models": ["Sì, grazie.", "No, grazie, ho la borsa."] }
+    ] } },
+    { "day": 11, "week": 2, "title": "İnsanlar", "focus": "aileni ve çevreni anlat", "words": "figlio, figlia, moglie, marito, amico, collega, capo, insegnante, medico, vicino", "learn": ["g11a", "g11b", "g11c", "g11d"], "talk": { "title": "Aileni anlat", "drill": [
+      { "q": "Hai figli?", "tr": "Çocukların var mı?", "models": ["Sì, ho due figli.", "Sì, ho un figlio e una figlia."] },
+      { "q": "Quanti anni ha tuo figlio?", "tr": "Oğlun kaç yaşında?", "models": ["Mio figlio ha otto anni."] },
+      { "q": "Chi è?", "tr": "O kim?", "models": ["È il mio collega.", "È il mio vicino."] }
+    ] } },
+    { "day": 12, "week": 2, "title": "Yerler", "focus": "nereye gidiyorsun?", "words": "scuola, lavoro, ufficio, ospedale, farmacia, supermercato, stazione, fermata, banca, comune", "learn": ["g12a", "g12b", "g12c", "g12d"], "talk": { "title": "Haftanı anlat", "drill": [
+      { "q": "Dove lavori?", "tr": "Nerede çalışıyorsun?", "models": ["Lavoro in un ufficio."] },
+      { "q": "Dove vai domani?", "tr": "Yarın nereye gidiyorsun?", "models": ["Domani devo andare in comune."] },
+      { "q": "Dov'è la fermata?", "tr": "Durak nerede?", "models": ["Non lo so. Cerco la fermata anche io."] }
+    ] } },
+    { "day": 13, "week": 2, "title": "Soru ve bağlantı", "focus": "ne, nerede, neden… ama, çünkü", "words": "che cosa, chi, dove, quando, perché, come, quanto, quale, a che ora, da quanto tempo · e, ma, o, perché (çünkü), quindi, anche, poi, allora, se, con", "learn": ["g13a", "g13b", "g13c", "g13d"], "talk": { "title": "Bir daveti kibarca reddet", "drill": [
+      { "q": "Vieni stasera?", "tr": "Bu akşam geliyor musun?", "models": ["Mi dispiace, non posso perché devo lavorare."] },
+      { "q": "Perché studi l'italiano?", "tr": "Neden İtalyanca öğreniyorsun?", "models": ["Perché vivo in Italia."] },
+      { "q": "A che ora finisci?", "tr": "Saat kaçta bitiriyorsun?", "models": ["Finisco alle cinque, poi vado a casa."] }
+    ] } },
+    { "day": 14, "week": 2, "title": "Sıfat ve durum", "focus": "iyi, kötü, büyük, pahalı…", "words": "buono, cattivo, grande, piccolo, caldo, freddo, nuovo, vecchio, facile, difficile, aperto, chiuso, libero, occupato, pronto, malato, contento, vicino, lontano, caro", "learn": ["g14a", "g14b", "g14c", "g14d"], "talk": { "title": "Evini ve işini tarif et", "drill": [
+      { "q": "Com'è la tua casa?", "tr": "Evin nasıl?", "models": ["La mia casa è piccola ma bella."] },
+      { "q": "Com'è il tuo lavoro?", "tr": "İşin nasıl?", "models": ["È difficile ma sono contento."] },
+      { "q": "Il supermercato è lontano?", "tr": "Süpermarket uzak mı?", "models": ["No, è vicino."] }
+    ] }, "gate": "Listeden rastgele 20 kelime seç; her biriyle 1. haftanın bir kalıbını kullanarak cümle kur. 10 soru kelimesiyle 10 soru sor." },
+
+    { "day": 15, "week": 3, "title": "Kafede", "focus": "sahne 1 / 7", "learn": ["bar1", "bar2", "bar4"], "talk": { "scene": "bar" }, "change": "3. turda tezgâh yerine masaya otur." },
+    { "day": 16, "week": 3, "title": "Şarküteride", "focus": "sahne 2 / 7", "learn": ["sal1", "sal3", "sal4"], "talk": { "scene": "salumeria" }, "change": "Aradığın ürün yoksa alternatif sor." },
+    { "day": 17, "week": 3, "title": "Restoranda", "focus": "sahne 3 / 7", "learn": ["ris1", "ris2", "ris3", "ris4", "ris5"], "talk": { "scene": "ristorante" }, "change": "Yemeğin soğuk geldiğini kibarca söyle." },
+    { "day": 18, "week": 3, "title": "Okulda", "focus": "sahne 4 / 7", "learn": ["scu5"], "talk": { "scene": "scuola" }, "change": "Öğretmenden görüşme randevusu al." },
+    { "day": 19, "week": 3, "title": "İş yerinde", "focus": "sahne 5 / 7", "learn": ["lav1", "lav4"], "talk": { "scene": "lavoro" }, "change": "Cuma günü erken çıkmak için izin iste." },
+    { "day": 20, "week": 3, "title": "Eczanede", "focus": "sahne 6 / 7", "learn": ["far1", "far2", "far3", "far4", "far5"], "talk": { "scene": "farmacia" }, "change": "Bu kez çocuğun için ilaç iste." },
+    { "day": 21, "week": 3, "title": "Şehirde", "focus": "sahne 7 / 7", "learn": ["cit2"], "talk": { "scene": "citta" }, "change": "Tren gecikiyor: aktarmayı sor.", "gate": "7 sahneden birini rastgele seç ve ipucu almadan sonuna kadar konuş." },
+
+    { "day": 22, "week": 4, "title": "Konuşmayı kurtarmak", "focus": "anlamadığında konuşma bitmesin", "learn": ["g22a", "g22b", "g22c", "g22d"], "talk": { "title": "Hızlı konuşan bir memur", "drill": [
+      { "q": "Deve compilare questo modulo e tornare lunedì con la carta d'identità.", "tr": "Bu formu doldurup pazartesi kimlik kartınızla gelmelisiniz.", "models": ["Non ho capito. Può parlare più piano?"] },
+      { "q": "Il modulo. Lunedì. Con la carta d'identità.", "tr": "Form. Pazartesi. Kimlik kartıyla.", "models": ["Ah, ho capito. Grazie!"] },
+      { "q": "Ha la tessera sanitaria?", "tr": "Sağlık kartınız var mı?", "models": ["Scusi, cosa vuol dire tessera sanitaria?"] }
+    ] } },
+    { "day": 23, "week": 4, "title": "Günlük rutin", "focus": "şimdiki zaman, sadece «ben» (-o)", "learn": ["g23a", "g23b", "g23c", "g23d"], "talk": { "title": "Günün nasıl geçiyor?", "drill": [
+      { "q": "A che ora ti svegli?", "tr": "Saat kaçta uyanıyorsun?", "models": ["Mi sveglio alle sette."] },
+      { "q": "Come vai al lavoro?", "tr": "İşe nasıl gidiyorsun?", "models": ["Vado al lavoro in tram."] },
+      { "q": "Cosa fai la sera?", "tr": "Akşamları ne yapıyorsun?", "models": ["La sera cucino e sto con i miei figli."] }
+    ] } },
+    { "day": 24, "week": 4, "title": "Dün ne yaptın?", "focus": "geçmiş zaman: ho + -ato / -uto / -ito, sono andato", "learn": ["g24a", "g24b", "g24c", "g24d"], "talk": { "title": "Dünü anlat", "drill": [
+      { "q": "Cosa hai fatto ieri?", "tr": "Dün ne yaptın?", "models": ["Ieri ho lavorato e poi ho fatto la spesa."] },
+      { "q": "Dove sei andato?", "tr": "Nereye gittin?", "models": ["Sono andato al supermercato."] },
+      { "q": "Hai dormito bene?", "tr": "İyi uyudun mu?", "models": ["No, ho dormito poco."] }
+    ] } },
+    { "day": 25, "week": 4, "title": "Yarın ve planlar", "focus": "gelecek için şimdiki zaman + zaman kelimesi", "learn": ["g25a", "g25b", "g25c"], "talk": { "title": "Hafta sonu planın", "drill": [
+      { "q": "Cosa fai questo fine settimana?", "tr": "Bu hafta sonu ne yapıyorsun?", "models": ["Sabato voglio andare al mare."] },
+      { "q": "Quando vai dal medico?", "tr": "Doktora ne zaman gidiyorsun?", "models": ["Domani vado dal medico."] },
+      { "q": "Lavori la settimana prossima?", "tr": "Gelecek hafta çalışıyor musun?", "models": ["Sì, la settimana prossima devo lavorare."] }
+    ] } },
+    { "day": 26, "week": 4, "title": "Beğeni ve fikir", "focus": "mi piace / non mi piace / secondo me", "learn": ["g26a", "g26b", "g26c", "g26d"], "talk": { "title": "Yemek ve şehir sohbeti", "drill": [
+      { "q": "Ti piace Milano?", "tr": "Milano'yu seviyor musun?", "models": ["Sì, mi piace molto."] },
+      { "q": "Caffè o tè?", "tr": "Kahve mi çay mı?", "models": ["Preferisco il tè."] },
+      { "q": "Il centro è caro, vero?", "tr": "Merkez pahalı, değil mi?", "models": ["Sì, secondo me è troppo caro."] }
+    ] } },
+    { "day": 27, "week": 4, "title": "Sürpriz sahne", "focus": "sadece bildiklerinle", "learn": ["g27a", "g27b", "g27c"], "talk": { "title": "Kayıp cüzdan", "drill": [
+      { "q": "Buongiorno, posso aiutarla?", "tr": "Günaydın, yardımcı olabilir miyim?", "models": ["Sì, ho perso il portafoglio."] },
+      { "q": "Dove l'ha perso?", "tr": "Nerede kaybettiniz?", "models": ["Non lo so. Forse sul tram."] },
+      { "q": "Deve fare una denuncia.", "tr": "Şikâyette bulunmanız gerekiyor.", "models": ["Cosa devo fare? Dov'è la polizia?"] }
+    ] } },
+    { "day": 28, "week": 4, "title": "Prova sohbeti", "focus": "tanışma, rutin, dün, yarın", "learn": [], "talk": { "title": "4 dakikalık prova", "drill": [
+      { "q": "Come ti chiami? Di dove sei?", "tr": "Adın ne? Nerelisin?", "models": ["Mi chiamo Serkan. Sono turco, ma vivo in Italia."] },
+      { "q": "Che lavoro fai?", "tr": "Ne iş yapıyorsun?", "models": ["Lavoro in un ufficio."] },
+      { "q": "Cosa hai fatto ieri?", "tr": "Dün ne yaptın?", "models": ["Ieri ho lavorato e la sera ho cucinato."] },
+      { "q": "E domani?", "tr": "Ya yarın?", "models": ["Domani vado a scuola con mio figlio."] }
+    ] } },
+    { "day": 29, "week": 4, "title": "Büyük tekrar", "focus": "en zor cümleler ve en zor sahne", "learn": [], "talk": { "scene": "ristorante" }, "change": "En zorlandığın sahneyi değişiklikle oyna." },
+    { "day": 30, "week": 4, "title": "Final", "focus": "5 dakika serbest sohbet, ezbersiz", "learn": [], "talk": { "title": "Final sohbeti", "drill": [
+      { "q": "Ciao! Come stai?", "tr": "Selam! Nasılsın?", "models": ["Sto bene, grazie. E tu?"] },
+      { "q": "Da quanto tempo vivi in Italia?", "tr": "Ne zamandır İtalya'da yaşıyorsun?", "models": ["Vivo in Italia da due anni."] },
+      { "q": "Com'è la tua giornata?", "tr": "Günün nasıl geçiyor?", "models": ["Mi sveglio alle sette, vado al lavoro e la sera cucino."] },
+      { "q": "Cosa hai fatto lo scorso fine settimana?", "tr": "Geçen hafta sonu ne yaptın?", "models": ["Sono andato al mare con la mia famiglia."] },
+      { "q": "Cosa ti piace dell'Italia?", "tr": "İtalya'nın nesini seviyorsun?", "models": ["Mi piace il cibo, ma non mi piace la burocrazia."] },
+      { "q": "Hai bisogno di qualcosa?", "tr": "Bir şeye ihtiyacın var mı?", "models": ["Sì, mi serve aiuto con un documento."] }
+    ] }, "gate": "5 dakika boyunca İtalyanca konuş, Türkçeye geçme. Kendini kaydet ve 1. günle karşılaştır." }
+  ]
+}
