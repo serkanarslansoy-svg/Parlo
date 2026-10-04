@@ -64,14 +64,15 @@
 | XP | Yeni cümle +2, rahat cevap +10, zorlanarak +5, gün bitince +30 (günde bir kez) |
 | Ritim | Bir gün biter bitmez sonraki açık ama "yarın daha verimli" uyarısı gösterilir |
 
-## v0.8: Cümlelerim = pratik alanı
+## v0.8: Cümlelerim = tekrar yolu
 | Konu | Karar |
 |---|---|
-| Ne açılır | Bitirilen program günlerinin cümleleri (gün yarımken açılmaz) |
-| Türler | Yazmalı (TR → IT yaz, kelime kelime ipucu), seçmeli (4 seçenek, yön sırayla değişir), kaydırmalı (kartı çevir, sağa biliyorum / sola tekrar), eşleştirme (5'li tablolar), karışık |
-| Tekrar | 10'luk turlar, sınırsız "Bir tur daha". Zayıf ve az görülen cümle daha ağır basar; yanlış bilinen tur sonunda bir kez daha (yazmalı olarak) gelir |
-| XP | Doğru başına +1 (sınırsız tekrar ligi bozmasın diye düşük) |
-| Kalıp rehberi | Sayfanın altında, isteğe bağlı açılır |
+| Görünüm | 1–30 zikzak duraklar (haftalara ayrılmış): bitmiş altın, sıradaki "BAŞLA", açık yeşil, kilitli gri |
+| Ne açılır | Programda bitirilen günün durağı |
+| İçerik | Günün cümleleri + günün sahnesinin cümleleri; az kalan günlerde önceki günlerden 6'ya tamamlanır |
+| Alıştırma | Gün başına 30 adım: 6 kaydırmalı, 10 seçmeli (yön sırayla değişir), 2 eşleştirme tablosu, 12 yazmalı |
+| XP | İlk bitirişte doğru sayısı + 10. Tekrar oynamak serbest, XP yok; en iyi skor saklanır |
+| Kaldırılanlar | Kendi cümlelerim, hata defterinin Cümlelerim'e eklenmesi, kültür kartındaki "Kaydet", kalıp rehberi |
 
 ## Yol haritası
 1. **İçerik:** doktor, Comune/Questura, öğretmenle görüşme, telefon, kira. Senaryo başına 8–10 kart.

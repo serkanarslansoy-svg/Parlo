@@ -196,21 +196,13 @@ function scenesStrip(ctx) {
 
 function cultureCard(ctx) {
   const tip = tips[dayNumber(today()) % tips.length];
-  const saved = () => (ctx.state.personal || []).some((p) => p.it === tip.it);
-  const saveBtn = h('button', { class: 'link row', 'aria-pressed': String(saved()), onclick: () => {
-    if (saved()) return;
-    ctx.state.personal = [{ id: Date.now().toString(36), it: tip.it, note: tip.title, date: new Date().toISOString() }, ...(ctx.state.personal || [])];
-    ctx.persist();
-    saveBtn.replaceChildren(icon('check'), 'Kaydedildi');
-    saveBtn.setAttribute('aria-pressed', 'true');
-  } }, icon(saved() ? 'check' : 'star'), saved() ? 'Kaydedildi' : 'Kaydet');
   return h('section', { class: 'card culture stack' },
     h('span', { class: 'deco', 'aria-hidden': 'true' }, '☕'),
     h('div', { class: 'row' }, h('span', { class: 'chip solid-terra' }, 'Kültür aynası'), h('span', { class: 'small muted' }, tip.tag)),
     h('h2', {}, tip.title),
     h('p', {}, tip.text),
     h('div', { class: 'row example' }, h('p', { class: 'it grow', lang: 'it' }, `«${tip.it}»`), speakBtn(tip.it)),
-    h('div', { class: 'row between small' }, h('span', { class: 'row muted' }, icon('book'), 'PARLO editoryal notu'), saveBtn));
+    h('p', { class: 'row small muted' }, icon('book'), 'PARLO editoryal notu'));
 }
 
 export function renderHome(ctx) {

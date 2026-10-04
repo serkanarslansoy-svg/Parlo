@@ -9,7 +9,7 @@ import { sayPanel } from './say.js';
 const FIX_MAX = 3;
 const cardByIt = (it) => Object.values(cards).find((c) => c.it === it) || null;
 
-/** 4. adım: günün en önemli 3 hatası. Doğrusunu yazarak tekrar et; kart değilse Cümlelerim'e eklenir. */
+/** 4. adım: günün en önemli 3 hatası. Doğrusunu yazarak tekrar et; günün sonunda kapanır. */
 export function renderFix(ctx, param) {
   const n = Number(param);
   const plan = dayPlan(n);
@@ -21,21 +21,10 @@ export function renderFix(ctx, param) {
 
   const finish = () => {
     const t = today();
-    const personal = ctx.state.personal || [];
-    let saved = 0;
-    for (const m of list) {
-      // Kart cümleleri tekrar kutusunda zaten yarına planlandı; diğerleri Cümlelerim'e girer.
-      if (!cardByIt(m.it) && !personal.some((p) => p.it === m.it)) {
-        personal.unshift({ id: Date.now().toString(36) + saved, it: m.it, note: `Hata defteri · Gün ${n}`, date: new Date().toISOString() });
-        saved += 1;
-      }
-    }
-    ctx.state.personal = personal;
     const { dayDone, bonus } = completeStep(ctx.state, n, 'fix', t);
     ctx.persist();
     ctx.flash = [
       list.length ? `${list.length} hatayı düzelttin.` : 'Bugün düzeltilecek hata yoktu.',
-      saved ? `${saved} cümle Cümlelerim'e eklendi.` : '',
       dayDone ? `Gün ${n} tamam!${bonus ? ` +${bonus} XP günlük bonus.` : ''}` : '',
     ].filter(Boolean).join(' ');
     back();

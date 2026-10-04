@@ -15,7 +15,7 @@ Az gramer, çok pratik: kalıbı öğren → hızlı tekrarla pekiştir → ger�
 - **Öğretmen paneli:** cevabın tutmazsa hangi parçanın eksik olduğunu gösterir (örn. "eksik: istek fiili"). İstersen ipucu ya da doğal bir cevap önerir.
 - **Ses (şimdilik kapalı):** dinleme ve mikrofon telefonlarda güvenilir çalışmadığı için kapatıldı; her şey yazıyla ilerliyor. Tekrar açmak için `src/lib/speech.js` içinde `AUDIO_ENABLED = true`.
 - **Aralıklı tekrar (Leitner):** doğru bildiğin cümle 1 → 3 → 7 → 14 → 30 gün sonra tekrar gelir, yanlışta başa döner.
-- **Cümlelerim (pratik alanı):** bitirilen program günlerinin cümleleri açılır; yazmalı, seçmeli, kaydırmalı, eşleştirme ve karışık turlarla sınırsız tekrar. Zorlanılan cümleler daha sık gelir, yanlışlar tur sonunda bir kez daha sorulur. Altında kendi cümlelerin ve 14 kalıplık rehber.
+- **Cümlelerim (tekrar yolu):** 1'den 30'a duraklar. Programda biten günün durağı açılır; her durak 30 soruluk tekrar (6 kaydırmalı, 10 seçmeli, 2 eşleştirme, 12 yazmalı). İlk bitirişte doğru sayısı + 10 XP; tekrar oynamak serbest ama XP vermez.
 - **Gelişim:** "Artık bunları yapabiliyorsun" listesi, cümle hafızası, haftalık takvim.
 - **PWA:** telefona kurulabilir, çevrimdışı açılır. Veriler sadece cihazda (localStorage) tutulur.
 

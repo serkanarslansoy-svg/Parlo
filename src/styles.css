@@ -556,28 +556,13 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 .btn.live { animation: pulse 1.2s ease-in-out infinite; }
 .say-ok { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--green); color: #fff; }
 
-/* ---------- Cümlelerim: pratik alanı ---------- */
+/* ---------- Cümlelerim: tekrar alıştırması ---------- */
 .practice-hero { background: var(--green-deep); color: #fff; border-color: transparent; }
 .practice-hero .eyebrow { color: #b9dccb; }
 .practice-hero h2 { color: #fff; font-size: 1.5rem; }
 .practice-hero p { color: #d7ebe0; margin: 0; }
 .practice-hero .btn.mission-cta { background: var(--gold); color: #2b1d00; }
 .practice-hero .btn.mission-cta .sub { color: #5c4300; }
-.practice-hero.locked { background: var(--cream); color: var(--ink); }
-.practice-hero.locked h2 { color: var(--green-deep); }
-.practice-hero.locked p, .practice-hero.locked .eyebrow { color: var(--muted); }
-.mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-button.card.mode-tile { display: grid; gap: 4px; justify-items: start; text-align: left; font: inherit; color: inherit; cursor: pointer; padding: 14px; }
-.mt-title { font-weight: 800; font-family: var(--font-display); font-size: 1.05rem; margin-top: 4px; }
-.mt-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.3; }
-.day-sent { padding: 0; overflow: hidden; }
-.ds-head { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 14px; background: none; border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
-.ds-head .ico.flip { transform: rotate(180deg); }
-.sent-list { padding: 0 14px 14px; gap: 10px; }
-.sent { border-top: 1px solid var(--sand); padding-top: 10px; }
-.sent .it { font-weight: 650; margin: 0; }
-.sent .tr { margin: 0; font-size: 0.85rem; color: var(--muted); }
-button.card.locked-day { display: flex; align-items: center; width: 100%; text-align: left; font: inherit; color: var(--muted); background: var(--cream); box-shadow: none; gap: 12px; cursor: pointer; }
 .opt { width: 100%; text-align: left; padding: 14px 16px; border-radius: var(--r-md); background: var(--surface); border: 1.5px solid var(--sand); box-shadow: 0 2px 0 var(--sand); font: 600 1rem/1.35 var(--font-body); color: var(--ink); cursor: pointer; }
 .opt:disabled { cursor: default; opacity: 0.6; }
 .opt.right { opacity: 1; background: var(--green-tint); border-color: var(--green); box-shadow: none; }
@@ -597,3 +582,27 @@ button.card.locked-day { display: flex; align-items: center; width: 100%; text-a
 .mt.sel { border-color: var(--green); background: var(--green-tint); }
 .mt.done { opacity: 0.35; box-shadow: none; background: var(--green-tint); border-color: transparent; }
 .mt.bad { border-color: var(--terracotta); background: var(--terracotta-tint); }
+
+/* ---------- Tekrar yolu ---------- */
+.bar.light { background: rgba(255, 255, 255, 0.18); }
+.bar.light > i { background: var(--gold); }
+.path { display: grid; justify-items: center; gap: 18px; padding: 8px 0 24px; }
+.path-week { justify-self: stretch; display: flex; align-items: baseline; gap: 10px; padding: 10px 14px; margin-top: 10px; border-radius: var(--r-md); background: var(--cream); }
+.path-week span { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.path-week strong { font-family: var(--font-display); color: var(--green-deep); }
+.path-stop { position: relative; display: grid; justify-items: center; gap: 4px; transform: translateX(var(--x)); width: 150px; }
+.path-node { width: 70px; height: 66px; border-radius: 50%; border: 0; display: grid; place-items: center; font: 800 1.45rem/1 var(--font-display); cursor: pointer; background: var(--sand); color: var(--muted); box-shadow: 0 6px 0 #c9cfc8; transition: transform 0.1s; }
+.path-node:active { transform: translateY(4px); box-shadow: 0 2px 0 #c9cfc8; }
+.path-node .ico { font-size: 1.8rem; }
+.path-node .lock { font-size: 1.2rem; filter: grayscale(1); opacity: 0.6; }
+.path-stop.open .path-node { background: var(--green); color: #fff; box-shadow: 0 6px 0 var(--green-deep); }
+.path-stop.now .path-node { width: 80px; height: 76px; background: var(--green); color: #fff; box-shadow: 0 6px 0 var(--green-deep), 0 0 0 7px var(--green-tint); animation: pathpulse 1.8s ease-in-out infinite; }
+.path-stop.done .path-node { background: var(--gold); color: #3a2600; box-shadow: 0 6px 0 #c68d12; }
+.path-label { font-size: 0.78rem; text-align: center; line-height: 1.25; color: var(--muted); }
+.path-label b { color: var(--ink); }
+.path-stop.locked .path-label { opacity: 0.6; }
+.path-score { font-size: 0.7rem; font-weight: 700; color: var(--gold-ink); }
+.path-tip { position: absolute; top: -30px; padding: 4px 10px; border-radius: 999px; background: var(--surface); border: 1.5px solid var(--sand); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; color: var(--green); white-space: nowrap; z-index: 1; }
+.path-stop.now { margin-top: 26px; }
+@keyframes pathpulse { 0%, 100% { box-shadow: 0 6px 0 var(--green-deep), 0 0 0 7px var(--green-tint); } 50% { box-shadow: 0 6px 0 var(--green-deep), 0 0 0 13px rgba(223, 240, 230, 0.4); } }
+@media (prefers-reduced-motion: reduce) { .path-stop.now .path-node { animation: none; } }
