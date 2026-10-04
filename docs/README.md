@@ -64,7 +64,7 @@
 | XP | Yeni cümle +2, rahat cevap +10, zorlanarak +5, gün bitince +30 (günde bir kez) |
 | Ritim | Bir gün biter bitmez sonraki açık ama "yarın daha verimli" uyarısı gösterilir |
 
-## v0.8: Cümlelerim = tekrar yolu
+## v0.8: Tekrar yolu (eski adıyla Cümlelerim)
 | Konu | Karar |
 |---|---|
 | Görünüm | 1–30 zikzak duraklar (haftalara ayrılmış): bitmiş altın, sıradaki "BAŞLA", açık yeşil, kilitli gri |
@@ -72,6 +72,8 @@
 | İçerik | Günün cümleleri + günün sahnesinin cümleleri; az kalan günlerde önceki günlerden 6'ya tamamlanır |
 | Alıştırma | Gün başına 30 adım: 6 kaydırmalı, 10 seçmeli (yön sırayla değişir), 2 eşleştirme tablosu, 12 yazmalı |
 | XP | İlk bitirişte doğru sayısı + 10. Tekrar oynamak serbest, XP yok; en iyi skor saklanır |
+| Sekme | Adı "Cümlelerim" yerine "Tekrar" |
+| Klavye | Yazmalı cevapta komşu tuş / yer değiştirme / çift basış en fazla 2 kelimede doğru sayılır, not düşülür. Eksik harf, uzak harf ve 3 harften kısa kelimeler tolere edilmez |
 | Kaldırılanlar | Kendi cümlelerim, hata defterinin Cümlelerim'e eklenmesi, kültür kartındaki "Kaydet", kalıp rehberi |
 
 ## Yol haritası

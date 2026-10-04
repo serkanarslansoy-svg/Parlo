@@ -24,7 +24,7 @@ Vite + vanilla JS PWA. Framework yok; ekranlar `src/lib/dom.js` içindeki `h()` 
 - `patterns.json`: kalıp defteri; kartlar `pattern` alanıyla bağlanır.
 - `program.json`: 30 günlük program. `days[] = {day, week, title, focus, learn: [kart id], talk: {scene} | {title, drill: [{q, tr, models[]}]}, words?, change?, gate?}`. Her kart bir sahnede ya da bir günün `learn` listesinde kullanılmalı (test kontrol eder).
   - İlerleme `state.program.days[N] = {steps: {review, learn, talk, fix}, mistakes: [{it, tr}], completedOn}`; mantık `src/lib/program.js`.
-  - Cümlelerim tekrar yolu (`src/lib/practice.js`, `#/practice/<gün>`): gün programda bitince açılır. Havuz: günün `learn` kartları + sahnesinin kartları, 6'dan azsa önceki günlerden tamamlanır. 30 adım (`PLAN`). Sonuç `state.practiceDays[N] = {date, best, total, runs}`; XP sadece ilk bitirişte.
+  - Tekrar yolu (sekme adı "Tekrar", rota `notebook`) (`src/lib/practice.js`, `#/practice/<gün>`): gün programda bitince açılır. Havuz: günün `learn` kartları + sahnesinin kartları, 6'dan azsa önceki günlerden tamamlanır. 30 adım (`PLAN`). Sonuç `state.practiceDays[N] = {date, best, total, runs}`; XP sadece ilk bitirişte.
   - Adım ekranları: tekrar `review?program=N`, yeni kalıp `learn/N`, konuşma `chat/sahne?program=N` ya da `drill/N`, hata `fix/N`. Bittiğinde `ctx.flash` mesajıyla `day/N`'e döner.
 
 ## Yapılmayanlar (bilinçli)

@@ -25,7 +25,7 @@ const TABS = [
   { route: 'home', label: 'Bugün', icon: 'home' },
   { route: 'scenes', label: 'Senaryolar', icon: 'compass' },
   { route: 'league', label: 'Lig', icon: 'trophy' },
-  { route: 'notebook', label: 'Cümlelerim', icon: 'book' },
+  { route: 'notebook', label: 'Tekrar', icon: 'repeat' },
   { route: 'progress', label: 'Gelişim', icon: 'chart' },
 ];
 

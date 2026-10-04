@@ -1,6 +1,6 @@
 import { h, icon } from '../lib/dom.js';
 import { cards } from '../content/index.js';
-import { checkSentence, shuffle, tilesFor } from '../lib/answer.js';
+import { checkSentence, shuffle, tilesFor, typoNote } from '../lib/answer.js';
 import { today } from '../lib/store.js';
 import { buildSession, finishPractice, isPracticeOpen, practiceRec, choicesFor } from '../lib/practice.js';
 import { dayPlan } from '../lib/program.js';
@@ -85,7 +85,7 @@ export function renderPractice(ctx, param) {
         h('p', { class: 'title' }, r.ok ? (good ? 'Bravo! ✓' : 'Doğru, ipucuyla') : 'Neredeyse! Doğrusu:'),
         h('p', { class: 'it', lang: 'it' }, card.it),
         r.ok && r.accentNote ? h('p', { class: 'small' }, 'Küçük not: aksanlara dikkat.') : null,
-        null));
+        r.typos.length ? h('p', { class: 'small typo-note' }, typoNote(r.typos)) : null));
       actions.replaceChildren(h('button', { class: 'btn block', type: 'submit' }, 'Devam et', icon('arrow')));
       actions.querySelector('button').focus();
     };

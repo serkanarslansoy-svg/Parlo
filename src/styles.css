@@ -556,7 +556,7 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 .btn.live { animation: pulse 1.2s ease-in-out infinite; }
 .say-ok { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--green); color: #fff; }
 
-/* ---------- Cümlelerim: tekrar alıştırması ---------- */
+/* ---------- Tekrar yolu: alıştırma ---------- */
 .practice-hero { background: var(--green-deep); color: #fff; border-color: transparent; }
 .practice-hero .eyebrow { color: #b9dccb; }
 .practice-hero h2 { color: #fff; font-size: 1.5rem; }
@@ -606,3 +606,4 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 .path-stop.now { margin-top: 26px; }
 @keyframes pathpulse { 0%, 100% { box-shadow: 0 6px 0 var(--green-deep), 0 0 0 7px var(--green-tint); } 50% { box-shadow: 0 6px 0 var(--green-deep), 0 0 0 13px rgba(223, 240, 230, 0.4); } }
 @media (prefers-reduced-motion: reduce) { .path-stop.now .path-node { animation: none; } }
+.typo-note { color: var(--gold-ink); font-weight: 600; }

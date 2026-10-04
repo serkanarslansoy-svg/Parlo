@@ -1,5 +1,5 @@
 import { h, icon } from '../lib/dom.js';
-import { checkSentence } from '../lib/answer.js';
+import { checkSentence, typoNote } from '../lib/answer.js';
 
 /**
  * "Yazarak tekrar et" paneli: cümle bir kez doğru yazılınca onReady() çağrılır.
@@ -20,7 +20,7 @@ export function sayPanel(card, onReady) {
       done = true;
       input.disabled = true;
       mark.hidden = false;
-      status.textContent = r.accentNote ? 'Doğru! Küçük not: aksanlara dikkat.' : 'Bravo! Doğru yazdın.';
+      status.textContent = r.typos.length ? typoNote(r.typos) : r.accentNote ? 'Doğru! Küçük not: aksanlara dikkat.' : 'Bravo! Doğru yazdın.';
       onReady?.();
     } else {
       status.textContent = 'Tam değil. Yukarıdaki cümleye bakıp tekrar dene.';

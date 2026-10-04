@@ -1,6 +1,6 @@
 import { h, icon } from '../lib/dom.js';
 import { cards, allCardIds, dailyScene, patternById } from '../content/index.js';
-import { checkSentence, tilesFor, shuffle, distractorsFor } from '../lib/answer.js';
+import { checkSentence, tilesFor, shuffle, distractorsFor, typoNote } from '../lib/answer.js';
 import { buildQueue, grade, newCard, isDue, addDays } from '../lib/srs.js';
 import { speak } from '../lib/speech.js';
 import { today, touchDay } from '../lib/store.js';
@@ -107,7 +107,7 @@ export function renderReview(ctx, query) {
       if (answered) return;
       answered = true;
       const value = mode === 'type' ? typed.value : picks.map((i) => words[i]).join(' ');
-      const { ok, accentNote } = checkSentence(value, card);
+      const { ok, accentNote, typos } = checkSentence(value, card);
       const t = today();
       const prev = ctx.state.cards[id] || newCard(t);
       // İpucuyla doğru: kutu yükselmez, yarın tekrar sorulur.
@@ -122,6 +122,7 @@ export function renderReview(ctx, query) {
         h('div', { class: 'row between' }, h('p', { class: 'title' }, ok ? (hinted ? 'Doğru! (ipucuyla)' : 'Bravissimo! ✓') : 'Neredeyse! Doğru hâli:'), pts ? h('span', { class: 'chip gold' }, `+${pts} XP`) : null),
         h('div', { class: 'row' }, h('div', { class: 'grow' }, h('p', { class: 'it', lang: 'it' }, card.it), h('p', { class: 'tr' }, card.tr)), speakBtn(card.it), speakBtn(card.it, { slow: true, label: 'Yavaş dinle' })),
         ok && accentNote ? h('p', { class: 'small' }, 'Küçük not: aksan ve kesme işaretlerine dikkat — yazılışı yukarıdaki gibi.') : null,
+        typos.length ? h('p', { class: 'small typo-note' }, typoNote(typos)) : null,
         !ok ? h('p', { class: 'small' }, 'Bu cümle yakında tekrar karşına çıkacak.') : null));
       actions.replaceChildren(h('button', { class: 'btn block', onclick: next }, pos + 1 < queue.length ? 'Devam et' : 'Bitir', icon('arrow')));
       actions.querySelector('button').focus();

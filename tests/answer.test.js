@@ -1,11 +1,43 @@
 import { describe, it, expect } from 'vitest';
-import { norm, checkSentence, tilesFor, shuffle, matchIntent, tipsFor, distractorsFor } from '../src/lib/answer.js';
+import { norm, checkSentence, isKeyboardSlip, adjacentKeys, tilesFor, shuffle, matchIntent, tipsFor, distractorsFor } from '../src/lib/answer.js';
 
 describe('norm', () => {
   it('aksan, noktalama ve büyük harfi temizler; kesme işaretini boşluk yapar', () => {
     expect(norm("Dov'è il bagno?")).toBe('dov e il bagno');
     expect(norm('  Più   PIANO!! ')).toBe('piu piano');
     expect(norm('Quant’è?')).toBe('quant e');
+  });
+});
+
+describe('klavye kayması', () => {
+  it('komşu tuş, yer değiştirme ve çift basış kayma sayılır', () => {
+    expect(adjacentKeys('o', 'p')).toBe(true);
+    expect(adjacentKeys('a', 'z')).toBe(true);
+    expect(adjacentKeys('a', 'p')).toBe(false);
+    expect(isKeyboardSlip('voglip', 'voglio')).toBe(true); // o→p komşu
+    expect(isKeyboardSlip('vogloi', 'voglio')).toBe(true); // yer değiştirme
+    expect(isKeyboardSlip('voglioo', 'voglio')).toBe(true); // çift basış
+    expect(isKeyboardSlip('vogliop', 'voglio')).toBe(true); // komşu tuşa da basılmış
+  });
+  it('gerçek hatalar kayma sayılmaz', () => {
+    expect(isKeyboardSlip('voglia', 'voglio')).toBe(false); // a ile o uzak: çekim hatası
+    expect(isKeyboardSlip('caffe', 'caffee')).toBe(false); // eksik harf
+    expect(isKeyboardSlip('cafe', 'caffe')).toBe(false); // çift ünsüz eksik
+    expect(isKeyboardSlip('uno', 'una')).toBe(false);
+    expect(isKeyboardSlip('ik', 'il')).toBe(false); // kısa kelimede tolerans yok
+  });
+  it('cümlede kaymayı doğru sayar ve bildirir', () => {
+    const r = checkSentence('Voglip mangiare', { it: 'Voglio mangiare.' });
+    expect(r.ok).toBe(true);
+    expect(r.typos).toEqual([{ given: 'voglip', expected: 'voglio' }]);
+    expect(checkSentence('Voglia mangiare', { it: 'Voglio mangiare.' }).ok).toBe(false);
+    expect(checkSentence('Vprrei un caffe', { it: 'Vorrei un caffè.' }).ok).toBe(true);
+    expect(checkSentence('Vprrei un cafgè pwr favore', { it: 'Vorrei un caffè, per favore.' }).ok).toBe(false); // 3 kayma: fazla
+  });
+  it('Türkçe klavyenin noktasız ı harfini i sayar', () => {
+    const r = checkSentence('Vorreı pagare', { it: 'Vorrei pagare.' });
+    expect(r.ok).toBe(true);
+    expect(r.typos).toEqual([]);
   });
 });
 

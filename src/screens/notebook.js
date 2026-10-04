@@ -6,7 +6,7 @@ import { topbar } from '../ui.js';
 // Zikzak: her durağın yatay kayması (px), hafta içinde dalga gibi.
 const WAVE = [0, 46, 78, 46, 0, -46, -78, -46];
 
-/** Cümlelerim: 1–30 tekrar yolu. Programda biten günün durağı açılır. */
+/** Tekrar sekmesi: 1–30 tekrar yolu. Programda biten günün durağı açılır. */
 export function renderNotebook(ctx) {
   const { state } = ctx;
   const done = practiceDoneCount(state);
@@ -39,7 +39,7 @@ export function renderNotebook(ctx) {
   if (currentEl) setTimeout(() => currentEl.scrollIntoView({ block: 'center', behavior: 'smooth' }), 120);
 
   return h('div', { class: 'screen' },
-    topbar({ subtitle: 'Cümlelerim' }),
+    topbar({ subtitle: 'Tekrar yolu' }),
     h('section', { class: 'card practice-hero stack' },
       h('div', { class: 'row between' }, h('p', { class: 'eyebrow' }, 'Tekrar yolu'), h('span', { class: 'chip glass-dark' }, `${done} / ${TOTAL_DAYS}`)),
       h('h2', {}, done === TOTAL_DAYS ? 'Yolun sonuna geldin! 🏆' : 'Her gün, 30 soruluk tekrar'),

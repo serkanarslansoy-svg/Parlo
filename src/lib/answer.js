@@ -4,6 +4,7 @@
 export function norm(text) {
   return String(text)
     .toLocaleLowerCase('it')
+    .replace(/ı/g, 'i') // Türkçe klavyede noktasız ı
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
     .replace(/[’'`´]/g, ' ')
@@ -25,18 +26,76 @@ function normKeepAccents(text) {
 
 const squash = (s) => norm(s).replace(/ /g, '');
 
+// --- Klavye kaynaklı yazım hataları ---
+// QWERTY (İtalyanca ve Türkçe Q klavye) tuş konumları; komşu tuşa basmak klavye hatası sayılır.
+const KEY_POS = {};
+['qwertyuiop', 'asdfghjkl', 'zxcvbnm'].forEach((row, r) => [...row].forEach((k, i) => { KEY_POS[k] = [i + [0, 0.25, 0.75][r], r]; }));
+export function adjacentKeys(a, b) {
+  const p = KEY_POS[a];
+  const q = KEY_POS[b];
+  return Boolean(p && q && a !== b && Math.hypot(p[0] - q[0], p[1] - q[1]) <= 1.3);
+}
+
 /**
- * Tam cümle kontrolü (Hızlı tekrar).
+ * Tek kelimede klavye kayması mı? Komşu tuş, yan yana iki harfin yer değiştirmesi
+ * ya da fazladan basılan (aynı/komşu) harf. Eksik harf ve uzak harf gerçek hata sayılır.
+ */
+export function isKeyboardSlip(given, expected) {
+  if (given === expected || expected.length < 3) return false;
+  const g = given;
+  const e = expected;
+  if (g.length === e.length) {
+    const diff = [...e].map((c, i) => (c !== g[i] ? i : -1)).filter((i) => i >= 0);
+    if (diff.length === 1) return adjacentKeys(g[diff[0]], e[diff[0]]);
+    if (diff.length === 2 && diff[1] === diff[0] + 1) return g[diff[0]] === e[diff[1]] && g[diff[1]] === e[diff[0]];
+    return false;
+  }
+  if (g.length === e.length + 1) {
+    for (let i = 0; i < g.length; i++) {
+      if (g.slice(0, i) + g.slice(i + 1) !== e) continue;
+      const near = [g[i - 1], g[i + 1]].filter(Boolean);
+      if (near.some((c) => c === g[i] || adjacentKeys(c, g[i]))) return true;
+    }
+  }
+  return false;
+}
+
+/** Kelime kelime karşılaştırır; en fazla 2 kelimede klavye kayması varsa onları döndürür, yoksa null. */
+function keyboardSlips(input, target) {
+  const gw = norm(input).split(' ').filter(Boolean);
+  const ew = norm(target).split(' ').filter(Boolean);
+  if (gw.length !== ew.length) return null;
+  const slips = [];
+  for (let i = 0; i < ew.length; i++) {
+    if (gw[i] === ew[i]) continue;
+    if (!isKeyboardSlip(gw[i], ew[i])) return null;
+    slips.push({ given: gw[i], expected: ew[i] });
+  }
+  return slips.length && slips.length <= 2 ? slips : null;
+}
+
+/**
+ * Tam cümle kontrolü (Hızlı tekrar ve yazma alıştırmaları).
  * Boşluk ve kesme işareti farkları ("un'acqua" / "un acqua", "dov'è" / "dove") hata sayılmaz.
- * @returns {{ok: boolean, accentNote: boolean}}
+ * Klavye kaymaları (komşu tuş, yer değiştiren harf, çift basış) doğru sayılır ama `typos` ile bildirilir.
+ * @returns {{ok: boolean, accentNote: boolean, typos: Array<{given, expected}>}}
  */
 export function checkSentence(input, card) {
   const targets = [card.it, ...(card.alt || [])];
   const given = squash(input);
   const hit = targets.find((t) => squash(t) === given);
-  if (!hit) return { ok: false, accentNote: false };
-  return { ok: true, accentNote: normKeepAccents(input) !== normKeepAccents(hit) };
+  if (hit) return { ok: true, accentNote: normKeepAccents(input) !== normKeepAccents(hit), typos: [] };
+  for (const t of targets) {
+    const typos = keyboardSlips(input, t);
+    if (typos) return { ok: true, accentNote: false, typos };
+  }
+  return { ok: false, accentNote: false, typos: [] };
 }
+
+/** Kullanıcıya gösterilecek kısa not: «voglip» → «voglio». */
+export const typoNote = (typos) => (typos?.length
+  ? `Klavye kayması: ${typos.map((t) => `«${t.given}» → «${t.expected}»`).join(', ')}. Yine de doğru saydım.`
+  : '');
 
 /** Bir cümleyi kelime kartlarına böler (noktalama kartlarda gösterilmez). */
 export function tilesFor(sentence) {
