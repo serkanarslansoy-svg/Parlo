@@ -1,6 +1,6 @@
 // İçerik bütünlüğü: senaryo grafı, örnek cevaplar ve cümle kartları birbiriyle tutarlı olmalı.
 import { describe, it, expect } from 'vitest';
-import { scenes, cards, patterns, patternById, dailyScene } from '../src/content/index.js';
+import { scenes, cards, patterns, patternById, dailyScene, CATEGORIES } from '../src/content/index.js';
 import { matchIntent, checkSentence } from '../src/lib/answer.js';
 
 describe.each(scenes.map((s) => [s.id, s]))('senaryo %s', (_, scene) => {
@@ -41,6 +41,8 @@ describe.each(scenes.map((s) => [s.id, s]))('senaryo %s', (_, scene) => {
 
   it('kart ve kalıp referansları geçerli', () => {
     for (const id of scene.cards) expect(cards[id], id).toBeTruthy();
+    expect(scene.cards, 'key, senaryonun kartlarından biri olmalı').toContain(scene.key);
+    expect(CATEGORIES.map((c) => c.id)).toContain(scene.cat);
     expect(['Lei', 'tu']).toContain(scene.register);
   });
 });

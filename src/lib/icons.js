@@ -29,4 +29,9 @@ export const ICONS = {
   search: svg('<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/>'),
   turtle: svg('<path d="M4 15h13a3 3 0 0 0 3-3v0a2 2 0 0 0-2-2h-.5"/><path d="M5.5 15a6 6 0 0 1 11.5-2.5"/><path d="M7 15v2.5M14 15v2.5"/>'),
   sparkle: svg('<path d="M12 4c.5 3.5 2.5 5.5 6 6-3.5.5-5.5 2.5-6 6-.5-3.5-2.5-5.5-6-6 3.5-.5 5.5-2.5 6-6z"/><path d="M18.5 15.5c.2 1.3.9 2 2.2 2.2-1.3.2-2 .9-2.2 2.2-.2-1.3-.9-2-2.2-2.2 1.3-.2 2-.9 2.2-2.2z"/>'),
+  fork: svg('<path d="M7 3v8"/><path d="M4.5 3v5a2.5 2.5 0 0 0 5 0V3"/><path d="M7 11v10"/><path d="M17 21V3c-2 1-3.5 3.5-3.5 7v3H17"/>'),
+  city: svg('<path d="M3 21h18"/><path d="M5 21V8l5-3v16"/><path d="M10 21V10h9v11"/><path d="M13 13h3M13 16.5h3M7.5 10v.01M7.5 13v.01M7.5 16v.01"/>'),
+  briefcase: svg('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M3 12.5h18"/>'),
+  quote: svg('<path d="M10 11H6.5a.5.5 0 0 1-.5-.5V8a2 2 0 0 1 2-2h1"/><path d="M10 11v2.5A3.5 3.5 0 0 1 6.5 17"/><path d="M18 11h-3.5a.5.5 0 0 1-.5-.5V8a2 2 0 0 1 2-2h1"/><path d="M18 11v2.5a3.5 3.5 0 0 1-3.5 3.5"/>'),
+  wave: svg('<path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/>'),
 };

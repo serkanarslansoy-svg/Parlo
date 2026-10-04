@@ -10,9 +10,9 @@ export const sceneById = (id) => scenes.find((s) => s.id === id);
 export const patternById = (id) => patterns.find((p) => p.id === id);
 
 export const CATEGORIES = [
-  { id: 'yeme', label: 'Yeme & İçme' },
-  { id: 'gunluk', label: 'Günlük yaşam' },
-  { id: 'is', label: 'İş' },
+  { id: 'yeme', label: 'Yeme & İçme', title: 'Yeme & İçme Ritüelleri', it: 'Gastronomia', icon: 'fork' },
+  { id: 'gunluk', label: 'Günlük yaşam', title: 'Şehirde Günlük Yaşam', it: 'Vita quotidiana', icon: 'city' },
+  { id: 'is', label: 'İş', title: 'İş Hayatı', it: 'Lavoro', icon: 'briefcase' },
 ];
 
 export const PATTERN_CATS = [
