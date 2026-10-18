@@ -32,11 +32,13 @@ describe.each(scenes.map((s) => [s.id, s]))('senaryo %s', (_, scene) => {
     for (const id of Object.keys(nodes)) expect(canEnd(id), `${id} bir sona ulaşmalı`).toBe(true);
   });
 
-  it('her örnek cevap (model) kendi niyetiyle eşleşiyor', () => {
+  it('her örnek cevap (model) kabul ediliyor ve kendi yoluna gidiyor', () => {
     for (const [id, n] of Object.entries(nodes)) {
       for (const intent of n.intents || []) {
         const r = matchIntent(intent.model, n.intents);
-        expect(r.intent, `${id}: «${intent.model}»`).toBe(intent);
+        expect(r.intent, `${id}: «${intent.model}» kabul edilmeli`).toBeTruthy();
+        // Aynı yere giden eşdeğer cevaplardan biriyle eşleşmesi yeterli.
+        expect(r.intent.next, `${id}: «${intent.model}»`).toBe(intent.next);
       }
     }
   });

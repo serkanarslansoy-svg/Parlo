@@ -80,6 +80,7 @@ export function renderLearn(ctx, param) {
   return h('div', { class: 'screen full' },
     header(counter),
     segments,
+    plan.grammar ? h('section', { class: 'card note-card stack' }, h('p', { class: 'eyebrow' }, 'Kısa not'), h('p', { class: 'small' }, plan.grammar)) : null,
     plan.words ? h('section', { class: 'card cream stack' }, h('p', { class: 'eyebrow' }, 'Bugünün kelimeleri'), h('p', { class: 'small', lang: 'it' }, plan.words)) : null,
     body);
 }

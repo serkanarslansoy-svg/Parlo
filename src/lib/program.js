@@ -155,3 +155,21 @@ export function formatDay(key) {
   const wd = WEEKDAYS.find((w) => w.d === new Date(y, m - 1, d).getDay());
   return `${d} ${MONTHS[m - 1]} ${wd.long}`;
 }
+
+// --- İçerik sürümü: program değişince eski ilerleme bir kez temizlenir ---
+export const CONTENT_VERSION = program.version || 1;
+/**
+ * Program içeriği değiştiyse (yeni cümleler, yeni günler) programa bağlı ilerlemeyi sıfırlar.
+ * XP, lig, seri günleri, çalışma planı ve ayarlar korunur. Değişiklik yaptıysa true döner.
+ */
+export function migrateState(state, keepScenes = []) {
+  if (!program.version || state.contentVersion === program.version) return false;
+  const fresh = !state.program && !Object.keys(state.cards || {}).length;
+  state.program = { days: {} };
+  state.practiceDays = {};
+  state.exams = {};
+  state.cards = {};
+  if (state.scenes) state.scenes = Object.fromEntries(Object.entries(state.scenes).filter(([id]) => keepScenes.includes(id)));
+  state.contentVersion = program.version;
+  return !fresh;
+}

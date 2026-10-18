@@ -644,3 +644,6 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 .gap-input:focus { outline: 2px solid var(--green); outline-offset: 1px; }
 .gap-input.right { border-color: var(--green); background: #fff; }
 .gap-input.wrong { border-color: var(--terracotta); background: var(--terracotta-tint); text-decoration: line-through; }
+.note-card { background: var(--sun-tint); border-color: #f1e3b8; box-shadow: none; }
+.mistake-list { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.culture-mini { border-left: 4px solid var(--terracotta); }

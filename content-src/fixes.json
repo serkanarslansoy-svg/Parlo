@@ -1,0 +1,30 @@
+{
+  "_about": "ChatGPT kaynaklarına (weekN.json) dokunmadan uygulanan düzeltmeler. Hepsi scripts/build-program.mjs tarafından uygulanır.",
+  "name_placeholder": ["Serkan"],
+  "replace": [
+    { "from": "Vorrei un appuntamento domani.", "to": "Vorrei un appuntamento per domani.", "why": "İtalyancada 'per domani' daha doğal" },
+    { "from": "Va bene alle dieci.", "to": "Alle dieci va bene.", "why": "Daha doğal söz dizimi (ChatGPT'nin kendi alternatifi)" }
+  ],
+  "alt_add": {
+    "Sono il nuovo vicino.": ["Sono la nuova vicina."],
+    "Sì, sono il nuovo vicino.": ["Sì, sono la nuova vicina."],
+    "Sì, sono nuovo qui.": ["Sì, sono nuova qui."],
+    "Sono turco.": ["Sono turca."]
+  },
+  "words_add": {
+    "4": [ { "it": "lavorare", "tr": "çalışmak" }, { "it": "andare", "tr": "gitmek" }, { "it": "il problema", "tr": "problem, sorun" } ],
+    "11": [ { "it": "turco / turca", "tr": "Türk (erkek / kadın)" } ]
+  },
+  "scene": {
+    "5": { "turns": { "1": { "ai": "Mi dica.", "tr": "Buyurun.", "why": "'Come si chiama?' sorusu beklenen cevapla uyuşmuyordu" } } },
+    "13": { "persona": { "role": "Teknisyen" }, "why": "Rol 'Sorumlu' iken 'yetkiliyle konuşmam gerekiyor' cevabı çelişiyordu" }
+  },
+  "keep_old_scenes": ["ristorante", "salumeria"],
+  "pattern_cat": {
+    "vorrei": "istek", "prendo": "istek", "vorrei_appuntamento": "istek", "per_favore": "istek", "mi_da": "istek", "voglio": "istek",
+    "posso": "izin", "puo": "izin", "piu_piano": "izin",
+    "devo": "ihtiyac", "mi_serve": "ihtiyac", "cosa_devo_fare": "ihtiyac", "non_capisco": "ihtiyac",
+    "cerco": "soru", "dove": "soru", "ce": "soru", "quanto_costa": "soru", "quanto": "soru", "a_che_ora": "soru",
+    "sono": "kendini_anlat", "ho": "kendini_anlat"
+  }
+}

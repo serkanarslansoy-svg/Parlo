@@ -88,6 +88,7 @@ export function renderDay(ctx, param) {
         : dayPlan(n + 1) ? h('button', { class: 'btn soft block', onclick: () => ctx.go(`day/${n + 1}`) }, `Gün ${n + 1}'e geç`, icon('arrow')) : null) : null,
     h('section', { class: 'stack' }, STEPS.map(stepRow)),
     plan.words ? h('section', { class: 'card cream stack' }, h('p', { class: 'eyebrow' }, 'Bugünün kelimeleri'), h('p', { class: 'small', lang: 'it' }, plan.words)) : null,
+    plan.culture ? h('section', { class: 'card culture-mini stack' }, h('p', { class: 'eyebrow' }, 'Kültür notu'), h('p', { class: 'small' }, plan.culture)) : null,
     plan.change ? h('section', { class: 'card stack' }, h('p', { class: 'eyebrow' }, '3. tur değişikliği'), h('p', {}, plan.change), h('p', { class: 'small muted' }, 'Sahneyi önce ipucuyla, sonra ipucusuz, sonra bu değişiklikle oyna.')) : null,
     plan.gate ? h('section', { class: 'card gate stack' },
       h('div', { class: 'row between' }, h('p', { class: 'eyebrow' }, n === TOTAL_DAYS ? 'Final sınavı' : `${week.week}. hafta kontrolü`),

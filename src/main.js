@@ -19,6 +19,8 @@ import { renderLearn } from './screens/learn.js';
 import { renderDrill } from './screens/drill.js';
 import { renderFix } from './screens/fix.js';
 import { renderPractice, renderExam } from './screens/practice.js';
+import { personalize, scenes as allScenes } from './content/index.js';
+import { migrateState } from './lib/program.js';
 import { createClient, scoreRow, normalizeCode, isValidCode, newIdentity } from './lib/online.js';
 
 const TABS = [
@@ -33,9 +35,15 @@ const TABS = [
 const FULLSCREEN = new Set(['chat', 'review', 'result', 'profiles', 'learn', 'drill', 'fix', 'practice', 'exam']);
 
 const db = loadProfiles();
+// Yeni program içeriği geldiyse eski program ilerlemesini bir kez temizle (XP ve seri kalır).
+let migrated = false;
+for (const id of Object.keys(db.data || {})) migrated = migrateState(db.data[id], allScenes.map((s) => s.id)) || migrated;
+if (migrated) saveProfiles(db);
 
 const online = createClient();
 let syncTimer = null;
+
+personalize(activeProfile(db)?.name);
 
 const ctx = {
   db,
@@ -65,6 +73,7 @@ const ctx = {
   /** Aktif oyuncuyu değiştirir (null: profil seçim ekranı). */
   switchProfile(id) {
     db.active = id;
+    personalize(db.profiles.find((p) => p.id === id)?.name);
     ctx.state = id ? db.data[id] : freshState();
     ctx.lastResult = null;
     saveProfiles(db);

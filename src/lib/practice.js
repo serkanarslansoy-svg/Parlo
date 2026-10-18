@@ -33,7 +33,7 @@ export function practiceIds(n) {
   const i = DAYS.findIndex((d) => d.day === Number(n));
   if (i < 0) return [];
   const d = DAYS[i];
-  const pool = [...new Set([...d.learn, ...(d.talk.scene ? sceneById(d.talk.scene).cards : [])])];
+  const pool = [...new Set([...d.learn, ...(d.review || []), ...(d.talk.scene ? sceneById(d.talk.scene).cards : [])])];
   for (let j = i - 1; j >= 0 && pool.length < MIN_POOL; j--) {
     for (const id of [...DAYS[j].learn].reverse()) if (pool.length < MIN_POOL && !pool.includes(id)) pool.push(id);
   }

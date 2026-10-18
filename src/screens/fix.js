@@ -7,6 +7,14 @@ import { speakBtn } from '../ui.js';
 import { sayPanel } from './say.js';
 
 const FIX_MAX = 3;
+
+/** Bu konuda Türklerin sık yaptığı hatalar (programdan). */
+function commonMistakes(plan) {
+  if (!plan.mistakes?.length) return null;
+  return h('section', { class: 'card note-card stack' },
+    h('p', { class: 'eyebrow' }, 'Türklerin sık yaptığı hatalar'),
+    h('ul', { class: 'mistake-list' }, plan.mistakes.map((m) => h('li', { class: 'small' }, m))));
+}
 const cardByIt = (it) => Object.values(cards).find((c) => c.it === it) || null;
 
 /** 4. adım: günün en önemli 3 hatası. Doğrusunu yazarak tekrar et; günün sonunda kapanır. */
@@ -40,6 +48,7 @@ export function renderFix(ctx, param) {
     return h('div', { class: 'screen full' }, header,
       h('div', { class: 'card empty stack' }, h('p', { style: 'font-size:40px' }, '🌟'), h('h2', {}, 'Bugün hata yok'),
         h('p', {}, 'Tekrarda ve konuşmada zorlandığın cümleler burada toplanır. Bugün hepsini rahat söyledin.'),
+        commonMistakes(plan),
         h('button', { class: 'btn block', onclick: finish }, 'Günü bitir', icon('arrow'))));
   }
 
@@ -56,6 +65,7 @@ export function renderFix(ctx, param) {
   setTimeout(() => speak(list[0].it, { slow: true }), 250);
   return h('div', { class: 'screen full' }, header,
     h('p', { class: 'small muted' }, 'Bugün zorlandığın cümleler. Doğrusunu oku, sonra kendin yaz.'),
+    commonMistakes(plan),
     ...items,
     done);
 }
