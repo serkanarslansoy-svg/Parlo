@@ -19,6 +19,7 @@ import { renderLearn } from './screens/learn.js';
 import { renderDrill } from './screens/drill.js';
 import { renderFix } from './screens/fix.js';
 import { renderPractice, renderExam } from './screens/practice.js';
+import { renderSlang } from './screens/slang.js';
 import { personalize, scenes as allScenes } from './content/index.js';
 import { migrateState } from './lib/program.js';
 import { createClient, scoreRow, normalizeCode, isValidCode, newIdentity } from './lib/online.js';
@@ -131,12 +132,13 @@ function render() {
     fix: () => renderFix(ctx, param),
     practice: () => renderPractice(ctx, param),
     exam: () => renderExam(ctx, param),
+    slang: () => renderSlang(ctx, param, query),
   };
   const view = (screens[route] || screens.home)();
   main.replaceChildren(view);
   nav.classList.toggle('hidden', FULLSCREEN.has(route));
   for (const a of nav.querySelectorAll('a')) {
-    if (a.dataset.route === route) a.setAttribute('aria-current', 'page');
+    if (a.dataset.route === route || (route === 'slang' && a.dataset.route === 'scenes')) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
   }
   window.scrollTo(0, 0);

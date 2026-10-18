@@ -14,6 +14,7 @@ Az gramer, çok pratik: kalıbı öğren → hızlı tekrarla pekiştir → ger�
 - **7 senaryo:** Kafe, Restoran, Okul, İş yeri, Şarküteri, Şehir, Eczane. Diyaloglar cevabına göre dallanır.
 - **Öğretmen paneli:** cevabın tutmazsa hangi parçanın eksik olduğunu gösterir (örn. "eksik: istek fiili"). İstersen ipucu ya da doğal bir cevap önerir.
 - **Ses (şimdilik kapalı):** dinleme ve mikrofon telefonlarda güvenilir çalışmadığı için kapatıldı; her şey yazıyla ilerliyor. Tekrar açmak için `src/lib/speech.js` içinde `AUDIO_ENABLED = true`.
+- **Sokak dili (18+, isteğe bağlı):** Senaryolar sekmesinde. Argo, küfür, dini küfürler ve göçmenlere yönelik hakaretler: anlamı, 1–5 ağırlık, kullanılır mı, kibar hâli, sana söylenirse ne yapmalı. Her oyuncu için ayrı onay; XP vermez. Kaynak: `content-src/slang/` → `npm`suz `node scripts/build-slang.mjs`.
 - **Çalışma planı:** haftanın çalışma günleri seçilir; kalan günler plana yayılıp Gün 30'un tarihi gösterilir.
 - **Seri:** bir gün kaçırmak seriyi bozmaz (art arda iki gün bozar); plan dışı günler sayılmaz; program adımları ve Tekrar yolu da seriye sayılır.
 - **Hafta kontrol sınavları:** 7, 14, 21 ve 30. günlerde 20 soru, 16 doğru ile geçilir; geçmeden sonraki hafta açılmaz. İlk geçişte +50 XP.

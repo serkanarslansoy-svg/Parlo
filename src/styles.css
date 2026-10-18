@@ -647,3 +647,33 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 .note-card { background: var(--sun-tint); border-color: #f1e3b8; box-shadow: none; }
 .mistake-list { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
 .culture-mini { border-left: 4px solid var(--terracotta); }
+
+/* ---------- Sokak dili ---------- */
+.slang-entry, .unit-card { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+.se-icon { font-size: 30px; }
+.se-title { display: flex; align-items: center; gap: 8px; font-weight: 800; font-family: var(--font-display); }
+.slang-entry .grow, .unit-card .grow { display: grid; gap: 2px; }
+.unit-n { flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: #fff; font-weight: 800; }
+.slang-gate { text-align: center; }
+.lvl { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px 3px 4px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; border: 0; white-space: nowrap; }
+.lvl b { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: rgba(255, 255, 255, 0.85); color: inherit; font-size: 0.75rem; }
+.lvl-1 { background: var(--green-tint); color: var(--green-deep); }
+.lvl-2 { background: #e6f1d8; color: #3d5a12; }
+.lvl-3 { background: var(--sun-tint); color: var(--gold-ink); }
+.lvl-4 { background: var(--terracotta-tint); color: var(--terracotta-ink); }
+.lvl-5 { background: #5c1010; color: #fff; }
+.lvl-5 b { background: rgba(255, 255, 255, 0.2); }
+.slang-item { padding: 0; overflow: hidden; }
+.si-head { display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px 14px; background: none; border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.si-head .grow { display: grid; gap: 2px; }
+.si-it { font-weight: 800; font-size: 1.05rem; }
+.si-body { padding: 0 14px 14px; }
+.si-dialog { display: grid; gap: 8px; padding: 10px 12px; border-radius: var(--r-sm); background: var(--cream); }
+.si-dialog p { margin: 0; }
+.si-alt { color: var(--green-deep); }
+.lvl-pick { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.lvl-pick .lvl { flex-direction: column; padding: 8px 2px; border-radius: var(--r-sm); cursor: pointer; font-size: 0.68rem; }
+.lvl-pick .lvl:disabled { opacity: 0.55; cursor: default; }
+.lvl-pick .lvl.picked { opacity: 1; outline: 3px solid var(--ink); }
+.chip-wrap { flex-wrap: wrap; }
+.chip-wrap .chip { white-space: normal; }

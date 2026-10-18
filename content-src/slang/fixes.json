@@ -1,0 +1,33 @@
+{
+  "_about": "units.json (ChatGPT) üzerine uygulanan düzeltmeler. scripts/build-slang.mjs uygular.",
+  "items": {
+    "s1_pure": {
+      "it": "Pure io.",
+      "literal": "Ben de (pure = da/de)",
+      "meaning": "Ben de. (tek başına 'Pure.' bu anlamda kullanılmaz; 'Pure io' Orta ve Güney İtalya'da çok yaygın)",
+      "region": "özellikle Roma ve Orta-Güney; her yerde anlaşılır",
+      "context": "Birine katıldığını söylemek için. Standart karşılığı 'Anch'io.' Her ortamda kullanılabilir.",
+      "example": [ { "who": "Alessio", "it": "Io vado a casa.", "tr": "Ben eve gidiyorum." }, { "who": "Beatrice", "it": "Pure io.", "tr": "Ben de." } ],
+      "polite_alternative": { "it": "Anch'io.", "tr": "Ben de." },
+      "why": "'Pure.' tek başına 'ben de' demek değil; doğrusu 'Pure io.' / 'Anch'io.'"
+    },
+    "s1_figo": {
+      "context": "Bir şeyi ya da birini beğendiğini söylemek için: «Che figo!», «È una figata!». Dikkat: 'la figa' isim olarak kadın cinsel organı için kaba bir kelimedir (Kuzey'de çok duyulur); bu yüzden 'figa' kelimesini kendin kullanma, 'figo' ve 'che figata' daha güvenli.",
+      "example": [ { "who": "Paolo", "it": "Hai visto la macchina nuova di Roberto?", "tr": "Roberto’nun yeni arabasını gördün mü?" }, { "who": "Giulia", "it": "Sì, è fighissima!", "tr": "Evet, süper havalı!" } ],
+      "why": "'figa' isminin kaba anlamı belirtilmemişti"
+    },
+    "s1_che_palle": { "meaning": "Ne sıkıcı!, Bıktım!, Of ya!", "why": "'İğrenç bir durum' anlamı yok" },
+    "s2_porca_miseria": { "meaning": "Lanet olsun!, Hay kahretsin!", "why": "'Ne pezevenklik' yanlış ve gereğinden ağır bir karşılık" },
+    "s2_porca_puttana": { "meaning": "Lanet olsun!, Hay kahretsin! (porca miseria'nın daha kaba hâli)", "why": "'Ne pezevenklik bu' yanlış karşılık" },
+    "s2_che_cazzo": {
+      "example": [ { "who": "Marco", "it": "Hanno chiuso la strada.", "tr": "Yolu kapatmışlar." }, { "who": "Luca", "it": "Che cazzo... e adesso come facciamo?", "tr": "Ne halt... şimdi ne yapacağız?" } ],
+      "why": "Garsonun müşteriye küfür ettiği örnek gerçekçi değildi"
+    },
+    "s3_vaffanculo": { "literal": "Git kıçına (va' a fare in culo)", "why": "Kelime anlamı yanlış verilmişti" },
+    "s3_stronzo": { "example": [ { "who": "Marco", "it": "Mi hai fregato i soldi!", "tr": "Paramı çaldın!" }, { "who": "Luca", "it": "Sei uno stronzo!", "tr": "Pisliğin tekisin!" } ], "why": "Türkçe çeviri düzeltildi" }
+  },
+  "remove": { "s3_figa_di_merda": "Yaygın bir ifade değil; diğer hakaretlerin tekrarı" },
+  "exercises": {
+    "1": { "6": { "dialog": [ { "who": "A", "it": "Io prendo un caffè." }, { "who": "B", "it": "Pure io." } ] } }
+  }
+}

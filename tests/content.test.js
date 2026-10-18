@@ -77,3 +77,24 @@ describe('mainPathLength', async () => {
     for (const s of scenes) expect(mainPathLength(s), s.id).toBeGreaterThanOrEqual(3);
   });
 });
+
+describe('sokak dili', async () => {
+  const slang = (await import('../src/content/slang.json')).default;
+  it('her ifadenin ağırlığı 1-5, alıştırma cevapları geçerli', () => {
+    const ids = new Set();
+    for (const u of slang) {
+      for (const it of u.items) {
+        expect(ids.has(it.id), it.id).toBe(false);
+        ids.add(it.id);
+        expect(it.level).toBeGreaterThanOrEqual(1);
+        expect(it.level).toBeLessThanOrEqual(5);
+        expect(it.meaning && it.tr_equivalent && it.can_i_use).toBeTruthy();
+      }
+      for (const ex of u.exercises) {
+        if (ex.type === 'meaning') expect(ex.options[ex.answer], `${u.unit}`).toBeTruthy();
+        if (ex.type === 'level') expect(ex.answer).toBeGreaterThanOrEqual(1);
+        if (ex.type === 'respond') expect(ex.answers.length).toBeGreaterThan(0);
+      }
+    }
+  });
+});

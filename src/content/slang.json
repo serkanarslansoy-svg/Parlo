@@ -1,0 +1,1661 @@
+[
+ {
+  "unit": 1,
+  "title": "Gündelik argo ve doğal konuşma",
+  "intro": "Bu ünite ders kitaplarında hiç görmediğin ama sokakta, işte ve arkadaş arasında her gün duyduğun doğal İtalyanca ifadeleri kapsar. Küfür değiller ama çok sık kullanılırlar. Anlamlarını ve ne zaman söylendiklerini öğrenince konuşmaları çok daha rahat takip edersin.",
+  "items": [
+   {
+    "id": "s1_dai",
+    "it": "Dai!",
+    "literal": "Ver! / Haydi ver!",
+    "meaning": "Haydi!, Hadi be!, Lütfen!, Gerçekten mi? (duruma göre teşvik, şaşırma veya ricadır)",
+    "tr_equivalent": "Hadi ya! / Haydi be!",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Herkes söyler. Birini cesaretlendirirken, ısrar ederken veya şaşırınca kullanılır. Çocuk yanında da sorunsuzdur.",
+    "example": [
+     {
+      "who": "Anna",
+      "it": "Non ce la faccio più a lavorare così.",
+      "tr": "Artık böyle çalışmaya dayanamıyorum."
+     },
+     {
+      "who": "Marco",
+      "it": "Dai, un altro po' e finiamo!",
+      "tr": "Hadi ya, biraz daha ve bitiriyoruz!"
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_boh",
+    "it": "Boh.",
+    "literal": "Boh (anlamsız ses)",
+    "meaning": "Bilmiyorum. / Hiçbir fikrim yok. / Boşver.",
+    "tr_equivalent": "Bilmem. / Hiç.",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer (özellikle Kuzey ve Merkez)",
+    "context": "Bir şey bilmediğini kısa ve doğal söylemek için. Omuz silkmekle birlikte çok sık duyulur.",
+    "example": [
+     {
+      "who": "Luca",
+      "it": "Sai che ora arriva il bus?",
+      "tr": "Otobüsün ne zaman geleceğini biliyor musun?"
+     },
+     {
+      "who": "Sara",
+      "it": "Boh.",
+      "tr": "Bilmem."
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_figo",
+    "it": "Figo! / Figa!",
+    "literal": "Havalı! / Güzel (erkek/kız için)",
+    "meaning": "Çok güzel!, Harika!, Havalı!, Süper! (nesne, kişi veya durum için övgü)",
+    "tr_equivalent": "Süper! / Çok havalı!",
+    "level": 2,
+    "can_i_use": "sadece yakın arkadaşla",
+    "region": "her yer (özellikle gençler arasında)",
+    "context": "Bir şeyi ya da birini beğendiğini söylemek için: «Che figo!», «È una figata!». Dikkat: 'la figa' isim olarak kadın cinsel organı için kaba bir kelimedir (Kuzey'de çok duyulur); bu yüzden 'figa' kelimesini kendin kullanma, 'figo' ve 'che figata' daha güvenli.",
+    "example": [
+     {
+      "who": "Paolo",
+      "it": "Hai visto la macchina nuova di Roberto?",
+      "tr": "Roberto’nun yeni arabasını gördün mü?"
+     },
+     {
+      "who": "Giulia",
+      "it": "Sì, è fighissima!",
+      "tr": "Evet, süper havalı!"
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_che_palle",
+    "it": "Che palle!",
+    "literal": "Ne toplar!",
+    "meaning": "Ne sıkıcı!, Bıktım!, Of ya!",
+    "tr_equivalent": "Of ya, sıktı! / Ne can sıkıcı!",
+    "level": 2,
+    "can_i_use": "sadece yakın arkadaşla",
+    "region": "her yer",
+    "context": "Sıkıntı, can sıkıntısı veya can sıkıcı bir haber duyunca söylenir. İş yerinde ve çocuk yanında kullanma.",
+    "example": [
+     {
+      "who": "Marco",
+      "it": "Domani lavoriamo anche sabato.",
+      "tr": "Yarın cumartesi de çalışıyoruz."
+     },
+     {
+      "who": "Luca",
+      "it": "Che palle!",
+      "tr": "Of ya, olamaz!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che noia!",
+     "tr": "Ne sıkıcı!"
+    }
+   },
+   {
+    "id": "s1_mi_sa",
+    "it": "Mi sa che...",
+    "literal": "Bana öyle geliyor ki...",
+    "meaning": "Galiba..., Sanırım..., Bence...",
+    "tr_equivalent": "Galiba... / Sanırım...",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Tahmin veya kişisel görüş belirtmek için çok doğal bir kalıp. Resmi konuşmada da kullanılabilir.",
+    "example": [
+     {
+      "who": "Elena",
+      "it": "Perché non risponde al telefono?",
+      "tr": "Neden telefona cevap vermiyor?"
+     },
+     {
+      "who": "Davide",
+      "it": "Mi sa che è ancora al lavoro.",
+      "tr": "Galiba hâlâ işte."
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_tipo",
+    "it": "Tipo...",
+    "literal": "Tip... / Tür...",
+    "meaning": "Mesela..., Gibi..., Yani... (örnek verirken veya yaklaşık konuşurken)",
+    "tr_equivalent": "Mesela... / Gibi...",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer (özellikle gençler ve günlük konuşma)",
+    "context": "Bir örneği veya yaklaşık bir açıklamayı başlatmak için. Çok sık duyulur, neredeyse her cümlede çıkabilir.",
+    "example": [
+     {
+      "who": "Chiara",
+      "it": "Cosa fai nel weekend?",
+      "tr": "Hafta sonu ne yapıyorsun?"
+     },
+     {
+      "who": "Andrea",
+      "it": "Tipo... vado al mare se fa bel tempo.",
+      "tr": "Mesela... hava güzelse denize giderim."
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_ecco",
+    "it": "Ecco!",
+    "literal": "İşte!",
+    "meaning": "İşte!, Tamam!, Anladım!, Buyur! (bir şeyi bulunca, anladığında veya bir şeyi sunarken)",
+    "tr_equivalent": "İşte! / Tamam işte!",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Bir şeyi bulduğunda, bir açıklamayı bitirdiğinde veya birine bir şey verdiğinde kullanılır. Çok nötr ve yaygındır.",
+    "example": [
+     {
+      "who": "Cliente",
+      "it": "Scusi, il conto per favore.",
+      "tr": "Affedersiniz, hesabı alabilir miyim?"
+     },
+     {
+      "who": "Cameriere",
+      "it": "Ecco!",
+      "tr": "İşte!"
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_magari",
+    "it": "Magari!",
+    "literal": "Belki!",
+    "meaning": "Keşke!, İnşallah!, Bari öyle olsa! (istek veya ümit belirtir)",
+    "tr_equivalent": "Keşke! / İnşallah!",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Bir şeyin olmasını istediğini söylemek için. Olumlu bir dilek ifade eder.",
+    "example": [
+     {
+      "who": "Sofia",
+      "it": "Pensi che ci diano l’aumento?",
+      "tr": "Sence bize zam yaparlar mı?"
+     },
+     {
+      "who": "Ricardo",
+      "it": "Magari!",
+      "tr": "Keşke!"
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_cioe",
+    "it": "Cioè...",
+    "literal": "Yani...",
+    "meaning": "Yani..., Demek istediğim..., Açıklayayım...",
+    "tr_equivalent": "Yani... / Demek istediğim...",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Söylediğini düzeltmek, açıklamak veya daha net hale getirmek için. Konuşmayı uzatırken de çok kullanılır.",
+    "example": [
+     {
+      "who": "Marta",
+      "it": "Non mi piace quel posto.",
+      "tr": "O yerden hoşlanmıyorum."
+     },
+     {
+      "who": "Marta",
+      "it": "Cioè... è troppo rumoroso.",
+      "tr": "Yani... çok gürültülü."
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_guarda",
+    "it": "Guarda...",
+    "literal": "Bak...",
+    "meaning": "Bak..., Dinle..., Şöyle ki... (dikkat çekmek veya bir şeyi açıklamaya başlamak için)",
+    "tr_equivalent": "Bak... / Dinle...",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Birine bir şeyi anlatmaya başlarken veya dikkatini çekmek için. Çok doğal ve sık kullanılır.",
+    "example": [
+     {
+      "who": "Francesco",
+      "it": "Guarda, ti spiego come funziona.",
+      "tr": "Bak, sana nasıl çalıştığını anlatayım."
+     },
+     {
+      "who": "Laura",
+      "it": "Ok, ti ascolto.",
+      "tr": "Tamam, dinliyorum."
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_mah",
+    "it": "Mah...",
+    "literal": "Mah... (anlamsız ses)",
+    "meaning": "Bilmiyorum ki..., Pek emin değilim..., Hımm...",
+    "tr_equivalent": "Bilmiyorum ki... / Hımm...",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer (özellikle Merkez ve Güney)",
+    "context": "Şüphe, kararsızlık veya bilmemezlik belirtmek için. Genellikle omuz silkme ile birlikte gelir.",
+    "example": [
+     {
+      "who": "Giorgio",
+      "it": "Pensi che sia una buona idea?",
+      "tr": "Sence iyi bir fikir mi?"
+     },
+     {
+      "who": "Valentina",
+      "it": "Mah... non so.",
+      "tr": "Bilmiyorum ki... emin değilim."
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s1_pure",
+    "it": "Pure io.",
+    "literal": "Ben de (pure = da/de)",
+    "meaning": "Ben de. (tek başına 'Pure.' bu anlamda kullanılmaz; 'Pure io' Orta ve Güney İtalya'da çok yaygın)",
+    "tr_equivalent": "Ben de. / Aynı.",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "özellikle Roma ve Orta-Güney; her yerde anlaşılır",
+    "context": "Birine katıldığını söylemek için. Standart karşılığı 'Anch'io.' Her ortamda kullanılabilir.",
+    "example": [
+     {
+      "who": "Alessio",
+      "it": "Io vado a casa.",
+      "tr": "Ben eve gidiyorum."
+     },
+     {
+      "who": "Beatrice",
+      "it": "Pure io.",
+      "tr": "Ben de."
+     }
+    ],
+    "polite_alternative": {
+     "it": "Anch'io.",
+     "tr": "Ben de."
+    }
+   },
+   {
+    "id": "s1_manco",
+    "it": "Manco...",
+    "literal": "Hatta ... bile değil",
+    "meaning": "Bile ... değil. / Hiç ... değil. (olumsuz vurgu)",
+    "tr_equivalent": "Bile değil. / Hiç...",
+    "level": 2,
+    "can_i_use": "sadece yakın arkadaşla",
+    "region": "özellikle Merkez ve Güney (Roma, Napoli)",
+    "context": "Bir şeyin hiç olmadığını veya beklenenden daha az olduğunu vurgulamak için. Günlük konuşmada çok doğal.",
+    "example": [
+     {
+      "who": "Roberto",
+      "it": "Hai finito il lavoro?",
+      "tr": "İşi bitirdin mi?"
+     },
+     {
+      "who": "Silvia",
+      "it": "Manco l’ho iniziato!",
+      "tr": "Başlamadım bile!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non l’ho nemmeno iniziato.",
+     "tr": "Başlamadım bile."
+    }
+   },
+   {
+    "id": "s1_dai_su",
+    "it": "Dai su!",
+    "literal": "Haydi yukarı / Haydi hadi!",
+    "meaning": "Hadi ama!, Lütfen!, Artık yeter, hadi!",
+    "tr_equivalent": "Hadi ama! / Lütfen ya!",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Birini ikna etmeye çalışırken veya sabırsızlıkla teşvik ederken kullanılır. 'Dai'nin daha ısrarlı hali.",
+    "example": [
+     {
+      "who": "Mamma",
+      "it": "Dai su, alzati che è tardi!",
+      "tr": "Hadi ama, kalk geç oldu!"
+     },
+     {
+      "who": "Figlio",
+      "it": "Cinque minuti ancora...",
+      "tr": "Beş dakika daha..."
+     }
+    ],
+    "polite_alternative": null
+   }
+  ],
+  "exercises": [
+   {
+    "type": "level",
+    "it": "Che palle!",
+    "answer": 2
+   },
+   {
+    "type": "level",
+    "it": "Boh.",
+    "answer": 1
+   },
+   {
+    "type": "level",
+    "it": "Figo!",
+    "answer": 2
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Domani dobbiamo lavorare fino alle otto."
+     },
+     {
+      "who": "B",
+      "it": "Che palle!"
+     }
+    ],
+    "options": [
+     "Ne güzel haber!",
+     "Ne sıkıcı / of ya!",
+     "Hiç önemli değil."
+    ],
+    "answer": 1
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Sai dove ha parcheggiato la macchina?"
+     },
+     {
+      "who": "B",
+      "it": "Boh."
+     }
+    ],
+    "options": [
+     "Tabii ki biliyorum.",
+     "Bilmiyorum / fikrim yok.",
+     "Orada park etmiş."
+    ],
+    "answer": 1
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Pensi che vinceremo la partita?"
+     },
+     {
+      "who": "B",
+      "it": "Magari!"
+     }
+    ],
+    "options": [
+     "Kesinlikle hayır.",
+     "Keşke / inşallah!",
+     "Zaten kazandık."
+    ],
+    "answer": 1
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Io prendo un caffè."
+     },
+     {
+      "who": "B",
+      "it": "Pure io."
+     }
+    ],
+    "options": [
+     "Ben de.",
+     "Hayır teşekkürler.",
+     "Senin yerine ben alayım."
+    ],
+    "answer": 0
+   }
+  ],
+  "gestures": []
+ },
+ {
+  "unit": 2,
+  "title": "Hafif küfürler ve ünlemler",
+  "intro": "Bu ünite hayret, öfke, şaşkınlık veya can sıkıntısı belirtmek için kullanılan hafif küfürleri ve ünlemleri kapsar. Çoğu zaman gerçek bir hakaret değildir, ama yine de resmi ortamlarda ve çocuk yanında dikkatli olmak gerekir. Ağırlıklarını ve ne zaman söylenebileceklerini öğren.",
+  "items": [
+   {
+    "id": "s2_cavolo",
+    "it": "Cavolo!",
+    "literal": "Lahana!",
+    "meaning": "Vay be!, Hay aksi!, Lanet olsun! (hafif şaşkınlık veya can sıkıntısı)",
+    "tr_equivalent": "Hay aksi! / Vay be!",
+    "level": 2,
+    "can_i_use": "sadece yakın arkadaşla",
+    "region": "her yer",
+    "context": "Bir şey ters gittiğinde veya şaşırınca söylenir. Çocuk yanında da duyulabilir ama iş yerinde dikkatli ol.",
+    "example": [
+     {
+      "who": "Marco",
+      "it": "Ho dimenticato le chiavi in ufficio.",
+      "tr": "Anahtarları ofiste unuttum."
+     },
+     {
+      "who": "Luca",
+      "it": "Cavolo!",
+      "tr": "Hay aksi!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Accidenti!",
+     "tr": "Hay aksi!"
+    }
+   },
+   {
+    "id": "s2_accidenti",
+    "it": "Accidenti!",
+    "literal": "Kazalar!",
+    "meaning": "Hay aksi!, Vay canına!, Lanet olsun! (şaşkınlık veya küçük öfke)",
+    "tr_equivalent": "Hay aksi! / Vay canına!",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Çok hafif bir ünlem. Hem olumlu şaşkınlık hem de can sıkıntısı için kullanılır. Her ortamda sorunsuzdur.",
+    "example": [
+     {
+      "who": "Sara",
+      "it": "Hanno alzato il prezzo della benzina di nuovo.",
+      "tr": "Benzin fiyatını yine yükselttiler."
+     },
+     {
+      "who": "Paolo",
+      "it": "Accidenti!",
+      "tr": "Hay aksi!"
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s2_porca_miseria",
+    "it": "Porca miseria!",
+    "literal": "Domuz sefaleti!",
+    "meaning": "Lanet olsun!, Hay kahretsin!",
+    "tr_equivalent": "Hay kahretsin! / Lanet olsun!",
+    "level": 2,
+    "can_i_use": "sadece yakın arkadaşla",
+    "region": "her yer",
+    "context": "Can sıkıcı bir durum karşısında söylenir. Hafif küfür seviyesindedir, çocuk yanında ve resmi ortamda kullanma.",
+    "example": [
+     {
+      "who": "Elena",
+      "it": "Il treno è in ritardo di un’ora.",
+      "tr": "Tren bir saat gecikmeli."
+     },
+     {
+      "who": "Davide",
+      "it": "Porca miseria!",
+      "tr": "Hay kahretsin!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che sfortuna!",
+     "tr": "Ne şanssızlık!"
+    }
+   },
+   {
+    "id": "s2_cazzo",
+    "it": "Cazzo!",
+    "literal": "Yarak! / Sik!",
+    "meaning": "Kahretsin!, Lanet!, Ne oluyor ya! (şaşkınlık, öfke veya vurgu için)",
+    "tr_equivalent": "Kahretsin! / Lan!",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Çok yaygın ünlem. Hem tek başına hem de cümle içinde (che cazzo fai?) kullanılır. İş yerinde, çocuk yanında ve tanımadığın insanlarla asla söyleme.",
+    "example": [
+     {
+      "who": "Andrea",
+      "it": "Ho perso il portafoglio.",
+      "tr": "Cüzdanımı kaybettim."
+     },
+     {
+      "who": "Chiara",
+      "it": "Cazzo!",
+      "tr": "Kahretsin!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Accidenti!",
+     "tr": "Hay aksi!"
+    }
+   },
+   {
+    "id": "s2_minchia",
+    "it": "Minchia!",
+    "literal": "Yarak! (Sicilya/Güney lehçesi)",
+    "meaning": "Vay be!, Kahretsin!, Lanet olsun! (şaşkınlık veya öfke)",
+    "tr_equivalent": "Vay be! / Kahretsin!",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "Güney İtalya (Sicilya, Calabria, Napoli çevresi)",
+    "context": "Güney’de 'cazzo' yerine çok kullanılır. Aynı ağırlıktadır. Kuzey’de daha az duyulur ama anlaşılır.",
+    "example": [
+     {
+      "who": "Giuseppe",
+      "it": "Hanno rubato la macchina!",
+      "tr": "Arabayı çalmışlar!"
+     },
+     {
+      "who": "Salvo",
+      "it": "Minchia!",
+      "tr": "Kahretsin!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Accidenti!",
+     "tr": "Hay aksi!"
+    }
+   },
+   {
+    "id": "s2_madonna",
+    "it": "Madonna!",
+    "literal": "Meryem Ana!",
+    "meaning": "Vay canına!, Aman Tanrım!, Hay aksi! (şaşkınlık)",
+    "tr_equivalent": "Aman Tanrım! / Vay canına!",
+    "level": 2,
+    "can_i_use": "sadece yakın arkadaşla",
+    "region": "her yer (özellikle Merkez ve Güney)",
+    "context": "Hafif dini çağrışımlı ünlem. Çoğu zaman gerçek küfür niyeti olmadan söylenir ama bazı dindar insanlar rahatsız olabilir.",
+    "example": [
+     {
+      "who": "Francesca",
+      "it": "Guarda quanta gente c’è!",
+      "tr": "Bak ne kadar insan var!"
+     },
+     {
+      "who": "Roberto",
+      "it": "Madonna!",
+      "tr": "Vay canına!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Caspita!",
+     "tr": "Vay be!"
+    }
+   },
+   {
+    "id": "s2_porca_puttana",
+    "it": "Porca puttana!",
+    "literal": "Domuz orospu!",
+    "meaning": "Lanet olsun!, Hay kahretsin! (porca miseria'nın daha kaba hâli)",
+    "tr_equivalent": "Hay kahretsin! / Lanet olsun!",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Can sıkıcı veya sinir bozucu bir durum karşısında söylenir. 'Porca miseria'dan biraz daha ağırdır. Resmi ortamda ve çocuk yanında kullanma.",
+    "example": [
+     {
+      "who": "Luca",
+      "it": "Il computer si è bloccato di nuovo.",
+      "tr": "Bilgisayar yine kilitlendi."
+     },
+     {
+      "who": "Marco",
+      "it": "Porca puttana!",
+      "tr": "Hay kahretsin!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che sfortuna!",
+     "tr": "Ne şanssızlık!"
+    }
+   },
+   {
+    "id": "s2_che_cazzo",
+    "it": "Che cazzo...?",
+    "literal": "Ne yarak...?",
+    "meaning": "Ne oluyor?, Ne halt ediyorsun?, Ne bu ya?",
+    "tr_equivalent": "Ne oluyor lan? / Ne halt?",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Şaşkınlık, öfke veya 'ne yapıyorsun' anlamında soru olarak kullanılır. Çok yaygındır ama kaba kabul edilir.",
+    "example": [
+     {
+      "who": "Marco",
+      "it": "Hanno chiuso la strada.",
+      "tr": "Yolu kapatmışlar."
+     },
+     {
+      "who": "Luca",
+      "it": "Che cazzo... e adesso come facciamo?",
+      "tr": "Ne halt... şimdi ne yapacağız?"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che succede?",
+     "tr": "Ne oluyor?"
+    }
+   },
+   {
+    "id": "s2_merda",
+    "it": "Merda!",
+    "literal": "Bok!",
+    "meaning": "Kahretsin!, Bok!, Lanet!",
+    "tr_equivalent": "Kahretsin! / Bok gibi!",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Bir şey ters gittiğinde veya kötü bir durum karşısında söylenir. Hem ünlem hem de 'che merda' şeklinde kullanılır.",
+    "example": [
+     {
+      "who": "Giulia",
+      "it": "Ho rovesciato il caffè sulla tastiera.",
+      "tr": "Kahveyi klavyenin üstüne döktüm."
+     },
+     {
+      "who": "Andrea",
+      "it": "Merda!",
+      "tr": "Kahretsin!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che peccato!",
+     "tr": "Ne yazık!"
+    }
+   },
+   {
+    "id": "s2_caspita",
+    "it": "Caspita!",
+    "literal": "Caspita! (eski ünlem)",
+    "meaning": "Vay be!, Hay aksi!, Vay canına!",
+    "tr_equivalent": "Vay be! / Hay aksi!",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Çok hafif ve neredeyse zararsız bir ünlem. Hem olumlu hem olumsuz şaşkınlık için kullanılır. Her ortamda sorunsuzdur.",
+    "example": [
+     {
+      "who": "Marta",
+      "it": "Hanno vinto 5 a 0!",
+      "tr": "5-0 kazandılar!"
+     },
+     {
+      "who": "Paolo",
+      "it": "Caspita!",
+      "tr": "Vay be!"
+     }
+    ],
+    "polite_alternative": null
+   },
+   {
+    "id": "s2_mannaggia",
+    "it": "Mannaggia!",
+    "literal": "Lanet olsun! (eski/Güney)",
+    "meaning": "Hay aksi!, Lanet olsun!, Kahretsin!",
+    "tr_equivalent": "Hay aksi! / Lanet olsun!",
+    "level": 2,
+    "can_i_use": "sadece yakın arkadaşla",
+    "region": "Güney İtalya ve Roma",
+    "context": "Eski usul ama hâlâ duyulan bir ünlem. Özellikle yaşlılar ve Güney’de yaygındır. Hafif kabul edilir.",
+    "example": [
+     {
+      "who": "Nonna",
+      "it": "Ho perso gli occhiali di nuovo.",
+      "tr": "Gözlüklerimi yine kaybettim."
+     },
+     {
+      "who": "Nonna",
+      "it": "Mannaggia!",
+      "tr": "Hay aksi!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Accidenti!",
+     "tr": "Hay aksi!"
+    }
+   },
+   {
+    "id": "s2_porca_troia",
+    "it": "Porca troia!",
+    "literal": "Domuz orospu!",
+    "meaning": "Lanet olsun!, Hay kahretsin!",
+    "tr_equivalent": "Hay kahretsin! / Lanet olsun!",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer (özellikle Merkez ve Kuzey)",
+    "context": "'Porca puttana'ya benzer, can sıkıntısı ve öfke için kullanılır. Kaba kabul edilir, resmi ortamda söyleme.",
+    "example": [
+     {
+      "who": "Stefano",
+      "it": "La stampante non funziona ancora.",
+      "tr": "Yazıcı hâlâ çalışmıyor."
+     },
+     {
+      "who": "Lucia",
+      "it": "Porca troia!",
+      "tr": "Hay kahretsin!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che sfortuna!",
+     "tr": "Ne şanssızlık!"
+    }
+   }
+  ],
+  "exercises": [
+   {
+    "type": "level",
+    "it": "Cavolo!",
+    "answer": 2
+   },
+   {
+    "type": "level",
+    "it": "Cazzo!",
+    "answer": 3
+   },
+   {
+    "type": "level",
+    "it": "Accidenti!",
+    "answer": 1
+   },
+   {
+    "type": "level",
+    "it": "Porca miseria!",
+    "answer": 2
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Ho dimenticato il telefono a casa."
+     },
+     {
+      "who": "B",
+      "it": "Cavolo!"
+     }
+    ],
+    "options": [
+     "Ne güzel!",
+     "Hay aksi! / Vay be!",
+     "Hiç önemli değil."
+    ],
+    "answer": 1
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Il treno è cancellato."
+     },
+     {
+      "who": "B",
+      "it": "Porca miseria!"
+     }
+    ],
+    "options": [
+     "Harika haber!",
+     "Lanet olsun! / Hay kahretsin!",
+     "Bana ne."
+    ],
+    "answer": 1
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Hanno aumentato l’affitto di 200 euro."
+     },
+     {
+      "who": "B",
+      "it": "Cazzo!"
+     }
+    ],
+    "options": [
+     "Süper!",
+     "Kahretsin! / Lanet!",
+     "Normal bir şey."
+    ],
+    "answer": 1
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Guarda quanti soldi ha vinto!"
+     },
+     {
+      "who": "B",
+      "it": "Madonna!"
+     }
+    ],
+    "options": [
+     "Vay canına! / Aman Tanrım!",
+     "Hiç beğenmedim.",
+     "Yalan söylüyor."
+    ],
+    "answer": 0
+   }
+  ],
+  "gestures": []
+ },
+ {
+  "unit": 3,
+  "title": "Ağır küfürler ve hakaretler",
+  "intro": "Bu ünite sokakta, trafikte, maçta ve bazen iş yerinde duyabileceğin ağır küfürleri ve kişisel hakaretleri kapsar. Çoğu cinsel veya aşağılayıcıdır. Bunları tanı, ağırlıklarını bil ve kendin kullanma. Özellikle seviye 4-5 olanlar kavga çıkarabilir.",
+  "items": [
+   {
+    "id": "s3_vaffanculo",
+    "it": "Vaffanculo!",
+    "literal": "Git kıçına (va' a fare in culo)",
+    "meaning": "Siktir git!, Defol!, Git başımdan!",
+    "tr_equivalent": "Siktir git! / Defol!",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "En yaygın ağır küfürlerden biri. Hem öfke hem de 'defol' anlamında kullanılır. Kavga başlatabilir.",
+    "example": [
+     {
+      "who": "Autista",
+      "it": "Ma che fai? Guida dritto!",
+      "tr": "Ne yapıyorsun? Düz sür!"
+     },
+     {
+      "who": "Altro autista",
+      "it": "Vaffanculo!",
+      "tr": "Siktir git!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Lasciami in pace.",
+     "tr": "Beni rahat bırak."
+    }
+   },
+   {
+    "id": "s3_stronzo",
+    "it": "Stronzo! / Stronza!",
+    "literal": "Bok parçası! (erkek/kız)",
+    "meaning": "Pislik!, Bok herif/karı!, Aptal pislik!",
+    "tr_equivalent": "Pislik! / Bok herif!",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Kişisel hakaret. Doğrudan birine söylenir. Çok yaygındır ve kavgaya yol açabilir.",
+    "example": [
+     {
+      "who": "Marco",
+      "it": "Mi hai fregato i soldi!",
+      "tr": "Paramı çaldın!"
+     },
+     {
+      "who": "Luca",
+      "it": "Sei uno stronzo!",
+      "tr": "Pisliğin tekisin!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non mi sembra corretto.",
+     "tr": "Bana doğru gelmiyor."
+    }
+   },
+   {
+    "id": "s3_coglione",
+    "it": "Coglione!",
+    "literal": "Taşak!",
+    "meaning": "Gerizekalı!, Aptal herif!, Salak!",
+    "tr_equivalent": "Gerizekalı! / Salak herif!",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Aşağılayıcı hakaret. Özellikle erkeklere söylenir. Ağır kabul edilir.",
+    "example": [
+     {
+      "who": "Tifoso",
+      "it": "Ma come hai tirato così?",
+      "tr": "Nasıl öyle şut çektin?"
+     },
+     {
+      "who": "Altro tifoso",
+      "it": "Sei un coglione!",
+      "tr": "Gerizekalısın!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non è stato intelligente.",
+     "tr": "Akıllıca olmadı."
+    }
+   },
+   {
+    "id": "s3_puttana",
+    "it": "Puttana!",
+    "literal": "Orospu!",
+    "meaning": "Orospu!, Fahişe! (kadına ağır hakaret)",
+    "tr_equivalent": "Orospu!",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Kadına yönelik çok ağır cinsel hakaret. Asla kullanma. Duyarsan ciddi bir saldırı olarak algıla.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Non mi rispondi più?",
+      "tr": "Artık cevap vermiyor musun?"
+     },
+     {
+      "who": "Uomo",
+      "it": "Puttana!",
+      "tr": "Orospu!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non ti permettere.",
+     "tr": "Kendine gel."
+    }
+   },
+   {
+    "id": "s3_figlio_di_puttana",
+    "it": "Figlio di puttana!",
+    "literal": "Orospu çocuğu!",
+    "meaning": "Orospu çocuğu!, Piç!",
+    "tr_equivalent": "Orospu çocuğu! / Piç!",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Çok ağır kişisel hakaret. Hem erkek hem kadın için kullanılır. Kavga ve şikâyet sebebi olabilir.",
+    "example": [
+     {
+      "who": "Conducente",
+      "it": "Mi hai tagliato la strada!",
+      "tr": "Yolumu kestin!"
+     },
+     {
+      "who": "Altro",
+      "it": "Figlio di puttana!",
+      "tr": "Orospu çocuğu!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Attento a come guidi.",
+     "tr": "Nasıl sürdüğüne dikkat et."
+    }
+   },
+   {
+    "id": "s3_testa_di_cazzo",
+    "it": "Testa di cazzo!",
+    "literal": "Yarak kafa!",
+    "meaning": "Gerizekalı!, Aptal herif!, Yarak kafa!",
+    "tr_equivalent": "Gerizekalı! / Aptal herif!",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Aşağılayıcı hakaret. Özellikle sinirli tartışmalarda duyulur.",
+    "example": [
+     {
+      "who": "Operaio",
+      "it": "Hai fatto di nuovo lo stesso errore!",
+      "tr": "Yine aynı hatayı yaptın!"
+     },
+     {
+      "who": "Capo",
+      "it": "Testa di cazzo!",
+      "tr": "Gerizekalı!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Hai sbagliato di nuovo.",
+     "tr": "Yine hata yaptın."
+    }
+   },
+   {
+    "id": "s3_pezzo_di_merda",
+    "it": "Pezzo di merda!",
+    "literal": "Bok parçası!",
+    "meaning": "Pislik!, Bok herif!, Değersiz insan!",
+    "tr_equivalent": "Pislik! / Bok parçası!",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Çok aşağılayıcı. Hem kişisel hem genel hakaret olarak kullanılır.",
+    "example": [
+     {
+      "who": "Vicino",
+      "it": "Hai parcheggiato davanti al mio cancello!",
+      "tr": "Kapımın önüne park ettin!"
+     },
+     {
+      "who": "Altro",
+      "it": "Pezzo di merda!",
+      "tr": "Pislik!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Per favore sposta la macchina.",
+     "tr": "Lütfen arabayı çek."
+    }
+   },
+   {
+    "id": "s3_vaffanculo_a_te",
+    "it": "Vaffanculo a te e a chi t’ha fatto!",
+    "literal": "Siktir git sana ve seni yapana!",
+    "meaning": "Siktir git hem sana hem ailene!",
+    "tr_equivalent": "Siktir git sana da ailene de!",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer (özellikle Merkez-Güney)",
+    "context": "Çok ağır ve kişisel. Aileyi de hedef aldığı için daha tehlikelidir. Asla kullanma.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Non ti voglio più vedere!",
+      "tr": "Seni bir daha görmek istemiyorum!"
+     },
+     {
+      "who": "Altro",
+      "it": "Vaffanculo a te e a chi t’ha fatto!",
+      "tr": "Siktir git sana da ailene de!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non voglio più avere a che fare con te.",
+     "tr": "Seninle bir daha işim olmasın."
+    }
+   }
+  ],
+  "exercises": [
+   {
+    "type": "level",
+    "it": "Vaffanculo!",
+    "answer": 4
+   },
+   {
+    "type": "level",
+    "it": "Stronzo!",
+    "answer": 4
+   },
+   {
+    "type": "level",
+    "it": "Figlio di puttana!",
+    "answer": 5
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Mi hai tagliato la strada, idiota!"
+     },
+     {
+      "who": "B",
+      "it": "Vaffanculo!"
+     }
+    ],
+    "options": [
+     "Teşekkür ederim.",
+     "Siktir git! / Defol!",
+     "Özür dilerim."
+    ],
+    "answer": 1
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Hai fatto un lavoro di merda!"
+     },
+     {
+      "who": "B",
+      "it": "Sei un coglione!"
+     }
+    ],
+    "options": [
+     "Sen de harikasın.",
+     "Gerizekalı! / Salak herif!",
+     "Haklısın."
+    ],
+    "answer": 1
+   }
+  ],
+  "gestures": []
+ },
+ {
+  "unit": 4,
+  "title": "Bestemmie (dini küfürler)",
+  "intro": "Bestemmie İtalya’ya özgü dini küfürlerdir. Bazı bölgelerde (özellikle Veneto, Lombardia, Emilia) çok yaygındır ama birçok ortamda son derece kaba kabul edilir ve bazı yerlerde yasal yaptırımı bile olabilir. Bunları sadece tanımak için öğren. Kendin asla kullanma.",
+  "items": [
+   {
+    "id": "s4_porco_dio",
+    "it": "Porco Dio!",
+    "literal": "Domuz Tanrı!",
+    "meaning": "Lanet olsun Tanrı’ya! (çok ağır dini küfür)",
+    "tr_equivalent": "Allah kahretsin! (ama çok daha ağır ve dini hakaret)",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "özellikle Kuzey (Veneto, Lombardia, Emilia-Romagna)",
+    "context": "En bilinen bestemmie’lerden biri. Öfke anında söylenir. Birçok insan için ağır hakarettir, bazı bölgelerde para cezası bile uygulanabilir.",
+    "example": [
+     {
+      "who": "Operaio",
+      "it": "Mi sono sbattuto il dito!",
+      "tr": "Parmağımı çarptım!"
+     },
+     {
+      "who": "Operaio",
+      "it": "Porco Dio!",
+      "tr": "Porco Dio!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Accidenti!",
+     "tr": "Hay aksi!"
+    }
+   },
+   {
+    "id": "s4_dio_cane",
+    "it": "Dio cane!",
+    "literal": "Tanrı köpek!",
+    "meaning": "Lanet olsun! (dini küfür)",
+    "tr_equivalent": "Allah kahretsin! (dini hakaret içeren)",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "özellikle Kuzey İtalya",
+    "context": "Çok yaygın bestemmie. Günlük öfke anlarında duyulur ama dindar insanlar ve birçok ortamda kabul edilemez.",
+    "example": [
+     {
+      "who": "Autista",
+      "it": "Il semaforo è di nuovo rosso!",
+      "tr": "Işık yine kırmızı!"
+     },
+     {
+      "who": "Autista",
+      "it": "Dio cane!",
+      "tr": "Dio cane!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che sfortuna!",
+     "tr": "Ne şanssızlık!"
+    }
+   },
+   {
+    "id": "s4_madonna_puttana",
+    "it": "Madonna puttana!",
+    "literal": "Orospu Meryem Ana!",
+    "meaning": "Lanet olsun! (Meryem Ana’ya ağır hakaret)",
+    "tr_equivalent": "Çok ağır dini küfür (Türkçede doğrudan karşılığı yok, 'Allah kahretsin'in çok daha ağır hali)",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer (özellikle Merkez ve Güney’de de duyulur)",
+    "context": "Meryem Ana’ya hakaret ettiği için birçok kişi için en ağırlarından biridir. Asla kullanma.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Hanno perso di nuovo!",
+      "tr": "Yine kaybettiler!"
+     },
+     {
+      "who": "Uomo",
+      "it": "Madonna puttana!",
+      "tr": "Madonna puttana!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che delusione!",
+     "tr": "Ne hayal kırıklığı!"
+    }
+   },
+   {
+    "id": "s4_cristo_di_merda",
+    "it": "Cristo di merda!",
+    "literal": "Bok İsa!",
+    "meaning": "Lanet olsun! (İsa’ya ağır hakaret)",
+    "tr_equivalent": "Çok ağır dini küfür",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Dini figüre hakaret içerir. Bazı bölgelerde daha sık duyulsa da her yerde kaba ve tehlikelidir.",
+    "example": [
+     {
+      "who": "Lavoratore",
+      "it": "Si è rotto di nuovo!",
+      "tr": "Yine bozuldu!"
+     },
+     {
+      "who": "Lavoratore",
+      "it": "Cristo di merda!",
+      "tr": "Cristo di merda!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non ci posso credere!",
+     "tr": "İnanamıyorum!"
+    }
+   },
+   {
+    "id": "s4_porca_madonna",
+    "it": "Porca Madonna!",
+    "literal": "Domuz Meryem Ana!",
+    "meaning": "Lanet olsun! (Meryem Ana’ya hakaret)",
+    "tr_equivalent": "Çok ağır dini küfür",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Yaygın bestemmie. Öfke ve can sıkıntısında söylenir. Dindar ortamda ve resmi yerlerde asla duyulmak istemezsin.",
+    "example": [
+     {
+      "who": "Ragazzo",
+      "it": "Ho preso una multa!",
+      "tr": "Ceza yedim!"
+     },
+     {
+      "who": "Ragazzo",
+      "it": "Porca Madonna!",
+      "tr": "Porca Madonna!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che sfortuna!",
+     "tr": "Ne şanssızlık!"
+    }
+   },
+   {
+    "id": "s4_dio_bestia",
+    "it": "Dio bestia!",
+    "literal": "Tanrı hayvan!",
+    "meaning": "Lanet olsun! (dini küfür)",
+    "tr_equivalent": "Ağır dini küfür",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "özellikle Kuzey",
+    "context": "Kuzey’de sık duyulan bir variant. Aynı şekilde ağır kabul edilir.",
+    "example": [
+     {
+      "who": "Tifoso",
+      "it": "Hanno preso gol al novantesimo!",
+      "tr": "90’da gol yediler!"
+     },
+     {
+      "who": "Tifoso",
+      "it": "Dio bestia!",
+      "tr": "Dio bestia!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Che rabbia!",
+     "tr": "Ne sinir!"
+    }
+   },
+   {
+    "id": "s4_madonna_troia",
+    "it": "Madonna troia!",
+    "literal": "Orospu Meryem Ana!",
+    "meaning": "Lanet olsun! (çok ağır dini + cinsel hakaret)",
+    "tr_equivalent": "Çok ağır dini küfür",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Hem dini hem cinsel hakaret içerdiği için en ağırlarından biridir. Asla kullanma.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Mi hanno fregato i soldi!",
+      "tr": "Paramı dolandırdılar!"
+     },
+     {
+      "who": "Uomo",
+      "it": "Madonna troia!",
+      "tr": "Madonna troia!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non è possibile!",
+     "tr": "Mümkün değil!"
+    }
+   }
+  ],
+  "exercises": [
+   {
+    "type": "level",
+    "it": "Porco Dio!",
+    "answer": 5
+   },
+   {
+    "type": "level",
+    "it": "Dio cane!",
+    "answer": 5
+   },
+   {
+    "type": "level",
+    "it": "Madonna puttana!",
+    "answer": 5
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Mi sono tagliato con il coltello!"
+     },
+     {
+      "who": "B",
+      "it": "Porco Dio!"
+     }
+    ],
+    "options": [
+     "Ne güzel!",
+     "Ağır dini küfür (Tanrı’ya hakaret)",
+     "Sadece 'hay aksi' demek"
+    ],
+    "answer": 1
+   },
+   {
+    "type": "meaning",
+    "dialog": [
+     {
+      "who": "A",
+      "it": "Il treno è partito senza di me."
+     },
+     {
+      "who": "B",
+      "it": "Dio cane!"
+     }
+    ],
+    "options": [
+     "Hafif bir şaşkınlık ünlemi",
+     "Dini küfür, ağır kabul edilir",
+     "Olumlu bir ifade"
+    ],
+    "answer": 1
+   }
+  ],
+  "gestures": []
+ },
+ {
+  "unit": 5,
+  "title": "Yabancılara ve göçmenlere yönelik aşağılayıcı ifadeler",
+  "intro": "Bu ünite İtalya’da yabancılara, göçmenlere veya farklı görünen insanlara söylenebilen aşağılayıcı ifadeleri kapsar. Amacı seni korumak: duyduğunda ne anlama geldiğini bil, sakin ve net tepki verebil ve gerekirse nereye başvuracağını öğren. Bu ifadeleri asla sen kullanma.",
+  "items": [
+   {
+    "id": "s5_extracomunitario",
+    "it": "Extracomunitario",
+    "literal": "Topluluk dışı (AB dışı)",
+    "meaning": "AB dışından gelen yabancı (çoğu zaman aşağılayıcı tonla kullanılır)",
+    "tr_equivalent": "Yabancı / göçmen (aşağılayıcı bağlamda)",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Resmi dilde nötr olabilir ama günlük konuşmada sıkça aşağılayıcı şekilde 'sen yabancısın' demek için kullanılır.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Questi extracomunitari ci rubano il lavoro.",
+      "tr": "Bu yabancılar işimizi çalıyor."
+     },
+     {
+      "who": "Altro",
+      "it": "Eh già...",
+      "tr": "Evet ya..."
+     }
+    ],
+    "polite_alternative": {
+     "it": "Persona straniera",
+     "tr": "Yabancı kişi"
+    },
+    "how_to_respond": "Sakin kal. 'Mi scusi, non mi piace questo tono' veya 'Non sono d’accordo' diyebilirsin. Gerekirse ortamı terk et.",
+    "where_to_report": "İş yerinde ise amire veya sendikaya; sokakta tehdit varsa polise (112 veya 113) başvur."
+   },
+   {
+    "id": "s5_negro",
+    "it": "Negro / Negro di merda",
+    "literal": "Zenci / Bok zenci",
+    "meaning": "Irkçı hakaret (siyah veya koyu tenli insanlara)",
+    "tr_equivalent": "Irkçı hakaret (çok ağır)",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Açık ırkçı küfür. Hem siyahilere hem bazen koyu tenli göçmenlere söylenir. Çok ağırdır.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Torna al tuo paese, negro!",
+      "tr": "Ülkene dön, negro!"
+     },
+     {
+      "who": "Altro",
+      "it": "...",
+      "tr": "..."
+     }
+    ],
+    "polite_alternative": null,
+    "how_to_respond": "Güvenliğini ön planda tut. 'Non ti permettere' veya 'Basta così' de. Tehdit varsa hemen uzaklaş ve polise haber ver.",
+    "where_to_report": "Polizia di Stato veya Carabinieri (112). Irkçı saldırı olarak şikâyet edilebilir. UNAR (Antidiscriminazione) da destek verir."
+   },
+   {
+    "id": "s5_vu_cumpra",
+    "it": "Vu cumprà",
+    "literal": "Alır mısın? (kırık İtalyanca)",
+    "meaning": "Sokak satıcısı / Afrikalı seyyar satıcı (aşağılayıcı kalıp)",
+    "tr_equivalent": "Seyyar satıcı (aşağılayıcı)",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer (özellikle turistik yerler)",
+    "context": "Afrikalı seyyar satıcıları küçümsemek için kullanılan eski ve aşağılayıcı ifade.",
+    "example": [
+     {
+      "who": "Passante",
+      "it": "Guarda i vu cumprà...",
+      "tr": "Bak şu vu cumprà’lara..."
+     },
+     {
+      "who": "Altro",
+      "it": "Sempre gli stessi.",
+      "tr": "Hep aynılar."
+     }
+    ],
+    "polite_alternative": {
+     "it": "Venditore ambulante",
+     "tr": "Seyyar satıcı"
+    },
+    "how_to_respond": "Kendine söyleniyorsa 'Non sono un venditore' veya 'Mi scusi, non mi rivolga così' diyebilirsin. Tartışmaya girme.",
+    "where_to_report": "Israrlı taciz varsa polise bildir."
+   },
+   {
+    "id": "s5_marocchino",
+    "it": "Marocchino (aşağılayıcı kullanım)",
+    "literal": "Faslı",
+    "meaning": "Kuzey Afrikalı / göçmen (aşağılayıcı genel isim olarak)",
+    "tr_equivalent": "Faslı / Arap (aşağılayıcı genel hakaret)",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Faslı olsun olmasın, Kuzey Afrikalı veya Müslüman görünen insanlara aşağılayıcı şekilde söylenebilir.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Quel marocchino mi ha fregato.",
+      "tr": "O Faslı beni dolandırdı."
+     },
+     {
+      "who": "Altro",
+      "it": "Sono tutti uguali.",
+      "tr": "Hepsi aynı."
+     }
+    ],
+    "polite_alternative": {
+     "it": "Persona di origine nordafricana",
+     "tr": "Kuzey Afrika kökenli kişi"
+    },
+    "how_to_respond": "'Non mi chiami così' veya 'Non sono marocchino, e anche se lo fossi non ti permettere' diyebilirsin. Sakin kal.",
+    "where_to_report": "Ayrımcılık veya hakaret devam ederse polise veya antidiscriminazione birimlerine başvur."
+   },
+   {
+    "id": "s5_zingaro",
+    "it": "Zingaro / Zingara",
+    "literal": "Çingene",
+    "meaning": "Roman / göçebe (çoğu zaman aşağılayıcı)",
+    "tr_equivalent": "Çingene (aşağılayıcı)",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Romanlara veya 'düzensiz' görünen insanlara aşağılayıcı şekilde kullanılır.",
+    "example": [
+     {
+      "who": "Vicino",
+      "it": "Questi zingari rubano sempre.",
+      "tr": "Bu çingeneler hep çalıyor."
+     },
+     {
+      "who": "Altro",
+      "it": "Meglio starne lontani.",
+      "tr": "Uzak durmak lazım."
+     }
+    ],
+    "polite_alternative": {
+     "it": "Persona rom",
+     "tr": "Roman kişi"
+    },
+    "how_to_respond": "Kendine yöneltiliyorsa 'Non ti permettere' de. Tartışmaya girmeden uzaklaş.",
+    "where_to_report": "Tehdit veya saldırı varsa 112."
+   },
+   {
+    "id": "s5_clandestino",
+    "it": "Clandestino",
+    "literal": "Kaçak",
+    "meaning": "Yasadışı göçmen (aşağılayıcı ve genelleştirici kullanım)",
+    "tr_equivalent": "Kaçak / yasadışı (aşağılayıcı)",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Resmi dilde yasal durumu belirtir ama günlük konuşmada tüm göçmenleri aşağılmak için kullanılır.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Ci sono troppi clandestini qui.",
+      "tr": "Burada çok fazla kaçak var."
+     },
+     {
+      "who": "Altro",
+      "it": "Hanno invaso tutto.",
+      "tr": "Her yeri istila ettiler."
+     }
+    ],
+    "polite_alternative": {
+     "it": "Migrante / persona straniera",
+     "tr": "Göçmen / yabancı kişi"
+    },
+    "how_to_respond": "'Non tutti sono clandestini' veya 'Non generalizzare' diyebilirsin. Gerekirse konuşmayı bitir.",
+    "where_to_report": "İş yerinde ayrımcılık varsa sendika veya avukat; sokakta tehdit varsa polis."
+   },
+   {
+    "id": "s5_torna_al_tuo_paese",
+    "it": "Torna al tuo paese!",
+    "literal": "Kendi ülkene dön!",
+    "meaning": "Burada işin yok, git! (ırkçı / yabancı düşmanı ifade)",
+    "tr_equivalent": "Ülkene dön!",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Doğrudan yabancı düşmanı hakaret. Hem sokakta hem tartışmalarda duyulabilir.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Non ti voglio vedere qui!",
+      "tr": "Seni burada görmek istemiyorum!"
+     },
+     {
+      "who": "Uomo",
+      "it": "Torna al tuo paese!",
+      "tr": "Ülkene dön!"
+     }
+    ],
+    "polite_alternative": null,
+    "how_to_respond": "Güvenliğin öncelik. 'Ho il diritto di stare qui' veya 'Non ti permettere' de. Tehdit algılarsan hemen uzaklaş ve 112’yi ara.",
+    "where_to_report": "Polizia veya Carabinieri (112). Irkçı hakaret ve tehdit şikâyet edilebilir. Ayrıca UNAR ve göçmen dernekleri destek verir."
+   }
+  ],
+  "exercises": [
+   {
+    "type": "level",
+    "it": "Negro di merda",
+    "answer": 5
+   },
+   {
+    "type": "level",
+    "it": "Torna al tuo paese!",
+    "answer": 5
+   },
+   {
+    "type": "level",
+    "it": "Extracomunitario",
+    "answer": 3
+   },
+   {
+    "type": "respond",
+    "situation": "Sokakta biri sana 'Torna al tuo paese!' diye bağırıyor.",
+    "answers": [
+     {
+      "it": "Non ti permettere.",
+      "tr": "Kendine gel / Bana böyle konuşma."
+     },
+     {
+      "it": "Ho il diritto di stare qui.",
+      "tr": "Burada bulunma hakkım var."
+     },
+     {
+      "it": "Basta così.",
+      "tr": "Yeter artık."
+     }
+    ]
+   },
+   {
+    "type": "respond",
+    "situation": "İş yerinde biri 'Questi extracomunitari...' diye aşağılayıcı konuşuyor ve sana bakıyor.",
+    "answers": [
+     {
+      "it": "Non mi piace questo discorso.",
+      "tr": "Bu konuşmayı beğenmiyorum."
+     },
+     {
+      "it": "Preferisco non generalizzare.",
+      "tr": "Genelleme yapmamayı tercih ederim."
+     },
+     {
+      "it": "Mi scusi, ma non sono d’accordo.",
+      "tr": "Affedersiniz ama katılmıyorum."
+     }
+    ]
+   }
+  ],
+  "gestures": []
+ }
+]

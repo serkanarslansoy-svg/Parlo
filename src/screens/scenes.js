@@ -2,6 +2,7 @@ import { h, icon } from '../lib/dom.js';
 import { scenes, cards, CATEGORIES } from '../content/index.js';
 import { norm } from '../lib/answer.js';
 import { topbar, speakBtn } from '../ui.js';
+import { slangEntry } from './slang.js';
 
 let filter = 'all';
 let search = '';
@@ -116,5 +117,6 @@ export function renderScenes(ctx) {
     h('label', { class: 'search' }, icon('search'), searchEl),
     chipsEl,
     sections,
+    slangEntry(ctx),
     aiCard(ctx));
 }
