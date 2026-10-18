@@ -1,0 +1,23 @@
+feature,area,priority,original,clone,notes
+Kısa tek konulu ders (5-7 dk),lesson,must,yes,yes,program günü 4 adım; konu başına sahne
+Ders içinde kelime -> diyalog -> pratik -> sınama sırası,lesson,must,yes,yes,tekrar -> yeni kalıp -> konuşma -> hata düzeltme
+Zayıf öğeleri izleyen tekrar,review,must,yes,yes,Leitner + Tekrar yolu
+Dilbilgisi ipucu ders içinde,lesson,must,yes,yes,kalıp notu (LEGO)
+Kişisel çalışma planı (gün ve dakika seçimi),plan,must,yes,partial,günde 15 dk sabit; gün/saat seçimi yok
+Tahmini bitiş tarihi,plan,must,yes,no,30 gün var ama tarih gösterilmiyor
+Seviye/bölüm sonu kontrol sınavı,progress,should,yes,partial,7/14/21/30. gün kontrol metni var; gerçek sınav yok
+Diyalog boşluk doldurma alıştırması,lesson,should,yes,no,Tekrar yoluna yeni tür olarak eklenebilir
+Tekrar öğelerinde güç göstergesi (zayıf/orta/güçlü),review,should,yes,partial,Leitner kutusu var; kullanıcıya gösterilmiyor
+Kültür notu,lesson,should,yes,yes,ana sayfada kültür kartı
+Senaryolu konuşma ve anlık geri bildirim,speaking,should,yes,partial,kural tabanlı sohbet + öğretmen paneli; yapay zekâ yok
+Seri,motivation,should,yes,partial,seri var; Tekrar yolu sayılmıyor ve tolerans yok
+Yazdığın cevabı başkasına düzelttirme,community,could,yes,no,arkadaş ligi üzerinden; Supabase gerekir
+Düzeltmeye yıldız ve kısa yorum,community,could,yes,no,
+Seçilen saatte hatırlatma,plan,could,yes,no,sunucu gerekir; önce takvime ekle (.ics)
+Seviye tespit sınavı,onboarding,could,yes,no,bilinen günleri atlatır
+Tamamlama belgesi,progress,could,yes,no,resmî değil; 30 gün sonunda
+Resmî McGraw-Hill sertifikası,progress,could,yes,skip,üçüncü taraf ortaklığı
+YZ telaffuz puanlama,speaking,could,yes,skip,PARLO'da ses kapalı (kullanıcı kararı)
+120 milyonluk küresel topluluk,community,could,yes,skip,ağın kendisi kopyalanamaz
+14 dil ve B1-B2 içerik,content,could,yes,skip,PARLO tek dil A1-A2
+Busuu ders içerikleri ve videoları,content,could,yes,skip,onlara ait; alınmaz

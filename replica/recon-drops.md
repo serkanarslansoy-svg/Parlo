@@ -120,7 +120,7 @@ Achievement user_id, kind (topic | challenge | streak), earned_at
 
 ## Özellik matrisi
 
-`features.csv`'ye bak. `clone` sütunu = **PARLO'da bugün var mı**. Must: 6, should: 7, could: 6, skip: 6. PARLO bugün: %50 (6 zorunludan 3ü tam).
+`features-drops.csv`'ye bak. `clone` sütunu = **PARLO'da bugün var mı**. Must: 6, should: 7, could: 6, skip: 6. PARLO bugün: %50 (6 zorunludan 3ü tam).
 
 ## Kapsam dışı (alınamaz ya da alınmamalı)
 
