@@ -86,6 +86,9 @@ function renderUnit(ctx, u) {
     h('button', { class: 'link row', onclick: () => ctx.go('slang') }, icon('back'), 'Tüm üniteler'),
     h('section', {}, h('p', { class: 'eyebrow' }, `Ünite ${u.unit}`), h('h1', {}, u.title), h('p', { class: 'muted', style: 'margin-top:6px' }, u.intro)),
     list,
+    u.mistakes?.length ? h('section', { class: 'card note-card stack' }, h('p', { class: 'eyebrow' }, 'Sık yapılan hatalar'), h('ul', { class: 'mistake-list' }, u.mistakes.map((m) => h('li', { class: 'small' }, m)))) : null,
+    u.culture ? h('section', { class: 'card culture-mini stack' }, h('p', { class: 'eyebrow' }, 'Kültür notu'), h('p', { class: 'small' }, u.culture)) : null,
+    u.gate ? h('section', { class: 'card gate stack' }, h('p', { class: 'eyebrow' }, 'Hedef'), h('p', { class: 'small' }, u.gate)) : null,
     u.gestures?.length ? h('section', { class: 'stack' }, h('h2', {}, 'Jestler'), ...u.gestures.map((g) => h('div', { class: 'card stack' }, h('div', { class: 'row between' }, h('strong', { lang: 'it' }, g.name), levelBadge(g.level)), h('p', { class: 'small' }, g.how), h('p', { class: 'small muted' }, g.meaning)))) : null,
     u.exercises.length ? h('button', { class: 'btn block', onclick: () => ctx.go(`slang/${u.unit}?quiz=1`) }, `Alıştırma · ${u.exercises.length} soru`, icon('arrow')) : null);
 }

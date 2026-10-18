@@ -1,6 +1,6 @@
 // content-src/weekN.json (ChatGPT) + content-src/fixes.json → src/content/{program,cards,patterns,scenarios}.json
 // Kullanım: node scripts/build-program.mjs [--out dizin]   (varsayılan: src/content)
-import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { hasNegation } from '../src/lib/answer.js';
 
@@ -75,6 +75,7 @@ const SETTINGS = {
   home_repair: { it: 'Il tecnico', cat: 'gunluk', emoji: '🔧' },
   comune: { it: 'In Comune', cat: 'gunluk', emoji: '🏛️' },
   mixed_services: { it: 'Allo sportello', cat: 'gunluk', emoji: '🗂️' },
+  public_place: { it: 'Con calma', cat: 'gunluk', emoji: '🛑' },
 };
 const FEMALE = new Set('Giorgia Paola Elena Francesca Sara Martina Chiara Giulia Anna Laura Valentina Federica Alessia Silvia Roberta Monica Lucia Maria Teresa Rosa Simona Ilaria Elisa Marta Beatrice Camilla Alice Sofia Aurora Emma Greta Noemi Irene Claudia Barbara Daniela Cristina Patrizia Antonella Stefania Manuela Serena Veronica Gabriella'.split(' '));
 const avatarOf = (name) => {
@@ -140,7 +141,7 @@ function buildScene(day, talk, dayCards) {
     key: sceneCards[0],
     start: 'n1',
     nodes,
-    program: day.day,
+    program: typeof day.day === 'number' ? day.day : null,
   };
 }
 
@@ -190,6 +191,15 @@ for (const w of weeks) {
       ...(d.gate ? { gate: d.gate } : {}),
     });
   }
+}
+
+// --- Sokak dili 6. ünite: sınır koyma sahnesi (içeriği temiz, Senaryolar'a girer) ---
+const u6path = join(SRC, 'slang/unit6.json');
+if (existsSync(u6path)) {
+  const u6 = read(u6path);
+  for (const p of u6.patterns) patterns.set(p.id, { id: p.id, head: p.head, slot: p.slot || '', tr: p.tr, cat: 'kendini_anlat', note: p.note });
+  const ids = u6.sentences.map((s) => addCard(s.id, s.it, s.tr, s.pattern, s.alt || []).card.id);
+  scenes.push(buildScene({ day: 'u6', level: 'A2', culture: u6.culture }, u6.talk, ids));
 }
 
 // --- Eski içerikten kalanlar (yeni programda karşılığı olmayan sahneler) ---

@@ -1089,6 +1089,222 @@
      "it": "Non voglio più avere a che fare con te.",
      "tr": "Seninle bir daha işim olmasın."
     }
+   },
+   {
+    "id": "s3_cretino",
+    "it": "Cretino!",
+    "literal": "Aptal! / Salak!",
+    "meaning": "Gerizekalı!, Aptal herif!",
+    "tr_equivalent": "Gerizekalı! / Salak!",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Kişisel hakaret. 'Aptal' anlamında çok kullanılır. Ağır küfür kadar değil ama yine de kaba ve kırıcıdır.",
+    "example": [
+     {
+      "who": "Capo",
+      "it": "Hai di nuovo sbagliato i numeri!",
+      "tr": "Yine sayıları yanlış yazdın!"
+     },
+     {
+      "who": "Capo",
+      "it": "Sei un cretino!",
+      "tr": "Gerizekalısın!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Hai fatto un errore.",
+     "tr": "Bir hata yaptın."
+    }
+   },
+   {
+    "id": "s3_idiota",
+    "it": "Idiota!",
+    "literal": "Aptal!",
+    "meaning": "Salak!, Gerizekalı!, Aptal herif!",
+    "tr_equivalent": "Salak! / Gerizekalı!",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Çok yaygın aşağılayıcı söz. Hem şaka hem ciddi öfke anında söylenir. İş yerinde ve çocuk yanında kullanma.",
+    "example": [
+     {
+      "who": "Amico",
+      "it": "Perché hai parcheggiato così?",
+      "tr": "Neden öyle park ettin?"
+     },
+     {
+      "who": "Amico",
+      "it": "Idiota!",
+      "tr": "Salak!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non è stata una bella idea.",
+     "tr": "İyi bir fikir değildi."
+    }
+   },
+   {
+    "id": "s3_scemo",
+    "it": "Scemo! / Scema!",
+    "literal": "Aptal! (erkek/kız)",
+    "meaning": "Salak!, Aptal!, Gerizekalı!",
+    "tr_equivalent": "Salak! / Aptal!",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Günlük hayatta en sık duyulan hafif-orta hakaretlerden. Çocuklar bile söyler ama yetişkinler arasında yine kaba kaçabilir.",
+    "example": [
+     {
+      "who": "Ragazzo",
+      "it": "Hai dimenticato le chiavi un’altra volta?",
+      "tr": "Anahtarları bir daha mı unuttun?"
+     },
+     {
+      "who": "Ragazzo",
+      "it": "Scemo!",
+      "tr": "Salak!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Sei distratto.",
+     "tr": "Dikkatsizsin."
+    }
+   },
+   {
+    "id": "s3_deficiente",
+    "it": "Deficiente!",
+    "literal": "Eksik zekâlı! / Geri zekâlı!",
+    "meaning": "Gerizekalı!, Aptal!, Zekâ özürlü (aşağılayıcı)",
+    "tr_equivalent": "Gerizekalı! / Geri zekâlı!",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Oldukça ağır ve aşağılayıcı. Zekâya hakaret ettiği için kırıcıdır. Ciddi tartışmalarda duyulur.",
+    "example": [
+     {
+      "who": "Collega",
+      "it": "Ma come hai potuto fare una cosa del genere?",
+      "tr": "Nasıl böyle bir şey yapabildin?"
+     },
+     {
+      "who": "Collega",
+      "it": "Deficiente!",
+      "tr": "Gerizekalı!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non hai ragionato.",
+     "tr": "Düşünmeden hareket ettin."
+    }
+   },
+   {
+    "id": "s3_cornuto",
+    "it": "Cornuto!",
+    "literal": "Boynuzlu!",
+    "meaning": "Boynuzlu!, Karısı/kocası tarafından aldatılan adam! (çok ağır kişisel hakaret)",
+    "tr_equivalent": "Boynuzlu!",
+    "level": 5,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer (özellikle Merkez ve Güney’de daha ağır kabul edilir)",
+    "context": "İtalya’da en ağır kişisel hakaretlerden biri. Doğrudan namusa ve aileye saldırı olarak algılanır. Kavga çıkarma ihtimali çok yüksektir.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Tua moglie esce sempre con altri!",
+      "tr": "Karın hep başkalarıyla geziyor!"
+     },
+     {
+      "who": "Uomo",
+      "it": "Cornuto!",
+      "tr": "Boynuzlu!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Non ti permettere di parlare della mia famiglia.",
+     "tr": "Ailem hakkında konuşmana izin verme."
+    }
+   },
+   {
+    "id": "s3_bastardo",
+    "it": "Bastardo!",
+    "literal": "Piç!",
+    "meaning": "Piç!, Orospu çocuğu!, Alçak!",
+    "tr_equivalent": "Piç! / Alçak herif!",
+    "level": 4,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Hem doğumla ilgili hakaret hem de genel alçaklık ifadesi olarak kullanılır. Oldukça ağırdır.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Mi hai tradito!",
+      "tr": "Bana ihanet ettin!"
+     },
+     {
+      "who": "Uomo",
+      "it": "Bastardo!",
+      "tr": "Piç!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Hai agito male.",
+     "tr": "Kötü davrandın."
+    }
+   },
+   {
+    "id": "s3_rompiscatole",
+    "it": "Rompiscatole! / Rompicoglioni!",
+    "literal": "Kutu kıran! / Taşak kıran!",
+    "meaning": "Sinir bozan!, Baş belası!, Bıktıran insan!",
+    "tr_equivalent": "Sinir bozan! / Baş belası! / Taşak şişiren!",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Sürekli rahatsız eden, sinir bozan kişi için söylenir. 'Rompicoglioni' biraz daha kaba versiyonudur.",
+    "example": [
+     {
+      "who": "Collega",
+      "it": "Mi hai chiamato venti volte oggi!",
+      "tr": "Bugün yirmi kere aradın!"
+     },
+     {
+      "who": "Collega",
+      "it": "Sei un rompiscatole!",
+      "tr": "Sinir bozanın tekisin!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Mi stai innervosendo.",
+     "tr": "Sinirlerimi bozuyorsun."
+    }
+   },
+   {
+    "id": "s3_va_a_quel_paese",
+    "it": "Va’ a quel paese!",
+    "literal": "O ülkeye git!",
+    "meaning": "Siktir git!, Defol! (vaffanculo’nun daha kibar ve örtülü hali)",
+    "tr_equivalent": "Defol git! / Siktir git! (biraz daha yumuşak)",
+    "level": 3,
+    "can_i_use": "hayır, sadece anla",
+    "region": "her yer",
+    "context": "Ağır küfür yerine kullanılan örtülü ifade. Hâlâ kaba ve reddedici bir anlam taşır, ama 'vaffanculo’dan bir kademe daha hafiftir.",
+    "example": [
+     {
+      "who": "Uomo",
+      "it": "Dammi i soldi subito!",
+      "tr": "Parayı hemen ver!"
+     },
+     {
+      "who": "Altro",
+      "it": "Va’ a quel paese!",
+      "tr": "Defol git!"
+     }
+    ],
+    "polite_alternative": {
+     "it": "Lasciami in pace.",
+     "tr": "Beni rahat bırak."
+    }
    }
   ],
   "exercises": [
@@ -1144,6 +1360,46 @@
      "Haklısın."
     ],
     "answer": 1
+   },
+   {
+    "type": "level",
+    "it": "Cretino!",
+    "answer": 3
+   },
+   {
+    "type": "level",
+    "it": "Idiota!",
+    "answer": 3
+   },
+   {
+    "type": "level",
+    "it": "Scemo! / Scema!",
+    "answer": 3
+   },
+   {
+    "type": "level",
+    "it": "Deficiente!",
+    "answer": 4
+   },
+   {
+    "type": "level",
+    "it": "Cornuto!",
+    "answer": 5
+   },
+   {
+    "type": "level",
+    "it": "Bastardo!",
+    "answer": 4
+   },
+   {
+    "type": "level",
+    "it": "Rompiscatole! / Rompicoglioni!",
+    "answer": 3
+   },
+   {
+    "type": "level",
+    "it": "Va’ a quel paese!",
+    "answer": 3
    }
   ],
   "gestures": []
@@ -1657,5 +1913,200 @@
    }
   ],
   "gestures": []
+ },
+ {
+  "unit": 6,
+  "title": "Jestler ve Sınır Koyma",
+  "intro": "Kullanıcı yaygın İtalyan jestlerinin anlamını anlayabilecek ve kaba ya da hakaret içeren bir konuşmada sakin, net ve güvenli biçimde sınır koyabilecek.",
+  "items": [
+   {
+    "id": "u06_1",
+    "it": "Non mi parli così.",
+    "literal": null,
+    "meaning": "Benimle böyle konuşmayın.",
+    "tr_equivalent": "Benimle böyle konuşmayın.",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Lei kullanılan bir konuşmada hakaret veya kaba üsluba karşı net sınır koyar.",
+    "example": [],
+    "polite_alternative": {
+     "it": "Per favore, non mi parli così.",
+     "tr": "Aynı anlamda"
+    }
+   },
+   {
+    "id": "u06_2",
+    "it": "Questo non va bene.",
+    "literal": null,
+    "meaning": "Bu uygun değil.",
+    "tr_equivalent": "Bu uygun değil.",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Bir davranıştan rahatsız olduğunu sakin ama net biçimde belirtmek için kullanılır.",
+    "example": [],
+    "polite_alternative": {
+     "it": "Non va bene così.",
+     "tr": "Aynı anlamda"
+    }
+   },
+   {
+    "id": "u06_3",
+    "it": "Parliamo con calma.",
+    "literal": null,
+    "meaning": "Sakin konuşalım.",
+    "tr_equivalent": "Sakin konuşalım.",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Tartışmayı büyütmeden tonu düşürmek için kullanılır.",
+    "example": [],
+    "polite_alternative": {
+     "it": "Per favore, parliamo con calma.",
+     "tr": "Aynı anlamda"
+    }
+   },
+   {
+    "id": "u06_4",
+    "it": "Non voglio litigare.",
+    "literal": null,
+    "meaning": "Tartışmak istemiyorum.",
+    "tr_equivalent": "Tartışmak istemiyorum.",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Gerilimi artırmadan konuşmayı sakinleştirmek için kullanılır.",
+    "example": [],
+    "polite_alternative": null
+   },
+   {
+    "id": "u06_5",
+    "it": "Basta, per favore.",
+    "literal": null,
+    "meaning": "Yeter, lütfen.",
+    "tr_equivalent": "Yeter, lütfen.",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Kısa ve net bir sınır ifadesidir. Tonu sakin tutulmalıdır.",
+    "example": [],
+    "polite_alternative": {
+     "it": "Basta.",
+     "tr": "Aynı anlamda"
+    }
+   },
+   {
+    "id": "u06_6",
+    "it": "Se continua, me ne vado.",
+    "literal": null,
+    "meaning": "Devam ederseniz giderim.",
+    "tr_equivalent": "Devam ederseniz giderim.",
+    "level": 1,
+    "can_i_use": "evet, rahatça",
+    "region": "her yer",
+    "context": "Gerilimi büyütmeden sınır koymak için.",
+    "example": [],
+    "polite_alternative": {
+     "it": "Se continua così, me ne vado.",
+     "tr": "Aynı anlamda"
+    }
+   }
+  ],
+  "exercises": [
+   {
+    "type": "respond",
+    "situation": "Biri sana «Ma cosa sta facendo?» (Ama ne yapıyorsunuz?) diyor. Sakin konuşmayı öner.",
+    "answers": [
+     {
+      "it": "Parliamo con calma.",
+      "tr": "Sakin konuşalım."
+     }
+    ]
+   },
+   {
+    "type": "respond",
+    "situation": "Biri sana «Lei non capisce niente!» (Siz hiçbir şey anlamıyorsunuz!) diyor. Bu şekilde konuşmasını istemediğini net söyle.",
+    "answers": [
+     {
+      "it": "Non mi parli così.",
+      "tr": "Benimle böyle konuşmayın."
+     },
+     {
+      "it": "Per favore, non mi parli così.",
+      "tr": "Lütfen benimle böyle konuşmayın."
+     }
+    ]
+   },
+   {
+    "type": "respond",
+    "situation": "Biri sana «Sono arrabbiato!» (Sinirliyim!) diyor. Tartışmak istemediğini söyle.",
+    "answers": [
+     {
+      "it": "Non voglio litigare.",
+      "tr": "Tartışmak istemiyorum."
+     }
+    ]
+   },
+   {
+    "type": "respond",
+    "situation": "Biri sana «Continuiamo a parlare!» (Konuşmaya devam edelim!) diyor. Davranış sürerse ayrılacağını söyle.",
+    "answers": [
+     {
+      "it": "Se continua, me ne vado.",
+      "tr": "Devam ederseniz giderim."
+     },
+     {
+      "it": "Basta, per favore.",
+      "tr": "Yeter, lütfen."
+     }
+    ]
+   }
+  ],
+  "gestures": [
+   {
+    "id": "g06_1",
+    "name": "Ma che vuoi?",
+    "how": "Elin parmak uçlarını birleştir, avuç yukarı bakacak şekilde eli hafifçe yukarı-aşağı hareket ettir.",
+    "meaning": "Ne diyorsun? / Ne istiyorsun? / Bu ne şimdi? Çok yaygın bir İtalyan jestidir. Ton ve yüz ifadesine göre şaşkınlık, sabırsızlık veya tepki anlatabilir.",
+    "level": 2
+   },
+   {
+    "id": "g06_2",
+    "name": "Perfetto",
+    "how": "Başparmak ile işaret parmağını birleştirip küçük bir daire oluştur, diğer parmakları açık tut.",
+    "meaning": "Mükemmel / Tamam / Çok iyi. Olumlu ve günlük bir jesttir.",
+    "level": 1
+   },
+   {
+    "id": "g06_3",
+    "name": "Non lo so",
+    "how": "Omuzlarını hafifçe kaldır, avuçlarını yukarı çevir.",
+    "meaning": "Bilmiyorum / Ne yapayım? Türkçedeki omuz silkme jestine çok benzer.",
+    "level": 1
+   },
+   {
+    "id": "g06_4",
+    "name": "Vai via",
+    "how": "Elini dışarı doğru, birini uzaklaştırır gibi hareket ettir.",
+    "meaning": "Git / Uzaklaş. Sert algılanabilir. Kullanıcının kendisinin yapmasından çok anlamasını bilmesi önemlidir.",
+    "level": 3
+   },
+   {
+    "id": "g06_5",
+    "name": "Calma",
+    "how": "İki elini açık tut, avuçları aşağı çevir ve elleri yavaşça aşağı indir.",
+    "meaning": "Sakin ol / Sakinleşelim. Gerilimi düşürmek için kullanılabilir; yüz ifadesi ve ton sakin olmalıdır.",
+    "level": 1
+   }
+  ],
+  "culture": "İtalyan iletişiminde el hareketleri anlamı güçlendirebilir ama jestin tonu yüz ifadesi ve bağlama göre değişir. Gerilimli bir durumda jestle karşılık vermek yerine kısa, sakin ve net sözlü sınırlar kullanmak daha güvenlidir.",
+  "mistakes": [
+   "Hakarete başka bir hakaretle karşılık vermek; PARLO bu ünitede gerilimi büyütmeyen cevapları öğretir.",
+   "Lei kullanılan konuşmada Non parlarmi così demek; bu tu biçimidir. Resmî ve yabancı biriyle Non mi parli così daha uygundur.",
+   "Basta kelimesini bağırarak kullanmak; aynı kelime sakin tonla çok daha güvenli ve nettir.",
+   "Ma che vuoi? jestini her durumda eğlenceli sanmak; yüz ifadesine ve bağlama göre kaba veya saldırgan algılanabilir."
+  ],
+  "gate": "Bir kişi sana kaba konuştuğunda hakaret etmeden üç adımda cevap ver: sakin konuşmayı iste, sınırını belirt ve davranış devam ederse konuşmayı bitir."
  }
 ]
