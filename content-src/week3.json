@@ -1,0 +1,255 @@
+{
+  "week": 3,
+  "title": "Sorununu Anlat ve Resmî İşini Hallet",
+  "goal": "Hafta sonunda kullanıcı öğretmen, doktor, eczacı, ev sahibi ve Comune görevlisiyle temel bir sorunu açıklayıp gerekli bilgiyi isteyebilecek.",
+  "patterns": [
+    { "id": "da_quanto", "head": "Da quanto tempo", "slot": "+ [durum / fiil]?", "tr": "Ne zamandır …?", "note": "Bir durumun ne kadar süredir devam ettiğini sormak için kullanılır." },
+    { "id": "da", "head": "Da", "slot": "+ [süre]", "tr": "…dır / …den beri", "note": "Devam eden bir durumun süresini söyler: da due giorni." },
+    { "id": "non_funziona", "head": "Non funziona", "slot": "+ [isim]", "tr": "… çalışmıyor", "note": "Evde, işte veya günlük hayatta bir cihaz ya da sistem çalışmadığında kullanılır." },
+    { "id": "cosa_serve", "head": "Cosa serve", "slot": "?", "tr": "Ne gerekiyor?", "note": "Bir işlem için hangi belge veya şeylerin gerekli olduğunu sormak için kullanılır." },
+    { "id": "devo_portare", "head": "Devo portare", "slot": "+ [isim]?", "tr": "… getirmem gerekiyor mu?", "note": "Randevu veya resmî işlem için yanında ne getirmen gerektiğini sormak için kullanılır." }
+  ],
+  "days": [
+    {
+      "day": 15, "level": "A1+A2", "title": "Öğretmenle Görüşme", "focus": "Çocuğunla ilgili bilgi alma",
+      "grammar_note": "Öğretmenle ilk konuşmada Lei kullanmak güvenli ve kibardır. Uzun cümleler yerine kısa sorularla ilerle.",
+      "sentences": [
+        { "id": "d15_1", "it": "Vorrei parlare di mio figlio.", "tr": "Oğlum hakkında konuşmak istiyorum.", "pattern": "vorrei", "alt": ["Vorrei parlare di mia figlia."] },
+        { "id": "d15_2", "it": "Come va a scuola?", "tr": "Okulda nasıl gidiyor?", "pattern": null, "alt": [] },
+        { "id": "d15_3", "it": "C'è qualche problema?", "tr": "Herhangi bir sorun var mı?", "pattern": "ce", "alt": [] },
+        { "id": "d15_4", "it": "Può spiegare, per favore?", "tr": "Açıklayabilir misiniz, lütfen?", "pattern": "puo", "alt": ["Può spiegarmi, per favore?"] },
+        { "id": "d15_5", "it": "Cosa devo fare a casa?", "tr": "Evde ne yapmam gerekiyor?", "pattern": "cosa_devo_fare", "alt": [] }
+      ],
+      "words": [ { "it": "l'insegnante", "tr": "öğretmen" }, { "it": "la scuola", "tr": "okul" }, { "it": "il problema", "tr": "sorun" }, { "it": "la casa", "tr": "ev" } ],
+      "talk": {
+        "type": "scene", "title": "Öğretmenle Kısa Görüşme", "setting": "school_meeting", "persona": { "name": "Prof.ssa Bianchi", "role": "Öğretmen" }, "register": "Lei",
+        "mission": "Çocuğunla ilgili bilgi al ve evde ne yapacağını sor",
+        "turns": [
+          { "ai": "Buongiorno, mi dica.", "tr": "Günaydın, buyurun.", "goal": "Oğlun hakkında konuşmak istediğini söyle", "answers": [
+            { "it": "Vorrei parlare di mio figlio.", "tr": "Oğlum hakkında konuşmak istiyorum.", "keywords": [["vorrei"], ["figlio"]] },
+            { "it": "Vorrei parlare di mia figlia.", "tr": "Kızım hakkında konuşmak istiyorum.", "keywords": [["vorrei"], ["figlia"]] } ] },
+          { "ai": "Certo.", "tr": "Tabii.", "goal": "Okulda nasıl gittiğini sor", "answers": [
+            { "it": "Come va a scuola?", "tr": "Okulda nasıl gidiyor?", "keywords": [["come"], ["scuola"]] } ] },
+          { "ai": "Va abbastanza bene.", "tr": "Oldukça iyi gidiyor.", "goal": "Herhangi bir sorun olup olmadığını sor", "answers": [
+            { "it": "C'è qualche problema?", "tr": "Herhangi bir sorun var mı?", "keywords": [["c'è"], ["problema"]] } ] },
+          { "ai": "Deve esercitarsi di più.", "tr": "Daha fazla pratik yapması gerekiyor.", "goal": "Evde ne yapman gerektiğini sor", "answers": [
+            { "it": "Cosa devo fare a casa?", "tr": "Evde ne yapmam gerekiyor?", "keywords": [["cosa"], ["devo"], ["fare"], ["casa"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Parlare mio figlio demek; doğru yapı parlare di mio figlio.",
+        "Lei gereken yerde Puoi kullanmak.",
+        "Come va a scuola? sorusunu kelime kelime Türkçeye çevirmeye çalışmak."
+      ],
+      "culture": "Öğretmen görüşmelerinde kısa ve net sorular çok işe yarar. Anlamadığında açıklama istemek normaldir.",
+      "gate": null
+    },
+    {
+      "day": 16, "level": "A1+A2", "title": "Doktorda", "focus": "Belirti ve süre anlatma",
+      "grammar_note": "Sağlık şikâyetlerinde Ho + belirti çok kullanışlıdır. Devam eden süre için da + süre kullanılır.",
+      "sentences": [
+        { "id": "d16_1", "it": "Ho mal di testa.", "tr": "Başım ağrıyor.", "pattern": "ho", "alt": [] },
+        { "id": "d16_2", "it": "Ho la febbre.", "tr": "Ateşim var.", "pattern": "ho", "alt": [] },
+        { "id": "d16_3", "it": "Sto male da due giorni.", "tr": "İki gündür kendimi kötü hissediyorum.", "pattern": "da", "alt": [] },
+        { "id": "d16_4", "it": "Da quanto tempo sta male?", "tr": "Ne zamandır kendinizi kötü hissediyorsunuz?", "pattern": "da_quanto", "alt": [] },
+        { "id": "d16_5", "it": "Cosa devo fare adesso?", "tr": "Şimdi ne yapmam gerekiyor?", "pattern": "cosa_devo_fare", "alt": [] }
+      ],
+      "words": [ { "it": "il medico", "tr": "doktor" }, { "it": "la febbre", "tr": "ateş" }, { "it": "il mal di testa", "tr": "baş ağrısı" }, { "it": "il giorno", "tr": "gün" }, { "it": "adesso", "tr": "şimdi" } ],
+      "talk": {
+        "type": "scene", "title": "Doktor Muayenesi", "setting": "doctor", "persona": { "name": "Dott.ssa Rossi", "role": "Doktor" }, "register": "Lei",
+        "mission": "Belirtini, ateşini ve ne zamandır sürdüğünü söyle",
+        "turns": [
+          { "ai": "Buongiorno. Che problema ha?", "tr": "Günaydın. Şikâyetiniz nedir?", "goal": "Başının ağrıdığını söyle", "answers": [
+            { "it": "Ho mal di testa.", "tr": "Başım ağrıyor.", "keywords": [["ho"], ["mal di testa", "testa"]] } ] },
+          { "ai": "Ha la febbre?", "tr": "Ateşiniz var mı?", "goal": "Ateşinin olduğunu söyle", "answers": [
+            { "it": "Sì, ho la febbre.", "tr": "Evet, ateşim var.", "keywords": [["ho"], ["febbre"]] } ] },
+          { "ai": "Da quanto tempo sta male?", "tr": "Ne zamandır kendinizi kötü hissediyorsunuz?", "goal": "İki gündür kötü olduğunu söyle", "answers": [
+            { "it": "Sto male da due giorni.", "tr": "İki gündür kendimi kötü hissediyorum.", "keywords": [["sto male"], ["due giorni"]] } ] },
+          { "ai": "Va bene.", "tr": "Peki.", "goal": "Şimdi ne yapman gerektiğini sor", "answers": [
+            { "it": "Cosa devo fare adesso?", "tr": "Şimdi ne yapmam gerekiyor?", "keywords": [["cosa"], ["devo"], ["fare"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Ho mal di testa yerine Sono mal di testa demek.",
+        "Da due giorni yerine sadece due giorni demek.",
+        "Febbre önündeki la artikelini unutmak."
+      ],
+      "culture": "Doktora belirtinin ne zamandır sürdüğünü söylemek önemlidir. Kısa ve açık cümleler yeterlidir.",
+      "gate": null
+    },
+    {
+      "day": 17, "level": "A1+A2", "title": "Eczanede Kullanım Sor", "focus": "İlaç ve kullanım bilgisi",
+      "grammar_note": "Bu derste eski Devo ve Può kalıplarını sağlık bağlamında kullanıyoruz. Talimatı anlamadıysan mutlaka tekrar iste.",
+      "sentences": [
+        { "id": "d17_1", "it": "Vorrei questo farmaco.", "tr": "Bu ilacı istiyorum.", "pattern": "vorrei", "alt": [] },
+        { "id": "d17_2", "it": "Come devo prendere questo?", "tr": "Bunu nasıl kullanmam gerekiyor?", "pattern": "devo", "alt": [] },
+        { "id": "d17_3", "it": "Quante volte al giorno?", "tr": "Günde kaç kez?", "pattern": null, "alt": [] },
+        { "id": "d17_4", "it": "Prima o dopo mangiato?", "tr": "Yemekten önce mi sonra mı?", "pattern": null, "alt": [] },
+        { "id": "d17_5", "it": "Può ripetere più piano?", "tr": "Daha yavaş tekrar edebilir misiniz?", "pattern": "puo", "alt": ["Può parlare più piano?"] }
+      ],
+      "words": [ { "it": "il farmaco", "tr": "ilaç" }, { "it": "la volta", "tr": "kez" }, { "it": "il giorno", "tr": "gün" }, { "it": "prima", "tr": "önce" }, { "it": "dopo", "tr": "sonra" }, { "it": "mangiato", "tr": "yemek yemiş olma / yemekten sonra ifadesinde kullanılır" } ],
+      "talk": {
+        "type": "scene", "title": "İlacın Kullanımını Öğren", "setting": "pharmacy", "persona": { "name": "Marco", "role": "Eczacı" }, "register": "Lei",
+        "mission": "İlacın nasıl, ne sıklıkla ve ne zaman kullanılacağını öğren",
+        "turns": [
+          { "ai": "Buongiorno, mi dica.", "tr": "Günaydın, buyurun.", "goal": "Bu ilacı istediğini söyle", "answers": [
+            { "it": "Vorrei questo farmaco.", "tr": "Bu ilacı istiyorum.", "keywords": [["vorrei"], ["farmaco"]] } ] },
+          { "ai": "Certo.", "tr": "Tabii.", "goal": "Nasıl kullanacağını sor", "answers": [
+            { "it": "Come devo prendere questo?", "tr": "Bunu nasıl kullanmam gerekiyor?", "keywords": [["come"], ["devo"], ["prendere"]] } ] },
+          { "ai": "Due volte al giorno.", "tr": "Günde iki kez.", "goal": "Yemekten önce mi sonra mı olduğunu sor", "answers": [
+            { "it": "Prima o dopo mangiato?", "tr": "Yemekten önce mi sonra mı?", "keywords": [["prima", "dopo"], ["mangiato"]] } ] },
+          { "ai": "Dopo mangiato.", "tr": "Yemekten sonra.", "goal": "Daha yavaş tekrar etmesini iste", "answers": [
+            { "it": "Può ripetere più piano?", "tr": "Daha yavaş tekrar edebilir misiniz?", "keywords": [["può"], ["ripetere"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Quante volte ifadesinde volte yerine volta kullanmak.",
+        "Prima ve dopo kelimelerini karıştırmak.",
+        "Sağlık talimatını anlamadan Sì diyerek konuşmayı bitirmek."
+      ],
+      "culture": "İlacın kullanım talimatını anlamadıysan tekrar sormak önemlidir. Emin olmadığın bir kullanım şeklini tahmin etme.",
+      "gate": null
+    },
+    {
+      "day": 18, "level": "A1+A2", "title": "Ev Sahibiyle Konuş", "focus": "Evdeki arızayı bildirme",
+      "grammar_note": "Non funziona kalıbı cihaz ve sistemler için çok kullanışlıdır. Sorunun yerini veya kaynağını C'è un problema con… ile söyleyebilirsin.",
+      "sentences": [
+        { "id": "d18_1", "it": "Il riscaldamento non funziona.", "tr": "Isıtma çalışmıyor.", "pattern": "non_funziona", "alt": [] },
+        { "id": "d18_2", "it": "C'è un problema con il riscaldamento.", "tr": "Isıtmayla ilgili bir sorun var.", "pattern": "ce", "alt": [] },
+        { "id": "d18_3", "it": "Mi serve aiuto oggi.", "tr": "Bugün yardıma ihtiyacım var.", "pattern": "mi_serve", "alt": [] },
+        { "id": "d18_4", "it": "Quando può venire?", "tr": "Ne zaman gelebilirsiniz?", "pattern": "puo", "alt": [] },
+        { "id": "d18_5", "it": "Domani va bene.", "tr": "Yarın uygun.", "pattern": null, "alt": ["Va bene domani."] }
+      ],
+      "words": [ { "it": "il riscaldamento", "tr": "ısıtma sistemi" }, { "it": "il proprietario", "tr": "ev sahibi" }, { "it": "oggi", "tr": "bugün" }, { "it": "domani", "tr": "yarın" } ],
+      "talk": {
+        "type": "scene", "title": "Ev Sahibine Arıza Bildir", "setting": "rental_home", "persona": { "name": "Sig. Conti", "role": "Ev sahibi" }, "register": "Lei",
+        "mission": "Isıtma sorununu bildir ve ne zaman gelebileceğini sor",
+        "turns": [
+          { "ai": "Buongiorno, tutto bene?", "tr": "Günaydın, her şey yolunda mı?", "goal": "Isıtmanın çalışmadığını söyle", "answers": [
+            { "it": "Il riscaldamento non funziona.", "tr": "Isıtma çalışmıyor.", "keywords": [["riscaldamento"], ["non funziona"]] } ] },
+          { "ai": "Capisco.", "tr": "Anlıyorum.", "goal": "Bugün yardıma ihtiyacın olduğunu söyle", "answers": [
+            { "it": "Mi serve aiuto oggi.", "tr": "Bugün yardıma ihtiyacım var.", "keywords": [["mi serve"], ["aiuto"], ["oggi"]] } ] },
+          { "ai": "Posso venire domani.", "tr": "Yarın gelebilirim.", "goal": "Ne zaman gelebileceğini netleştirmek için sor", "answers": [
+            { "it": "Quando può venire?", "tr": "Ne zaman gelebilirsiniz?", "keywords": [["quando"], ["può"], ["venire"]] } ] },
+          { "ai": "Domani mattina.", "tr": "Yarın sabah.", "goal": "Yarının uygun olduğunu söyle", "answers": [
+            { "it": "Domani va bene.", "tr": "Yarın uygun.", "keywords": [["domani"], ["va bene"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Non funziona yerine Non funzione demek.",
+        "Riscaldamento kelimesinin artikelini unutmak.",
+        "Ev sahibiyle ilk iletişimde Puoi yerine Può kullanmak."
+      ],
+      "culture": "Arıza bildirirken neyin çalışmadığını ve ne zaman yardım gerektiğini net söylemek yeterlidir.",
+      "gate": null
+    },
+    {
+      "day": 19, "level": "A1+A2", "title": "Evde Teknik Arıza", "focus": "Su, ışık ve banyo sorunları",
+      "grammar_note": "Non funziona kalıbını farklı isimlerle tekrar kullanabilirsin. Aynı yapı yeni durumlara kolayca taşınır.",
+      "sentences": [
+        { "id": "d19_1", "it": "L'acqua calda non funziona.", "tr": "Sıcak su çalışmıyor.", "pattern": "non_funziona", "alt": [] },
+        { "id": "d19_2", "it": "La luce non funziona.", "tr": "Işık çalışmıyor.", "pattern": "non_funziona", "alt": [] },
+        { "id": "d19_3", "it": "C'è un problema in bagno.", "tr": "Banyoda bir sorun var.", "pattern": "ce", "alt": [] },
+        { "id": "d19_4", "it": "Può venire oggi?", "tr": "Bugün gelebilir misiniz?", "pattern": "puo", "alt": [] },
+        { "id": "d19_5", "it": "Non posso aspettare fino a domani.", "tr": "Yarına kadar bekleyemem.", "pattern": "posso", "alt": [] }
+      ],
+      "words": [ { "it": "l'acqua calda", "tr": "sıcak su" }, { "it": "la luce", "tr": "ışık" }, { "it": "il bagno", "tr": "banyo" }, { "it": "fino a domani", "tr": "yarına kadar" } ],
+      "talk": {
+        "type": "scene", "title": "Teknik Servisi Ara", "setting": "home_repair", "persona": { "name": "Paolo", "role": "Teknik servis görevlisi" }, "register": "Lei",
+        "mission": "Arızayı açıkla ve bugün gelmesini iste",
+        "turns": [
+          { "ai": "Buongiorno. Che problema c'è?", "tr": "Günaydın. Nasıl bir sorun var?", "goal": "Sıcak suyun çalışmadığını söyle", "answers": [
+            { "it": "L'acqua calda non funziona.", "tr": "Sıcak su çalışmıyor.", "keywords": [["acqua calda"], ["non funziona"]] } ] },
+          { "ai": "Dove?", "tr": "Nerede?", "goal": "Banyoda sorun olduğunu söyle", "answers": [
+            { "it": "C'è un problema in bagno.", "tr": "Banyoda bir sorun var.", "keywords": [["problema"], ["bagno"]] } ] },
+          { "ai": "Posso venire domani.", "tr": "Yarın gelebilirim.", "goal": "Bugün gelip gelemeyeceğini sor", "answers": [
+            { "it": "Può venire oggi?", "tr": "Bugün gelebilir misiniz?", "keywords": [["può"], ["venire"], ["oggi"]] } ] },
+          { "ai": "Oggi è difficile.", "tr": "Bugün zor.", "goal": "Yarına kadar bekleyemeyeceğini söyle", "answers": [
+            { "it": "Non posso aspettare fino a domani.", "tr": "Yarına kadar bekleyemem.", "keywords": [["non posso"], ["aspettare"], ["domani"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Acqua calda ifadesinde l' artikelini unutmak.",
+        "Non posso ile Posso yapılarını karıştırmak.",
+        "In bagno yerine a bagno demek."
+      ],
+      "culture": "Acil olmayan teknik sorunlarda gün ve saat konusunda netleşmek önemlidir. Acil durumları normal bakım talebi gibi anlatmamak gerekir.",
+      "gate": null
+    },
+    {
+      "day": 20, "level": "A1+A2", "title": "Comune'de", "focus": "Belge ve işlem bilgisi isteme",
+      "grammar_note": "Cosa serve? bir işlem için ne gerektiğini soran hazır bir kalıptır. Devo portare + isim? ile belirli bir belgeyi getirmen gerekip gerekmediğini sorarsın.",
+      "sentences": [
+        { "id": "d20_1", "it": "Vorrei informazioni per questo documento.", "tr": "Bu belge hakkında bilgi almak istiyorum.", "pattern": "vorrei", "alt": [] },
+        { "id": "d20_2", "it": "Cosa serve?", "tr": "Ne gerekiyor?", "pattern": "cosa_serve", "alt": [] },
+        { "id": "d20_3", "it": "Devo portare il passaporto?", "tr": "Pasaportumu getirmem gerekiyor mu?", "pattern": "devo_portare", "alt": [] },
+        { "id": "d20_4", "it": "Mi manca un documento.", "tr": "Bir belgem eksik.", "pattern": null, "alt": [] },
+        { "id": "d20_5", "it": "Posso tornare domani?", "tr": "Yarın tekrar gelebilir miyim?", "pattern": "posso", "alt": [] }
+      ],
+      "words": [ { "it": "il Comune", "tr": "belediye / Comune" }, { "it": "l'informazione", "tr": "bilgi" }, { "it": "il documento", "tr": "belge" }, { "it": "il passaporto", "tr": "pasaport" }, { "it": "mancare", "tr": "eksik olmak" }, { "it": "tornare", "tr": "geri dönmek / tekrar gelmek" } ],
+      "talk": {
+        "type": "scene", "title": "Comune'de Belge İşlemi", "setting": "comune", "persona": { "name": "Sig.ra Ferrero", "role": "Comune görevlisi" }, "register": "Lei",
+        "mission": "Belge için ne gerektiğini öğren ve eksik belgeyi tamamlamak için tekrar gel",
+        "turns": [
+          { "ai": "Buongiorno, come posso aiutarla?", "tr": "Günaydın, size nasıl yardımcı olabilirim?", "goal": "Bu belge hakkında bilgi istediğini söyle", "answers": [
+            { "it": "Vorrei informazioni per questo documento.", "tr": "Bu belge hakkında bilgi almak istiyorum.", "keywords": [["vorrei"], ["informazioni"], ["documento"]] } ] },
+          { "ai": "Certo.", "tr": "Tabii.", "goal": "Ne gerektiğini sor", "answers": [
+            { "it": "Cosa serve?", "tr": "Ne gerekiyor?", "keywords": [["cosa"], ["serve"]] } ] },
+          { "ai": "Serve il passaporto.", "tr": "Pasaport gerekiyor.", "goal": "Pasaportu getirmen gerekip gerekmediğini sor", "answers": [
+            { "it": "Devo portare il passaporto?", "tr": "Pasaportumu getirmem gerekiyor mu?", "keywords": [["devo"], ["portare"], ["passaporto"]] } ] },
+          { "ai": "Sì.", "tr": "Evet.", "goal": "Bir belgenin eksik olduğunu söyle", "answers": [
+            { "it": "Mi manca un documento.", "tr": "Bir belgem eksik.", "keywords": [["manca"], ["documento"]] } ] },
+          { "ai": "Può tornare domani.", "tr": "Yarın tekrar gelebilirsiniz.", "goal": "Yarın tekrar gelip gelemeyeceğini sor", "answers": [
+            { "it": "Posso tornare domani?", "tr": "Yarın tekrar gelebilir miyim?", "keywords": [["posso"], ["tornare"], ["domani"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Informazioni kelimesini tekil informazione olarak kullanmak.",
+        "Devo portare? yapısında portare fiilini çekimli kullanmak.",
+        "Comune kelimesini yalnızca belediye binası olarak düşünmek; birçok resmî yerel işlem burada yapılır."
+      ],
+      "culture": "Resmî işlemlerde hangi belgelerin gerektiğini baştan sormak zaman kazandırır. Eksik belge varsa tekrar gelme gününü netleştirmek faydalıdır.",
+      "gate": null
+    },
+    {
+      "day": 21, "level": "A1+A2", "title": "Hafta 3 Kontrolü", "focus": "Sorun anlatma ve resmî işlem yönetme",
+      "grammar_note": null,
+      "sentences": [
+        { "id": "d21_1", "it": "Vorrei parlare di mio figlio.", "tr": "Oğlum hakkında konuşmak istiyorum.", "pattern": "vorrei", "alt": ["Vorrei parlare di mia figlia."] },
+        { "id": "d21_2", "it": "Ho mal di testa.", "tr": "Başım ağrıyor.", "pattern": "ho", "alt": [] },
+        { "id": "d21_3", "it": "Il riscaldamento non funziona.", "tr": "Isıtma çalışmıyor.", "pattern": "non_funziona", "alt": [] },
+        { "id": "d21_4", "it": "Cosa serve?", "tr": "Ne gerekiyor?", "pattern": "cosa_serve", "alt": [] },
+        { "id": "d21_5", "it": "Devo portare il passaporto?", "tr": "Pasaportumu getirmem gerekiyor mu?", "pattern": "devo_portare", "alt": [] },
+        { "id": "d21_6", "it": "Può ripetere più piano?", "tr": "Daha yavaş tekrar edebilir misiniz?", "pattern": "puo", "alt": [] }
+      ],
+      "words": [],
+      "talk": {
+        "type": "scene", "title": "Bir Sorunu Baştan Sona Çöz", "setting": "mixed_services", "persona": { "name": "Laura", "role": "Görevli" }, "register": "Lei",
+        "mission": "Bir sorunu bildir, bilgi iste, eksik belgeyi öğren ve anlamadığında tekrar iste",
+        "turns": [
+          { "ai": "Buongiorno. Come posso aiutarla?", "tr": "Günaydın. Size nasıl yardımcı olabilirim?", "goal": "Bir problem olduğunu söyle", "answers": [
+            { "it": "Ho un problema.", "tr": "Bir problemim var.", "keywords": [["ho"], ["problema"]] },
+            { "it": "C'è un problema.", "tr": "Bir sorun var.", "keywords": [["c'è"], ["problema"]] } ] },
+          { "ai": "Mi dica.", "tr": "Buyurun, anlatın.", "goal": "Bir belge hakkında bilgi istediğini söyle", "answers": [
+            { "it": "Vorrei informazioni per questo documento.", "tr": "Bu belge hakkında bilgi almak istiyorum.", "keywords": [["vorrei"], ["informazioni"], ["documento"]] } ] },
+          { "ai": "Va bene.", "tr": "Peki.", "goal": "Ne gerektiğini sor", "answers": [
+            { "it": "Cosa serve?", "tr": "Ne gerekiyor?", "keywords": [["cosa"], ["serve"]] } ] },
+          { "ai": "Serve il passaporto.", "tr": "Pasaport gerekiyor.", "goal": "Pasaportu getirmen gerekip gerekmediğini sor", "answers": [
+            { "it": "Devo portare il passaporto?", "tr": "Pasaportumu getirmem gerekiyor mu?", "keywords": [["devo"], ["portare"], ["passaporto"]] } ] },
+          { "ai": "Sì, e serve anche un altro documento.", "tr": "Evet, ayrıca başka bir belge de gerekiyor.", "goal": "Anlamadıysan daha yavaş tekrar etmesini iste", "answers": [
+            { "it": "Può ripetere più piano?", "tr": "Daha yavaş tekrar edebilir misiniz?", "keywords": [["può"], ["ripetere"]] } ] },
+          { "ai": "Certo.", "tr": "Tabii.", "goal": "Eksik bir belgen olduğunu söyle", "answers": [
+            { "it": "Mi manca un documento.", "tr": "Bir belgem eksik.", "keywords": [["manca"], ["documento"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Sağlık, ev ve resmî işlem kalıplarını aynı amaç için birbirine karıştırmak.",
+        "Lei kullanılan sahnelerde tu formuna geçmek.",
+        "Yeni bir problemi uzun ve karmaşık cümleyle açıklamaya çalışmak.",
+        "Anlamadığında Può ripetere? veya Può parlare più piano? kullanmayı unutmak."
+      ],
+      "culture": "Bu haftanın hedefi ayrıntılı İtalyanca konuşmak değil; sorunu tanımlamak, gerekli bilgiyi almak ve bir sonraki adımı anlayabilmektir.",
+      "gate": "Bir görevliye sorununu kısa cümlelerle anlat, hangi belgenin gerektiğini sor, eksik belgeyi bildir ve anlamadığında daha yavaş tekrar etmesini iste."
+    }
+  ]
+}

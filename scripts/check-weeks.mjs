@@ -1,6 +1,6 @@
 // ChatGPT'den gelen hafta JSON'larını kontrol eder: node scripts/check-weeks.mjs content-src/week1.json [week2.json …]
 import { readFileSync } from 'node:fs';
-import { matchIntent, norm, checkSentence } from '../src/lib/answer.js';
+import { matchIntent, norm, hasNegation } from '../src/lib/answer.js';
 
 const files = process.argv.slice(2);
 const errors = [];
@@ -65,12 +65,12 @@ for (const f of files) {
       (t.turns || []).forEach((turn, i) => {
         const T = `${D} sahne tur ${i + 1}`;
         if (!turn.ai || !turn.tr || !turn.goal || !turn.answers?.length) err(`${T}: ai/tr/goal/answers eksik`);
-        const intents = (turn.answers || []).map((a) => ({ model: a.it, req: (a.keywords || []).map((g, j) => ({ label: `g${j}`, show: g[0], any: g })) }));
+        const intents = (turn.answers || []).map((a) => ({ model: a.it, neg: hasNegation(a.it) || /^no\b/i.test(a.it), req: (a.keywords || []).map((g, j) => ({ label: `g${j}`, show: g[0], any: g })) }));
         for (const a of turn.answers || []) {
           if (!a.keywords?.length) { err(`${T}: «${a.it}» keywords yok`); continue; }
           const r = matchIntent(a.it, intents);
           if (!r.intent) err(`${T}: model cevap kendi anahtar kelimeleriyle eşleşmiyor: «${a.it}»`);
-          for (const g of a.keywords) if (!g.some((p) => matchIntent(a.it, [{ model: a.it, req: [{ label: 'x', show: p, any: [p] }] }]).intent)) err(`${T}: «${a.it}» cevabında şu gruptan hiçbiri yok: ${JSON.stringify(g)}`);
+          for (const g of a.keywords) if (!g.some((p) => matchIntent(a.it, [{ model: a.it, neg: true, req: [{ label: 'x', show: p, any: [p] }] }]).intent)) err(`${T}: «${a.it}» cevabında şu gruptan hiçbiri yok: ${JSON.stringify(g)}`);
           if (ACCENT.test(a.it)) warn(`${T}: aksan eksik olabilir: «${a.it}»`);
           const u = unknownIn(a.it);
           if (u.length) warn(`${T}: o güne kadar öğrenilmemiş kelime: ${u.join(', ')} («${a.it}»)`);

@@ -140,7 +140,7 @@ function containsPhrase(text, phrase) {
   return padded(tj).includes(padded(pj));
 }
 
-const hasNegation = (text) => / non /.test(padded(norm(text)));
+export const hasNegation = (text) => / non /.test(padded(norm(text)));
 
 /**
  * Kullanıcının cevabını bir düğümün niyetleriyle karşılaştırır.

@@ -2,6 +2,7 @@
 // Kullanım: node scripts/build-program.mjs [--out dizin]   (varsayılan: src/content)
 import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { hasNegation } from '../src/lib/answer.js';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const SRC = join(ROOT, 'content-src');
@@ -68,9 +69,19 @@ const SETTINGS = {
   appointment_phone: { it: 'Al telefono', cat: 'gunluk', emoji: '📞' },
   workplace: { it: 'Al lavoro', cat: 'is', emoji: '🏭' },
   mixed_daily_life: { it: 'In città', cat: 'gunluk', emoji: '🏙️' },
+  school_meeting: { it: 'Colloquio a scuola', cat: 'gunluk', emoji: '🏫' },
+  doctor: { it: 'Dal medico', cat: 'gunluk', emoji: '🩺' },
+  rental_home: { it: 'Con il proprietario', cat: 'gunluk', emoji: '🏠' },
+  home_repair: { it: 'Il tecnico', cat: 'gunluk', emoji: '🔧' },
+  comune: { it: 'In Comune', cat: 'gunluk', emoji: '🏛️' },
+  mixed_services: { it: 'Allo sportello', cat: 'gunluk', emoji: '🗂️' },
 };
 const FEMALE = new Set('Giorgia Paola Elena Francesca Sara Martina Chiara Giulia Anna Laura Valentina Federica Alessia Silvia Roberta Monica Lucia Maria Teresa Rosa Simona Ilaria Elisa Marta Beatrice Camilla Alice Sofia Aurora Emma Greta Noemi Irene Claudia Barbara Daniela Cristina Patrizia Antonella Stefania Manuela Serena Veronica Gabriella'.split(' '));
-const avatarOf = (name) => (FEMALE.has(name) ? '👩🏻' : '👨🏻');
+const avatarOf = (name) => {
+  if (/^(prof\.ssa|dott\.ssa|sig\.ra|signora|maestra)\b/i.test(name)) return '👩🏻';
+  if (/^(prof|dott|sig|signor|maestro)\b/i.test(name)) return '👨🏻';
+  return FEMALE.has(name.split(' ')[0]) ? '👩🏻' : '👨🏻';
+};
 const CLOSING = {
   Lei: { ai: 'Perfetto, grazie a Lei. Arrivederci!', tr: 'Harika, ben teşekkür ederim. Hoşça kalın!' },
   tu: { ai: 'Perfetto, ci vediamo! Ciao!', tr: 'Harika, görüşürüz! Hoşça kal!' },
@@ -96,7 +107,8 @@ function buildScene(day, talk, dayCards) {
         req: a.keywords.map((g) => ({ label: g[0], show: g.join(' / '), any: g.map((x) => x.toLowerCase()) })),
         next: nextId,
         ...(nextId === 'end' ? { cando: talk.mission } : {}),
-        ...(/^no\b/i.test(it) ? { neg: true } : {}),
+        // Cevabın kendisi olumsuzsa ("Non funziona") olumsuzluk koruması bu niyeti engellemesin.
+        ...(hasNegation(it) || /^no\b/i.test(it) ? { neg: true } : {}),
       };
     });
     const first = turn.answers[0];
