@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildSession, finishPractice, isPracticeOpen, isPracticeDone, practiceIds, spread, choicesFor, SESSION_SIZE, COMPLETE_BONUS, buildExam, examIds, finishExam, EXAM_SIZE, EXAM_XP } from '../src/lib/practice.js';
+import { buildSession, finishPractice, isPracticeOpen, isPracticeDone, practiceIds, spread, choicesFor, SESSION_SIZE, COMPLETE_BONUS, buildExam, examIds, finishExam, EXAM_SIZE, EXAM_XP, gapFor, checkGap } from '../src/lib/practice.js';
 import { completeStep, STEPS, DAYS, isUnlocked, pendingExam } from '../src/lib/program.js';
 import { cards } from '../src/content/index.js';
 import { freshState } from '../src/lib/store.js';
@@ -18,7 +18,7 @@ describe('tekrar yolu', () => {
       d.learn.forEach((id) => expect(pool).toContain(id));
       used.forEach((id) => { expect(pool).toContain(id); expect(cards[id]).toBeTruthy(); });
       s.forEach((x, i) => { if (i && x.id && s[i - 1].id && s[i - 1].kind === x.kind) expect(x.id).not.toBe(s[i - 1].id); });
-      expect(new Set(s.map((x) => x.kind))).toEqual(new Set(['swipe', 'choose', 'match', 'write']));
+      expect(new Set(s.map((x) => x.kind))).toEqual(new Set(['swipe', 'choose', 'match', 'gap', 'write']));
     }
   });
 
@@ -93,5 +93,33 @@ describe('hafta kontrol sınavı', () => {
     completeStep(st, 8, 'review', T);
     expect(isUnlocked(st, 8)).toBe(true);
     expect(pendingExam(st)).toBe(null);
+  });
+});
+
+describe('diyalog boşluk doldurma', () => {
+  const seq = (vals) => { let i = 0; return () => vals[i++ % vals.length]; };
+  it('boşluk + kalan cümle orijinali verir; 3+ harfli kelime seçer', () => {
+    for (const c of Object.values(cards)) {
+      const g = gapFor(c, Math.random);
+      expect(g.before + g.answer + g.after).toBe(c.it);
+      expect(g.answer.replace(/[^\p{L}]/gu, '').length).toBeGreaterThanOrEqual(2);
+    }
+    const g = gapFor({ it: "Vorrei un caffè, per favore." }, seq([0]));
+    expect(g).toMatchObject({ before: '', answer: 'Vorrei', after: ' un caffè, per favore.' });
+    const g2 = gapFor({ it: "Vorrei un caffè, per favore." }, seq([0.4]));
+    expect(g2.answer).toBe('caffè');
+    expect(g2.before).toBe('Vorrei un ');
+    expect(g2.after).toBe(', per favore.');
+  });
+  it('sohbet sahnesindeki cümlenin önünde karşı tarafın repliği var', () => {
+    const g = gapFor({ it: 'Un cappuccino, per favore.' });
+    expect(g.context).toEqual({ who: expect.any(String), line: 'Buongiorno! Cosa prende?' });
+  });
+  it('kontrol: aksan ve büyük harf önemsiz, klavye kayması kabul, yanlış kelime ret', () => {
+    expect(checkGap('caffe', 'caffè')).toEqual({ ok: true, slip: false });
+    expect(checkGap('CAFFÈ', 'caffè').ok).toBe(true);
+    expect(checkGap('cagfè', 'caffè')).toEqual({ ok: true, slip: true });
+    expect(checkGap('tè', 'caffè').ok).toBe(false);
+    expect(checkGap('', 'caffè').ok).toBe(false);
   });
 });

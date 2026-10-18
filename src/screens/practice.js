@@ -114,8 +114,8 @@ export function renderExam(ctx, param) {
       h('h2', {}, `${EXAM_SIZE} soru · ${need} doğru ile geçersin`),
       h('p', {}, plan.gate),
       h('p', { class: 'small muted' }, last
-        ? 'Tüm programdan cümleler gelir. Seçmeli ve yazmalı sorular var; ipucu kullanırsan o soru doğru sayılmaz.'
-        : `Bu haftanın cümlelerinden gelir. Geçince ${week.week + 1}. hafta açılır. Seçmeli ve yazmalı sorular var; ipucu kullanırsan o soru doğru sayılmaz.`),
+        ? 'Tüm programdan cümleler gelir. Seçmeli, boşluk doldurma ve yazmalı sorular var; ipucu kullanırsan o soru doğru sayılmaz.'
+        : `Bu haftanın cümlelerinden gelir. Geçince ${week.week + 1}. hafta açılır. Seçmeli, boşluk doldurma ve yazmalı sorular var; ipucu kullanırsan o soru doğru sayılmaz.`),
       rec ? h('p', { class: 'small' }, rec.passed ? `✓ Geçtin · en iyi ${rec.best} / ${rec.total}` : `Önceki deneme: en iyi ${rec.best} / ${rec.total}`) : null,
       !rec?.passed ? h('span', { class: 'chip gold' }, `İlk geçişte +${EXAM_XP} XP`) : null),
     h('button', { class: 'btn block', onclick: begin }, rec ? 'Yeniden başla' : 'Sınava başla', icon('arrow')));

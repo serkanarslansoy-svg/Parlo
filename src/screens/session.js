@@ -1,7 +1,7 @@
 import { h, icon } from '../lib/dom.js';
 import { cards } from '../content/index.js';
 import { checkSentence, shuffle, tilesFor, typoNote } from '../lib/answer.js';
-import { choicesFor } from '../lib/practice.js';
+import { choicesFor, gapFor, checkGap } from '../lib/practice.js';
 
 const allCards = Object.values(cards);
 
@@ -33,7 +33,7 @@ export function createSession(queue, { onFinish, onAnswer } = {}) {
     const item = queue[pos];
     counter.textContent = `${pos + 1} / ${queue.length}`;
     barFill.style.width = `${Math.round((pos / queue.length) * 100)}%`;
-    const view = { write: writeItem, choose: chooseItem, swipe: swipeItem, match: matchItem }[item.kind](item);
+    const view = { write: writeItem, choose: chooseItem, swipe: swipeItem, match: matchItem, gap: gapItem }[item.kind](item);
     body.replaceChildren(view);
     window.scrollTo(0, 0);
     view.querySelector('input')?.focus();
@@ -79,6 +79,52 @@ export function createSession(queue, { onFinish, onAnswer } = {}) {
         h('p', { class: 'eyebrow' }, 'İtalyanca nasıl söylersin?'),
         h('p', { class: 'prompt' }, card.tr)),
       input, hint, feedback, actions);
+  }
+
+  // --- Diyalog boşluk doldurma: karşı tarafın repliği + senin cevabında eksik kelime ---
+  function gapItem(item) {
+    const card = cards[item.id];
+    const g = gapFor(card);
+    let done = false;
+    let hinted = false;
+    const input = h('input', {
+      class: 'gap-input', type: 'text', lang: 'it', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false',
+      'aria-label': 'Eksik kelime', size: Math.max(4, g.answer.length + 1), style: `width:${Math.max(4, g.answer.length + 1.5)}ch`,
+    });
+    const feedback = h('div', { 'aria-live': 'polite' });
+    const hintBtn = h('button', { class: 'btn secondary', type: 'button', onclick: () => {
+      hinted = true;
+      hintBtn.disabled = true;
+      input.placeholder = `${g.answer[0]}${'·'.repeat(Math.max(0, g.answer.length - 1))}`;
+      input.focus();
+    } }, icon('bulb'), 'İpucu');
+    const actions = h('div', { class: 'row' }, hintBtn, h('button', { class: 'btn grow', type: 'submit' }, 'Kontrol et'));
+    const submit = (e) => {
+      e.preventDefault();
+      if (done) return next();
+      if (!input.value.trim()) return input.focus();
+      done = true;
+      const r = checkGap(input.value, g.answer);
+      const good = r.ok && !hinted;
+      record(card.id, good);
+      input.disabled = true;
+      input.classList.add(r.ok ? 'right' : 'wrong');
+      feedback.replaceChildren(h('div', { class: `feedback ${r.ok ? 'good' : 'bad'} stack` },
+        h('p', { class: 'title' }, r.ok ? (good ? 'Bravo! ✓' : 'Doğru, ipucuyla') : `Eksik kelime: «${g.answer}»`),
+        h('p', { class: 'it', lang: 'it' }, card.it),
+        r.slip ? h('p', { class: 'small typo-note' }, `Klavye kayması: «${input.value.trim()}» → «${g.answer}». Yine de doğru saydım.`) : null));
+      actions.replaceChildren(h('button', { class: 'btn block', type: 'submit' }, 'Devam et', icon('arrow')));
+      actions.querySelector('button').focus();
+    };
+    return h('form', { class: 'stack', onsubmit: submit },
+      h('section', { class: 'card stack gap-card' },
+        h('p', { class: 'eyebrow' }, 'Eksik kelimeyi yaz'),
+        g.context ? h('div', { class: 'gap-them' }, h('span', { class: 'who' }, g.context.who), h('p', { lang: 'it' }, g.context.line)) : null,
+        h('div', { class: 'gap-me' },
+          g.context ? h('span', { class: 'who' }, 'Sen') : null,
+          h('p', { lang: 'it' }, g.before, input, g.after),
+          h('p', { class: 'tr' }, card.tr))),
+      feedback, actions);
   }
 
   // --- Seçmeli: 4 seçenek; sırayla Türkçe→İtalyanca ve İtalyanca→Türkçe ---

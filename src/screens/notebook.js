@@ -45,7 +45,7 @@ export function renderNotebook(ctx) {
     h('section', { class: 'card practice-hero stack' },
       h('div', { class: 'row between' }, h('p', { class: 'eyebrow' }, 'Tekrar yolu'), h('span', { class: 'chip glass-dark' }, `${done} / ${TOTAL_DAYS}`)),
       h('h2', {}, done === TOTAL_DAYS ? 'Yolun sonuna geldin! 🏆' : 'Her gün, 30 soruluk tekrar'),
-      h('p', { class: 'small' }, `Programda bitirdiğin günün durağı açılır. ${SESSION_SIZE} soru: kaydır, seç, eşleştir, yaz. İlk bitirişte doğru sayın + ${COMPLETE_BONUS} XP; tekrar oynamak serbest ama XP vermez.`),
+      h('p', { class: 'small' }, `Programda bitirdiğin günün durağı açılır. ${SESSION_SIZE} soru: kaydır, seç, eşleştir, boşluk doldur, yaz. İlk bitirişte doğru sayın + ${COMPLETE_BONUS} XP; tekrar oynamak serbest ama XP vermez.`),
       h('div', { class: 'bar light' }, h('i', { style: `width:${Math.round((done / TOTAL_DAYS) * 100)}%` })),
       current ? h('button', { class: 'btn mission-cta', onclick: () => ctx.go(`practice/${current}`) },
         icon('repeat'), h('span', { class: 'grow cta-text' }, h('span', {}, `Gün ${current} tekrarı`), h('span', { class: 'sub' }, `${SESSION_SIZE} soru · ~6 dk`)), icon('arrow')) : null),

@@ -3,8 +3,8 @@
 import { DAYS, isDayDone, dayPlan, EXAM_PASS, examRec } from './program.js';
 import { award } from './points.js';
 import { markActive } from './store.js';
-import { shuffle } from './answer.js';
-import { sceneById } from '../content/index.js';
+import { shuffle, tilesFor, norm, isKeyboardSlip } from './answer.js';
+import { sceneById, scenes } from '../content/index.js';
 
 export const SESSION_SIZE = 30;
 export const MATCH_SIZE = 5;
@@ -14,9 +14,10 @@ export const MIN_POOL = 6;
 // 30 adımın dağılımı: önce tanı (kaydır), sonra seç, eşleştir, en sonda yaz.
 export const PLAN = [
   { kind: 'swipe', count: 6 },
-  { kind: 'choose', count: 10 },
+  { kind: 'choose', count: 8 },
   { kind: 'match', count: 2 },
-  { kind: 'write', count: 12 },
+  { kind: 'gap', count: 6 },
+  { kind: 'write', count: 8 },
 ];
 
 export const practiceRec = (state, n) => state.practiceDays?.[n] || null;
@@ -98,8 +99,9 @@ export function choicesFor(card, allCards, field = 'it', n = 4, rand = Math.rand
 export const EXAM_SIZE = 20;
 export const EXAM_XP = 50;
 export const EXAM_PLAN = [
-  { kind: 'choose', count: 8 },
-  { kind: 'write', count: 12 },
+  { kind: 'choose', count: 6 },
+  { kind: 'gap', count: 6 },
+  { kind: 'write', count: 8 },
 ];
 export const examNeed = (total = EXAM_SIZE) => Math.ceil(total * EXAM_PASS);
 
@@ -140,4 +142,47 @@ export function finishExam(state, n, ok, total, day) {
     passed: Boolean(prev?.passed || passed), date: passed && !prev?.passed ? day : prev?.date || null,
   };
   return { passed, firstPass, xp: firstPass ? award(state, EXAM_XP, day) : 0 };
+}
+
+// --- Diyalog boşluk doldurma ---
+// Bir cümleden önce karşı tarafın ne dediği: sohbet sahnelerinden ve soru-cevap günlerinden.
+let contextMap = null;
+function contexts() {
+  if (contextMap) return contextMap;
+  contextMap = new Map();
+  for (const sc of scenes) {
+    for (const node of Object.values(sc.nodes)) {
+      for (const it of node.intents || []) if (!contextMap.has(it.model)) contextMap.set(it.model, { who: sc.persona.name, line: node.ai });
+    }
+  }
+  for (const d of DAYS) {
+    for (const q of d.talk.drill || []) for (const m of q.models) if (!contextMap.has(m)) contextMap.set(m, { who: 'Komşu', line: q.q });
+  }
+  return contextMap;
+}
+
+/**
+ * Cümleden bir kelimeyi boşluk yapar (3+ harfli kelimelerden). Karşı tarafın repliği varsa onu da verir.
+ * @returns {{before: string, answer: string, after: string, context: {who, line} | null}}
+ */
+export function gapFor(card, rand = Math.random) {
+  const words = card.it.split(/\s+/);
+  const clean = (w) => tilesFor(w)[0] || '';
+  const candidates = words.map((w, i) => i).filter((i) => norm(clean(words[i])).replace(/ /g, '').length >= 3);
+  const i = candidates.length ? candidates[Math.floor(rand() * candidates.length)] : 0;
+  const raw = words[i];
+  const answer = clean(raw);
+  const at = raw.indexOf(answer);
+  const before = (i ? `${words.slice(0, i).join(' ')} ` : '') + raw.slice(0, at);
+  const after = raw.slice(at + answer.length) + (i < words.length - 1 ? ` ${words.slice(i + 1).join(' ')}` : '');
+  return { before, answer, after, context: contexts().get(card.it) || null };
+}
+
+/** Boşluğa yazılanı kontrol eder: aksan/büyük harf önemsiz, klavye kayması doğru sayılır. */
+export function checkGap(input, answer) {
+  const g = norm(input).replace(/ /g, '');
+  const e = norm(answer).replace(/ /g, '');
+  if (!g) return { ok: false, slip: false };
+  if (g === e) return { ok: true, slip: false };
+  return isKeyboardSlip(g, e) ? { ok: true, slip: true } : { ok: false, slip: false };
 }

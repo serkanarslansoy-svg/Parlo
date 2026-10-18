@@ -76,6 +76,17 @@
 | Klavye | Yazmalı cevapta komşu tuş / yer değiştirme / çift basış en fazla 2 kelimede doğru sayılır, not düşülür. Eksik harf, uzak harf ve 3 harften kısa kelimeler tolere edilmez |
 | Kaldırılanlar | Kendi cümlelerim, hata defterinin Cümlelerim'e eklenmesi, kültür kartındaki "Kaydet", kalıp rehberi |
 
+## v0.9: Drops ve Busuu'dan uyarlananlar
+İnceleme: `replica/recon-drops.md`, `replica/recon-busuu.md`.
+| Konu | Karar |
+|---|---|
+| Seri | Drops'un "2 gün kuralı": tek kaçış tolere, art arda iki kaçış sıfırlar. Plan dışı günler gerekli değil. Her program adımı ve Tekrar yolu günü aktif sayar |
+| Çalışma planı | Busuu'dan: haftanın günleri seçilir, Gün 30 tarihi gösterilir. Dakika seçimi yok (program 15 dk sabit) |
+| Kontrol sınavı | Busuu'nun kontrol noktası: 20 soru, %80 geçer, geçmeden sonraki hafta açılmaz, ilk geçişte +50 XP |
+| Biliyorum | Drops'tan: bilinen cümle kutu 2'den başlar (3 gün sonra) |
+| Güç | Leitner kutusu: 0-1 zayıf, 2-3 orta, 4-5 güçlü. Tekrar yolunda vadesi gelmiş cümleyi doğru bilmek kutuyu ilerletir |
+| Boşluk doldurma | Busuu'nun diyalog alıştırması: sahne/soru-cevap repliği + cevapta eksik kelime (3+ harf); klavye kayması kabul |
+
 ## Yol haritası
 1. **İçerik:** doktor, Comune/Questura, öğretmenle görüşme, telefon, kira. Senaryo başına 8–10 kart.
 2. **AI koç (sunucu gerekir):** serbest sohbet ve kullanıcının yazdığı özel durumlardan senaryo üretme ("Kendi durumunu yaz" listesi şimdiden toplanıyor). API anahtarı istemcide tutulmamalı.

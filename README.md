@@ -14,9 +14,13 @@ Az gramer, çok pratik: kalıbı öğren → hızlı tekrarla pekiştir → ger�
 - **7 senaryo:** Kafe, Restoran, Okul, İş yeri, Şarküteri, Şehir, Eczane. Diyaloglar cevabına göre dallanır.
 - **Öğretmen paneli:** cevabın tutmazsa hangi parçanın eksik olduğunu gösterir (örn. "eksik: istek fiili"). İstersen ipucu ya da doğal bir cevap önerir.
 - **Ses (şimdilik kapalı):** dinleme ve mikrofon telefonlarda güvenilir çalışmadığı için kapatıldı; her şey yazıyla ilerliyor. Tekrar açmak için `src/lib/speech.js` içinde `AUDIO_ENABLED = true`.
+- **Çalışma planı:** haftanın çalışma günleri seçilir; kalan günler plana yayılıp Gün 30'un tarihi gösterilir.
+- **Seri:** bir gün kaçırmak seriyi bozmaz (art arda iki gün bozar); plan dışı günler sayılmaz; program adımları ve Tekrar yolu da seriye sayılır.
+- **Hafta kontrol sınavları:** 7, 14, 21 ve 30. günlerde 20 soru, 16 doğru ile geçilir; geçmeden sonraki hafta açılmaz. İlk geçişte +50 XP.
+- **"Biliyorum":** yeni kalıp adımında bilinen cümle geçilir, 3 gün sonra kontrol edilir.
 - **Klavye kayması toleransı:** yazmalı cevaplarda komşu tuş, yer değiştiren iki harf ya da çift basış (en fazla 2 kelimede) doğru sayılır ve not düşülür; eksik harf ve çekim hatası (voglia/voglio) yanlış kalır. Türkçe klavyenin «ı» harfi «i» sayılır.
 - **Aralıklı tekrar (Leitner):** doğru bildiğin cümle 1 → 3 → 7 → 14 → 30 gün sonra tekrar gelir, yanlışta başa döner.
-- **Tekrar yolu (Tekrar sekmesi):** 1'den 30'a duraklar. Programda biten günün durağı açılır; her durak 30 soruluk tekrar (6 kaydırmalı, 10 seçmeli, 2 eşleştirme, 12 yazmalı). İlk bitirişte doğru sayısı + 10 XP; tekrar oynamak serbest ama XP vermez.
+- **Tekrar yolu (Tekrar sekmesi):** 1'den 30'a duraklar. Programda biten günün durağı açılır; her durak 30 soruluk tekrar (6 kaydırmalı, 8 seçmeli, 2 eşleştirme, 6 diyalog boşluk doldurma, 8 yazmalı). Durakta cümlelerin gücü (zayıf/orta/güçlü) görünür. İlk bitirişte doğru sayısı + 10 XP; tekrar oynamak serbest ama XP vermez.
 - **Gelişim:** "Artık bunları yapabiliyorsun" listesi, cümle hafızası, haftalık takvim.
 - **PWA:** telefona kurulabilir, çevrimdışı açılır. Veriler sadece cihazda (localStorage) tutulur.
 

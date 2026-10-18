@@ -25,6 +25,9 @@ Vite + vanilla JS PWA. Framework yok; ekranlar `src/lib/dom.js` içindeki `h()` 
 - `program.json`: 30 günlük program. `days[] = {day, week, title, focus, learn: [kart id], talk: {scene} | {title, drill: [{q, tr, models[]}]}, words?, change?, gate?}`. Her kart bir sahnede ya da bir günün `learn` listesinde kullanılmalı (test kontrol eder).
   - İlerleme `state.program.days[N] = {steps: {review, learn, talk, fix}, mistakes: [{it, tr}], completedOn}`; mantık `src/lib/program.js`.
   - Tekrar yolu (sekme adı "Tekrar", rota `notebook`) (`src/lib/practice.js`, `#/practice/<gün>`): gün programda bitince açılır. Havuz: günün `learn` kartları + sahnesinin kartları, 6'dan azsa önceki günlerden tamamlanır. 30 adım (`PLAN`). Sonuç `state.practiceDays[N] = {date, best, total, runs}`; XP sadece ilk bitirişte.
+  - Kontrol sınavı (`#/exam/<gün>`, gate günleri): `buildExam` 20 adım, `EXAM_PASS` %80; sonuç `state.exams[N] = {best, total, tries, passed, date}`. `isUnlocked` kontrol gününden sonraki günü sınav geçilene kadar kilitler (başlanmış gün hariç).
+  - Çalışma planı: `state.plan.days` (0 = Pazar), `finishDate`, seri `streak(state, today, planDays)`; `GRACE_DAYS = 1`.
+  - Soru motoru `src/screens/session.js` (swipe, choose, match, gap, write); Tekrar yolu ve sınav ortak kullanır.
   - Adım ekranları: tekrar `review?program=N`, yeni kalıp `learn/N`, konuşma `chat/sahne?program=N` ya da `drill/N`, hata `fix/N`. Bittiğinde `ctx.flash` mesajıyla `day/N`'e döner.
 
 ## Yapılmayanlar (bilinçli)

@@ -631,3 +631,16 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 .str-mid .str-bars i.on { background: var(--gold); }
 .str-strong { color: var(--green); }
 .str-strong .str-bars i.on { background: var(--green); }
+
+/* ---------- Diyalog boşluk doldurma ---------- */
+.gap-card { gap: 12px; }
+.gap-them, .gap-me { display: grid; gap: 2px; max-width: 88%; padding: 10px 14px; border-radius: var(--r-md); }
+.gap-them { background: var(--cream); justify-self: start; border-bottom-left-radius: 4px; }
+.gap-me { background: var(--green-tint); justify-self: end; border-bottom-right-radius: 4px; }
+.gap-them p, .gap-me p { margin: 0; font-size: 1.1rem; font-weight: 600; line-height: 1.6; }
+.gap-me .tr { font-size: 0.85rem; font-weight: 400; color: var(--muted); }
+.gap-card .who { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.gap-input { display: inline-block; min-width: 4ch; padding: 2px 6px; margin: 0 2px; border: 0; border-bottom: 2.5px solid var(--green); border-radius: 6px 6px 0 0; background: var(--surface); font: inherit; color: var(--green-deep); text-align: center; }
+.gap-input:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+.gap-input.right { border-color: var(--green); background: #fff; }
+.gap-input.wrong { border-color: var(--terracotta); background: var(--terracotta-tint); text-decoration: line-through; }
