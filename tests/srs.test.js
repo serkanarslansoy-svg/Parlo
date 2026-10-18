@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { grade, newCard, addDays, buildQueue, mastery, MAX_BOX } from '../src/lib/srs.js';
 import { streak, markActive, freshState } from '../src/lib/store.js';
+import { strengthOf, groupStrength, knownCard } from '../src/lib/srs.js';
 
 const T = '2026-10-04';
 
@@ -79,5 +80,23 @@ describe('streak', () => {
   it('bugün henüz pratik yoksa dünden sayar', () => {
     expect(streak({ days: { [addDays(T, -1)]: day(1), [addDays(T, -2)]: day(1) } }, T)).toBe(2);
     expect(streak({ days: {} }, T)).toBe(0);
+  });
+});
+
+describe('güç', () => {
+  it('kutuya göre zayıf / orta / güçlü', () => {
+    expect(strengthOf(undefined)).toBe('new');
+    expect(strengthOf({ box: 0 })).toBe('weak');
+    expect(strengthOf({ box: 1 })).toBe('weak');
+    expect(strengthOf({ box: 2 })).toBe('mid');
+    expect(strengthOf({ box: 4 })).toBe('strong');
+  });
+  it('grup gücü sadece kutudakilerin ortalaması', () => {
+    expect(groupStrength({}, ['a', 'b'])).toBe('new');
+    expect(groupStrength({ a: { box: 5 }, b: { box: 3 } }, ['a', 'b', 'c'])).toBe('strong');
+    expect(groupStrength({ a: { box: 0 }, b: { box: 2 } }, ['a', 'b'])).toBe('weak');
+  });
+  it('biliyorum: kutu 2, üç gün sonra', () => {
+    expect(knownCard(T)).toMatchObject({ box: 2, due: addDays(T, 3) });
   });
 });

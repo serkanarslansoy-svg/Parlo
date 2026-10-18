@@ -1,6 +1,7 @@
 import { h, icon } from '../lib/dom.js';
 import { cards } from '../content/index.js';
 import { today } from '../lib/store.js';
+import { grade, isDue } from '../lib/srs.js';
 import { buildSession, finishPractice, isPracticeOpen, practiceRec, buildExam, finishExam, examNeed, EXAM_SIZE, EXAM_XP } from '../lib/practice.js';
 import { dayPlan, weekOf, isDayDone, examRec, TOTAL_DAYS } from '../lib/program.js';
 import { createSession } from './session.js';
@@ -46,7 +47,12 @@ export function renderPractice(ctx, param) {
       h('button', { class: 'btn ghost block', onclick: () => ctx.refresh() }, icon('repeat'), 'Baştan tekrar et (XP yok)')));
   }
 
-  const { counter, bar, body, start } = createSession(buildSession(n), { onFinish: finish });
+  // Vadesi gelmiş bir cümleyi yolda doğru bilmek, tekrar kutusunda da ilerletir.
+  const onAnswer = (id, good) => {
+    const c = ctx.state.cards[id];
+    if (good && c && isDue(c, today())) ctx.state.cards[id] = grade(c, true, today());
+  };
+  const { counter, bar, body, start } = createSession(buildSession(n), { onFinish: finish, onAnswer });
   start();
   return h('div', { class: 'screen full' }, header(counter), bar, body);
 }

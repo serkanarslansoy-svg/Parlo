@@ -1,6 +1,7 @@
 // Ekranlar arasında paylaşılan küçük bileşenler.
 import { h, icon } from './lib/dom.js';
 import { speak, canSpeak } from './lib/speech.js';
+import { STRENGTH } from './lib/srs.js';
 
 export function brandMark() {
   const img = h('img', { src: './logo-mark.png', alt: '', class: 'brand-mark', width: 32, height: 32 });
@@ -30,6 +31,14 @@ export function speakBtn(text, { slow = false, label = 'Dinle' } = {}) {
     class: 'icon-btn', type: 'button', 'aria-label': `${label}: ${text}`,
     onclick: (e) => { e.stopPropagation(); speak(text, { slow }); },
   }, icon(slow ? 'turtle' : 'speaker'));
+}
+
+/** Güç rozeti: üç çubuk + etiket (yeni / zayıf / orta / güçlü). */
+export function strengthChip(level, prefix = '') {
+  const s = STRENGTH[level] || STRENGTH.new;
+  return h('span', { class: `str str-${level}`, title: `Güç: ${s.label}` },
+    h('span', { class: 'str-bars', 'aria-hidden': 'true' }, [1, 2, 3].map((i) => h('i', { class: i <= s.bars ? 'on' : '' }))),
+    `${prefix}${s.label}`);
 }
 
 export function dots(pct, total = 5) {

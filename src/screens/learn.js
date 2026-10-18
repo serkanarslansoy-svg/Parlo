@@ -4,6 +4,7 @@ import { speak } from '../lib/speech.js';
 import { sayPanel } from './say.js';
 import { award, POINTS } from '../lib/points.js';
 import { dayPlan, completeStep, enrollCards } from '../lib/program.js';
+import { knownCard } from '../lib/srs.js';
 import { today } from '../lib/store.js';
 import { speakBtn } from '../ui.js';
 
@@ -16,15 +17,21 @@ export function renderLearn(ctx, param) {
   const back = () => ctx.go(`day/${n}`);
   const slow = () => Boolean(ctx.state.settings?.slow);
 
+  const known = new Set(); // "biliyorum" denen cümleler
   const finish = () => {
     const t = today();
+    for (const id of known) if (!ctx.state.cards[id]) ctx.state.cards[id] = knownCard(t);
     enrollCards(ctx.state, ids, t);
-    const xp = award(ctx.state, ids.length * POINTS.learnCard, t);
+    const learned = ids.length - known.size;
+    const xp = award(ctx.state, learned * POINTS.learnCard, t);
     const { bonus } = completeStep(ctx.state, n, 'learn', t);
     ctx.persist();
-    ctx.flash = ids.length
-      ? `${ids.length} yeni cümle öğrendin · +${xp + bonus} XP. Yarın tekrar adımında karşına çıkacaklar.`
-      : 'Yeni kalıp adımı tamam.';
+    ctx.flash = !ids.length ? 'Yeni kalıp adımı tamam.' : [
+      learned ? `${learned} yeni cümle öğrendin.` : '',
+      known.size ? `${known.size} cümleyi zaten biliyordun; 3 gün sonra kontrol edilecek.` : '',
+      `+${xp + bonus} XP.`,
+      learned ? 'Yenileri yarın tekrar adımında karşına çıkacak.' : '',
+    ].filter(Boolean).join(' ');
     back();
   };
 
@@ -62,7 +69,9 @@ export function renderLearn(ctx, param) {
         h('p', { class: 'muted' }, card.tr),
         pattern ? h('p', { class: 'small muted' }, `LEGO: ${pattern.head} ${pattern.slot} → ${pattern.tr}. ${pattern.note}`) : null),
       sayPanel(card, () => { nextBtn.disabled = false; }),
-      nextBtn);
+      nextBtn,
+      h('button', { class: 'btn ghost block', onclick: () => { known.add(card.id); pos += 1; if (pos < ids.length) show(); else finish(); } },
+        'Bunu zaten biliyorum, geç'));
     setTimeout(() => speak(card.it, { slow: slow() }), 250);
     window.scrollTo(0, 0);
   }

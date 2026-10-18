@@ -1,7 +1,8 @@
 import { h, icon } from '../lib/dom.js';
 import { DAYS, WEEKS, TOTAL_DAYS } from '../lib/program.js';
-import { isPracticeOpen, isPracticeDone, practiceRec, practiceDoneCount, COMPLETE_BONUS, SESSION_SIZE } from '../lib/practice.js';
-import { topbar } from '../ui.js';
+import { isPracticeOpen, isPracticeDone, practiceRec, practiceDoneCount, practiceIds, COMPLETE_BONUS, SESSION_SIZE } from '../lib/practice.js';
+import { groupStrength } from '../lib/srs.js';
+import { topbar, strengthChip } from '../ui.js';
 
 // Zikzak: her durağın yatay kayması (px), hafta içinde dalga gibi.
 const WAVE = [0, 46, 78, 46, 0, -46, -78, -46];
@@ -26,7 +27,8 @@ export function renderNotebook(ctx) {
         'aria-label': `Gün ${d.day} tekrarı: ${d.title}${ok ? `, tamamlandı, en iyi ${rec.best} / ${rec.total}` : open ? '' : ', kilitli'}`,
       }, ok ? icon('check') : open ? h('span', {}, d.day) : h('span', { class: 'lock' }, '🔒')),
       h('span', { class: 'path-label' }, h('b', {}, `Gün ${d.day}`), ' ', d.title),
-      ok ? h('span', { class: 'path-score' }, `${rec.best} / ${rec.total}`) : null);
+      ok ? h('span', { class: 'path-score' }, `${rec.best} / ${rec.total}`) : null,
+      open ? strengthChip(groupStrength(state.cards, practiceIds(d.day))) : null);
     if (now) currentEl = el;
     return el;
   };

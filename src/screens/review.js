@@ -1,10 +1,10 @@
 import { h, icon } from '../lib/dom.js';
 import { cards, allCardIds, dailyScene, patternById } from '../content/index.js';
 import { checkSentence, tilesFor, shuffle, distractorsFor, typoNote } from '../lib/answer.js';
-import { buildQueue, grade, newCard, isDue, addDays } from '../lib/srs.js';
+import { buildQueue, grade, newCard, isDue, addDays, strengthOf } from '../lib/srs.js';
 import { speak } from '../lib/speech.js';
 import { today, touchDay } from '../lib/store.js';
-import { speakBtn } from '../ui.js';
+import { speakBtn, strengthChip } from '../ui.js';
 import { award, POINTS } from '../lib/points.js';
 import { claimDailyBonus } from './home.js';
 import { completeStep, addMistake, learnedBefore } from '../lib/program.js';
@@ -121,6 +121,7 @@ export function renderReview(ctx, query) {
       feedback.replaceChildren(h('div', { class: `feedback ${ok ? 'good' : 'bad'} stack` },
         h('div', { class: 'row between' }, h('p', { class: 'title' }, ok ? (hinted ? 'Doğru! (ipucuyla)' : 'Bravissimo! ✓') : 'Neredeyse! Doğru hâli:'), pts ? h('span', { class: 'chip gold' }, `+${pts} XP`) : null),
         h('div', { class: 'row' }, h('div', { class: 'grow' }, h('p', { class: 'it', lang: 'it' }, card.it), h('p', { class: 'tr' }, card.tr)), speakBtn(card.it), speakBtn(card.it, { slow: true, label: 'Yavaş dinle' })),
+        h('p', { class: 'small row' }, 'Bu cümlenin gücü: ', strengthChip(strengthOf(ctx.state.cards[id]))),
         ok && accentNote ? h('p', { class: 'small' }, 'Küçük not: aksan ve kesme işaretlerine dikkat — yazılışı yukarıdaki gibi.') : null,
         typos.length ? h('p', { class: 'small typo-note' }, typoNote(typos)) : null,
         !ok ? h('p', { class: 'small' }, 'Bu cümle yakında tekrar karşına çıkacak.') : null));

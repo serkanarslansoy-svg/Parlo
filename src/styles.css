@@ -617,3 +617,17 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 .plan-end { margin: 0; padding: 10px 12px; border-radius: var(--r-sm); background: var(--green-tint); color: var(--green-deep); }
 .exam-intro h2 { font-size: 1.3rem; }
 .exam-fail { text-align: center; background: var(--terracotta-tint); border-color: transparent; }
+
+/* ---------- Güç göstergesi ---------- */
+.str { display: inline-flex; align-items: center; gap: 5px; font-size: 0.72rem; font-weight: 700; color: var(--muted); }
+.str-bars { display: inline-flex; gap: 2px; align-items: flex-end; }
+.str-bars i { width: 4px; border-radius: 2px; background: var(--sand); }
+.str-bars i:nth-child(1) { height: 6px; }
+.str-bars i:nth-child(2) { height: 9px; }
+.str-bars i:nth-child(3) { height: 12px; }
+.str-weak { color: var(--terracotta-ink); }
+.str-weak .str-bars i.on { background: var(--terracotta); }
+.str-mid { color: var(--gold-ink); }
+.str-mid .str-bars i.on { background: var(--gold); }
+.str-strong { color: var(--green); }
+.str-strong .str-bars i.on { background: var(--green); }

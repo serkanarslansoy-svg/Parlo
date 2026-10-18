@@ -31,6 +31,32 @@ export function grade(card, ok, today) {
 
 export const isDue = (card, today) => card.due <= today;
 
+/** Kullanıcıya gösterilen güç: kutu 0-1 zayıf, 2-3 orta, 4-5 güçlü; kutuda değilse yeni. */
+export const STRENGTH = {
+  new: { label: 'yeni', bars: 0 },
+  weak: { label: 'zayıf', bars: 1 },
+  mid: { label: 'orta', bars: 2 },
+  strong: { label: 'güçlü', bars: 3 },
+};
+export function strengthOf(card) {
+  if (!card) return 'new';
+  if (card.box >= 4) return 'strong';
+  if (card.box >= 2) return 'mid';
+  return 'weak';
+}
+/** Bir grup cümlenin ortalama gücü (kutuya girmemiş olanlar sayılmaz). */
+export function groupStrength(srsCards, ids) {
+  const known = ids.map((id) => srsCards[id]).filter(Boolean);
+  if (!known.length) return 'new';
+  const avg = known.reduce((s, c) => s + c.box, 0) / known.length;
+  return strengthOf({ box: Math.round(avg) });
+}
+
+/** Kullanıcı "biliyorum" dedi: kutu 2'den başlar, 3 gün sonra sorulur. */
+export function knownCard(today) {
+  return { box: 2, due: addDays(today, INTERVALS[2]), right: 1, wrong: 0, skipped: true };
+}
+
 /** 0–100 arası ustalık yüzdesi. */
 export const mastery = (card) => (card ? Math.round((card.box / MAX_BOX) * 100) : 0);
 
