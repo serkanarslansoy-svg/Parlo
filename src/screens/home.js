@@ -7,7 +7,7 @@ import { stateOf } from '../lib/profiles.js';
 import { tierOf, RULES } from '../lib/online.js';
 import { weekKeys } from '../lib/points.js';
 import { topbar, speakBtn, greeting, avatar } from '../ui.js';
-import { STEPS, TOTAL_DAYS, currentDay, dayPlan, weekOf, nextStep, isStepDone, waitsForTomorrow, finishDate, formatDay, hasPlan, planDays } from '../lib/program.js';
+import { STEPS, TOTAL_DAYS, currentDay, dayPlan, weekOf, nextStep, isStepDone, waitsForTomorrow, finishDate, formatDay, hasPlan, planDays, pendingExam, weekOf as weekOfDay } from '../lib/program.js';
 import { stepRoute } from './day.js';
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
@@ -91,7 +91,19 @@ function planLine(ctx) {
     h('span', { class: 'link small' }, hasPlan(ctx.state) ? 'Planı değiştir' : 'Planını kur'));
 }
 
+function examCard(ctx, g) {
+  const last = g === TOTAL_DAYS;
+  return h('article', { class: 'card program-card' },
+    h('p', { class: 'eyebrow' }, last ? '30 günlük program · final' : `30 günlük program · ${weekOfDay(g).week}. hafta bitti`),
+    h('h2', {}, last ? 'Final sınavı seni bekliyor' : 'Kontrol sınavı seni bekliyor'),
+    h('p', { class: 'small' }, last ? '20 soru, tüm programdan. 16 doğru ile programı tamamlarsın.' : `20 soru, bu haftanın cümlelerinden. 16 doğru ile ${weekOfDay(g).week + 1}. hafta açılır.`),
+    h('button', { class: 'btn mission-cta', onclick: () => ctx.go(`exam/${g}`) },
+      icon('check'), h('span', { class: 'grow cta-text' }, h('span', {}, 'Sınava başla'), h('span', { class: 'sub' }, '~6 dakika')), icon('arrow')));
+}
+
 function programCard(ctx) {
+  const g = pendingExam(ctx.state);
+  if (g) return examCard(ctx, g);
   const n = currentDay(ctx.state);
   if (!n) {
     return h('button', { class: 'card program-card done', onclick: () => ctx.go('program') },

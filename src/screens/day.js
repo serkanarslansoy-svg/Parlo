@@ -1,6 +1,6 @@
 import { h, icon } from '../lib/dom.js';
 import { cards, sceneById } from '../content/index.js';
-import { DAYS, WEEKS, STEPS, TOTAL_DAYS, dayPlan, weekOf, isStepDone, isDayDone, nextStep, isUnlocked, waitsForTomorrow, currentDay, doneCount, WEEKDAYS, planDays, hasPlan, setPlanDays, finishDate, formatDay } from '../lib/program.js';
+import { DAYS, WEEKS, STEPS, TOTAL_DAYS, dayPlan, weekOf, isStepDone, isDayDone, nextStep, isUnlocked, waitsForTomorrow, currentDay, doneCount, examRec, examPassed, isGateDay, WEEKDAYS, planDays, hasPlan, setPlanDays, finishDate, formatDay } from '../lib/program.js';
 import { isDue } from '../lib/srs.js';
 import { today } from '../lib/store.js';
 import { topbar } from '../ui.js';
@@ -72,7 +72,10 @@ export function renderDay(ctx, param) {
       h('h2', {}, plan.title),
       h('p', {}, plan.focus),
       h('div', { class: 'day-track' }, DAYS.map((d) => h('i', { class: `${isDayDone(ctx.state, d.day) ? 'on' : ''} ${d.day === n ? 'now' : ''}` })))),
-    !unlocked ? h('div', { class: 'card cream' }, `Bu gün, ${n - 1}. gün bitince açılır.`) : null,
+    !unlocked ? h('div', { class: 'card cream stack' },
+      isGateDay(n - 1) && isDayDone(ctx.state, n - 1)
+        ? [h('p', {}, `Bu gün, Gün ${n - 1} kontrol sınavını geçince açılır.`), h('button', { class: 'btn block', onclick: () => ctx.go(`exam/${n - 1}`) }, 'Kontrol sınavına git', icon('arrow'))]
+        : h('p', {}, `Bu gün, ${n - 1}. gün bitince açılır.`)) : null,
     unlocked && waitsForTomorrow(ctx.state, n, t)
       ? h('div', { class: 'card sun stack' }, h('h3', {}, 'Bugünlük harika iş çıkardın'), h('p', { class: 'small' }, 'Tekrar kuralı en iyi ertesi gün çalışır. Yine de devam etmek istersen başlayabilirsin.'))
       : null,
@@ -80,11 +83,18 @@ export function renderDay(ctx, param) {
       h('p', { style: 'font-size:36px' }, '🎉'),
       h('h3', {}, `Gün ${n} tamam!`),
       dayPlan(n + 1) ? h('p', { class: 'small muted' }, `Sıradaki: Gün ${n + 1} · ${dayPlan(n + 1).title}`) : h('p', { class: 'small muted' }, '30 günü bitirdin. Complimenti!'),
-      dayPlan(n + 1) ? h('button', { class: 'btn soft block', onclick: () => ctx.go(`day/${n + 1}`) }, `Gün ${n + 1}'e geç`, icon('arrow')) : null) : null,
+      plan.gate && !examPassed(ctx.state, n)
+        ? h('button', { class: 'btn block', onclick: () => ctx.go(`exam/${n}`) }, n === TOTAL_DAYS ? 'Final sınavına başla' : 'Kontrol sınavına başla', icon('arrow'))
+        : dayPlan(n + 1) ? h('button', { class: 'btn soft block', onclick: () => ctx.go(`day/${n + 1}`) }, `Gün ${n + 1}'e geç`, icon('arrow')) : null) : null,
     h('section', { class: 'stack' }, STEPS.map(stepRow)),
     plan.words ? h('section', { class: 'card cream stack' }, h('p', { class: 'eyebrow' }, 'Bugünün kelimeleri'), h('p', { class: 'small', lang: 'it' }, plan.words)) : null,
     plan.change ? h('section', { class: 'card stack' }, h('p', { class: 'eyebrow' }, '3. tur değişikliği'), h('p', {}, plan.change), h('p', { class: 'small muted' }, 'Sahneyi önce ipucuyla, sonra ipucusuz, sonra bu değişiklikle oyna.')) : null,
-    plan.gate ? h('section', { class: 'card gate stack' }, h('p', { class: 'eyebrow' }, `${week.week}. hafta kontrolü`), h('p', {}, plan.gate)) : null,
+    plan.gate ? h('section', { class: 'card gate stack' },
+      h('div', { class: 'row between' }, h('p', { class: 'eyebrow' }, n === TOTAL_DAYS ? 'Final sınavı' : `${week.week}. hafta kontrolü`),
+        examPassed(ctx.state, n) ? h('span', { class: 'chip green' }, `✓ Geçtin · ${examRec(ctx.state, n).best}/${examRec(ctx.state, n).total}`) : null),
+      h('p', {}, plan.gate),
+      h('p', { class: 'small muted' }, n === TOTAL_DAYS ? 'Günü bitirince final sınavı açılır: 20 soru, 16 doğru ile geçersin.' : 'Günü bitirince 20 soruluk sınav açılır; 16 doğru ile sonraki hafta açılır.'),
+      done ? h('button', { class: `btn ${examPassed(ctx.state, n) ? 'ghost' : ''} block`, onclick: () => ctx.go(`exam/${n}`) }, examPassed(ctx.state, n) ? 'Sınavı yeniden çöz' : 'Sınava başla', icon('arrow')) : null) : null,
     rec?.mistakes?.length ? h('p', { class: 'small muted' }, `Bugün not edilen hata: ${rec.mistakes.length}`) : null,
     h('button', { class: 'btn ghost block', onclick: () => ctx.go('program') }, 'Tüm program', icon('chevron')));
 }

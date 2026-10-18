@@ -615,3 +615,5 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 .wd-chip { min-height: 44px; border-radius: var(--r-sm); border: 1.5px solid var(--sand); background: var(--surface); font: 700 0.8rem/1 var(--font-body); color: var(--muted); cursor: pointer; }
 .wd-chip[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #fff; }
 .plan-end { margin: 0; padding: 10px 12px; border-radius: var(--r-sm); background: var(--green-tint); color: var(--green-deep); }
+.exam-intro h2 { font-size: 1.3rem; }
+.exam-fail { text-align: center; background: var(--terracotta-tint); border-color: transparent; }

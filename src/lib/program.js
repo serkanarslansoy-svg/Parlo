@@ -46,8 +46,24 @@ export function waitsForTomorrow(state, n, today) {
   return state.program?.days?.[n - 1]?.completedOn === today && !Object.keys(state.program?.days?.[n]?.steps || {}).length;
 }
 
+// --- Hafta kontrol sınavları (7, 14, 21, 30. günler) ---
+export const EXAM_PASS = 0.8;
+export const isGateDay = (n) => Boolean(dayPlan(n)?.gate);
+export const examRec = (state, n) => state.exams?.[n] || null;
+export const examPassed = (state, n) => Boolean(examRec(state, n)?.passed);
+const dayStarted = (state, n) => Object.keys(state.program?.days?.[n]?.steps || {}).length > 0;
+
+/** Önceki gün bitince açılır; önceki gün kontrol günüyse sınavı da geçilmiş olmalı (başlanmış gün kilitlenmez). */
 export function isUnlocked(state, n) {
-  return n === 1 || isDayDone(state, n - 1);
+  if (n === 1) return true;
+  if (!isDayDone(state, n - 1)) return false;
+  return !isGateDay(n - 1) || examPassed(state, n - 1) || dayStarted(state, n);
+}
+
+/** Bitmiş ama sınavı geçilmemiş kontrol günü (yoksa null). */
+export function pendingExam(state) {
+  const d = DAYS.find((x) => x.gate && isDayDone(state, x.day) && !examPassed(state, x.day) && !(dayPlan(x.day + 1) && dayStarted(state, x.day + 1)));
+  return d ? d.day : null;
 }
 
 /**

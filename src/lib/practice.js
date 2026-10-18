@@ -1,6 +1,6 @@
 // Tekrar yolu: her program gününün 30 soruluk tekrar alıştırması.
 // Gün programda bitince açılır; XP sadece ilk bitirişte verilir, sonraki turlar serbest pratiktir.
-import { DAYS, isDayDone } from './program.js';
+import { DAYS, isDayDone, dayPlan, EXAM_PASS, examRec } from './program.js';
 import { award } from './points.js';
 import { markActive } from './store.js';
 import { shuffle } from './answer.js';
@@ -92,4 +92,52 @@ export function choicesFor(card, allCards, field = 'it', n = 4, rand = Math.rand
     if (!picked.some((p) => p[field] === c[field])) picked.push(c);
   }
   return shuffle([card, ...picked], rand).map((c) => c[field]);
+}
+
+// --- Hafta kontrol sınavı ---
+export const EXAM_SIZE = 20;
+export const EXAM_XP = 50;
+export const EXAM_PLAN = [
+  { kind: 'choose', count: 8 },
+  { kind: 'write', count: 12 },
+];
+export const examNeed = (total = EXAM_SIZE) => Math.ceil(total * EXAM_PASS);
+
+/** Sınav havuzu: o haftanın günlerinin cümleleri (son gün: tüm program). */
+export function examIds(n) {
+  const plan = dayPlan(n);
+  if (!plan) return [];
+  const days = n === DAYS[DAYS.length - 1].day ? DAYS : DAYS.filter((d) => d.week === plan.week);
+  const ids = [];
+  for (const d of days) {
+    for (const id of [...d.learn, ...(d.talk.scene ? sceneById(d.talk.scene).cards : [])]) if (!ids.includes(id)) ids.push(id);
+  }
+  return ids;
+}
+
+export function buildExam(n, rand = Math.random) {
+  const ids = examIds(n);
+  if (!ids.length) return [];
+  const steps = [];
+  for (const part of EXAM_PLAN) {
+    spread(shuffle(ids, rand), part.count, rand).forEach((id, i) => steps.push({ kind: part.kind, id, dir: i % 2 ? 'tr' : 'it' }));
+  }
+  return steps;
+}
+
+/**
+ * Sınav sonucu. %80 ve üstü geçer; ilk geçişte EXAM_XP verilir.
+ * @returns {{passed: boolean, xp: number, firstPass: boolean}}
+ */
+export function finishExam(state, n, ok, total, day) {
+  state.exams = state.exams || {};
+  markActive(state, day);
+  const prev = examRec(state, n);
+  const passed = ok >= examNeed(total);
+  const firstPass = passed && !prev?.passed;
+  state.exams[n] = {
+    best: Math.max(prev?.best || 0, ok), total, tries: (prev?.tries || 0) + 1,
+    passed: Boolean(prev?.passed || passed), date: passed && !prev?.passed ? day : prev?.date || null,
+  };
+  return { passed, firstPass, xp: firstPass ? award(state, EXAM_XP, day) : 0 };
 }

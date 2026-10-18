@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { buildSession, finishPractice, isPracticeOpen, isPracticeDone, practiceIds, spread, choicesFor, SESSION_SIZE, COMPLETE_BONUS } from '../src/lib/practice.js';
-import { completeStep, STEPS, DAYS } from '../src/lib/program.js';
+import { buildSession, finishPractice, isPracticeOpen, isPracticeDone, practiceIds, spread, choicesFor, SESSION_SIZE, COMPLETE_BONUS, buildExam, examIds, finishExam, EXAM_SIZE, EXAM_XP } from '../src/lib/practice.js';
+import { completeStep, STEPS, DAYS, isUnlocked, pendingExam } from '../src/lib/program.js';
 import { cards } from '../src/content/index.js';
 import { freshState } from '../src/lib/store.js';
 
@@ -56,5 +56,42 @@ describe('tekrar yolu', () => {
       expect(opts).toContain(card[field]);
       expect(new Set(opts).size).toBe(4);
     }
+  });
+});
+
+describe('hafta kontrol sınavı', () => {
+  it('kontrol günlerinde 20 soruluk sınav, o haftanın cümlelerinden', () => {
+    for (const n of [7, 14, 21, 30]) {
+      const ex = buildExam(n);
+      expect(ex).toHaveLength(EXAM_SIZE);
+      const pool = examIds(n);
+      expect(pool.length).toBeGreaterThanOrEqual(8);
+      ex.forEach((s) => expect(pool).toContain(s.id));
+    }
+    expect(examIds(30).length).toBeGreaterThan(examIds(21).length);
+  });
+
+  it('sınavı geçmeden sonraki hafta açılmaz', () => {
+    const st = freshState();
+    for (let n = 1; n <= 7; n++) finishDay(st, n);
+    expect(isUnlocked(st, 8)).toBe(false);
+    expect(pendingExam(st)).toBe(7);
+    const fail = finishExam(st, 7, 15, 20, T);
+    expect(fail).toEqual({ passed: false, firstPass: false, xp: 0 });
+    expect(isUnlocked(st, 8)).toBe(false);
+    const pass = finishExam(st, 7, 16, 20, T);
+    expect(pass).toEqual({ passed: true, firstPass: true, xp: EXAM_XP });
+    expect(isUnlocked(st, 8)).toBe(true);
+    expect(pendingExam(st)).toBe(null);
+    expect(finishExam(st, 7, 20, 20, T).xp).toBe(0); // ikinci geçiş XP vermez
+    expect(st.exams[7]).toMatchObject({ best: 20, tries: 3, passed: true });
+  });
+
+  it('sınavdan önce başlanmış gün kilitlenmez (eski ilerleme)', () => {
+    const st = freshState();
+    for (let n = 1; n <= 7; n++) finishDay(st, n);
+    completeStep(st, 8, 'review', T);
+    expect(isUnlocked(st, 8)).toBe(true);
+    expect(pendingExam(st)).toBe(null);
   });
 });

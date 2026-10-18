@@ -18,7 +18,7 @@ import { renderDay, renderProgram } from './screens/day.js';
 import { renderLearn } from './screens/learn.js';
 import { renderDrill } from './screens/drill.js';
 import { renderFix } from './screens/fix.js';
-import { renderPractice } from './screens/practice.js';
+import { renderPractice, renderExam } from './screens/practice.js';
 import { createClient, scoreRow, normalizeCode, isValidCode, newIdentity } from './lib/online.js';
 
 const TABS = [
@@ -30,7 +30,7 @@ const TABS = [
 ];
 
 // Tam ekran akışlar: alt menü gizlenir, böylece yazı kutusu ve butonlar menünün altında kalmaz.
-const FULLSCREEN = new Set(['chat', 'review', 'result', 'profiles', 'learn', 'drill', 'fix', 'practice']);
+const FULLSCREEN = new Set(['chat', 'review', 'result', 'profiles', 'learn', 'drill', 'fix', 'practice', 'exam']);
 
 const db = loadProfiles();
 
@@ -121,6 +121,7 @@ function render() {
     drill: () => renderDrill(ctx, param),
     fix: () => renderFix(ctx, param),
     practice: () => renderPractice(ctx, param),
+    exam: () => renderExam(ctx, param),
   };
   const view = (screens[route] || screens.home)();
   main.replaceChildren(view);
