@@ -1,0 +1,1511 @@
+{
+ "week": 4,
+ "title": "Bağımsız Günlük İletişim",
+ "goal": "Program sonunda kullanıcı resmî işlemler, telefon, iş, okul, kira, sağlık ve günlük hayat durumlarında kısa ama bağlantılı konuşmalarla işini büyük ölçüde bağımsız halledebilecek.",
+ "patterns": [
+  {
+   "id": "ho_bisogno_di",
+   "head": "Ho bisogno di",
+   "slot": "+ [isim / fiil]",
+   "tr": "… ihtiyacım var",
+   "note": "Bir şeye veya bir şey yapmaya ihtiyacın olduğunu söylemek için kullanılır."
+  },
+  {
+   "id": "vorrei_cambiare",
+   "head": "Vorrei cambiare",
+   "slot": "+ [isim]",
+   "tr": "… değiştirmek istiyorum",
+   "note": "Randevu, gün veya saat gibi bir şeyi kibarca değiştirmek istediğinde kullanılır."
+  },
+  {
+   "id": "non_posso",
+   "head": "Non posso",
+   "slot": "+ [fiil]",
+   "tr": "… yapamam",
+   "note": "Bir şeyi yapamadığını veya bir zamanın uygun olmadığını söylemek için kullanılır."
+  },
+  {
+   "id": "possiamo",
+   "head": "Possiamo",
+   "slot": "+ [fiil]?",
+   "tr": "… yapabilir miyiz?",
+   "note": "Birlikte bir çözüm veya alternatif önermek için kullanılır."
+  },
+  {
+   "id": "il_problema_e",
+   "head": "Il problema è",
+   "slot": "+ [kısa açıklama]",
+   "tr": "Sorun şu ki …",
+   "note": "Problemi biraz daha açık ama hâlâ kısa şekilde anlatmak için kullanılır."
+  },
+  {
+   "id": "per_me_va_bene",
+   "head": "Per me va bene",
+   "slot": "+ [gün / saat]",
+   "tr": "Benim için … uygun",
+   "note": "Bir gün veya saati kabul etmek için kullanılır."
+  },
+  {
+   "id": "devo_pagare",
+   "head": "Devo pagare",
+   "slot": "+ [isim / tutar]?",
+   "tr": "… ödemem gerekiyor mu?",
+   "note": "Kira, ücret veya başka bir ödeme hakkında bilgi almak için kullanılır."
+  }
+ ],
+ "days": [
+  {
+   "day": 22,
+   "level": "A1+A2",
+   "title": "Questura'da",
+   "focus": "Randevu, sıra ve belge işlemi",
+   "grammar_note": "Resmî kurumda Lei kullan. Uzun açıklama yerine randevu, belge ve sıra bilgisini kısa kısa sor.",
+   "sentences": [
+    {
+     "id": "d22_1",
+     "it": "Ho bisogno di informazioni.",
+     "tr": "Bilgiye ihtiyacım var.",
+     "pattern": "ho_bisogno_di",
+     "alt": [
+      "Vorrei informazioni."
+     ]
+    },
+    {
+     "id": "d22_2",
+     "it": "Ho un appuntamento oggi.",
+     "tr": "Bugün randevum var.",
+     "pattern": "ho",
+     "alt": []
+    },
+    {
+     "id": "d22_3",
+     "it": "Devo prendere un numero?",
+     "tr": "Sıra numarası almam gerekiyor mu?",
+     "pattern": "devo",
+     "alt": []
+    },
+    {
+     "id": "d22_4",
+     "it": "Dov'è l'ufficio?",
+     "tr": "Ofis nerede?",
+     "pattern": "dove",
+     "alt": []
+    },
+    {
+     "id": "d22_5",
+     "it": "Questo documento va bene?",
+     "tr": "Bu belge uygun mu?",
+     "pattern": null,
+     "alt": []
+    }
+   ],
+   "words": [
+    {
+     "it": "la Questura",
+     "tr": "Questura / emniyet müdürlüğü"
+    },
+    {
+     "it": "l'ufficio",
+     "tr": "ofis / büro"
+    },
+    {
+     "it": "il numero",
+     "tr": "numara"
+    },
+    {
+     "it": "andare bene",
+     "tr": "uygun olmak"
+    }
+   ],
+   "talk": {
+    "type": "scene",
+    "title": "Questura'da İşlem",
+    "setting": "questura",
+    "persona": {
+     "name": "Sig.ra Riva",
+     "role": "Questura görevlisi"
+    },
+    "register": "Lei",
+    "mission": "Randevunu bildir, sıra işlemini ve doğru ofisi öğren",
+    "turns": [
+     {
+      "ai": "Buongiorno. Ha un appuntamento?",
+      "tr": "Günaydın. Randevunuz var mı?",
+      "goal": "Bugün randevun olduğunu söyle",
+      "answers": [
+       {
+        "it": "Sì, ho un appuntamento oggi.",
+        "tr": "Evet, bugün randevum var.",
+        "keywords": [
+         [
+          "ho"
+         ],
+         [
+          "appuntamento"
+         ],
+         [
+          "oggi"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Prima deve prendere un numero.",
+      "tr": "Önce sıra numarası almanız gerekiyor.",
+      "goal": "Numara alman gerekip gerekmediğini doğrula",
+      "answers": [
+       {
+        "it": "Devo prendere un numero?",
+        "tr": "Sıra numarası almam gerekiyor mu?",
+        "keywords": [
+         [
+          "devo"
+         ],
+         [
+          "numero"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Sì. Poi vada all'ufficio.",
+      "tr": "Evet. Sonra ofise gidin.",
+      "goal": "Ofisin nerede olduğunu sor",
+      "answers": [
+       {
+        "it": "Dov'è l'ufficio?",
+        "tr": "Ofis nerede?",
+        "keywords": [
+         [
+          "dov'è",
+          "dove"
+         ],
+         [
+          "ufficio"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "È lì. Ha il documento?",
+      "tr": "Orada. Belgeniz var mı?",
+      "goal": "Bu belgenin uygun olup olmadığını sor",
+      "answers": [
+       {
+        "it": "Questo documento va bene?",
+        "tr": "Bu belge uygun mu?",
+        "keywords": [
+         [
+          "documento"
+         ],
+         [
+          "va bene"
+         ]
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "mistakes": [
+    "Ho appuntamento diyerek un artikelini atlamak.",
+    "Questura gibi resmî yerde tu formuna geçmek.",
+    "Prendere un numero ifadesini kelime kelime Türkçeye çevirmeye çalışmak."
+   ],
+   "culture": "Questura gibi resmî kurumlarda randevu, sıra ve belge bilgilerini ayrı ayrı sormak işlemi kolaylaştırır.",
+   "gate": null
+  },
+  {
+   "day": 23,
+   "level": "A1+A2",
+   "title": "Randevu Değiştir",
+   "focus": "Uygun olmayan zamanı değiştirme",
+   "grammar_note": "Non posso + fiil, uygun olmayan zamanı açıklamak için yeterlidir. Sonra Possiamo…? ile alternatif önerebilirsin.",
+   "sentences": [
+    {
+     "id": "d23_1",
+     "it": "Vorrei cambiare l'appuntamento.",
+     "tr": "Randevuyu değiştirmek istiyorum.",
+     "pattern": "vorrei_cambiare",
+     "alt": []
+    },
+    {
+     "id": "d23_2",
+     "it": "Domani non posso venire.",
+     "tr": "Yarın gelemem.",
+     "pattern": "non_posso",
+     "alt": []
+    },
+    {
+     "id": "d23_3",
+     "it": "Possiamo fare venerdì?",
+     "tr": "Cuma günü yapabilir miyiz?",
+     "pattern": "possiamo",
+     "alt": []
+    },
+    {
+     "id": "d23_4",
+     "it": "Per me va bene alle dieci.",
+     "tr": "Benim için saat on uygun.",
+     "pattern": "per_me_va_bene",
+     "alt": [
+      "Alle dieci va bene."
+     ]
+    },
+    {
+     "id": "d23_5",
+     "it": "A che ora posso venire?",
+     "tr": "Saat kaçta gelebilirim?",
+     "pattern": "a_che_ora",
+     "alt": []
+    }
+   ],
+   "words": [
+    {
+     "it": "cambiare",
+     "tr": "değiştirmek"
+    },
+    {
+     "it": "venerdì",
+     "tr": "cuma"
+    },
+    {
+     "it": "venire",
+     "tr": "gelmek"
+    }
+   ],
+   "talk": {
+    "type": "scene",
+    "title": "Randevuyu Telefonda Değiştir",
+    "setting": "appointment_phone",
+    "persona": {
+     "name": "Anna",
+     "role": "Sekreter"
+    },
+    "register": "Lei",
+    "mission": "Yarın gelemeyeceğini söyle ve cuma için yeni saat belirle",
+    "turns": [
+     {
+      "ai": "Buongiorno, mi dica.",
+      "tr": "Günaydın, buyurun.",
+      "goal": "Randevuyu değiştirmek istediğini söyle",
+      "answers": [
+       {
+        "it": "Vorrei cambiare l'appuntamento.",
+        "tr": "Randevuyu değiştirmek istiyorum.",
+        "keywords": [
+         [
+          "vorrei"
+         ],
+         [
+          "cambiare"
+         ],
+         [
+          "appuntamento"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Va bene. Domani?",
+      "tr": "Peki. Yarın?",
+      "goal": "Yarın gelemeyeceğini söyle",
+      "answers": [
+       {
+        "it": "Domani non posso venire.",
+        "tr": "Yarın gelemem.",
+        "keywords": [
+         [
+          "non posso"
+         ],
+         [
+          "venire"
+         ],
+         [
+          "domani"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Quando può venire?",
+      "tr": "Ne zaman gelebilirsiniz?",
+      "goal": "Cuma gününü öner",
+      "answers": [
+       {
+        "it": "Possiamo fare venerdì?",
+        "tr": "Cuma günü yapabilir miyiz?",
+        "keywords": [
+         [
+          "possiamo"
+         ],
+         [
+          "venerdì"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Venerdì alle dieci?",
+      "tr": "Cuma saat onda?",
+      "goal": "Saat onun uygun olduğunu söyle",
+      "answers": [
+       {
+        "it": "Per me va bene alle dieci.",
+        "tr": "Benim için saat on uygun.",
+        "keywords": [
+         [
+          "va bene"
+         ],
+         [
+          "dieci"
+         ]
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "mistakes": [
+    "Non posso venire yerine Non posso vengo demek.",
+    "Venerdì kelimesindeki ì aksanını unutmak.",
+    "Posso ile Possiamo farkını karıştırmak."
+   ],
+   "culture": "Randevu değiştirirken önce uygun olmayan zamanı, sonra alternatif zamanı söylemek görüşmeyi hızlandırır.",
+   "gate": null
+  },
+  {
+   "day": 24,
+   "level": "A1+A2",
+   "title": "Telefonda Açıklama",
+   "focus": "Kendini tanıtma ve arama nedenini söyleme",
+   "grammar_note": "Telefonda önce kim olduğunu, sonra neden aradığını söylemek yeterlidir. Kullanıcının adı için sabit isim yerine {nome} kullanılır.",
+   "sentences": [
+    {
+     "id": "d24_1",
+     "it": "Buongiorno, sono {nome}.",
+     "tr": "Günaydın, ben {nome}.",
+     "pattern": "sono",
+     "alt": []
+    },
+    {
+     "id": "d24_2",
+     "it": "Chiamo per un appuntamento.",
+     "tr": "Bir randevu için arıyorum.",
+     "pattern": null,
+     "alt": []
+    },
+    {
+     "id": "d24_3",
+     "it": "Non sento bene.",
+     "tr": "Sizi iyi duyamıyorum.",
+     "pattern": null,
+     "alt": []
+    },
+    {
+     "id": "d24_4",
+     "it": "Può richiamare più tardi?",
+     "tr": "Daha sonra tekrar arayabilir misiniz?",
+     "pattern": "puo",
+     "alt": []
+    },
+    {
+     "id": "d24_5",
+     "it": "Ho bisogno di parlare con il responsabile.",
+     "tr": "Yetkiliyle konuşmam gerekiyor.",
+     "pattern": "ho_bisogno_di",
+     "alt": [
+      "Devo parlare con il responsabile."
+     ]
+    }
+   ],
+   "words": [
+    {
+     "it": "chiamare",
+     "tr": "aramak"
+    },
+    {
+     "it": "sentire",
+     "tr": "duymak"
+    },
+    {
+     "it": "richiamare",
+     "tr": "tekrar aramak"
+    },
+    {
+     "it": "più tardi",
+     "tr": "daha sonra"
+    }
+   ],
+   "talk": {
+    "type": "drill",
+    "title": "Telefonda Kendini Anlat",
+    "questions": [
+     {
+      "q": "Pronto, chi parla?",
+      "tr": "Alo, kiminle görüşüyorum?",
+      "answers": [
+       "Buongiorno, sono {nome}.",
+       "Sono {nome}."
+      ]
+     },
+     {
+      "q": "Perché chiama?",
+      "tr": "Neden arıyorsunuz?",
+      "answers": [
+       "Chiamo per un appuntamento.",
+       "Ho bisogno di parlare con il responsabile."
+      ]
+     },
+     {
+      "q": "Mi sente bene?",
+      "tr": "Beni iyi duyuyor musunuz?",
+      "answers": [
+       "No, non sento bene.",
+       "Può parlare più piano?"
+      ]
+     },
+     {
+      "q": "Posso richiamare più tardi?",
+      "tr": "Daha sonra tekrar arayabilir miyim?",
+      "answers": [
+       "Sì, va bene.",
+       "Sì, può richiamare più tardi."
+      ]
+     }
+    ]
+   },
+   "mistakes": [
+    "Kullanıcının adını sabit bir örnek isimle yazmak.",
+    "Non sento bene ile Non capisco farkını karıştırmak.",
+    "Resmî telefonda Puoi yerine Può kullanmak."
+   ],
+   "culture": "Telefon görüşmesinde kendini tanıtıp arama nedenini hemen söylemek iletişimi kolaylaştırır.",
+   "gate": null
+  },
+  {
+   "day": 25,
+   "level": "A2",
+   "title": "İş Yerinde Çözüm",
+   "focus": "Problemi tarif etme ve yardım isteme",
+   "grammar_note": "A2'de amaç uzun konuşmak değil, problemi ve çözüm ihtiyacını iki kısa cümleyle bağlamaktır.",
+   "sentences": [
+    {
+     "id": "d25_1",
+     "it": "Il problema è questa macchina.",
+     "tr": "Sorun bu makine.",
+     "pattern": "il_problema_e",
+     "alt": []
+    },
+    {
+     "id": "d25_2",
+     "it": "Questa macchina non funziona bene.",
+     "tr": "Bu makine düzgün çalışmıyor.",
+     "pattern": "non_funziona",
+     "alt": []
+    },
+    {
+     "id": "d25_3",
+     "it": "Possiamo controllare insieme?",
+     "tr": "Birlikte kontrol edebilir miyiz?",
+     "pattern": "possiamo",
+     "alt": []
+    },
+    {
+     "id": "d25_4",
+     "it": "Ho bisogno di più tempo.",
+     "tr": "Daha fazla zamana ihtiyacım var.",
+     "pattern": "ho_bisogno_di",
+     "alt": [
+      "Mi serve più tempo."
+     ]
+    },
+    {
+     "id": "d25_5",
+     "it": "Non posso finire adesso.",
+     "tr": "Şimdi bitiremem.",
+     "pattern": "non_posso",
+     "alt": []
+    }
+   ],
+   "words": [
+    {
+     "it": "la macchina",
+     "tr": "makine"
+    },
+    {
+     "it": "insieme",
+     "tr": "birlikte"
+    },
+    {
+     "it": "finire",
+     "tr": "bitirmek"
+    },
+    {
+     "it": "bene",
+     "tr": "iyi / düzgün"
+    }
+   ],
+   "talk": {
+    "type": "scene",
+    "title": "Makinede Sorun",
+    "setting": "workplace",
+    "persona": {
+     "name": "Matteo",
+     "role": "Sorumlu"
+    },
+    "register": "Lei",
+    "mission": "Makine sorununu açıkla, birlikte kontrol etmeyi öner ve zamana ihtiyacın olduğunu söyle",
+    "turns": [
+     {
+      "ai": "Buongiorno. C'è un problema?",
+      "tr": "Günaydın. Bir sorun mu var?",
+      "goal": "Sorunun bu makine olduğunu söyle",
+      "answers": [
+       {
+        "it": "Sì, il problema è questa macchina.",
+        "tr": "Evet, sorun bu makine.",
+        "keywords": [
+         [
+          "problema"
+         ],
+         [
+          "macchina"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Cosa succede?",
+      "tr": "Ne oluyor?",
+      "goal": "Makinenin düzgün çalışmadığını söyle",
+      "answers": [
+       {
+        "it": "Questa macchina non funziona bene.",
+        "tr": "Bu makine düzgün çalışmıyor.",
+        "keywords": [
+         [
+          "macchina"
+         ],
+         [
+          "non funziona"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Va bene.",
+      "tr": "Peki.",
+      "goal": "Birlikte kontrol etmeyi öner",
+      "answers": [
+       {
+        "it": "Possiamo controllare insieme?",
+        "tr": "Birlikte kontrol edebilir miyiz?",
+        "keywords": [
+         [
+          "possiamo"
+         ],
+         [
+          "controllare"
+         ],
+         [
+          "insieme"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Sì.",
+      "tr": "Evet.",
+      "goal": "Daha fazla zamana ihtiyacın olduğunu söyle",
+      "answers": [
+       {
+        "it": "Ho bisogno di più tempo.",
+        "tr": "Daha fazla zamana ihtiyacım var.",
+        "keywords": [
+         [
+          "bisogno"
+         ],
+         [
+          "tempo"
+         ]
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "mistakes": [
+    "Macchina kelimesini yalnızca otomobil olarak düşünmek.",
+    "Possiamo yerine Posso kullanıp anlamı ben yapabilir miyim şeklinde değiştirmek.",
+    "Non posso finire cümlesinde fiili çekimli kullanmak."
+   ],
+   "culture": "İş yerinde problemi ve ihtiyacını ayrı kısa cümlelerle söylemek genellikle daha anlaşılırdır.",
+   "gate": null
+  },
+  {
+   "day": 26,
+   "level": "A2",
+   "title": "Okulda Sorun Anlat",
+   "focus": "Çocuğun durumunu açıklama",
+   "grammar_note": "Cinsiyete göre figlio/figlia ve stanco/stanca değişir. Uygulama alternatif cinsiyet biçimini alt alanında göstermelidir.",
+   "sentences": [
+    {
+     "id": "d26_1",
+     "it": "Mio figlio ha un problema.",
+     "tr": "Oğlumun bir sorunu var.",
+     "pattern": null,
+     "alt": [
+      "Mia figlia ha un problema."
+     ]
+    },
+    {
+     "id": "d26_2",
+     "it": "A scuola è molto stanco.",
+     "tr": "Okulda çok yorgun.",
+     "pattern": null,
+     "alt": [
+      "A scuola è molto stanca."
+     ]
+    },
+    {
+     "id": "d26_3",
+     "it": "Non capisce tutto.",
+     "tr": "Her şeyi anlamıyor.",
+     "pattern": null,
+     "alt": []
+    },
+    {
+     "id": "d26_4",
+     "it": "Vorrei capire meglio il problema.",
+     "tr": "Sorunu daha iyi anlamak istiyorum.",
+     "pattern": "vorrei",
+     "alt": []
+    },
+    {
+     "id": "d26_5",
+     "it": "Possiamo parlare con calma?",
+     "tr": "Sakin sakin konuşabilir miyiz?",
+     "pattern": "possiamo",
+     "alt": []
+    }
+   ],
+   "words": [
+    {
+     "it": "stanco",
+     "tr": "yorgun, erkek için"
+    },
+    {
+     "it": "stanca",
+     "tr": "yorgun, kadın/kız için"
+    },
+    {
+     "it": "capire",
+     "tr": "anlamak"
+    },
+    {
+     "it": "meglio",
+     "tr": "daha iyi"
+    },
+    {
+     "it": "tutto",
+     "tr": "her şey"
+    },
+    {
+     "it": "con calma",
+     "tr": "sakin biçimde"
+    }
+   ],
+   "talk": {
+    "type": "scene",
+    "title": "Öğretmenle Sorunu Konuş",
+    "setting": "school_meeting",
+    "persona": {
+     "name": "Prof.ssa Gallo",
+     "role": "Öğretmen"
+    },
+    "register": "Lei",
+    "mission": "Çocuğunun sorununu anlat ve durumu daha iyi anlamaya çalış",
+    "turns": [
+     {
+      "ai": "Buongiorno. Cosa vuole dirmi?",
+      "tr": "Günaydın. Bana ne söylemek istiyorsunuz?",
+      "goal": "Çocuğunun bir sorunu olduğunu söyle",
+      "answers": [
+       {
+        "it": "Mio figlio ha un problema.",
+        "tr": "Oğlumun bir sorunu var.",
+        "keywords": [
+         [
+          "figlio",
+          "figlia"
+         ],
+         [
+          "problema"
+         ]
+        ]
+       },
+       {
+        "it": "Mia figlia ha un problema.",
+        "tr": "Kızımın bir sorunu var.",
+        "keywords": [
+         [
+          "figlio",
+          "figlia"
+         ],
+         [
+          "problema"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Che problema?",
+      "tr": "Nasıl bir sorun?",
+      "goal": "Okulda çok yorgun olduğunu söyle",
+      "answers": [
+       {
+        "it": "A scuola è molto stanco.",
+        "tr": "Okulda çok yorgun.",
+        "keywords": [
+         [
+          "scuola"
+         ],
+         [
+          "stanco",
+          "stanca"
+         ]
+        ]
+       },
+       {
+        "it": "A scuola è molto stanca.",
+        "tr": "Okulda çok yorgun.",
+        "keywords": [
+         [
+          "scuola"
+         ],
+         [
+          "stanco",
+          "stanca"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Capisco.",
+      "tr": "Anlıyorum.",
+      "goal": "Her şeyi anlamadığını söyle",
+      "answers": [
+       {
+        "it": "Non capisce tutto.",
+        "tr": "Her şeyi anlamıyor.",
+        "keywords": [
+         [
+          "non capisce"
+         ],
+         [
+          "tutto"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Va bene.",
+      "tr": "Peki.",
+      "goal": "Sorunu daha iyi anlamak istediğini söyle",
+      "answers": [
+       {
+        "it": "Vorrei capire meglio il problema.",
+        "tr": "Sorunu daha iyi anlamak istiyorum.",
+        "keywords": [
+         [
+          "vorrei"
+         ],
+         [
+          "capire"
+         ],
+         [
+          "problema"
+         ]
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "mistakes": [
+    "Mio figlio ile Mia figlia cinsiyet uyumunu karıştırmak.",
+    "Stanco ve stanca biçimlerini yanlış kişide kullanmak.",
+    "Problemi anlatırken gereksiz uzun cümleler kurmak."
+   ],
+   "culture": "Okul görüşmelerinde sorunu tek seferde uzun anlatmak yerine kısa bilgilerle ilerlemek iletişimi kolaylaştırır.",
+   "gate": null
+  },
+  {
+   "day": 27,
+   "level": "A2",
+   "title": "Kira ve Ödeme",
+   "focus": "Miktar, tarih ve makbuz",
+   "grammar_note": "Ödeme konuşmasında önce miktarı, sonra günü, sonra ödeme belgesini netleştirmek pratiktir.",
+   "sentences": [
+    {
+     "id": "d27_1",
+     "it": "Quanto devo pagare?",
+     "tr": "Ne kadar ödemem gerekiyor?",
+     "pattern": "devo_pagare",
+     "alt": []
+    },
+    {
+     "id": "d27_2",
+     "it": "Devo pagare l'affitto oggi?",
+     "tr": "Kirayı bugün ödemem gerekiyor mu?",
+     "pattern": "devo_pagare",
+     "alt": []
+    },
+    {
+     "id": "d27_3",
+     "it": "Posso pagare domani?",
+     "tr": "Yarın ödeyebilir miyim?",
+     "pattern": "posso",
+     "alt": []
+    },
+    {
+     "id": "d27_4",
+     "it": "Ho bisogno della ricevuta.",
+     "tr": "Makbuza ihtiyacım var.",
+     "pattern": "ho_bisogno_di",
+     "alt": []
+    },
+    {
+     "id": "d27_5",
+     "it": "La ricevuta è pronta?",
+     "tr": "Makbuz hazır mı?",
+     "pattern": null,
+     "alt": []
+    }
+   ],
+   "words": [
+    {
+     "it": "l'affitto",
+     "tr": "kira"
+    },
+    {
+     "it": "la ricevuta",
+     "tr": "makbuz / ödeme belgesi"
+    },
+    {
+     "it": "pronto",
+     "tr": "hazır, erkek için"
+    },
+    {
+     "it": "pronta",
+     "tr": "hazır, kadın için"
+    }
+   ],
+   "talk": {
+    "type": "scene",
+    "title": "Ev Sahibiyle Ödeme",
+    "setting": "rental_payment",
+    "persona": {
+     "name": "Sig.ra Romano",
+     "role": "Ev sahibi"
+    },
+    "register": "Lei",
+    "mission": "Kiranın miktarını, ödeme gününü ve makbuzu netleştir",
+    "turns": [
+     {
+      "ai": "Buongiorno. Deve pagare l'affitto.",
+      "tr": "Günaydın. Kirayı ödemeniz gerekiyor.",
+      "goal": "Ne kadar ödemen gerektiğini sor",
+      "answers": [
+       {
+        "it": "Quanto devo pagare?",
+        "tr": "Ne kadar ödemem gerekiyor?",
+        "keywords": [
+         [
+          "quanto"
+         ],
+         [
+          "pagare"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Ottocento euro.",
+      "tr": "Sekiz yüz euro.",
+      "goal": "Bugün ödeme gerekip gerekmediğini sor",
+      "answers": [
+       {
+        "it": "Devo pagare l'affitto oggi?",
+        "tr": "Kirayı bugün ödemem gerekiyor mu?",
+        "keywords": [
+         [
+          "devo"
+         ],
+         [
+          "affitto"
+         ],
+         [
+          "oggi"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Può pagare domani.",
+      "tr": "Yarın ödeyebilirsiniz.",
+      "goal": "Makbuza ihtiyacın olduğunu söyle",
+      "answers": [
+       {
+        "it": "Ho bisogno della ricevuta.",
+        "tr": "Makbuza ihtiyacım var.",
+        "keywords": [
+         [
+          "bisogno"
+         ],
+         [
+          "ricevuta"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Certo.",
+      "tr": "Tabii.",
+      "goal": "Makbuzun hazır olup olmadığını sor",
+      "answers": [
+       {
+        "it": "La ricevuta è pronta?",
+        "tr": "Makbuz hazır mı?",
+        "keywords": [
+         [
+          "ricevuta"
+         ],
+         [
+          "pronta"
+         ]
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "mistakes": [
+    "Quanto devo pagare? ile Quanto costa? yapılarını karıştırmak.",
+    "Ricevuta kelimesini ricevuto şeklinde yazmak.",
+    "La ricevuta ile pronta arasındaki dişil uyumu unutmak."
+   ],
+   "culture": "Kira ödemesinde miktar, tarih ve makbuz bilgisini net tutmak önemlidir.",
+   "gate": null
+  },
+  {
+   "day": 28,
+   "level": "A2",
+   "title": "Doktor ve Eczane Zinciri",
+   "focus": "Şikâyet, ilaç ve dinlenme",
+   "grammar_note": "Bugün sağlıkta eski yapıları birleştiriyoruz. Cinsiyete göre stanco/stanca değişir.",
+   "sentences": [
+    {
+     "id": "d28_1",
+     "it": "Sono molto stanco oggi.",
+     "tr": "Bugün çok yorgunum.",
+     "pattern": "sono",
+     "alt": [
+      "Sono molto stanca oggi."
+     ]
+    },
+    {
+     "id": "d28_2",
+     "it": "Ho bisogno di un medico.",
+     "tr": "Bir doktora ihtiyacım var.",
+     "pattern": "ho_bisogno_di",
+     "alt": []
+    },
+    {
+     "id": "d28_3",
+     "it": "Devo prendere questo farmaco?",
+     "tr": "Bu ilacı kullanmam gerekiyor mu?",
+     "pattern": "devo",
+     "alt": []
+    },
+    {
+     "id": "d28_4",
+     "it": "Posso prenderlo dopo mangiato?",
+     "tr": "Bunu yemekten sonra alabilir miyim?",
+     "pattern": "posso",
+     "alt": []
+    },
+    {
+     "id": "d28_5",
+     "it": "Ho bisogno di riposare.",
+     "tr": "Dinlenmem gerekiyor.",
+     "pattern": "ho_bisogno_di",
+     "alt": []
+    }
+   ],
+   "words": [
+    {
+     "it": "riposare",
+     "tr": "dinlenmek"
+    },
+    {
+     "it": "prenderlo",
+     "tr": "onu almak / ilaç için kullanmak"
+    }
+   ],
+   "talk": {
+    "type": "scene",
+    "title": "Doktorda Son Kontrol",
+    "setting": "doctor",
+    "persona": {
+     "name": "Dott. Leone",
+     "role": "Doktor"
+    },
+    "register": "Lei",
+    "mission": "Nasıl hissettiğini söyle, ilacı ve dinlenmeyi netleştir",
+    "turns": [
+     {
+      "ai": "Buongiorno. Come sta oggi?",
+      "tr": "Günaydın. Bugün nasılsınız?",
+      "goal": "Bugün çok yorgun olduğunu söyle",
+      "answers": [
+       {
+        "it": "Sono molto stanco oggi.",
+        "tr": "Bugün çok yorgunum.",
+        "keywords": [
+         [
+          "stanco",
+          "stanca"
+         ],
+         [
+          "oggi"
+         ]
+        ]
+       },
+       {
+        "it": "Sono molto stanca oggi.",
+        "tr": "Bugün çok yorgunum.",
+        "keywords": [
+         [
+          "stanco",
+          "stanca"
+         ],
+         [
+          "oggi"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Deve riposare.",
+      "tr": "Dinlenmeniz gerekiyor.",
+      "goal": "Dinlenmen gerektiğini söyle",
+      "answers": [
+       {
+        "it": "Ho bisogno di riposare.",
+        "tr": "Dinlenmem gerekiyor.",
+        "keywords": [
+         [
+          "bisogno"
+         ],
+         [
+          "riposare"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Prenda questo farmaco.",
+      "tr": "Bu ilacı alın.",
+      "goal": "Bu ilacı kullanman gerekip gerekmediğini sor",
+      "answers": [
+       {
+        "it": "Devo prendere questo farmaco?",
+        "tr": "Bu ilacı kullanmam gerekiyor mu?",
+        "keywords": [
+         [
+          "devo"
+         ],
+         [
+          "farmaco"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Sì, dopo mangiato.",
+      "tr": "Evet, yemekten sonra.",
+      "goal": "Yemekten sonra alabileceğini doğrula",
+      "answers": [
+       {
+        "it": "Posso prenderlo dopo mangiato?",
+        "tr": "Bunu yemekten sonra alabilir miyim?",
+        "keywords": [
+         [
+          "posso"
+         ],
+         [
+          "prenderlo"
+         ],
+         [
+          "dopo mangiato"
+         ]
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "mistakes": [
+    "Sono stanco ve Sono stanca cinsiyet uyumunu unutmak.",
+    "Ho bisogno di sonrasında fiili çekimli kullanmak.",
+    "Sağlık talimatını anlamadan tahmin etmek."
+   ],
+   "culture": "Sağlıkla ilgili talimatlarda emin olmadığın kısmı mutlaka tekrar sor.",
+   "gate": null
+  },
+  {
+   "day": 29,
+   "level": "A2",
+   "title": "Karışık Günlük Hayat",
+   "focus": "Farklı durumlar arasında hızlı geçiş",
+   "grammar_note": "Yeni gramer yok. Amaç doğru kalıbı doğru durumda hızlı seçmek.",
+   "sentences": [
+    {
+     "id": "d29_1",
+     "it": "Non posso aspettare molto.",
+     "tr": "Çok bekleyemem.",
+     "pattern": "non_posso",
+     "alt": []
+    },
+    {
+     "id": "d29_2",
+     "it": "Possiamo parlare più tardi?",
+     "tr": "Daha sonra konuşabilir miyiz?",
+     "pattern": "possiamo",
+     "alt": []
+    },
+    {
+     "id": "d29_3",
+     "it": "Il problema è il tempo.",
+     "tr": "Sorun zaman.",
+     "pattern": "il_problema_e",
+     "alt": []
+    },
+    {
+     "id": "d29_4",
+     "it": "Per me va bene oggi pomeriggio.",
+     "tr": "Benim için bugün öğleden sonra uygun.",
+     "pattern": "per_me_va_bene",
+     "alt": []
+    },
+    {
+     "id": "d29_5",
+     "it": "Ho bisogno di una soluzione.",
+     "tr": "Bir çözüme ihtiyacım var.",
+     "pattern": "ho_bisogno_di",
+     "alt": []
+    }
+   ],
+   "words": [
+    {
+     "it": "molto",
+     "tr": "çok"
+    },
+    {
+     "it": "il pomeriggio",
+     "tr": "öğleden sonra"
+    },
+    {
+     "it": "la soluzione",
+     "tr": "çözüm"
+    }
+   ],
+   "talk": {
+    "type": "drill",
+    "title": "Bir Günde Beş Durum",
+    "questions": [
+     {
+      "q": "Può aspettare?",
+      "tr": "Bekleyebilir misiniz?",
+      "answers": [
+       "Sì, posso aspettare.",
+       "No, non posso aspettare molto."
+      ]
+     },
+     {
+      "q": "Possiamo parlare domani?",
+      "tr": "Yarın konuşabilir miyiz?",
+      "answers": [
+       "Sì, per me va bene domani.",
+       "Possiamo parlare più tardi?"
+      ]
+     },
+     {
+      "q": "Qual è il problema?",
+      "tr": "Sorun nedir?",
+      "answers": [
+       "Il problema è il tempo.",
+       "C'è un problema con il riscaldamento."
+      ]
+     },
+     {
+      "q": "Quando va bene per Lei?",
+      "tr": "Sizin için ne zaman uygun?",
+      "answers": [
+       "Per me va bene oggi pomeriggio.",
+       "Per me va bene domani."
+      ]
+     },
+     {
+      "q": "Ha bisogno di qualcosa?",
+      "tr": "Bir şeye ihtiyacınız var mı?",
+      "answers": [
+       "Sì, ho bisogno di una soluzione.",
+       "Sì, mi serve aiuto."
+      ]
+     }
+    ]
+   },
+   "mistakes": [
+    "Posso ile Possiamo yapılarını karıştırmak.",
+    "Non posso içinde non kelimesini unutmak.",
+    "Basit bir cevap yeterliyken gereksiz uzun cümle kurmaya çalışmak."
+   ],
+   "culture": "Akıcılık çok fazla kelime bilmekten çok, bildiğin kalıpları doğru anda hızlı kullanabilmekle gelişir.",
+   "gate": null
+  },
+  {
+   "day": 30,
+   "level": "A2",
+   "title": "Final: İtalya'da Bir Gün",
+   "focus": "Tüm programın genel kontrolü",
+   "grammar_note": null,
+   "sentences": [
+    {
+     "id": "d30_1",
+     "it": "Vorrei un caffè, per favore.",
+     "tr": "Bir kahve rica ediyorum.",
+     "pattern": "vorrei",
+     "alt": [
+      "Un caffè, per favore."
+     ]
+    },
+    {
+     "id": "d30_2",
+     "it": "Può parlare più piano?",
+     "tr": "Daha yavaş konuşabilir misiniz?",
+     "pattern": "piu_piano",
+     "alt": []
+    },
+    {
+     "id": "d30_3",
+     "it": "Vorrei cambiare l'appuntamento.",
+     "tr": "Randevuyu değiştirmek istiyorum.",
+     "pattern": "vorrei_cambiare",
+     "alt": []
+    },
+    {
+     "id": "d30_4",
+     "it": "Ho bisogno di informazioni.",
+     "tr": "Bilgiye ihtiyacım var.",
+     "pattern": "ho_bisogno_di",
+     "alt": [
+      "Vorrei informazioni."
+     ]
+    },
+    {
+     "id": "d30_5",
+     "it": "Non posso aspettare fino a domani.",
+     "tr": "Yarına kadar bekleyemem.",
+     "pattern": "non_posso",
+     "alt": []
+    },
+    {
+     "id": "d30_6",
+     "it": "Cosa devo fare?",
+     "tr": "Ne yapmam gerekiyor?",
+     "pattern": "cosa_devo_fare",
+     "alt": []
+    }
+   ],
+   "words": [],
+   "talk": {
+    "type": "scene",
+    "title": "İtalya'da Bir Günü Yönet",
+    "setting": "final_daily_life",
+    "persona": {
+     "name": "Giulia",
+     "role": "Günlük yaşam simülasyonu görevlisi"
+    },
+    "register": "Lei",
+    "mission": "Sipariş ver, bilgi iste, randevu değiştir, problemi yönet ve anlamadığında iletişimi sürdür",
+    "turns": [
+     {
+      "ai": "Buongiorno! Cosa prende?",
+      "tr": "Günaydın! Ne alırsınız?",
+      "goal": "Bir kahve sipariş et",
+      "answers": [
+       {
+        "it": "Vorrei un caffè, per favore.",
+        "tr": "Bir kahve rica ediyorum.",
+        "keywords": [
+         [
+          "vorrei",
+          "caffè"
+         ],
+         [
+          "caffè"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Certo. Posso aiutarla con altro?",
+      "tr": "Tabii. Başka bir konuda yardımcı olabilir miyim?",
+      "goal": "Bilgiye ihtiyacın olduğunu söyle",
+      "answers": [
+       {
+        "it": "Ho bisogno di informazioni.",
+        "tr": "Bilgiye ihtiyacım var.",
+        "keywords": [
+         [
+          "bisogno"
+         ],
+         [
+          "informazioni"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Mi dica.",
+      "tr": "Buyurun.",
+      "goal": "Randevunu değiştirmek istediğini söyle",
+      "answers": [
+       {
+        "it": "Vorrei cambiare l'appuntamento.",
+        "tr": "Randevuyu değiştirmek istiyorum.",
+        "keywords": [
+         [
+          "vorrei"
+         ],
+         [
+          "cambiare"
+         ],
+         [
+          "appuntamento"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Può aspettare fino a domani?",
+      "tr": "Yarına kadar bekleyebilir misiniz?",
+      "goal": "Yarına kadar bekleyemeyeceğini söyle",
+      "answers": [
+       {
+        "it": "Non posso aspettare fino a domani.",
+        "tr": "Yarına kadar bekleyemem.",
+        "keywords": [
+         [
+          "non posso"
+         ],
+         [
+          "aspettare"
+         ],
+         [
+          "domani"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Le spiego cosa deve fare.",
+      "tr": "Ne yapmanız gerektiğini açıklayayım.",
+      "goal": "Daha yavaş konuşmasını iste",
+      "answers": [
+       {
+        "it": "Può parlare più piano?",
+        "tr": "Daha yavaş konuşabilir misiniz?",
+        "keywords": [
+         [
+          "può"
+         ],
+         [
+          "più piano"
+         ]
+        ]
+       },
+       {
+        "it": "Può ripetere, per favore?",
+        "tr": "Tekrar edebilir misiniz, lütfen?",
+        "keywords": [
+         [
+          "può"
+         ],
+         [
+          "ripetere"
+         ]
+        ]
+       }
+      ]
+     },
+     {
+      "ai": "Certo.",
+      "tr": "Tabii.",
+      "goal": "Sonraki adımda ne yapacağını sor",
+      "answers": [
+       {
+        "it": "Cosa devo fare?",
+        "tr": "Ne yapmam gerekiyor?",
+        "keywords": [
+         [
+          "cosa"
+         ],
+         [
+          "devo"
+         ],
+         [
+          "fare"
+         ]
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "mistakes": [
+    "A2 seviyesine geldiği için gereksiz uzun cümleler kurmaya çalışmak.",
+    "Lei ve tu biçimlerini aynı konuşmada karıştırmak.",
+    "Anlamadığında tekrar istemek yerine tahmin ederek cevap vermek.",
+    "Vorrei, Posso, Devo, Non posso ve Ho bisogno di kalıplarını birbirine karıştırmak."
+   ],
+   "culture": "Programın amacı kusursuz İtalyanca değil; gerçek hayatta konuşmayı başlatabilmek, ihtiyacını anlatabilmek ve iletişim zorlaştığında konuşmayı yönetebilmektir.",
+   "gate": "Kafede sipariş ver, resmî bir işlem için bilgi iste, bir randevuyu değiştir, uygun olmayan bir durumu açıkla, anlamadığında konuşmayı yavaşlat ve sonraki adımı yardım almadan sor."
+  }
+ ]
+}

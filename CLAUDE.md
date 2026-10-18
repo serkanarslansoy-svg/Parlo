@@ -32,3 +32,10 @@ Vite + vanilla JS PWA. Framework yok; ekranlar `src/lib/dom.js` içindeki `h()` 
 
 ## Yapılmayanlar (bilinçli)
 - Serbest AI sohbeti ve telaffuz puanı yok; ikisi de sunucu tarafı gerektirir (bkz. `docs/README.md` yol haritası).
+
+## Program içeriği nasıl güncellenir
+- Kaynak: `content-src/week1-4.json` (ChatGPT çıktısı, elle değiştirilmez) + `content-src/fixes.json` (bizim düzeltmeler, her birinde "why").
+- Kontrol: `node scripts/check-weeks.mjs content-src/week*.json` (sahne cevapları gerçek eşleştiriciyle denenir).
+- Üretim: `node scripts/build-program.mjs` → `src/content/{program,cards,patterns,scenarios}.json`. Bu dosyaları elle düzenleme.
+- `program.json` içindeki `version` değişirse kullanıcıların program ilerlemesi bir kez sıfırlanır (`migrateState`); içerik sadece düzeltiliyorsa sürümü artırma.
+- Sokak dili: `content-src/slang/` → `node scripts/build-slang.mjs` → `src/content/slang.json`.

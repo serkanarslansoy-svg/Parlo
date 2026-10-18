@@ -1,5 +1,6 @@
 // Aynı cihazda birden fazla oyuncu. Her profilin kendi ilerlemesi (state) ayrı saklanır.
 import { freshState } from './store.js';
+import { CONTENT_VERSION } from './program.js';
 
 const KEY = 'parlo_profiles_v1';
 const LEGACY_KEY = 'parlo_v3';
@@ -43,7 +44,8 @@ export function makeProfile(name, avatar, color) {
 export function addProfile(db, { name, avatar, color }) {
   const p = makeProfile(name, avatar, color);
   db.profiles.push(p);
-  db.data[p.id] = { ...freshState(), name: p.name };
+  // Yeni oyuncu güncel içerikle başlar; sürüm geçişi onun ilerlemesine dokunmaz.
+  db.data[p.id] = { ...freshState(), name: p.name, contentVersion: CONTENT_VERSION };
   db.active = p.id;
   return p;
 }

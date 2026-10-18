@@ -139,7 +139,7 @@ export function renderProgram(ctx) {
     h('section', {},
       h('p', { class: 'eyebrow' }, 'Günde 15 dakika'),
       h('h1', {}, '30 günde konuşmaya'),
-      h('p', { class: 'muted', style: 'margin-top:6px' }, 'Gramerden değil konuşma ihtiyacından başla: 10 kalıp, 100 kelime, 7 sahne, serbest konuşma.')),
+      h('p', { class: 'muted', style: 'margin-top:6px' }, 'Gramerden değil konuşma ihtiyacından başla. A1\'den A2\'ye: kafe ve marketten Questura\'ya, doktordan ev sahibine gerçek durumlar.')),
     planCard(ctx),
     h('div', { class: 'card row' },
       h('div', { class: 'grow' }, h('p', { class: 'eyebrow' }, 'İlerleme'), h('h2', {}, `${doneN} / ${TOTAL_DAYS} gün`)),

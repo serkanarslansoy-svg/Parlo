@@ -23,13 +23,20 @@ describe('program içeriği', () => {
       }
     }
   });
-  it('1–3. haftalarda her gün yeni cümle var; kontroller 7, 14, 21 ve 30. günlerde', () => {
-    for (const d of DAYS.filter((x) => x.week < 4)) expect(d.learn.length, `gün ${d.day}`).toBeGreaterThan(0);
+  it('kontrol günleri hariç her gün en az 3 yeni cümle; kontroller 7, 14, 21 ve 30. günlerde', () => {
+    for (const d of DAYS.filter((x) => !x.gate)) expect(d.learn.length, `gün ${d.day}`).toBeGreaterThanOrEqual(3);
     expect(DAYS.filter((d) => d.gate).map((d) => d.day)).toEqual([7, 14, 21, 30]);
   });
-  it('2. haftanın kelime listeleri toplam 100 kelime', () => {
-    const words = DAYS.filter((d) => d.words).flatMap((d) => d.words.split(/[,·]/).map((w) => w.trim()).filter(Boolean));
-    expect(words).toHaveLength(100);
+  it('her günün cümleleri, sahnesi ya da soruları mevcut; seviye ve kısa not var', () => {
+    for (const d of DAYS) {
+      for (const id of [...d.learn, ...(d.review || [])]) expect(cards[id], `gün ${d.day}: ${id}`).toBeTruthy();
+      if (d.talk.scene) expect(sceneById(d.talk.scene), `gün ${d.day}`).toBeTruthy();
+      else expect(d.talk.drill.length, `gün ${d.day}`).toBeGreaterThan(0);
+      expect(d.level).toBeTruthy();
+    }
+  });
+  it('kontrol günleri öncekileri tekrar eder (yeni cümle yok)', () => {
+    for (const d of DAYS.filter((x) => x.gate)) expect(d.learn, `gün ${d.day}`).toEqual([]);
   });
 });
 
@@ -99,5 +106,24 @@ describe('çalışma planı', () => {
     setPlanDays(st, []);
     expect(planDays(st)).toHaveLength(7);
     expect(formatDay('2026-11-21')).toBe('21 Kasım Cumartesi');
+  });
+});
+
+describe('içerik sürümü', async () => {
+  const { migrateState, CONTENT_VERSION } = await import('../src/lib/program.js');
+  const { addProfile } = await import('../src/lib/profiles.js');
+  it('yeni oyuncunun ilerlemesi sonraki açılışta silinmez', () => {
+    const db = { profiles: [], active: null, data: {} };
+    const p = addProfile(db, { name: 'Ayşe', avatar: '🦊', color: '#2e7d4f' });
+    const st = db.data[p.id];
+    st.program = { days: { 1: { steps: { review: true }, mistakes: [] } } };
+    expect(migrateState(st)).toBe(false);
+    expect(st.program.days[1].steps.review).toBe(true);
+  });
+  it('eski sürüm ilerlemesi bir kez temizlenir, XP kalır', () => {
+    const st = { program: { days: { 3: { steps: { review: true } } } }, cards: { bar1: { box: 3 } }, pts: { '2026-10-01': 50 }, scenes: { bar: {}, ristorante: {} } };
+    expect(migrateState(st, ['ristorante'])).toBe(true);
+    expect(st).toMatchObject({ contentVersion: CONTENT_VERSION, program: { days: {} }, cards: {}, pts: { '2026-10-01': 50 }, scenes: { ristorante: {} } });
+    expect(migrateState(st)).toBe(false);
   });
 });

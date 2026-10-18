@@ -1,16 +1,298 @@
 [
-  {"id": "per_favore", "head": "…, per favore", "slot": "", "tr": "… lütfen", "cat": "istek", "note": "Bir şey istemenin en kısa ve kibar yolu. Barda, fırında, gişede işe yarar."},
-  {"id": "voglio", "head": "Voglio", "slot": "+ [fiil]", "tr": "… istiyorum", "cat": "istek", "note": "Kendinden bahsederken doğal: «Voglio imparare l'italiano». Bir şey isterken «Vorrei» daha kibar."},
-  {"id": "vorrei", "head": "Vorrei", "slot": "+ [isim / fiil]", "tr": "… istiyorum (kibarca)", "cat": "istek", "note": "«Voglio» (istiyorum) doğru ama sert duyulur. Dükkânda ve restoranda «Vorrei» kullan."},
-  {"id": "mi_da", "head": "Mi dà", "slot": "+ [miktar + şey]?", "tr": "Bana … verir misiniz?", "cat": "istek", "note": "Şarküteride, pazarda, fırında. 1 etto = 100 gram: «due etti» = 200 gr."},
-  {"id": "posso", "head": "Posso", "slot": "+ [fiil]?", "tr": "… -ebilir miyim?", "cat": "izin", "note": "İzin istemenin anahtarı. Arkasından fiil mastar hâliyle gelir: pagare, aspettare, entrare."},
-  {"id": "puo", "head": "Può / Puoi", "slot": "+ [fiil]?", "tr": "… -ebilir misiniz / misin?", "cat": "izin", "note": "Tanımadığın birine «Può…?» (Lei), iş arkadaşına ve arkadaşa «Puoi…?» (tu)."},
-  {"id": "devo", "head": "Devo", "slot": "+ [fiil]", "tr": "… -mam lazım / -meliyim", "cat": "ihtiyac", "note": "Zorunluluk: «Devo andare» (gitmem lazım), «Devo parlare con…» (… ile konuşmam lazım)."},
-  {"id": "mi_serve", "head": "Mi serve", "slot": "+ [şey]", "tr": "Bana … lazım", "cat": "ihtiyac", "note": "Somut ihtiyaç. Çoğul şeyde «Mi servono»: «Mi servono due biglietti»."},
-  {"id": "cerco", "head": "Cerco", "slot": "+ [yer / şey]", "tr": "… arıyorum", "cat": "soru", "note": "Sokakta, markette, ofiste. «Mi scusi, cerco…» diye başlamak çok doğal."},
-  {"id": "dove", "head": "Dov'è", "slot": "+ [yer / şey]?", "tr": "… nerede?", "cat": "soru", "note": "Dove + è = Dov'è. Çoğulda «Dove sono i bagni?»."},
-  {"id": "ce", "head": "C'è", "slot": "+ [şey]?", "tr": "… var mı? / … var.", "cat": "soru", "note": "Ci + è = C'è. Hem soru hem cümle: «C'è un problema» (bir sorun var)."},
-  {"id": "quanto", "head": "Quanto costa? / Quant'è?", "slot": "", "tr": "Ne kadar?", "cat": "soru", "note": "Tek ürün için «Quanto costa?», toplam hesap için «Quant'è?»."},
-  {"id": "ho", "head": "Ho", "slot": "+ [isim]", "tr": "Benim … var / …-ım", "cat": "kendini_anlat", "note": "Sahiplik ve durum: «Ho due figli», «Ho fame» (acıktım), «Ho un problema». Yaşı da böyle söylersin: «Ho quarant'anni»."},
-  {"id": "sono", "head": "Sono / È", "slot": "+ [kim / durum]", "tr": "…-im / …-dir", "cat": "kendini_anlat", "note": "Kendini tanıtmak için: «Sono il papà di Matteo». Başkası için «È…»: «È in terza B»."}
+ {
+  "id": "vorrei",
+  "head": "Vorrei",
+  "slot": "+ [isim / fiil]",
+  "tr": "… istiyorum / rica ediyorum",
+  "cat": "istek",
+  "note": "Kafe, mağaza ve resmî ortamlarda bir şey isterken kibar ve güvenli bir kalıptır."
+ },
+ {
+  "id": "posso",
+  "head": "Posso",
+  "slot": "+ [fiil]?",
+  "tr": "… yapabilir miyim?",
+  "cat": "izin",
+  "note": "İzin isterken kullanılır. Posso'dan sonraki fiil temel hâliyle gelir."
+ },
+ {
+  "id": "quanto_costa",
+  "head": "Quanto costa",
+  "slot": "+ [isim]?",
+  "tr": "… ne kadar?",
+  "cat": "soru",
+  "note": "Tek bir şeyin fiyatını sorarken kullanılır."
+ },
+ {
+  "id": "cerco",
+  "head": "Cerco",
+  "slot": "+ [isim]",
+  "tr": "… arıyorum",
+  "cat": "soru",
+  "note": "Bir ürün, yer veya kişiyi aradığını söylemek için kullanılır."
+ },
+ {
+  "id": "dove",
+  "head": "Dov'è",
+  "slot": "+ [tekil isim]?",
+  "tr": "… nerede?",
+  "cat": "soru",
+  "note": "Bir yerin veya tek bir şeyin konumunu sorarken kullanılır."
+ },
+ {
+  "id": "ce",
+  "head": "C'è",
+  "slot": "+ [tekil isim]?",
+  "tr": "… var mı?",
+  "cat": "soru",
+  "note": "Bir yerde bir şeyin bulunup bulunmadığını sorarken kullanılır."
+ },
+ {
+  "id": "devo",
+  "head": "Devo",
+  "slot": "+ [fiil]",
+  "tr": "… yapmam gerekiyor",
+  "cat": "ihtiyac",
+  "note": "Zorunluluk ve günlük ihtiyaç belirtmek için kullanılır."
+ },
+ {
+  "id": "mi_serve",
+  "head": "Mi serve",
+  "slot": "+ [tekil isim]",
+  "tr": "Bana … lazım",
+  "cat": "ihtiyac",
+  "note": "Bir şeye ihtiyacın olduğunu kısa ve doğal biçimde anlatır."
+ },
+ {
+  "id": "puo",
+  "head": "Può",
+  "slot": "+ [fiil]?",
+  "tr": "… yapabilir misiniz?",
+  "cat": "izin",
+  "note": "Tanımadığın birine veya resmî konuşmada kibarca bir şey rica etmek için kullanılır."
+ },
+ {
+  "id": "sono",
+  "head": "Sono",
+  "slot": "+ [yer / durum]",
+  "tr": "…deyim / …im",
+  "cat": "kendini_anlat",
+  "note": "Nerede olduğunu veya basit bir durumu söylemek için kullanılır."
+ },
+ {
+  "id": "prendo",
+  "head": "Prendo",
+  "slot": "+ [isim]",
+  "tr": "… alayım / … alıyorum",
+  "cat": "istek",
+  "note": "Kafe, pazar ve mağazada karar verdiğin şeyi söylerken çok doğal kullanılır."
+ },
+ {
+  "id": "a_che_ora",
+  "head": "A che ora",
+  "slot": "+ [fiil / olay]?",
+  "tr": "Saat kaçta …?",
+  "cat": "soru",
+  "note": "Otobüs, randevu veya bir etkinliğin saatini sormak için kullanılır."
+ },
+ {
+  "id": "non_capisco",
+  "head": "Non capisco",
+  "slot": "",
+  "tr": "Anlamıyorum",
+  "cat": "ihtiyac",
+  "note": "Konuşmayı kaybettiğinde kullanabileceğin en temel kurtarma cümlelerinden biridir."
+ },
+ {
+  "id": "piu_piano",
+  "head": "Può parlare",
+  "slot": "+ più piano?",
+  "tr": "Daha yavaş konuşabilir misiniz?",
+  "cat": "izin",
+  "note": "Lei kullanılan resmî veya tanımadığın kişilerle yapılan konuşmalarda kullanılır."
+ },
+ {
+  "id": "ho",
+  "head": "Ho",
+  "slot": "+ [isim / durum]",
+  "tr": "… var / … sahibim",
+  "cat": "kendini_anlat",
+  "note": "Sahip olduğun bir şeyi veya basit bir durumu anlatmak için kullanılır."
+ },
+ {
+  "id": "vorrei_appuntamento",
+  "head": "Vorrei",
+  "slot": "+ un appuntamento",
+  "tr": "Randevu almak istiyorum",
+  "cat": "istek",
+  "note": "Doktor, okul, ofis veya resmî kurumlarda randevu isterken kullanılabilecek temel kalıptır."
+ },
+ {
+  "id": "cosa_devo_fare",
+  "head": "Cosa devo fare",
+  "slot": "?",
+  "tr": "Ne yapmam gerekiyor?",
+  "cat": "ihtiyac",
+  "note": "Bir işlemin sonraki adımını bilmediğinde kullanılır."
+ },
+ {
+  "id": "da_quanto",
+  "head": "Da quanto tempo",
+  "slot": "+ [durum / fiil]?",
+  "tr": "Ne zamandır …?",
+  "cat": "soru",
+  "note": "Bir durumun ne kadar süredir devam ettiğini sormak için kullanılır."
+ },
+ {
+  "id": "da",
+  "head": "Da",
+  "slot": "+ [süre]",
+  "tr": "…dır / …den beri",
+  "cat": "kendini_anlat",
+  "note": "Devam eden bir durumun süresini söyler: da due giorni."
+ },
+ {
+  "id": "non_funziona",
+  "head": "Non funziona",
+  "slot": "+ [isim]",
+  "tr": "… çalışmıyor",
+  "cat": "ihtiyac",
+  "note": "Evde, işte veya günlük hayatta bir cihaz ya da sistem çalışmadığında kullanılır."
+ },
+ {
+  "id": "cosa_serve",
+  "head": "Cosa serve",
+  "slot": "?",
+  "tr": "Ne gerekiyor?",
+  "cat": "soru",
+  "note": "Bir işlem için hangi belge veya şeylerin gerekli olduğunu sormak için kullanılır."
+ },
+ {
+  "id": "devo_portare",
+  "head": "Devo portare",
+  "slot": "+ [isim]?",
+  "tr": "… getirmem gerekiyor mu?",
+  "cat": "soru",
+  "note": "Randevu veya resmî işlem için yanında ne getirmen gerektiğini sormak için kullanılır."
+ },
+ {
+  "id": "ho_bisogno_di",
+  "head": "Ho bisogno di",
+  "slot": "+ [isim / fiil]",
+  "tr": "… ihtiyacım var",
+  "cat": "ihtiyac",
+  "note": "Bir şeye veya bir şey yapmaya ihtiyacın olduğunu söylemek için kullanılır."
+ },
+ {
+  "id": "vorrei_cambiare",
+  "head": "Vorrei cambiare",
+  "slot": "+ [isim]",
+  "tr": "… değiştirmek istiyorum",
+  "cat": "istek",
+  "note": "Randevu, gün veya saat gibi bir şeyi kibarca değiştirmek istediğinde kullanılır."
+ },
+ {
+  "id": "non_posso",
+  "head": "Non posso",
+  "slot": "+ [fiil]",
+  "tr": "… yapamam",
+  "cat": "izin",
+  "note": "Bir şeyi yapamadığını veya bir zamanın uygun olmadığını söylemek için kullanılır."
+ },
+ {
+  "id": "possiamo",
+  "head": "Possiamo",
+  "slot": "+ [fiil]?",
+  "tr": "… yapabilir miyiz?",
+  "cat": "izin",
+  "note": "Birlikte bir çözüm veya alternatif önermek için kullanılır."
+ },
+ {
+  "id": "il_problema_e",
+  "head": "Il problema è",
+  "slot": "+ [kısa açıklama]",
+  "tr": "Sorun şu ki …",
+  "cat": "kendini_anlat",
+  "note": "Problemi biraz daha açık ama hâlâ kısa şekilde anlatmak için kullanılır."
+ },
+ {
+  "id": "per_me_va_bene",
+  "head": "Per me va bene",
+  "slot": "+ [gün / saat]",
+  "tr": "Benim için … uygun",
+  "cat": "kendini_anlat",
+  "note": "Bir gün veya saati kabul etmek için kullanılır."
+ },
+ {
+  "id": "devo_pagare",
+  "head": "Devo pagare",
+  "slot": "+ [isim / tutar]?",
+  "tr": "… ödemem gerekiyor mu?",
+  "cat": "soru",
+  "note": "Kira, ücret veya başka bir ödeme hakkında bilgi almak için kullanılır."
+ },
+ {
+  "id": "non_va_bene",
+  "head": "Non va bene",
+  "slot": "+ [davranış / durum]",
+  "tr": "Bu uygun değil / Bu olmaz",
+  "cat": "kendini_anlat",
+  "note": "Bir davranıştan rahatsız olduğunu sakin ama net biçimde belirtmek için kullanılır."
+ },
+ {
+  "id": "non_parli_cosi",
+  "head": "Non mi parli così",
+  "slot": "",
+  "tr": "Benimle böyle konuşmayın",
+  "cat": "kendini_anlat",
+  "note": "Lei kullanılan bir konuşmada hakaret veya kaba üsluba karşı net sınır koyar."
+ },
+ {
+  "id": "parliamo_con_calma",
+  "head": "Parliamo",
+  "slot": "+ con calma",
+  "tr": "Sakin konuşalım",
+  "cat": "kendini_anlat",
+  "note": "Tartışmayı büyütmeden tonu düşürmek için kullanılır."
+ },
+ {
+  "id": "non_voglio_litigare",
+  "head": "Non voglio",
+  "slot": "+ litigare",
+  "tr": "Tartışmak istemiyorum",
+  "cat": "kendini_anlat",
+  "note": "Gerilimi artırmadan konuşmayı sakinleştirmek için kullanılır."
+ },
+ {
+  "id": "basta",
+  "head": "Basta",
+  "slot": "",
+  "tr": "Yeter",
+  "cat": "kendini_anlat",
+  "note": "Kısa ve net bir sınır ifadesidir. Tonu sakin tutulmalıdır."
+ },
+ {
+  "id": "per_favore",
+  "head": "…, per favore",
+  "slot": "",
+  "tr": "… lütfen",
+  "cat": "istek",
+  "note": "Bir şey istemenin en kısa ve kibar yolu. Barda, fırında, gişede işe yarar."
+ },
+ {
+  "id": "mi_da",
+  "head": "Mi dà",
+  "slot": "+ [miktar + şey]?",
+  "tr": "Bana … verir misiniz?",
+  "cat": "istek",
+  "note": "Şarküteride, pazarda, fırında. 1 etto = 100 gram: «due etti» = 200 gr."
+ },
+ {
+  "id": "quanto",
+  "head": "Quanto costa? / Quant'è?",
+  "slot": "",
+  "tr": "Ne kadar?",
+  "cat": "soru",
+  "note": "Tek ürün için «Quanto costa?», toplam hesap için «Quant'è?»."
+ }
 ]

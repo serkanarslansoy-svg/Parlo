@@ -87,6 +87,15 @@
 | Güç | Leitner kutusu: 0-1 zayıf, 2-3 orta, 4-5 güçlü. Tekrar yolunda vadesi gelmiş cümleyi doğru bilmek kutuyu ilerletir |
 | Boşluk doldurma | Busuu'nun diyalog alıştırması: sahne/soru-cevap repliği + cevapta eksik kelime (3+ harf); klavye kayması kabul |
 
+## v1.0: Yeni A1→A2 programı (ChatGPT + uyarlama)
+| Konu | Karar |
+|---|---|
+| İçerik | Program ChatGPT'den hafta hafta JSON olarak alındı; içerik kararları onun, uyarlama bizim |
+| Düzeltmeler | `content-src/fixes.json`: cinsiyet alternatifleri, `{nome}`, sahne çelişkileri, doğal söz dizimi, öğretilmemiş kelimeler |
+| Sahneler | Yeni programın 26 sahnesi; eskilerden sadece Restoran ve Şarküteri kaldı |
+| İlerleme | Program sürümü 2: program, Tekrar yolu, sınav ve tekrar kutusu bir kez sıfırlandı; XP, seri, plan korundu. Yeni oyuncular güncel sürümle doğar |
+| Ek | Gün ekranında kültür notu, yeni kalıpta kısa not, hata düzeltmede "Türklerin sık yaptığı hatalar" |
+
 ## Yol haritası
 1. **İçerik:** doktor, Comune/Questura, öğretmenle görüşme, telefon, kira. Senaryo başına 8–10 kart.
 2. **AI koç (sunucu gerekir):** serbest sohbet ve kullanıcının yazdığı özel durumlardan senaryo üretme ("Kendi durumunu yaz" listesi şimdiden toplanıyor). API anahtarı istemcide tutulmamalı.

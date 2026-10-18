@@ -76,6 +76,9 @@ const SETTINGS = {
   comune: { it: 'In Comune', cat: 'gunluk', emoji: '🏛️' },
   mixed_services: { it: 'Allo sportello', cat: 'gunluk', emoji: '🗂️' },
   public_place: { it: 'Con calma', cat: 'gunluk', emoji: '🛑' },
+  questura: { it: 'In Questura', cat: 'gunluk', emoji: '🛂' },
+  rental_payment: { it: "L'affitto", cat: 'gunluk', emoji: '🧾' },
+  final_daily_life: { it: 'Una giornata in Italia', cat: 'gunluk', emoji: '🇮🇹' },
 };
 const FEMALE = new Set('Giorgia Paola Elena Francesca Sara Martina Chiara Giulia Anna Laura Valentina Federica Alessia Silvia Roberta Monica Lucia Maria Teresa Rosa Simona Ilaria Elisa Marta Beatrice Camilla Alice Sofia Aurora Emma Greta Noemi Irene Claudia Barbara Daniela Cristina Patrizia Antonella Stefania Manuela Serena Veronica Gabriella'.split(' '));
 const avatarOf = (name) => {

@@ -112,8 +112,8 @@ describe('diyalog boşluk doldurma', () => {
     expect(g2.after).toBe(', per favore.');
   });
   it('sohbet sahnesindeki cümlenin önünde karşı tarafın repliği var', () => {
-    const g = gapFor({ it: 'Un cappuccino, per favore.' });
-    expect(g.context).toEqual({ who: expect.any(String), line: 'Buongiorno! Cosa prende?' });
+    const g = gapFor({ it: 'Posso pagare con la carta?' });
+    expect(g.context).toEqual({ who: 'Giorgia', line: 'Sono tre euro.' });
   });
   it('kontrol: aksan ve büyük harf önemsiz, klavye kayması kabul, yanlış kelime ret', () => {
     expect(checkGap('caffe', 'caffè')).toEqual({ ok: true, slip: false });

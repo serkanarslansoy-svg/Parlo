@@ -30,6 +30,9 @@
     ],
     "Vorrei informazioni per questo documento.": [
       "Vorrei informazioni su questo documento."
+    ],
+    "Non sento bene.": [
+      "Non la sento bene."
     ]
   },
   "words_add": {
@@ -78,6 +81,15 @@
           "why": "'Posso venire domani' dedikten sonra 'Ne zaman gelebilirsiniz?' sorusu anlamsızdı"
         }
       }
+    },
+    "22": {
+      "turns": {
+        "1": {
+          "ai": "Va bene. Aspetti un momento.",
+          "tr": "Peki. Bir dakika bekleyin.",
+          "why": "Görevli numara alınması gerektiğini söyledikten sonra aynı şeyi sormak anlamsızdı"
+        }
+      }
     }
   },
   "keep_old_scenes": [
@@ -110,6 +122,13 @@
     "cosa_serve": "soru",
     "devo_portare": "soru",
     "da_quanto": "soru",
-    "da": "kendini_anlat"
+    "da": "kendini_anlat",
+    "ho_bisogno_di": "ihtiyac",
+    "vorrei_cambiare": "istek",
+    "non_posso": "izin",
+    "possiamo": "izin",
+    "il_problema_e": "kendini_anlat",
+    "per_me_va_bene": "kendini_anlat",
+    "devo_pagare": "soru"
   }
 }
