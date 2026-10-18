@@ -607,3 +607,11 @@ button.program-card { text-align: left; font: inherit; cursor: pointer; }
 @keyframes pathpulse { 0%, 100% { box-shadow: 0 6px 0 var(--green-deep), 0 0 0 7px var(--green-tint); } 50% { box-shadow: 0 6px 0 var(--green-deep), 0 0 0 13px rgba(223, 240, 230, 0.4); } }
 @media (prefers-reduced-motion: reduce) { .path-stop.now .path-node { animation: none; } }
 .typo-note { color: var(--gold-ink); font-weight: 600; }
+
+/* ---------- Çalışma planı ---------- */
+.plan-line { display: flex; align-items: center; gap: 8px; width: 100%; padding: 10px 12px; border: 0; border-radius: var(--r-sm); background: rgba(255, 255, 255, 0.7); font: inherit; font-size: 0.85rem; color: var(--ink); text-align: left; cursor: pointer; }
+.plan-line .ico { color: var(--green); }
+.weekday-chips { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.wd-chip { min-height: 44px; border-radius: var(--r-sm); border: 1.5px solid var(--sand); background: var(--surface); font: 700 0.8rem/1 var(--font-body); color: var(--muted); cursor: pointer; }
+.wd-chip[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #fff; }
+.plan-end { margin: 0; padding: 10px 12px; border-radius: var(--r-sm); background: var(--green-tint); color: var(--green-deep); }

@@ -7,7 +7,7 @@ import { stateOf } from '../lib/profiles.js';
 import { tierOf, RULES } from '../lib/online.js';
 import { weekKeys } from '../lib/points.js';
 import { topbar, speakBtn, greeting, avatar } from '../ui.js';
-import { STEPS, TOTAL_DAYS, currentDay, dayPlan, weekOf, nextStep, isStepDone, waitsForTomorrow } from '../lib/program.js';
+import { STEPS, TOTAL_DAYS, currentDay, dayPlan, weekOf, nextStep, isStepDone, waitsForTomorrow, finishDate, formatDay, hasPlan, planDays } from '../lib/program.js';
 import { stepRoute } from './day.js';
 
 const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
@@ -81,6 +81,16 @@ function leagueCard(ctx) {
     h('p', { class: 'lc-line' }, line, icon('chevron')));
 }
 
+/** "Gün 30: 21 Kasım Cumartesi" ya da plan kurma daveti. */
+function planLine(ctx) {
+  const end = finishDate(ctx.state, today());
+  if (!end) return null;
+  return h('button', { class: 'plan-line', onclick: () => ctx.go('program') },
+    icon('clock'),
+    h('span', { class: 'grow' }, hasPlan(ctx.state) ? 'Planına göre Gün 30: ' : 'Her gün çalışırsan Gün 30: ', h('strong', {}, formatDay(end))),
+    h('span', { class: 'link small' }, hasPlan(ctx.state) ? 'Planı değiştir' : 'Planını kur'));
+}
+
 function programCard(ctx) {
   const n = currentDay(ctx.state);
   if (!n) {
@@ -101,6 +111,7 @@ function programCard(ctx) {
     h('ol', { class: 'pc-steps' }, STEPS.map((s) => h('li', { class: isStepDone(ctx.state, n, s.id) ? 'on' : nxt?.id === s.id ? 'now' : '' },
       icon(isStepDone(ctx.state, n, s.id) ? 'check' : s.icon), h('span', {}, s.label), h('small', {}, `${s.min} dk`)))),
     wait ? h('p', { class: 'small pc-note' }, 'Bugünkü günü bitirdin. Yeni gün yarın daha verimli olur.') : null,
+    planLine(ctx),
     h('button', { class: 'btn mission-cta', onclick: () => ctx.go(wait ? `day/${n}` : stepRoute(n, nxt.id)) },
       icon(wait ? 'clock' : nxt.icon),
       h('span', { class: 'grow cta-text' },
@@ -207,7 +218,7 @@ function cultureCard(ctx) {
 
 export function renderHome(ctx) {
   const { state } = ctx;
-  const s = streak(state);
+  const s = streak(state, today(), planDays(state));
   const t0 = today();
   // Dün kaçtı ve bugün henüz çalışılmadı: seri tolerans gününde.
   const atRisk = s > 0 && !isActiveDay(state, t0) && !isActiveDay(state, addDays(t0, -1));

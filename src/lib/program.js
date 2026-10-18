@@ -88,3 +88,54 @@ export function enrollCards(state, ids, today) {
 export function learnedBefore(n) {
   return DAYS.filter((d) => d.day < n).flatMap((d) => d.learn);
 }
+
+// --- Çalışma planı ---
+export const WEEKDAYS = [
+  { d: 1, short: 'Pzt', long: 'Pazartesi' }, { d: 2, short: 'Sal', long: 'Salı' },
+  { d: 3, short: 'Çar', long: 'Çarşamba' }, { d: 4, short: 'Per', long: 'Perşembe' },
+  { d: 5, short: 'Cum', long: 'Cuma' }, { d: 6, short: 'Cmt', long: 'Cumartesi' },
+  { d: 0, short: 'Paz', long: 'Pazar' },
+];
+const MONTHS = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
+const ALL_DAYS = [0, 1, 2, 3, 4, 5, 6];
+
+/** Plandaki haftanın günleri (0 = Pazar). Plan yoksa her gün. */
+export const planDays = (state) => (state.plan?.days?.length ? state.plan.days : ALL_DAYS);
+export const hasPlan = (state) => Boolean(state.plan?.days?.length);
+
+export function setPlanDays(state, days) {
+  const clean = [...new Set(days)].filter((d) => ALL_DAYS.includes(d)).sort();
+  state.plan = { ...(state.plan || {}), days: clean.length ? clean : ALL_DAYS };
+}
+
+const weekdayOf = (key) => {
+  const [y, m, d] = key.split('-').map(Number);
+  return new Date(y, m - 1, d).getDay();
+};
+
+/**
+ * Kalan günler plandaki günlere birer birer yayılırsa Gün 30 hangi tarihte biter.
+ * Bugün zaten bir gün bitirildiyse sayım yarından başlar. Hepsi bittiyse null.
+ */
+export function finishDate(state, today) {
+  let left = TOTAL_DAYS - doneCount(state);
+  if (left <= 0) return null;
+  const days = planDays(state);
+  const doneToday = DAYS.some((d) => state.program?.days?.[d.day]?.completedOn === today);
+  let k = doneToday ? addDays(today, 1) : today;
+  for (let i = 0; i < 400; i++) {
+    if (days.includes(weekdayOf(k))) {
+      left -= 1;
+      if (left === 0) return k;
+    }
+    k = addDays(k, 1);
+  }
+  return null;
+}
+
+/** "21 Kasım Cumartesi" */
+export function formatDay(key) {
+  const [y, m, d] = key.split('-').map(Number);
+  const wd = WEEKDAYS.find((w) => w.d === new Date(y, m - 1, d).getDay());
+  return `${d} ${MONTHS[m - 1]} ${wd.long}`;
+}

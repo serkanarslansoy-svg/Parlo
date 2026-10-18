@@ -3,6 +3,7 @@ import { scenes, cards } from '../content/index.js';
 import { streak, today, isActiveDay, freshState } from '../lib/store.js';
 import { addDays } from '../lib/srs.js';
 import { topbar, confirmButton } from '../ui.js';
+import { planDays } from '../lib/program.js';
 
 const BUCKETS = [
   { label: 'Yeni', test: (b) => b === 0 },
@@ -60,7 +61,7 @@ export function renderProgress(ctx) {
     topbar({ subtitle: 'Gelişim' }),
     h('section', {}, h('p', { class: 'eyebrow' }, 'İlerlemem'), h('h1', {}, 'Gelişim'),
       h('p', { class: 'muted', style: 'margin-top:6px' }, 'Puan değil, gerçekten kurabildiğin cümleler önemli.')),
-    h('div', { class: 'stats' }, stat(streak(state), 'gün seri'), stat(strong, 'cümle hafızada'), stat(runs, 'konuşma')),
+    h('div', { class: 'stats' }, stat(streak(state, today(), planDays(state)), 'gün seri'), stat(strong, 'cümle hafızada'), stat(runs, 'konuşma')),
     weekSection(state),
     candoSection,
     memory,

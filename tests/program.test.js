@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { DAYS, WEEKS, STEPS, TOTAL_DAYS, currentDay, nextStep, completeStep, isDayDone, addMistake, enrollCards, waitsForTomorrow, isUnlocked, learnedBefore, doneCount } from '../src/lib/program.js';
+import { DAYS, WEEKS, STEPS, TOTAL_DAYS, currentDay, nextStep, completeStep, isDayDone, addMistake, enrollCards, waitsForTomorrow, isUnlocked, learnedBefore, doneCount, finishDate, planDays, hasPlan, setPlanDays, formatDay } from '../src/lib/program.js';
 import { cards, sceneById } from '../src/content/index.js';
 import { freshState } from '../src/lib/store.js';
 
@@ -70,5 +70,34 @@ describe('program ilerlemesi', () => {
     expect(s.cards.g1a.box).toBe(3);
     expect(s.cards.g1b).toMatchObject({ box: 0, due: '2026-10-06' });
     expect(learnedBefore(3)).toEqual([...DAYS[0].learn, ...DAYS[1].learn]);
+  });
+});
+
+describe('çalışma planı', () => {
+  // 2026-10-05 Pazartesi
+  const MON = '2026-10-05';
+  it('plan yoksa her gün: 30 gün bugünden başlar', () => {
+    const st = freshState();
+    expect(finishDate(st, MON)).toBe('2026-11-03');
+    expect(planDays(st)).toHaveLength(7);
+    expect(hasPlan(st)).toBe(false);
+  });
+  it('haftada 5 gün (hafta içi) bitişi uzatır', () => {
+    const st = freshState();
+    setPlanDays(st, [1, 2, 3, 4, 5]);
+    expect(hasPlan(st)).toBe(true);
+    // 30 iş günü: 6 hafta → 6. haftanın Cuması
+    expect(finishDate(st, MON)).toBe('2026-11-13');
+  });
+  it('bugün bir gün bitirildiyse sayım yarından başlar; biten günler düşülür', () => {
+    const st = freshState();
+    STEPS.forEach((s) => completeStep(st, 1, s.id, MON));
+    expect(finishDate(st, MON)).toBe('2026-11-03'); // 29 gün kaldı, yarından itibaren
+  });
+  it('boş plan her güne döner; tarih yazısı Türkçe', () => {
+    const st = freshState();
+    setPlanDays(st, []);
+    expect(planDays(st)).toHaveLength(7);
+    expect(formatDay('2026-11-21')).toBe('21 Kasım Cumartesi');
   });
 });

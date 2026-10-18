@@ -1,6 +1,6 @@
 import { h, icon } from '../lib/dom.js';
 import { cards, sceneById } from '../content/index.js';
-import { DAYS, WEEKS, STEPS, TOTAL_DAYS, dayPlan, weekOf, isStepDone, isDayDone, nextStep, isUnlocked, waitsForTomorrow, currentDay, doneCount } from '../lib/program.js';
+import { DAYS, WEEKS, STEPS, TOTAL_DAYS, dayPlan, weekOf, isStepDone, isDayDone, nextStep, isUnlocked, waitsForTomorrow, currentDay, doneCount, WEEKDAYS, planDays, hasPlan, setPlanDays, finishDate, formatDay } from '../lib/program.js';
 import { isDue } from '../lib/srs.js';
 import { today } from '../lib/store.js';
 import { topbar } from '../ui.js';
@@ -89,6 +89,37 @@ export function renderDay(ctx, param) {
     h('button', { class: 'btn ghost block', onclick: () => ctx.go('program') }, 'Tüm program', icon('chevron')));
 }
 
+/** Çalışma planı: haftanın hangi günleri çalışılacak; Gün 30'un tahmini tarihi. */
+function planCard(ctx) {
+  const chips = h('div', { class: 'weekday-chips', role: 'group', 'aria-label': 'Çalışma günleri' });
+  const summary = h('p', { class: 'small' });
+  const end = h('p', { class: 'plan-end' });
+  const badge = h('span', { class: 'chip sun' }, 'Henüz kurulmadı');
+  const draw = () => {
+    badge.hidden = hasPlan(ctx.state);
+    const days = planDays(ctx.state);
+    chips.replaceChildren(...WEEKDAYS.map((w) => h('button', {
+      class: 'wd-chip', 'aria-pressed': String(days.includes(w.d)), 'aria-label': w.long,
+      onclick: () => {
+        const cur = planDays(ctx.state);
+        const nextDays = cur.includes(w.d) ? cur.filter((d) => d !== w.d) : [...cur, w.d];
+        if (!nextDays.length) return; // en az bir gün
+        setPlanDays(ctx.state, nextDays);
+        ctx.persist();
+        draw();
+      },
+    }, w.short)));
+    summary.textContent = `Haftada ${days.length} gün · günde 15 dakika. Plan dışı günler serini bozmaz.`;
+    const f = finishDate(ctx.state, today());
+    end.replaceChildren(...(f ? ['Bu planla Gün 30: ', h('strong', {}, formatDay(f))] : ['30 günü bitirdin 🏆']));
+  };
+  draw();
+  return h('section', { class: 'card stack plan-card' },
+    h('div', { class: 'row between' }, h('p', { class: 'eyebrow' }, 'Çalışma planın'), badge),
+    h('p', { class: 'small muted' }, 'Hangi günler çalışacaksın? Gerçekçi ol: haftada 5 gün, 7 günden iyidir.'),
+    chips, summary, end);
+}
+
 export function renderProgram(ctx) {
   const cur = currentDay(ctx.state);
   const doneN = doneCount(ctx.state);
@@ -98,6 +129,7 @@ export function renderProgram(ctx) {
       h('p', { class: 'eyebrow' }, 'Günde 15 dakika'),
       h('h1', {}, '30 günde konuşmaya'),
       h('p', { class: 'muted', style: 'margin-top:6px' }, 'Gramerden değil konuşma ihtiyacından başla: 10 kalıp, 100 kelime, 7 sahne, serbest konuşma.')),
+    planCard(ctx),
     h('div', { class: 'card row' },
       h('div', { class: 'grow' }, h('p', { class: 'eyebrow' }, 'İlerleme'), h('h2', {}, `${doneN} / ${TOTAL_DAYS} gün`)),
       cur ? h('button', { class: 'btn', onclick: () => ctx.go(`day/${cur}`) }, `Gün ${cur}`, icon('arrow')) : h('span', { class: 'chip gold' }, 'Tamamlandı 🏆')),
