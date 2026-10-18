@@ -1,0 +1,257 @@
+{
+  "week": 1,
+  "title": "Günlük Hayatta İlk Adımlar",
+  "goal": "Hafta sonunda kullanıcı kafede, markette, sokakta, işte, okulda ve eczanede temel ihtiyaçlarını kısa cümlelerle anlatabilecek.",
+  "patterns": [
+    { "id": "vorrei", "head": "Vorrei", "slot": "+ [isim / fiil]", "tr": "… istiyorum / rica ediyorum", "note": "Kafe, mağaza ve resmî ortamlarda bir şey isterken kibar ve güvenli bir kalıptır." },
+    { "id": "posso", "head": "Posso", "slot": "+ [fiil]?", "tr": "… yapabilir miyim?", "note": "İzin isterken kullanılır. Posso'dan sonraki fiil temel hâliyle gelir." },
+    { "id": "quanto_costa", "head": "Quanto costa", "slot": "+ [isim]?", "tr": "… ne kadar?", "note": "Tek bir şeyin fiyatını sorarken kullanılır." },
+    { "id": "cerco", "head": "Cerco", "slot": "+ [isim]", "tr": "… arıyorum", "note": "Bir ürün, yer veya kişiyi aradığını söylemek için kullanılır." },
+    { "id": "dove", "head": "Dov'è", "slot": "+ [tekil isim]?", "tr": "… nerede?", "note": "Bir yerin veya tek bir şeyin konumunu sorarken kullanılır." },
+    { "id": "ce", "head": "C'è", "slot": "+ [tekil isim]?", "tr": "… var mı?", "note": "Bir yerde bir şeyin bulunup bulunmadığını sorarken kullanılır." },
+    { "id": "devo", "head": "Devo", "slot": "+ [fiil]", "tr": "… yapmam gerekiyor", "note": "Zorunluluk ve günlük ihtiyaç belirtmek için kullanılır." },
+    { "id": "mi_serve", "head": "Mi serve", "slot": "+ [tekil isim]", "tr": "Bana … lazım", "note": "Bir şeye ihtiyacın olduğunu kısa ve doğal biçimde anlatır." },
+    { "id": "puo", "head": "Può", "slot": "+ [fiil]?", "tr": "… yapabilir misiniz?", "note": "Tanımadığın birine veya resmî konuşmada kibarca bir şey rica etmek için kullanılır." },
+    { "id": "sono", "head": "Sono", "slot": "+ [yer / durum]", "tr": "…deyim / …im", "note": "Nerede olduğunu veya basit bir durumu söylemek için kullanılır." }
+  ],
+  "days": [
+    {
+      "day": 1, "level": "A1", "title": "Kafede Sipariş", "focus": "İçecek isteme ve ödeme",
+      "grammar_note": "Vorrei, bir şey isterken doğrudan Voglio demekten daha kibar ve doğaldır.",
+      "sentences": [
+        { "id": "d01_1", "it": "Vorrei un caffè, per favore.", "tr": "Bir kahve rica ediyorum.", "pattern": "vorrei", "alt": ["Un caffè, per favore."] },
+        { "id": "d01_2", "it": "Vorrei un cappuccino.", "tr": "Bir kapuçino istiyorum.", "pattern": "vorrei", "alt": ["Un cappuccino, per favore."] },
+        { "id": "d01_3", "it": "Posso pagare con la carta?", "tr": "Kartla ödeyebilir miyim?", "pattern": "posso", "alt": ["Posso pagare con carta?"] },
+        { "id": "d01_4", "it": "Quanto costa il caffè?", "tr": "Kahve ne kadar?", "pattern": "quanto_costa", "alt": [] },
+        { "id": "d01_5", "it": "Vorrei anche un'acqua.", "tr": "Bir de su istiyorum.", "pattern": "vorrei", "alt": ["Un'acqua, per favore."] }
+      ],
+      "words": [ { "it": "il caffè", "tr": "kahve" }, { "it": "il cappuccino", "tr": "kapuçino" }, { "it": "l'acqua", "tr": "su" }, { "it": "la carta", "tr": "kart" } ],
+      "talk": {
+        "type": "scene", "title": "Barda Kahve", "setting": "bar", "persona": { "name": "Giorgia", "role": "Barista" }, "register": "Lei",
+        "mission": "Bir içecek sipariş et ve kartla öde",
+        "turns": [
+          { "ai": "Buongiorno! Cosa prende?", "tr": "Günaydın! Ne alırsınız?", "goal": "Bir içecek iste", "answers": [
+            { "it": "Vorrei un caffè, per favore.", "tr": "Bir kahve rica ediyorum.", "keywords": [["vorrei", "prendo"], ["caffè", "cappuccino", "acqua"]] },
+            { "it": "Un caffè, per favore.", "tr": "Bir kahve lütfen.", "keywords": [["caffè", "cappuccino", "acqua"]] } ] },
+          { "ai": "Altro?", "tr": "Başka?", "goal": "Bir su daha iste", "answers": [
+            { "it": "Vorrei anche un'acqua.", "tr": "Bir de su istiyorum.", "keywords": [["vorrei", "acqua"], ["acqua"]] },
+            { "it": "Un'acqua, per favore.", "tr": "Bir su lütfen.", "keywords": [["acqua"]] } ] },
+          { "ai": "Sono tre euro.", "tr": "Üç euro.", "goal": "Kartla ödeyip ödeyemeyeceğini sor", "answers": [
+            { "it": "Posso pagare con la carta?", "tr": "Kartla ödeyebilir miyim?", "keywords": [["posso"], ["pagare"], ["carta"]] } ] },
+          { "ai": "Certo.", "tr": "Tabii.", "goal": "Siparişi kibarca tamamla", "answers": [
+            { "it": "Grazie.", "tr": "Teşekkürler.", "keywords": [["grazie"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Voglio un caffè demek anlaşılır ama kafe ortamında gereğinden sert duyulabilir; Vorrei daha uygundur.",
+        "Caffè kelimesindeki è aksanını unutmak.",
+        "Carta önünde la artikelini sık sık düşürmek."
+      ],
+      "culture": "İtalya'da barda caffè çoğu zaman espresso anlamına gelir. Kasada önce ödeme yapılan yerler de vardır.",
+      "gate": null
+    },
+    {
+      "day": 2, "level": "A1", "title": "Markette Alışveriş", "focus": "Ürün arama ve fiyat sorma",
+      "grammar_note": "Cerco doğrudan aradığın şeyin önüne gelir: Cerco il pane, Cerco il latte.",
+      "sentences": [
+        { "id": "d02_1", "it": "Cerco il pane.", "tr": "Ekmek arıyorum.", "pattern": "cerco", "alt": [] },
+        { "id": "d02_2", "it": "Cerco il latte.", "tr": "Süt arıyorum.", "pattern": "cerco", "alt": [] },
+        { "id": "d02_3", "it": "Quanto costa questo?", "tr": "Bu ne kadar?", "pattern": "quanto_costa", "alt": ["Quanto costa?"] },
+        { "id": "d02_4", "it": "Vorrei un chilo di pomodori.", "tr": "Bir kilo domates istiyorum.", "pattern": "vorrei", "alt": [] },
+        { "id": "d02_5", "it": "Posso pagare con la carta?", "tr": "Kartla ödeyebilir miyim?", "pattern": "posso", "alt": [] }
+      ],
+      "words": [ { "it": "il pane", "tr": "ekmek" }, { "it": "il latte", "tr": "süt" }, { "it": "il pomodoro", "tr": "domates" }, { "it": "il chilo", "tr": "kilo" } ],
+      "talk": {
+        "type": "scene", "title": "Süpermarkette", "setting": "supermarket", "persona": { "name": "Luca", "role": "Market çalışanı" }, "register": "Lei",
+        "mission": "Bir ürün bul ve fiyatını sor",
+        "turns": [
+          { "ai": "Buongiorno, posso aiutarla?", "tr": "Günaydın, yardımcı olabilir miyim?", "goal": "Ekmek aradığını söyle", "answers": [
+            { "it": "Cerco il pane.", "tr": "Ekmek arıyorum.", "keywords": [["cerco"], ["pane"]] } ] },
+          { "ai": "È lì, vicino al latte.", "tr": "Orada, sütün yanında.", "goal": "Süt de aradığını söyle", "answers": [
+            { "it": "Cerco anche il latte.", "tr": "Süt de arıyorum.", "keywords": [["cerco"], ["latte"]] } ] },
+          { "ai": "Ecco il latte.", "tr": "Süt burada.", "goal": "Bir ürünün fiyatını sor", "answers": [
+            { "it": "Quanto costa questo?", "tr": "Bu ne kadar?", "keywords": [["quanto"], ["costa"]] } ] },
+          { "ai": "Costa due euro.", "tr": "İki euro.", "goal": "Kartla ödeyip ödeyemeyeceğini sor", "answers": [
+            { "it": "Posso pagare con la carta?", "tr": "Kartla ödeyebilir miyim?", "keywords": [["posso"], ["pagare"], ["carta"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Cerco pane diyerek artikeli atlamak; doğal kullanım Cerco il pane.",
+        "Quanto costa? kalıbında quanto ve costa sırasını değiştirmek.",
+        "Latte kelimesini İngilizcedeki coffee drink anlamıyla karıştırmak; İtalyancada latte süt demektir."
+      ],
+      "culture": "İtalya'da meyve-sebzeyi bazı marketlerde eldivenle alıp etiketi kendin basman gerekebilir.",
+      "gate": null
+    },
+    {
+      "day": 3, "level": "A1", "title": "Yolunu Bul", "focus": "Yer sorma ve bir şeyin varlığını öğrenme",
+      "grammar_note": "Dov'è tekil bir yer veya nesnenin konumunu sorar. C'è ise o şeyin orada bulunup bulunmadığını sorar.",
+      "sentences": [
+        { "id": "d03_1", "it": "Dov'è la stazione?", "tr": "İstasyon nerede?", "pattern": "dove", "alt": [] },
+        { "id": "d03_2", "it": "Dov'è il bagno?", "tr": "Tuvalet nerede?", "pattern": "dove", "alt": [] },
+        { "id": "d03_3", "it": "C'è un parcheggio qui?", "tr": "Burada park yeri var mı?", "pattern": "ce", "alt": ["C'è un parcheggio qui vicino?"] },
+        { "id": "d03_4", "it": "C'è una farmacia qui?", "tr": "Burada eczane var mı?", "pattern": "ce", "alt": ["C'è una farmacia qui vicino?"] },
+        { "id": "d03_5", "it": "Può ripetere, per favore?", "tr": "Tekrar edebilir misiniz, lütfen?", "pattern": "puo", "alt": ["Può ripetere?"] }
+      ],
+      "words": [ { "it": "la stazione", "tr": "istasyon" }, { "it": "il bagno", "tr": "tuvalet" }, { "it": "il parcheggio", "tr": "park yeri / otopark" }, { "it": "la farmacia", "tr": "eczane" } ],
+      "talk": {
+        "type": "scene", "title": "Sokakta Yol Sorma", "setting": "street", "persona": { "name": "Paola", "role": "Yoldan geçen biri" }, "register": "Lei",
+        "mission": "İstasyonu ve yakındaki eczaneyi bul",
+        "turns": [
+          { "ai": "Buongiorno.", "tr": "Günaydın.", "goal": "İstasyonun nerede olduğunu sor", "answers": [
+            { "it": "Dov'è la stazione?", "tr": "İstasyon nerede?", "keywords": [["dov'è", "dove"], ["stazione"]] } ] },
+          { "ai": "È sempre dritto.", "tr": "Dümdüz ileride.", "goal": "Anlamadıysan tekrar etmesini iste", "answers": [
+            { "it": "Può ripetere, per favore?", "tr": "Tekrar edebilir misiniz, lütfen?", "keywords": [["può"], ["ripetere"]] } ] },
+          { "ai": "Certo. Sempre dritto.", "tr": "Tabii. Hep düz.", "goal": "Yakında eczane olup olmadığını sor", "answers": [
+            { "it": "C'è una farmacia qui?", "tr": "Burada eczane var mı?", "keywords": [["c'è"], ["farmacia"]] },
+            { "it": "C'è una farmacia qui vicino?", "tr": "Yakınlarda eczane var mı?", "keywords": [["c'è"], ["farmacia"]] } ] },
+          { "ai": "Sì, vicino alla stazione.", "tr": "Evet, istasyonun yakınında.", "goal": "Teşekkür et", "answers": [
+            { "it": "Grazie.", "tr": "Teşekkürler.", "keywords": [["grazie"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Dove è diye ayrı söylemek anlaşılır ama yazıda doğal biçim Dov'è şeklindedir.",
+        "C'è yazarken kesme işaretini unutmak.",
+        "Resmî konuşmada Puoi ripetere? yerine Può ripetere? kullanmak gerekir."
+      ],
+      "culture": "Tanımadığın birine soru sorarken Buongiorno veya Scusi ile başlamak daha kibardır.",
+      "gate": null
+    },
+    {
+      "day": 4, "level": "A1", "title": "İş Yerinde", "focus": "İhtiyaç ve zorunluluk anlatma",
+      "grammar_note": "Devo + fiil yapılması gereken işi söyler. Mi serve + isim ise ihtiyaç duyulan şeyi belirtir.",
+      "sentences": [
+        { "id": "d04_1", "it": "Mi serve aiuto.", "tr": "Yardıma ihtiyacım var.", "pattern": "mi_serve", "alt": [] },
+        { "id": "d04_2", "it": "Mi serve un documento.", "tr": "Bir belgeye ihtiyacım var.", "pattern": "mi_serve", "alt": [] },
+        { "id": "d04_3", "it": "Devo parlare con il responsabile.", "tr": "Yetkiliyle konuşmam gerekiyor.", "pattern": "devo", "alt": [] },
+        { "id": "d04_4", "it": "Devo controllare questo.", "tr": "Bunu kontrol etmem gerekiyor.", "pattern": "devo", "alt": [] },
+        { "id": "d04_5", "it": "Posso aspettare qui?", "tr": "Burada bekleyebilir miyim?", "pattern": "posso", "alt": [] }
+      ],
+      "words": [ { "it": "l'aiuto", "tr": "yardım" }, { "it": "il documento", "tr": "belge" }, { "it": "il responsabile", "tr": "yetkili / sorumlu" } ],
+      "talk": {
+        "type": "drill", "title": "İş Arkadaşıyla Kısa Konuşmalar",
+        "questions": [
+          { "q": "Ti serve aiuto?", "tr": "Yardıma ihtiyacın var mı?", "answers": ["Sì, mi serve aiuto.", "No, grazie."] },
+          { "q": "Devi parlare con il responsabile?", "tr": "Yetkiliyle konuşman gerekiyor mu?", "answers": ["Sì, devo parlare con il responsabile.", "No, devo lavorare."] },
+          { "q": "Puoi aspettare qui?", "tr": "Burada bekleyebilir misin?", "answers": ["Sì, posso aspettare qui.", "No, devo andare."] },
+          { "q": "C'è un problema?", "tr": "Bir problem var mı?", "answers": ["Sì, c'è un problema.", "No, va bene."] }
+        ]
+      },
+      "mistakes": [
+        "Mi serve aiuto yerine Devo aiuto demek.",
+        "Devo'dan sonra fiili çekimli kullanmak; doğru yapı Devo parlare şeklindedir.",
+        "Responsabile kelimesini İngilizcedeki responsible ile karıştırmak."
+      ],
+      "culture": "İş yerinde tanımadığın veya daha üst pozisyondaki kişilerle ilk temasta Lei kullanmak güvenli bir tercihtir.",
+      "gate": null
+    },
+    {
+      "day": 5, "level": "A1", "title": "Okulda", "focus": "Çocuğunu arama ve bekleme",
+      "grammar_note": "Cerco bir kişiyi ararken de kullanılabilir: Cerco mio figlio. İzin isterken Posso + fiil yapısı yeterlidir.",
+      "sentences": [
+        { "id": "d05_1", "it": "Cerco mio figlio.", "tr": "Oğlumu arıyorum.", "pattern": "cerco", "alt": [] },
+        { "id": "d05_2", "it": "Devo prendere mio figlio.", "tr": "Oğlumu almam gerekiyor.", "pattern": "devo", "alt": [] },
+        { "id": "d05_3", "it": "Posso aspettare qui?", "tr": "Burada bekleyebilir miyim?", "pattern": "posso", "alt": [] },
+        { "id": "d05_4", "it": "Dov'è l'uscita?", "tr": "Çıkış nerede?", "pattern": "dove", "alt": [] },
+        { "id": "d05_5", "it": "Può ripetere, per favore?", "tr": "Tekrar edebilir misiniz, lütfen?", "pattern": "puo", "alt": ["Può ripetere?"] }
+      ],
+      "words": [ { "it": "il figlio", "tr": "oğul / erkek çocuk" }, { "it": "la figlia", "tr": "kız çocuk" }, { "it": "l'uscita", "tr": "çıkış" }, { "it": "la scuola", "tr": "okul" } ],
+      "talk": {
+        "type": "scene", "title": "Okuldan Çocuğunu Alma", "setting": "school", "persona": { "name": "Elena", "role": "Okul görevlisi" }, "register": "Lei",
+        "mission": "Çocuğunu bul ve beklemek için izin iste",
+        "turns": [
+          { "ai": "Buongiorno. Posso aiutarla?", "tr": "Günaydın. Yardımcı olabilir miyim?", "goal": "Oğlunu aradığını söyle", "answers": [
+            { "it": "Cerco mio figlio.", "tr": "Oğlumu arıyorum.", "keywords": [["cerco"], ["figlio"]] } ] },
+          { "ai": "Come si chiama?", "tr": "Adı ne?", "goal": "Amaç olarak oğlunu almaya geldiğini tekrar belirt", "answers": [
+            { "it": "Devo prendere mio figlio.", "tr": "Oğlumu almam gerekiyor.", "keywords": [["devo"], ["prendere"], ["figlio"]] } ] },
+          { "ai": "Arriva tra poco.", "tr": "Birazdan geliyor.", "goal": "Burada bekleyip bekleyemeyeceğini sor", "answers": [
+            { "it": "Posso aspettare qui?", "tr": "Burada bekleyebilir miyim?", "keywords": [["posso"], ["aspettare"]] } ] },
+          { "ai": "Sì, certo.", "tr": "Evet, tabii.", "goal": "Çıkışın nerede olduğunu sor", "answers": [
+            { "it": "Dov'è l'uscita?", "tr": "Çıkış nerede?", "keywords": [["dov'è", "dove"], ["uscita"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Cerco il mio figlio demek; aile bireyleriyle çoğu zaman artikel kullanılmaz: mio figlio.",
+        "Prendere fiilini yalnızca almak anlamında düşünmek; okul bağlamında çocuğunu almaya gitmek için çok doğaldır.",
+        "Okul görevlisine Puoi yerine Può kullanmak daha güvenlidir."
+      ],
+      "culture": "Okul personeliyle ilk konuşmada Lei kullanmak uygundur; karşı taraf daha samimi bir dile geçerse iletişim de yumuşayabilir.",
+      "gate": null
+    },
+    {
+      "day": 6, "level": "A1", "title": "Eczanede", "focus": "Eczane bulma ve basit ihtiyaç anlatma",
+      "grammar_note": "Bu aşamada hastalık adı öğrenmek yerine ihtiyaç anlatmaya odaklanıyoruz: Mi serve + isim, Vorrei + isim.",
+      "sentences": [
+        { "id": "d06_1", "it": "Cerco una farmacia.", "tr": "Bir eczane arıyorum.", "pattern": "cerco", "alt": [] },
+        { "id": "d06_2", "it": "Mi serve un farmaco.", "tr": "Bir ilaca ihtiyacım var.", "pattern": "mi_serve", "alt": [] },
+        { "id": "d06_3", "it": "Vorrei qualcosa per il mal di testa.", "tr": "Baş ağrısı için bir şey istiyorum.", "pattern": "vorrei", "alt": [] },
+        { "id": "d06_4", "it": "Quanto costa questo?", "tr": "Bu ne kadar?", "pattern": "quanto_costa", "alt": ["Quanto costa?"] },
+        { "id": "d06_5", "it": "Può ripetere, per favore?", "tr": "Tekrar edebilir misiniz, lütfen?", "pattern": "puo", "alt": [] }
+      ],
+      "words": [ { "it": "la farmacia", "tr": "eczane" }, { "it": "il farmaco", "tr": "ilaç" }, { "it": "il mal di testa", "tr": "baş ağrısı" } ],
+      "talk": {
+        "type": "scene", "title": "Eczanede Basit İhtiyaç", "setting": "pharmacy", "persona": { "name": "Davide", "role": "Eczacı" }, "register": "Lei",
+        "mission": "Baş ağrısı için bir ürün iste ve fiyatını sor",
+        "turns": [
+          { "ai": "Buongiorno. Mi dica.", "tr": "Günaydın. Buyurun.", "goal": "Baş ağrısı için bir şey iste", "answers": [
+            { "it": "Vorrei qualcosa per il mal di testa.", "tr": "Baş ağrısı için bir şey istiyorum.", "keywords": [["vorrei"], ["mal di testa", "testa"]] },
+            { "it": "Mi serve qualcosa per il mal di testa.", "tr": "Baş ağrısı için bir şeye ihtiyacım var.", "keywords": [["mi serve", "serve"], ["mal di testa", "testa"]] } ] },
+          { "ai": "Va bene. Questo può andare.", "tr": "Peki. Bu uygun olabilir.", "goal": "Fiyatını sor", "answers": [
+            { "it": "Quanto costa questo?", "tr": "Bu ne kadar?", "keywords": [["quanto"], ["costa"]] } ] },
+          { "ai": "Costa otto euro.", "tr": "Sekiz euro.", "goal": "Kartla ödeyip ödeyemeyeceğini sor", "answers": [
+            { "it": "Posso pagare con la carta?", "tr": "Kartla ödeyebilir miyim?", "keywords": [["posso"], ["pagare"], ["carta"]] } ] },
+          { "ai": "Sì, certo.", "tr": "Evet, tabii.", "goal": "Konuşmayı kibarca bitir", "answers": [
+            { "it": "Grazie.", "tr": "Teşekkürler.", "keywords": [["grazie"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Farmacia kelimesini farmaci şeklinde söylemek.",
+        "Mal di testa kalıbındaki di kelimesini atlamak.",
+        "Eczacıyla ilk konuşmada tu formuna geçmek; Lei daha uygundur."
+      ],
+      "culture": "İtalya'da eczacıya doğrudan belirtiyi söylemek çok yaygındır. Daha ciddi veya uzun süren şikâyetlerde doktor yönlendirmesi gerekebilir.",
+      "gate": null
+    },
+    {
+      "day": 7, "level": "A1", "title": "Hafta 1 Kontrolü", "focus": "Temel ihtiyaçları yardım almadan anlatma",
+      "grammar_note": null,
+      "sentences": [
+        { "id": "d07_1", "it": "Vorrei un caffè, per favore.", "tr": "Bir kahve rica ediyorum.", "pattern": "vorrei", "alt": ["Un caffè, per favore."] },
+        { "id": "d07_2", "it": "Cerco una farmacia.", "tr": "Bir eczane arıyorum.", "pattern": "cerco", "alt": [] },
+        { "id": "d07_3", "it": "Dov'è la stazione?", "tr": "İstasyon nerede?", "pattern": "dove", "alt": [] },
+        { "id": "d07_4", "it": "Mi serve aiuto.", "tr": "Yardıma ihtiyacım var.", "pattern": "mi_serve", "alt": [] },
+        { "id": "d07_5", "it": "Devo parlare con il responsabile.", "tr": "Yetkiliyle konuşmam gerekiyor.", "pattern": "devo", "alt": [] },
+        { "id": "d07_6", "it": "Posso pagare con la carta?", "tr": "Kartla ödeyebilir miyim?", "pattern": "posso", "alt": [] }
+      ],
+      "words": [],
+      "talk": {
+        "type": "scene", "title": "Bir Sabah İtalya'da", "setting": "mixed_daily_life", "persona": { "name": "Chiara", "role": "Görevli" }, "register": "Lei",
+        "mission": "Sipariş ver, bir yer sor, yardım iste ve ödeme yap",
+        "turns": [
+          { "ai": "Buongiorno! Cosa prende?", "tr": "Günaydın! Ne alırsınız?", "goal": "Bir kahve iste", "answers": [
+            { "it": "Vorrei un caffè, per favore.", "tr": "Bir kahve rica ediyorum.", "keywords": [["vorrei", "caffè"], ["caffè"]] },
+            { "it": "Un caffè, per favore.", "tr": "Bir kahve lütfen.", "keywords": [["caffè"]] } ] },
+          { "ai": "Certo. Altro?", "tr": "Tabii. Başka?", "goal": "Bir su daha iste", "answers": [
+            { "it": "Vorrei anche un'acqua.", "tr": "Bir de su istiyorum.", "keywords": [["vorrei", "acqua"], ["acqua"]] } ] },
+          { "ai": "Va bene.", "tr": "Peki.", "goal": "Yakında eczane olup olmadığını sor", "answers": [
+            { "it": "C'è una farmacia qui?", "tr": "Burada eczane var mı?", "keywords": [["c'è"], ["farmacia"]] },
+            { "it": "C'è una farmacia qui vicino?", "tr": "Yakınlarda eczane var mı?", "keywords": [["c'è"], ["farmacia"]] } ] },
+          { "ai": "Sì, vicino alla stazione.", "tr": "Evet, istasyonun yakınında.", "goal": "İstasyonun nerede olduğunu sor", "answers": [
+            { "it": "Dov'è la stazione?", "tr": "İstasyon nerede?", "keywords": [["dov'è", "dove"], ["stazione"]] } ] },
+          { "ai": "Sempre dritto.", "tr": "Hep düz.", "goal": "Anlamadıysan tekrar etmesini iste", "answers": [
+            { "it": "Può ripetere, per favore?", "tr": "Tekrar edebilir misiniz, lütfen?", "keywords": [["può"], ["ripetere"]] } ] },
+          { "ai": "Certo. Sono cinque euro.", "tr": "Tabii. Beş euro.", "goal": "Kartla ödeyip ödeyemeyeceğini sor", "answers": [
+            { "it": "Posso pagare con la carta?", "tr": "Kartla ödeyebilir miyim?", "keywords": [["posso"], ["pagare"], ["carta"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Vorrei, Devo ve Posso kalıplarını birbirine karıştırmak.",
+        "Dov'è ile C'è arasındaki farkı unutmak: biri nerede, diğeri var mı anlamındadır.",
+        "Lei gereken yerde Puoi kullanmak.",
+        "İsimlerin artikellerini sürekli düşürmek."
+      ],
+      "culture": "Bu haftanın amacı kusursuz konuşmak değil, kısa ve anlaşılır cümlelerle günlük işini halletmektir.",
+      "gate": "Kafede sipariş ver, yakındaki bir yeri sor, anlamadığında tekrar iste ve kartla ödeme yap; bütün konuşmayı yardım almadan tamamla."
+    }
+  ]
+}
