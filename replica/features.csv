@@ -1,0 +1,26 @@
+feature,area,priority,original,clone,notes
+Kısa günlük oturum (dakika hedefi),session,must,yes,partial,program günü 15 dk ve Tekrar durağı ~30 soru var; geri sayım yok
+Kelime/cümle tanıtımı ardından hemen mini oyun,session,must,yes,yes,yeni kalıp adımı + Tekrar yolu
+Çoklu mini oyun türü (seç / eşleştir / yaz / kaydır),games,must,yes,yes,Tekrar yolunda 4 tür
+Zayıf öğelerin aralıklı tekrarla geri gelmesi,review,must,yes,yes,Leitner 1-3-7 gün + tekrar adımı
+Seri (her gün gelme),motivation,must,yes,partial,seri var; Tekrar yolu ve öğrenme adımları seriye sayılmıyor
+Seride bir günlük tolerans (2 gün kuralı),motivation,must,yes,no,PARLO'da bir gün kaçınca sıfırlanıyor
+Bildiğin öğeyi atlama (biliyorum),session,should,yes,no,yeni kalıp adımında yok
+Öğe başına ustalık sayacı (10 başarı),review,should,yes,partial,Leitner kutusu var; kullanıcıya gösterilmiyor
+Konu/gün ustalığı ve sıradakinin açılması,structure,should,yes,yes,30 günlük yol; gün bitince sonraki açılır
+Ayrı zayıf öğe tekrarı (Review Dojo),review,should,yes,partial,hızlı tekrar var; ayrı zayıflar turu yok
+Seri hedefinde ödül,motivation,should,yes,no,Drops'ta +5 dk; PARLO'da XP bonusu olabilir
+Kelimelerde görsel ipucu,session,should,yes,no,PARLO sadece yazı; 2. hafta kelimeleri için ikon/emoji
+Süreli oturum modu (geri sayım),session,could,yes,no,isteğe bağlı 5 dk modu
+Rozetler (konu / seri / meydan okuma),motivation,could,yes,no,hafta kontrolleri için rozet
+Hatırlatma bildirimi,motivation,could,yes,no,PWA push için sunucu gerekir
+Quiz modu (en fazla 7 soru),review,could,yes,partial,Tekrar yolu daha uzun (30)
+Favoriler,review,could,yes,no,
+Çok oyunculu karşılaşma,social,could,yes,partial,PARLO'da eşzamansız haftalık lig var
+Ücretsiz sürümde 10 saatte 5 dk kilidi,monetization,could,yes,skip,para kazanma kurgusu; PARLO'nun amacına ters
+Dinleme oyunu ve sesli mod,games,could,yes,skip,PARLO'da ses şimdilik kapalı (kullanıcı kararı)
+Yazı sistemi çizme,games,could,yes,skip,İtalyanca Latin alfabesi
+Kelime koleksiyonu,review,could,yes,skip,kullanıcı Cümlelerim bölümünü bilerek kaldırttı
+55+ dil,content,could,yes,skip,PARLO tek dil
+Drops illüstrasyonları ve kelime listeleri,content,could,yes,skip,onlara ait; alınmaz
+Ana dil desteği (çeviriyi göster),session,should,yes,yes,PARLO'da Türkçe göster/gizle var
