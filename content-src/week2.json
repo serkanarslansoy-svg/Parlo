@@ -1,0 +1,247 @@
+{
+  "week": 2,
+  "title": "Günlük İşleri Tek Başına Hallet",
+  "goal": "Hafta sonunda kullanıcı pazarda alışveriş yapabilecek, ulaşım ve telefon işlerini halledebilecek, komşuyla konuşabilecek, randevu alabilecek ve iş yerinde basit bir problemi anlatabilecek.",
+  "patterns": [
+    { "id": "prendo", "head": "Prendo", "slot": "+ [isim]", "tr": "… alayım / … alıyorum", "note": "Kafe, pazar ve mağazada karar verdiğin şeyi söylerken çok doğal kullanılır." },
+    { "id": "a_che_ora", "head": "A che ora", "slot": "+ [fiil / olay]?", "tr": "Saat kaçta …?", "note": "Otobüs, randevu veya bir etkinliğin saatini sormak için kullanılır." },
+    { "id": "non_capisco", "head": "Non capisco", "slot": "", "tr": "Anlamıyorum", "note": "Konuşmayı kaybettiğinde kullanabileceğin en temel kurtarma cümlelerinden biridir." },
+    { "id": "piu_piano", "head": "Può parlare", "slot": "+ più piano?", "tr": "Daha yavaş konuşabilir misiniz?", "note": "Lei kullanılan resmî veya tanımadığın kişilerle yapılan konuşmalarda kullanılır." },
+    { "id": "ho", "head": "Ho", "slot": "+ [isim / durum]", "tr": "… var / … sahibim", "note": "Sahip olduğun bir şeyi veya basit bir durumu anlatmak için kullanılır." },
+    { "id": "vorrei_appuntamento", "head": "Vorrei", "slot": "+ un appuntamento", "tr": "Randevu almak istiyorum", "note": "Doktor, okul, ofis veya resmî kurumlarda randevu isterken kullanılabilecek temel kalıptır." },
+    { "id": "cosa_devo_fare", "head": "Cosa devo fare", "slot": "?", "tr": "Ne yapmam gerekiyor?", "note": "Bir işlemin sonraki adımını bilmediğinde kullanılır." }
+  ],
+  "days": [
+    {
+      "day": 8, "level": "A1", "title": "Pazarda Alışveriş", "focus": "Miktar, seçim ve fiyat",
+      "grammar_note": "Prendo, karar verdiğin ürünü söylerken doğal bir seçimdir. Miktardan sonra di kullanılır: un chilo di pomodori.",
+      "sentences": [
+        { "id": "d08_1", "it": "Vorrei un chilo di pomodori.", "tr": "Bir kilo domates istiyorum.", "pattern": "vorrei", "alt": ["Prendo un chilo di pomodori."] },
+        { "id": "d08_2", "it": "Prendo mezzo chilo.", "tr": "Yarım kilo alayım.", "pattern": "prendo", "alt": ["Vorrei mezzo chilo."] },
+        { "id": "d08_3", "it": "Quanto costa un chilo?", "tr": "Bir kilosu ne kadar?", "pattern": "quanto_costa", "alt": [] },
+        { "id": "d08_4", "it": "Vorrei anche delle mele.", "tr": "Biraz da elma istiyorum.", "pattern": "vorrei", "alt": ["Prendo anche delle mele."] },
+        { "id": "d08_5", "it": "Posso pagare con la carta?", "tr": "Kartla ödeyebilir miyim?", "pattern": "posso", "alt": [] }
+      ],
+      "words": [ { "it": "il mercato", "tr": "pazar" }, { "it": "il chilo", "tr": "kilo" }, { "it": "mezzo chilo", "tr": "yarım kilo" }, { "it": "la mela", "tr": "elma" }, { "it": "il pomodoro", "tr": "domates" } ],
+      "talk": {
+        "type": "scene", "title": "Pazar Tezgâhında", "setting": "market_stall", "persona": { "name": "Roberto", "role": "Pazarcı" }, "register": "Lei",
+        "mission": "Domates ve elma al, fiyatı sor ve öde",
+        "turns": [
+          { "ai": "Buongiorno, cosa desidera?", "tr": "Günaydın, ne istersiniz?", "goal": "Bir kilo domates iste", "answers": [
+            { "it": "Vorrei un chilo di pomodori.", "tr": "Bir kilo domates istiyorum.", "keywords": [["vorrei", "prendo"], ["chilo"], ["pomodori"]] } ] },
+          { "ai": "Altro?", "tr": "Başka?", "goal": "Biraz da elma iste", "answers": [
+            { "it": "Vorrei anche delle mele.", "tr": "Biraz da elma istiyorum.", "keywords": [["vorrei", "prendo"], ["mele"]] } ] },
+          { "ai": "Va bene.", "tr": "Peki.", "goal": "Bir kilonun fiyatını sor", "answers": [
+            { "it": "Quanto costa un chilo?", "tr": "Bir kilosu ne kadar?", "keywords": [["quanto"], ["costa"], ["chilo"]] } ] },
+          { "ai": "Tre euro.", "tr": "Üç euro.", "goal": "Kartla ödeme yapıp yapamayacağını sor", "answers": [
+            { "it": "Posso pagare con la carta?", "tr": "Kartla ödeyebilir miyim?", "keywords": [["posso"], ["pagare"], ["carta"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Un chilo pomodori demek; doğru yapı un chilo di pomodori.",
+        "Mele kelimesini tekil mela yerine yanlış yerde kullanmak.",
+        "Prendo kalıbını geçmiş zaman sanmak; burada şu anki seçim anlamındadır."
+      ],
+      "culture": "Semt pazarlarında miktarı doğrudan söylemek çok yaygındır: un chilo, mezzo chilo, due etti gibi.",
+      "gate": null
+    },
+    {
+      "day": 9, "level": "A1", "title": "Otobüs ve Tramvay", "focus": "Bilet, durak ve saat",
+      "grammar_note": "A che ora, saat sormak için sabit bir başlangıçtır. Dov'è ile yer, A che ora ile zaman sorarsın.",
+      "sentences": [
+        { "id": "d09_1", "it": "Dov'è la fermata?", "tr": "Durak nerede?", "pattern": "dove", "alt": [] },
+        { "id": "d09_2", "it": "Vorrei un biglietto.", "tr": "Bir bilet istiyorum.", "pattern": "vorrei", "alt": ["Un biglietto, per favore."] },
+        { "id": "d09_3", "it": "A che ora arriva l'autobus?", "tr": "Otobüs saat kaçta geliyor?", "pattern": "a_che_ora", "alt": [] },
+        { "id": "d09_4", "it": "Questo autobus va in centro?", "tr": "Bu otobüs merkeze gidiyor mu?", "pattern": null, "alt": [] },
+        { "id": "d09_5", "it": "Posso comprare il biglietto qui?", "tr": "Bileti buradan alabilir miyim?", "pattern": "posso", "alt": [] }
+      ],
+      "words": [ { "it": "la fermata", "tr": "durak" }, { "it": "il biglietto", "tr": "bilet" }, { "it": "l'autobus", "tr": "otobüs" }, { "it": "il tram", "tr": "tramvay" }, { "it": "il centro", "tr": "şehir merkezi" } ],
+      "talk": {
+        "type": "scene", "title": "Durakta", "setting": "bus_stop", "persona": { "name": "Francesca", "role": "Yolcu" }, "register": "Lei",
+        "mission": "Doğru durağı ve otobüs saatini öğren",
+        "turns": [
+          { "ai": "Buongiorno.", "tr": "Günaydın.", "goal": "Durağın nerede olduğunu sor", "answers": [
+            { "it": "Dov'è la fermata?", "tr": "Durak nerede?", "keywords": [["dov'è", "dove"], ["fermata"]] } ] },
+          { "ai": "È qui.", "tr": "Burada.", "goal": "Otobüsün saat kaçta geldiğini sor", "answers": [
+            { "it": "A che ora arriva l'autobus?", "tr": "Otobüs saat kaçta geliyor?", "keywords": [["a che ora"], ["autobus"]] } ] },
+          { "ai": "Tra dieci minuti.", "tr": "On dakika içinde.", "goal": "Bu otobüsün merkeze gidip gitmediğini sor", "answers": [
+            { "it": "Questo autobus va in centro?", "tr": "Bu otobüs merkeze gidiyor mu?", "keywords": [["autobus"], ["centro"]] } ] },
+          { "ai": "Sì.", "tr": "Evet.", "goal": "Buradan bilet alıp alamayacağını sor", "answers": [
+            { "it": "Posso comprare il biglietto qui?", "tr": "Bileti buradan alabilir miyim?", "keywords": [["posso"], ["biglietto"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "A che ora yerine Quanto ora demek.",
+        "Fermata ile stazione kelimelerini karıştırmak.",
+        "Autobus kelimesinin artikelini l'autobus şeklinde kullanmayı unutmak."
+      ],
+      "culture": "Toplu taşımada biletin yalnızca satın alınması değil, gerektiğinde doğrulanması da önemli olabilir.",
+      "gate": null
+    },
+    {
+      "day": 10, "level": "A1", "title": "Telefonda İlk Konuşma", "focus": "Kendini tanıtma, anlamadığını söyleme",
+      "grammar_note": "Telefonda anlamadığında konuşmayı sürdürmeye çalışmak yerine Non capisco veya Può ripetere? demek tamamen normaldir.",
+      "sentences": [
+        { "id": "d10_1", "it": "Buongiorno, sono Serkan.", "tr": "Günaydın, ben Serkan.", "pattern": "sono", "alt": [] },
+        { "id": "d10_2", "it": "Non capisco.", "tr": "Anlamıyorum.", "pattern": "non_capisco", "alt": ["Non ho capito."] },
+        { "id": "d10_3", "it": "Può ripetere, per favore?", "tr": "Tekrar edebilir misiniz, lütfen?", "pattern": "puo", "alt": [] },
+        { "id": "d10_4", "it": "Può parlare più piano?", "tr": "Daha yavaş konuşabilir misiniz?", "pattern": "piu_piano", "alt": ["Più piano, per favore."] },
+        { "id": "d10_5", "it": "Devo parlare con il responsabile.", "tr": "Yetkiliyle konuşmam gerekiyor.", "pattern": "devo", "alt": [] }
+      ],
+      "words": [],
+      "talk": {
+        "type": "drill", "title": "Telefonda Kurtarma Cümleleri",
+        "questions": [
+          { "q": "Pronto, chi parla?", "tr": "Alo, kiminle görüşüyorum?", "answers": ["Buongiorno, sono Serkan.", "Sono Serkan."] },
+          { "q": "Ha capito?", "tr": "Anladınız mı?", "answers": ["No, non capisco.", "Può ripetere, per favore?"] },
+          { "q": "Parlo troppo velocemente?", "tr": "Çok mu hızlı konuşuyorum?", "answers": ["Sì, può parlare più piano?", "Più piano, per favore."] },
+          { "q": "Con chi vuole parlare?", "tr": "Kiminle konuşmak istiyorsunuz?", "answers": ["Devo parlare con il responsabile.", "Vorrei parlare con il responsabile."] }
+        ]
+      },
+      "mistakes": [
+        "Telefonda anlamadığı hâlde sadece Sì demek.",
+        "Puoi parlare più piano? diyerek resmî konuşmada tu formuna geçmek.",
+        "Più kelimesindeki ù aksanını yazıda unutmak."
+      ],
+      "culture": "Telefonda Pronto? yaygın bir açılıştır. Resmî telefon görüşmelerinde Buongiorno diyerek kendini tanıtmak güvenli bir başlangıçtır.",
+      "gate": null
+    },
+    {
+      "day": 11, "level": "A1", "title": "Komşuyla Ayaküstü", "focus": "Kendini tanıtma ve basit ihtiyaç",
+      "grammar_note": "Komşuluk ilişkilerinde taraflar kısa sürede tu formuna geçebilir. Bu derste konuşma samimi olduğu için tu kullanılıyor.",
+      "sentences": [
+        { "id": "d11_1", "it": "Sono il nuovo vicino.", "tr": "Yeni komşuyum.", "pattern": "sono", "alt": [] },
+        { "id": "d11_2", "it": "Sono di Bursa.", "tr": "Bursalıyım / Bursa'danım.", "pattern": "sono", "alt": [] },
+        { "id": "d11_3", "it": "Ho due figli.", "tr": "İki çocuğum var.", "pattern": "ho", "alt": [] },
+        { "id": "d11_4", "it": "Cerco un supermercato.", "tr": "Bir süpermarket arıyorum.", "pattern": "cerco", "alt": [] },
+        { "id": "d11_5", "it": "C'è un supermercato qui vicino?", "tr": "Yakınlarda süpermarket var mı?", "pattern": "ce", "alt": [] }
+      ],
+      "words": [ { "it": "il vicino", "tr": "erkek komşu" }, { "it": "la vicina", "tr": "kadın komşu" }, { "it": "il figlio", "tr": "erkek çocuk" }, { "it": "il supermercato", "tr": "süpermarket" } ],
+      "talk": {
+        "type": "drill", "title": "Komşuyla Ayaküstü",
+        "questions": [
+          { "q": "Sei nuovo qui?", "tr": "Burada yeni misin?", "answers": ["Sì, sono il nuovo vicino.", "Sì, sono nuovo qui."] },
+          { "q": "Di dove sei?", "tr": "Nerelisin?", "answers": ["Sono di Bursa.", "Sono turco."] },
+          { "q": "Hai figli?", "tr": "Çocuğun var mı?", "answers": ["Sì, ho due figli.", "Sì, ho un figlio.", "No, non ho figli."] },
+          { "q": "Cerchi qualcosa?", "tr": "Bir şey mi arıyorsun?", "answers": ["Sì, cerco un supermercato.", "Cerco una farmacia."] }
+        ]
+      },
+      "mistakes": [
+        "Ho due figli yerine Sono due figli demek.",
+        "Di dove sei? sorusuna yalnızca Bursa diyerek kalıbı kullanmamak.",
+        "Samimi tu konuşmasıyla resmî Lei kalıplarını aynı cümlede karıştırmak."
+      ],
+      "culture": "Komşular arasında ilk konuşma resmî başlayabilir ama karşı taraf tu kullanırsa samimi forma geçmek normaldir.",
+      "gate": null
+    },
+    {
+      "day": 12, "level": "A1", "title": "Randevu Al", "focus": "Randevu isteme, gün ve saat",
+      "grammar_note": "Vorrei un appuntamento sabit bir randevu isteme kalıbı gibi öğrenilebilir. Gün veya saat bilgisini sonuna ekleyebilirsin.",
+      "sentences": [
+        { "id": "d12_1", "it": "Vorrei un appuntamento.", "tr": "Randevu almak istiyorum.", "pattern": "vorrei_appuntamento", "alt": ["Vorrei prendere un appuntamento."] },
+        { "id": "d12_2", "it": "Vorrei un appuntamento domani.", "tr": "Yarın için randevu istiyorum.", "pattern": "vorrei_appuntamento", "alt": [] },
+        { "id": "d12_3", "it": "A che ora?", "tr": "Saat kaçta?", "pattern": "a_che_ora", "alt": [] },
+        { "id": "d12_4", "it": "Posso venire alle dieci?", "tr": "Saat onda gelebilir miyim?", "pattern": "posso", "alt": [] },
+        { "id": "d12_5", "it": "Va bene alle dieci.", "tr": "Saat on uygun.", "pattern": null, "alt": ["Alle dieci va bene."] }
+      ],
+      "words": [ { "it": "l'appuntamento", "tr": "randevu" }, { "it": "domani", "tr": "yarın" }, { "it": "oggi", "tr": "bugün" }, { "it": "l'ora", "tr": "saat" } ],
+      "talk": {
+        "type": "scene", "title": "Telefonla Randevu", "setting": "appointment_phone", "persona": { "name": "Sara", "role": "Sekreter" }, "register": "Lei",
+        "mission": "Yarın için saat on randevusu al",
+        "turns": [
+          { "ai": "Buongiorno, mi dica.", "tr": "Günaydın, buyurun.", "goal": "Randevu almak istediğini söyle", "answers": [
+            { "it": "Vorrei un appuntamento.", "tr": "Randevu almak istiyorum.", "keywords": [["vorrei"], ["appuntamento"]] } ] },
+          { "ai": "Per quale giorno?", "tr": "Hangi gün için?", "goal": "Yarın istediğini söyle", "answers": [
+            { "it": "Vorrei un appuntamento domani.", "tr": "Yarın için randevu istiyorum.", "keywords": [["domani"]] },
+            { "it": "Domani, per favore.", "tr": "Yarın, lütfen.", "keywords": [["domani"]] } ] },
+          { "ai": "Alle dieci va bene?", "tr": "Saat on uygun mu?", "goal": "Saat onun uygun olduğunu söyle", "answers": [
+            { "it": "Sì, va bene alle dieci.", "tr": "Evet, saat on uygun.", "keywords": [["va bene"], ["dieci"]] } ] },
+          { "ai": "Perfetto.", "tr": "Mükemmel.", "goal": "Kibarca teşekkür et", "answers": [
+            { "it": "Grazie.", "tr": "Teşekkürler.", "keywords": [["grazie"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Appuntamento kelimesinin başındaki çift p veya içindeki çift t'yi yazıda eksiltmek.",
+        "Saat söylerken a dieci yerine alle dieci kullanılması gerektiğini unutmak.",
+        "Telefon görüşmesinde Lei yerine tu formuna geçmek."
+      ],
+      "culture": "Randevu konuşmalarında gün ve saati sonunda tekrar etmek yanlış anlaşılmayı azaltır.",
+      "gate": null
+    },
+    {
+      "day": 13, "level": "A1+A2", "title": "İş Yerinde Problem", "focus": "Sorunu belirtme ve sonraki adımı sorma",
+      "grammar_note": "Cosa devo fare? hazır bir problem çözme kalıbıdır. Bu aşamada ayrıntılı gramer yerine bütün olarak öğrenmek daha yararlıdır.",
+      "sentences": [
+        { "id": "d13_1", "it": "C'è un problema.", "tr": "Bir problem var.", "pattern": "ce", "alt": [] },
+        { "id": "d13_2", "it": "Ho un problema.", "tr": "Bir problemim var.", "pattern": "ho", "alt": [] },
+        { "id": "d13_3", "it": "Devo controllare questo.", "tr": "Bunu kontrol etmem gerekiyor.", "pattern": "devo", "alt": [] },
+        { "id": "d13_4", "it": "Mi serve aiuto.", "tr": "Yardıma ihtiyacım var.", "pattern": "mi_serve", "alt": [] },
+        { "id": "d13_5", "it": "Cosa devo fare?", "tr": "Ne yapmam gerekiyor?", "pattern": "cosa_devo_fare", "alt": [] },
+        { "id": "d13_6", "it": "Devo parlare con il responsabile.", "tr": "Yetkiliyle konuşmam gerekiyor.", "pattern": "devo", "alt": [] }
+      ],
+      "words": [ { "it": "il problema", "tr": "problem / sorun" }, { "it": "il responsabile", "tr": "sorumlu / yetkili" } ],
+      "talk": {
+        "type": "scene", "title": "Hatta Bir Sorun Var", "setting": "workplace", "persona": { "name": "Andrea", "role": "Sorumlu" }, "register": "Lei",
+        "mission": "Problemi bildir, yardım iste ve ne yapacağını sor",
+        "turns": [
+          { "ai": "Buongiorno. Tutto bene?", "tr": "Günaydın. Her şey yolunda mı?", "goal": "Bir problemin olduğunu söyle", "answers": [
+            { "it": "No, ho un problema.", "tr": "Hayır, bir problemim var.", "keywords": [["ho", "c'è"], ["problema"]] },
+            { "it": "C'è un problema.", "tr": "Bir problem var.", "keywords": [["c'è"], ["problema"]] } ] },
+          { "ai": "Va bene. Deve controllare questo.", "tr": "Peki. Bunu kontrol etmeniz gerekiyor.", "goal": "Yardıma ihtiyacın olduğunu söyle", "answers": [
+            { "it": "Mi serve aiuto.", "tr": "Yardıma ihtiyacım var.", "keywords": [["mi serve"], ["aiuto"]] } ] },
+          { "ai": "Certo.", "tr": "Tabii.", "goal": "Ne yapman gerektiğini sor", "answers": [
+            { "it": "Cosa devo fare?", "tr": "Ne yapmam gerekiyor?", "keywords": [["cosa"], ["devo"], ["fare"]] } ] },
+          { "ai": "Prima controlli questo.", "tr": "Önce bunu kontrol edin.", "goal": "Yetkiliyle konuşman gerektiğini söyle", "answers": [
+            { "it": "Devo parlare con il responsabile.", "tr": "Yetkiliyle konuşmam gerekiyor.", "keywords": [["devo"], ["parlare"], ["responsabile"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "Ho un problema ile C'è un problema arasındaki farkı karıştırmak; ilki benim bir sorunum var, ikincisi bir sorun var anlamındadır.",
+        "Cosa devo fare? içinde devo ve fare sırasını değiştirmek.",
+        "Mi serve aiuto yerine Ho aiuto demek."
+      ],
+      "culture": "İş ortamında sorunu kısa ve doğrudan söylemek çoğu zaman uzun açıklamadan daha etkilidir.",
+      "gate": null
+    },
+    {
+      "day": 14, "level": "A1+A2", "title": "Hafta 2 Kontrolü", "focus": "Günlük işlerini yardım almadan yürütme",
+      "grammar_note": null,
+      "sentences": [
+        { "id": "d14_1", "it": "Prendo mezzo chilo.", "tr": "Yarım kilo alayım.", "pattern": "prendo", "alt": ["Vorrei mezzo chilo."] },
+        { "id": "d14_2", "it": "A che ora arriva l'autobus?", "tr": "Otobüs saat kaçta geliyor?", "pattern": "a_che_ora", "alt": [] },
+        { "id": "d14_3", "it": "Può parlare più piano?", "tr": "Daha yavaş konuşabilir misiniz?", "pattern": "piu_piano", "alt": ["Più piano, per favore."] },
+        { "id": "d14_4", "it": "Vorrei un appuntamento.", "tr": "Randevu almak istiyorum.", "pattern": "vorrei_appuntamento", "alt": [] },
+        { "id": "d14_5", "it": "Ho un problema.", "tr": "Bir problemim var.", "pattern": "ho", "alt": [] },
+        { "id": "d14_6", "it": "Cosa devo fare?", "tr": "Ne yapmam gerekiyor?", "pattern": "cosa_devo_fare", "alt": [] }
+      ],
+      "words": [],
+      "talk": {
+        "type": "scene", "title": "Tek Başına İşini Hallet", "setting": "mixed_daily_life", "persona": { "name": "Martina", "role": "Görevli" }, "register": "Lei",
+        "mission": "Ulaşım bilgisi al, telefon konuşmasını yönet, randevu iste ve basit bir problemi çöz",
+        "turns": [
+          { "ai": "Buongiorno. Come posso aiutarla?", "tr": "Günaydın. Size nasıl yardımcı olabilirim?", "goal": "Otobüsün saat kaçta geldiğini sor", "answers": [
+            { "it": "A che ora arriva l'autobus?", "tr": "Otobüs saat kaçta geliyor?", "keywords": [["a che ora"], ["autobus"]] } ] },
+          { "ai": "Arriva alle nove e venti.", "tr": "Dokuzu yirmi geçe geliyor.", "goal": "Anlamadıysan daha yavaş konuşmasını iste", "answers": [
+            { "it": "Può parlare più piano?", "tr": "Daha yavaş konuşabilir misiniz?", "keywords": [["può"], ["più piano"]] },
+            { "it": "Può ripetere, per favore?", "tr": "Tekrar edebilir misiniz, lütfen?", "keywords": [["può"], ["ripetere"]] } ] },
+          { "ai": "Certo. Posso aiutarla con altro?", "tr": "Tabii. Başka bir konuda yardımcı olabilir miyim?", "goal": "Randevu almak istediğini söyle", "answers": [
+            { "it": "Vorrei un appuntamento.", "tr": "Randevu almak istiyorum.", "keywords": [["vorrei"], ["appuntamento"]] } ] },
+          { "ai": "Per domani?", "tr": "Yarın için mi?", "goal": "Yarının uygun olduğunu söyle", "answers": [
+            { "it": "Sì, domani va bene.", "tr": "Evet, yarın uygun.", "keywords": [["domani"], ["va bene"]] } ] },
+          { "ai": "Perfetto. C'è altro?", "tr": "Mükemmel. Başka bir şey var mı?", "goal": "Bir problemin olduğunu söyle", "answers": [
+            { "it": "Sì, ho un problema.", "tr": "Evet, bir problemim var.", "keywords": [["ho", "c'è"], ["problema"]] } ] },
+          { "ai": "Mi dica.", "tr": "Buyurun, anlatın.", "goal": "Ne yapman gerektiğini sor", "answers": [
+            { "it": "Cosa devo fare?", "tr": "Ne yapmam gerekiyor?", "keywords": [["cosa"], ["devo"], ["fare"]] } ] }
+        ]
+      },
+      "mistakes": [
+        "A che ora ile Dov'è kalıplarını karıştırmak.",
+        "Telefonda anlamadığı hâlde konuşmayı sürdürmeye çalışıp Non capisco veya Può ripetere? kullanmamak.",
+        "Ho un problema ve C'è un problema yapılarını karıştırmak.",
+        "Lei kullanılan bir sahnede Puoi veya Parla gibi tu biçimlerine geçmek."
+      ],
+      "culture": "Bu haftanın hedefi her şeyi kusursuz söylemek değil; alışveriş, ulaşım, telefon ve randevu gibi günlük işleri kısa cümlelerle bağımsız tamamlamaktır.",
+      "gate": "Bir ulaşım saatini sor, anlamadığında konuşmayı yavaşlat, telefonla randevu al ve basit bir problemi bildirerek ne yapman gerektiğini yardım almadan sor."
+    }
+  ]
+}
