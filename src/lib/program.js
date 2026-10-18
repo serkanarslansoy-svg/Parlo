@@ -2,6 +2,7 @@
 import program from '../content/program.json';
 import { award, POINTS } from './points.js';
 import { newCard, addDays } from './srs.js';
+import { markActive } from './store.js';
 
 export const WEEKS = program.weeks;
 export const DAYS = program.days;
@@ -56,6 +57,7 @@ export function isUnlocked(state, n) {
 export function completeStep(state, n, step, today) {
   const rec = dayRec(state, n);
   rec.steps[step] = true;
+  markActive(state, today);
   if (!isDayDone(state, n) || rec.completedOn) return { dayDone: isDayDone(state, n), bonus: 0 };
   rec.completedOn = today;
   const day = state.days[today] || (state.days[today] = { review: 0, scenes: [] });

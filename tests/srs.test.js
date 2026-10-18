@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { grade, newCard, addDays, buildQueue, mastery, MAX_BOX } from '../src/lib/srs.js';
-import { streak } from '../src/lib/store.js';
+import { streak, markActive, freshState } from '../src/lib/store.js';
 
 const T = '2026-10-04';
 
@@ -53,8 +53,28 @@ describe('buildQueue', () => {
 
 describe('streak', () => {
   const day = (review) => ({ review, scenes: [] });
-  it('bugün dahil kesintisiz günleri sayar', () => {
-    expect(streak({ days: { [T]: day(1), [addDays(T, -1)]: day(2), [addDays(T, -3)]: day(1) } }, T)).toBe(2);
+  it('bugün dahil günleri sayar; tek kaçırılan gün seriyi bozmaz', () => {
+    expect(streak({ days: { [T]: day(1), [addDays(T, -1)]: day(2), [addDays(T, -3)]: day(1) } }, T)).toBe(3);
+  });
+  it('art arda iki gün kaçarsa seri sıfırlanır', () => {
+    expect(streak({ days: { [T]: day(1), [addDays(T, -3)]: day(1), [addDays(T, -4)]: day(1) } }, T)).toBe(1);
+  });
+  it('dün kaçtıysa bugün gelince seri sürer, bugün de gelmezse hâlâ kurtarılabilir', () => {
+    const days = { [addDays(T, -2)]: day(1), [addDays(T, -3)]: day(1) };
+    expect(streak({ days }, T)).toBe(2); // dün kaçtı, bugün daha gelmedi
+    expect(streak({ days }, addDays(T, 1))).toBe(0); // iki gün üst üste kaçtı
+  });
+  it('plan dışı günler seriyi bozmaz', () => {
+    // 2026-10-04 Pazar. Plan: Pzt, Çar, Cuma (1, 3, 5).
+    // Cuma ve Pazartesi var, Çarşamba kaçtı (tek kaçış: tolere edilir); Salı/Perşembe plan dışı.
+    const days = { '2026-10-02': day(1), '2026-09-28': day(1) };
+    expect(streak({ days }, T, [1, 3, 5])).toBe(2);
+    expect(streak({ days }, T)).toBe(1); // plansız: Perşembe + Çarşamba art arda kaçış seriyi keser
+  });
+  it('program adımı ve Tekrar yolu da seriye sayılır', () => {
+    const st = freshState();
+    markActive(st, T);
+    expect(streak(st, T)).toBe(1);
   });
   it('bugün henüz pratik yoksa dünden sayar', () => {
     expect(streak({ days: { [addDays(T, -1)]: day(1), [addDays(T, -2)]: day(1) } }, T)).toBe(2);

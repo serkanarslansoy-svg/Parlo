@@ -50,14 +50,42 @@ export function touchDay(state, patch) {
   state.days[k] = d;
 }
 
-const active = (d) => d && (d.review > 0 || d.scenes.length > 0);
+const active = (d) => Boolean(d && (d.review > 0 || d.scenes?.length > 0 || d.active || d.programDone?.length));
 
-/** Kesintisiz pratik günü sayısı. Bugün henüz pratik yapılmadıysa dünden geriye sayar. */
-export function streak(state, todayKey = today()) {
+/** O günü pratik yapılmış say (program adımı, Tekrar yolu turu…). */
+export function markActive(state, key) {
+  state.days = state.days || {};
+  const d = state.days[key] || (state.days[key] = { review: 0, scenes: [] });
+  d.active = true;
+}
+
+/** Haftanın günü: 0 = Pazar … 6 = Cumartesi. */
+export function weekday(key) {
+  const [y, m, d] = key.split('-').map(Number);
+  return new Date(y, m - 1, d).getDay();
+}
+
+// Bir gün kaçırmak seriyi bozmaz; art arda iki gerekli gün kaçarsa sıfırlanır.
+export const GRACE_DAYS = 1;
+
+/**
+ * Seri: pratik yapılan gün sayısı. Bugün henüz pratik yoksa dünden geriye sayar.
+ * planDays verilirse (0-6) sadece plandaki günler "gerekli" sayılır; plan dışı boş gün seriyi bozmaz.
+ */
+export function streak(state, todayKey = today(), planDays = null) {
+  const plan = planDays?.length ? planDays : null;
+  const required = (k) => !plan || plan.includes(weekday(k));
   let k = active(state.days[todayKey]) ? todayKey : addDays(todayKey, -1);
   let n = 0;
-  while (active(state.days[k])) {
-    n++;
+  let gap = 0;
+  for (let i = 0; i < 1000; i++) {
+    if (active(state.days[k])) {
+      n++;
+      gap = 0;
+    } else if (required(k)) {
+      gap++;
+      if (gap > GRACE_DAYS) break;
+    }
     k = addDays(k, -1);
   }
   return n;

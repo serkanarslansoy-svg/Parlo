@@ -2,6 +2,7 @@
 // Gün programda bitince açılır; XP sadece ilk bitirişte verilir, sonraki turlar serbest pratiktir.
 import { DAYS, isDayDone } from './program.js';
 import { award } from './points.js';
+import { markActive } from './store.js';
 import { shuffle } from './answer.js';
 import { sceneById } from '../content/index.js';
 
@@ -70,6 +71,7 @@ export function buildSession(n, rand = Math.random) {
  */
 export function finishPractice(state, n, ok, total, day) {
   state.practiceDays = state.practiceDays || {};
+  markActive(state, day);
   const prev = state.practiceDays[n];
   if (prev) {
     state.practiceDays[n] = { ...prev, best: Math.max(prev.best, ok), runs: (prev.runs || 1) + 1 };

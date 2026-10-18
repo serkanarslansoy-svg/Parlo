@@ -1,7 +1,7 @@
 import { h, icon } from '../lib/dom.js';
 import { dailyScene, tips, scenes, cards, allCardIds, patternById, CATEGORIES } from '../content/index.js';
-import { today, streak } from '../lib/store.js';
-import { isDue } from '../lib/srs.js';
+import { today, streak, isActiveDay } from '../lib/store.js';
+import { isDue, addDays } from '../lib/srs.js';
 import { award, POINTS, leaderboard, gapToNext, weekPoints, dayPoints } from '../lib/points.js';
 import { stateOf } from '../lib/profiles.js';
 import { tierOf, RULES } from '../lib/online.js';
@@ -208,13 +208,16 @@ function cultureCard(ctx) {
 export function renderHome(ctx) {
   const { state } = ctx;
   const s = streak(state);
+  const t0 = today();
+  // Dün kaçtı ve bugün henüz çalışılmadı: seri tolerans gününde.
+  const atRisk = s > 0 && !isActiveDay(state, t0) && !isActiveDay(state, addDays(t0, -1));
   const now = new Date();
   return h('div', { class: 'screen' },
     topbar({ subtitle: 'Bugün' }),
     h('section', { class: 'greet' },
       h('div', { class: 'row between' },
         h('span', { class: 'eyebrow terra row' }, h('i', { class: 'dot' }), `${now.getDate()} ${MONTHS[now.getMonth()]}, ${DAYS[now.getDay()]}`),
-        s ? h('span', { class: 'chip terra' }, icon('flame'), `${s} gün kesintisiz pratik`) : null),
+        s ? h('span', { class: 'chip terra' }, icon('flame'), atRisk ? `${s} günlük seri · bugün çalış, korunsun` : `${s} günlük seri`) : null),
       h('h1', {}, `${greeting(now)}, ${ctx.profile.name}!\u00a0${now.getHours() < 14 ? '☀️' : '🌙'}`)),
     leagueCard(ctx),
     programCard(ctx),
